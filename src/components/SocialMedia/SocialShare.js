@@ -12,7 +12,7 @@ import {
 import styles from './SocialShare.module.css';
 
 const SocialShare = ({ title, url }) => {
-  const baseURL = "https://blog.grosdouli.dev/";
+  const baseURL = "https://blog.grosdouli.dev";
   const fullURL = `${baseURL}${url}`;
 
   return (
