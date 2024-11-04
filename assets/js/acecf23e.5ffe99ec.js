@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpersonal_blog=self.webpackChunkpersonal_blog||[]).push([[1903],{1912:l=>{l.exports=JSON.parse('{"blogBasePath":"/blog.grosdouli.dev/blog","blogTitle":"Eleni Blog"}')}}]);

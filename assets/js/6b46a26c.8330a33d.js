@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpersonal_blog=self.webpackChunkpersonal_blog||[]).push([[1373],{5294:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/blog.grosdouli.dev/blog","page":1,"postsPerPage":10,"totalPages":2,"totalCount":11,"nextPage":"/blog.grosdouli.dev/blog/page/2","blogDescription":"Eleni Blog","blogTitle":"Eleni Blog"}}')}}]);
