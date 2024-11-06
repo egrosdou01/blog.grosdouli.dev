@@ -261,7 +261,7 @@ The output above indicates that a client queries a DNS server, and the server re
 
 ## ✉️ Contact
 
-If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/personal-blog/discussions) or reach out to me on any of the social media platforms provided. 😊
+If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊
 
 We look forward to hearing from you!
 

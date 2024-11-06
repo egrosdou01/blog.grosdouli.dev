@@ -6,6 +6,18 @@ hello:
   label: Hello
   permalink: /hello
   description: Hello tag description
+docusaurus:
+  label: Docusaurus
+  permalink: /docusaurus
+  description: Docusaurus related documentation
+github:
+  label: GitHub
+  permalink: /github
+  description: GitHub source control
+cloudflare:
+  label: Cloudflare
+  permalink: /cloudflare
+  description: Cloudflare
 ci/cd:
   label: CI/CD
   permalink: /ci-cd
@@ -54,6 +66,18 @@ opentofu:
   label: OpenTofu
   permalink: /opentofu
   description: OpenTofu is a fork of Terraform
+talos:
+  label: Talos
+  permalink: /talos
+  description: Talos Kubernetes cluster
+beginner-guide:
+  label: Begginer Guide
+  permalink: /beginner-guide
+  description: Beginner guide blog posts
+proxmox:
+  label: Proxmox
+  permalink: /proxmox
+  description: Proxmox Hypervisor
 conference:
   label: Conference
   permalink: /conference
