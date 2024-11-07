@@ -10,11 +10,11 @@ tags: [docusaurus,github,cloudflare,beginner-guide,troubleshooting-insights,"202
 
 Migration alert! For a while, I wanted to move my [Docusaurus](https://docusaurus.io/docs/next) blog to a new custom domain. In the beginning, it appeared like an overwhelming task due to time constraints and of course DNS! However, after some research, I finally managed to make the migration smooth and hassle-free. This blog post is meant to save you time and frustration if you are looking to deploy a Docusaurus site on GitHub Pages with your custom domain without running into DNS problems along the way!
 
-**Funny Fact**: After spending the last couple of weeks troubleshooting DNS issues (fun, right?), a colleague and good friend of mine, with a big smile, gave me this awesome t-shirt! 😂
+**Funny Fact**: After spending the last couple of days troubleshooting DNS issues (fun, right?), a colleague and good friend Justus surprised me with this awesome t-shirt! 😂
 
 Now, let's dive into the configuration! 👇
 
-![title image reading "Funny DNS"](funny_dns.jpg)
+![title image reading "Funny DNS"](its_dns.jpg)
 
 <!--truncate-->
 
