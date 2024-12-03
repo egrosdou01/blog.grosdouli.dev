@@ -8,7 +8,7 @@ tags: [talos,opentofu,proxmox,open-source,beginner-guide,"2024"]
 
 ## Introduction
 
-It's been a while now since I bootstrapping [RKE2](https://docs.rke2.io/) and [K3s](https://docs.k3s.io/) clusters on different platforms, on-prem and in the cloud, including VMware, Proxmox, Nutanix and pretty much every well-known cloud provider. This week, I have decided to take a different approach and discover something new! Bootstrap a Talos Kubernetes cluster on [Proxmox](https://www.proxmox.com/en/proxmox-virtual-environment/overview) using [OpenTofu](https://opentofu.org/docs/) as the Infrastructure as Code (IaC) solution. My first interaction with [Talos Linux](https://www.talos.dev/) was a couple of months back when Justin Garrison posted something about the ease of Kubernetes cluster deployment. I did not have much time to play around with it, but the time has come!
+It's been a while now since I am bootstrapping [RKE2](https://docs.rke2.io/) and [K3s](https://docs.k3s.io/) clusters on different platforms, on-prem and in the cloud, including VMware, Proxmox, Nutanix and pretty much every well-known cloud provider. This week, I have decided to take a different approach and discover something new! Bootstrap a Talos Kubernetes cluster on [Proxmox](https://www.proxmox.com/en/proxmox-virtual-environment/overview) using [OpenTofu](https://opentofu.org/docs/) as the Infrastructure as Code (IaC) solution. My first interaction with [Talos Linux](https://www.talos.dev/) was a couple of months back when Justin Garrison posted something about the ease of Kubernetes cluster deployment. I did not have much time back then, but here we come!
 
 The blog post will be split into two parts. **Part 1** will include a basic deployment of a Talos cluster using the out-of-box configuration, while **Part 2** will contain the required configuration changes to use [Cilium](https://docs.cilium.io/en/stable/) as our CNI.
 Get ready to roll up your sleeves and dive into the essentials of Talos Linux with OpenTofu on Proxmox.
@@ -47,6 +47,10 @@ The showcase repository is available [here](https://github.com/egrosdou01/blog-p
 
 ## Prerequisites
 
+### Manual Bootstrap (Optional)
+
+If you are new to the concept of bootstrapping Kubernetes clusters, it might be worth familiarising yourself with Talos and trying to bootstrap a cluster using `talosctl` and `Docker`. Check out the link [here](https://www.talos.dev/v1.8/introduction/quickstart/).
+
 ### Proxmox API Token
 
 To authenticate with Proxmox while executing the `tofu plan`, we need an API token with the right permissions.
@@ -77,7 +81,15 @@ Upload the `.iso` to the Proxmox server. Make a copy of the `Initial Installatio
 
 ## Scenario Overview
 
-As this is a beginner guide, we will keep the code as simple as possible including comments about the `resources` and `data` used. The demonstration starts by downloading the custom `.iso` with the **QEMU agent** included, we continue with the creation of the virtual machines in Proxmox in a dedicated VLAN with dynamic IP allocation and last but not least, use the Talos provider instantiate the initial config and then bootstrap a cluster.
+In today's post, we will perform the below using the IaC approach. As this is a beginner guide, we will keep the code as simple as possible including relevant comments and notes. For the setup, we will use DHCP to hand over IPs to the endpoints.
+
+The deployment in a Nutshell 👇
+
+- Create virtual machines using the Talos Linux image
+- Specify the endpoint for the Kubernetes API
+- Generate the machine configurations (part 1 uses the default ones)
+- Apply the machine configurations to the virtual machines
+- Bootstrap a Kubernetes cluster
 
 ## Talos Linux - Why bother?
 
@@ -85,7 +97,7 @@ Going through the official documentation [here](https://www.talos.dev/), I stumb
 
 ## File structure
 
-- `files/`: Contains template files for the initial image configuration of the Talos cluster
+- `files/`: Contains files and templates for the initial image configuration of the Talos cluster
 - `providers.tf`: Contains the required providers used in the resource blocks
 - `virtual_machines.tf`: Contains the resources to spin up the virtual machines
 - `main.tf`: Contains the resource blocks for the Talos Linux bootstrap
@@ -206,7 +218,7 @@ data "talos_client_configuration" "talosconfig" {
 data "talos_machine_configuration" "machineconfig_controller" {
   cluster_name     = var.talos_cluster_details.name
   talos_version    = var.talos_cluster_details.version
-  cluster_endpoint = "https://${tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443"
+  cluster_endpoint = "https://${tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443" # Use the first controller node IP address from the list as the cluster_endpoint
   machine_type     = "controlplane"
   machine_secrets  = talos_machine_secrets.this.machine_secrets
   config_patches = [
@@ -218,7 +230,7 @@ data "talos_machine_configuration" "machineconfig_controller" {
 data "talos_machine_configuration" "machineconfig_worker" {
   cluster_name     = var.talos_cluster_details.name
   talos_version    = var.talos_cluster_details.version
-  cluster_endpoint = "https://${tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443"
+  cluster_endpoint = "https://${tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443" # Use the first controller node IP address from the list as the cluster_endpoint
   machine_type     = "worker"
   machine_secrets  = talos_machine_secrets.this.machine_secrets
   config_patches = [
@@ -235,7 +247,7 @@ data "talos_machine_configuration" "machineconfig_worker" {
 resource "talos_machine_secrets" "this" {
   talos_version    = var.talos_cluster_details.version
 }
-# Apply the machine configuration greated in the data section for the controller node
+# Apply the machine configuration created in the data section for the controller node
 resource "talos_machine_configuration_apply" "controller_config_apply" {
   for_each                    = { for i, v in proxmox_vm_qemu.talos_vm_controller : i => v }
   depends_on                  = [proxmox_vm_qemu.talos_vm_controller]
@@ -243,7 +255,7 @@ resource "talos_machine_configuration_apply" "controller_config_apply" {
   machine_configuration_input = data.talos_machine_configuration.machineconfig_controller.machine_configuration
   node                        = each.value.default_ipv4_address
 }
-# Apply the machine configuration greated in the data section for the worker node
+# Apply the machine configuration created in the data section for the worker node
 resource "talos_machine_configuration_apply" "worker_config_apply" {
   for_each                    = { for i, v in proxmox_vm_qemu.talos_vm_worker : i => v }
   depends_on                  = [proxmox_vm_qemu.talos_vm_worker]
@@ -251,7 +263,7 @@ resource "talos_machine_configuration_apply" "worker_config_apply" {
   machine_configuration_input = data.talos_machine_configuration.machineconfig_worker.machine_configuration
   node                        = each.value.default_ipv4_address
 }
-# Start the bootstraping of the cluster
+# Start the bootstrap of the cluster
 resource "talos_machine_bootstrap" "bootstrap" {
   depends_on           = [talos_machine_configuration_apply.controller_config_apply]
   client_configuration = talos_machine_secrets.this.client_configuration
