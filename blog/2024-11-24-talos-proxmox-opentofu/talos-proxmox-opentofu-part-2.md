@@ -2,15 +2,15 @@
 slug: talos-on-proxmox-opentofu-part-2
 title: "Talos, Proxmox and OpenTofu: Beginner's Guide – Part 2"
 authors: [egrosdou01]
-date: 2024-12-01
+date: 2024-12-14
 tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide,"2024"]
 ---
 
 ## Introduction
 
-Welcome to part 2 of the Talos Linux Kubernetes cluster bootstrap on Proxmox series. Today, we will take the next step with our configuration and go through the process of enabling [Cilium](https://docs.cilium.io/en/stable/) as our CNI (Container Network Interface) with `KubeProxy` replacement enabled and `Cilium Hubble` for network observability. We will outline basic `kubectl` commands to evaluate the Cilium setup alongside network tests.
+Welcome to part 2 of the Talos Linux Kubernetes cluster bootstrap on the Proxmox series. Today, we will take the next step with our configuration and go through the process of enabling [Cilium](https://docs.cilium.io/en/stable/) as our CNI (Container Network Interface) with `KubeProxy` replacement enabled and `Cilium Hubble` for network observability. We will outline basic `kubectl` commands to evaluate the Cilium setup alongside network tests.
 
-We assume you already have the basic [project structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox) from part 1 as we will extend the configuration for Cilium. To follow along, check out the part 1 [post](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md).
+We assume you already have the basic [project structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox) from part 1 as we will extend the configuration for Cilium. To follow along, check out the [part 1 post](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md).
 
 ![title image reading "Talos Cluster on Proxmox with OpenTofu and Cilium"](Proxmox_OpenTofu_Talos_Cilium.jpg)
 
@@ -43,11 +43,11 @@ We assume you already have the basic [project structure](https://github.com/egr
 
 ## GitHub Resources
 
-The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox).
+The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-cilium-proxmox).
 
 ## Prerequisites
 
-As this is part 2 of the blog post series, we assume the prerequisites are already satisfied. If not, go to the previous [post](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md) and have a look at the prerequisites.
+As this is part 2 of the blog post series, we assume the prerequisites are already satisfied. If not, go to the previous [post](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md) and check out the prerequisites.
 
 ## Pre-work
 
@@ -55,8 +55,7 @@ In the previous post, we bootstrapped a Talos Kubernetes cluster with the defaul
 
 Going through the documentation, the easiest approach is to use `Method 5: Using a job`. The method allows us to utilise a job pattern that runs during the bootstrap time. That means, we can dynamically define the `controller` and `worker` `talos_machine_configuration` and then for the `talos_machine_configuration_apply` resource for the `controller`, define the Cilium configuration by utilising the `config_patches` available for that resource.
 
-The above approach utilises the [cilium-cli](https://github.com/cilium/cilium-cli) container for installing Cilium to the cluster. Unfortunately, the configuration provided in the Talos documentation does no longer work. That means the cilium containers end up in an `Error` state because the commands, for example `- --set ipam.mode=kubernetes`, are not recognised in the latest version. To overcome the difficulties, I already had the `cilium-cli` locally, and I simply performed the below.
-
+The above approach utilises the [cilium-cli](https://github.com/cilium/cilium-cli) container for installing Cilium to the cluster. Unfortunately, the configuration provided in the Talos documentation does no longer work. That means the cilium containers end up in an `Error` state because the commands, for example `- --set ipam.mode=kubernetes`, are not recognised in the latest version. To overcome the difficulties, I already had the `cilium-cli` locally, and performed the below.
 
 ```bash
 $ cilium install --help
@@ -96,11 +95,11 @@ Global Flags:
   -n, --namespace string           Namespace Cilium is running in (default "kube-system")
 ```
 
-From the output above, the flags `--version` and `--values` are of interest. The `--version` flag can be used to specify the Cilium version to be installed while the `--values ` flag can be used to pass a `.yaml` definition that contains the Cilium configuration. If you have performed a Cilium Helm installation before, this should be the straightforward approach.
+From the output above, the flags `--version` and `--values` are of interest to us. The `--version` flag can be used to specify the Cilium version to be installed while the `--values` flag can be used to pass a `.yaml` definition that contains the Cilium configuration. If you have performed a Cilium Helm installation before, this should be the straightforward approach.
 
 ### Cilium Configuration
 
-For the Cilium configuration, I simply copied the example provided in the Talos documentation and performed the required changes on the `command` section of the container definition.
+For the Cilium configuration, I copied the example provided in the Talos documentation and performed the required changes on the `command` section of the container definition. The `yaml` definition was converted into a template to dynamically pass the `cilium-cli` version alongside the `Cilium` version.
 
 **cilium_config.tfmpl**
 
@@ -193,7 +192,7 @@ cluster:
                volumes:
                - name: values
                  configMap:
-                   name: cilium-values
+                   name: cilium-install-values
 ```
 
 ### Bootstrap and Cilium Values
@@ -211,13 +210,13 @@ cluster:
   proxy:
     disabled: true
   inlineManifests:
-  - name: cilium-values
+  - name: cilium-install-config
     contents: |
       ---
       apiVersion: v1
       kind: ConfigMap
       metadata:
-        name: cilium-values
+        name: cilium-install-values
         namespace: kube-system
       data:
         cilium_helm_values.yaml: |-
@@ -249,9 +248,13 @@ cluster:
               enabled: true
 ```
 
+:::note
+In the `ConfigMap` with the name `cilium-install-values` we define the Helm chart values required for the Cilium installation and configuration. A full list of the available Cilium Helm values is located [here](https://github.com/cilium/cilium/blob/main/install/kubernetes/cilium/values.yaml).
+:::
+
 ## Bootstrap Talos Kubernetes Cluster
 
-The difference with the previous configuration is the fact we will split the `init_install.tfmpl` file in two instead. One for the `controller` and one for the `worker` nodes. The `worker` nodes include only the initial image setup while the `controller` nodes includes the **CNI** and **proxy** configuration.
+The difference with the previous configuration is that will split the `init_install.tfmpl` file in two instead. One for the `controller` and one for the `worker` nodes. The `worker` nodes include only the initial image setup while the `controller` nodes include the **CNI** and **proxy** configuration.
 
 ### data.tf
 
@@ -277,12 +280,12 @@ data "talos_machine_configuration" "machineconfig_controller" {
 ```
 
 :::tip
-The worker node data resource looks like the controller configuration but without the `cilium_config.tfmpl` definition. Check out the repository for more details.
+The worker node data resource looks like the controller configuration without the `cilium_config.tfmpl` definition. Check out the repository for more details.
 :::
 
 ### main.tf
 
-The `main.tf` file remains the same. No changes there.
+The `main.tf` file remains the same.
 
 ## Tofu Execution Plan
 
@@ -358,18 +361,20 @@ Cluster health:          4/4 reachable   (2024-11-30T17:08:00Z)
 Modules Health:          Stopped(0) Degraded(0) OK(58)
 ```
 
-You can apply similar network tests like the following located at the official [Cilium documentation](https://raw.githubusercontent.com/cilium/cilium/1.16.4/examples/kubernetes/connectivity-check/connectivity-check.yaml).
+You can apply similar network tests like the following example located at the official [Cilium documentation](https://raw.githubusercontent.com/cilium/cilium/1.16.4/examples/kubernetes/connectivity-check/connectivity-check.yaml).
+
+:::note
+When the Cilium tests are deployed on the cluster, you might get warnings due to the Talos Linux minimalistic setup. Feel free to use your tests for further validation.
+:::
 
 ## Resources
 
 - [Cilium - Getting Started](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)
 - [Talos - Quick Guide](https://www.talos.dev/v1.8/introduction/quickstart/)
-- [Talos Linux Guides](https://www.talos.dev/v1.8/talos-guides/)
-- [Advanced Talos Cluster Setup](https://blog.stonegarden.dev/articles/2024/08/talos-proxmox-tofu/)
 
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
 
 ## Conclusions
-In today's post, we walked through a simple example of bootstrapping a Talos Kubernetes cluster, powered by Cilium as the CNI, in just a few easy steps. 🚀 Hope you found it helpful and informative! Thanks for reading, and stay tuned for the next one!
+In today's post, we showed how to quickly set up a Talos Kubernetes cluster with Cilium as the CNI in just a few simple steps. 🚀 In part 3, we will outline potential improvements to make the setup even better. Thanks for reading, and stay tuned for the next post!
