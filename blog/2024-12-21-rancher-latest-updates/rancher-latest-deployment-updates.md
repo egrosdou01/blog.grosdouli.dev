@@ -40,7 +40,7 @@ To follow along, ensure the below points are satisfied.
 
 ## Scenario
 
-The deployment demonstrated some months back worked on a Rancher server `v2.8.4` version. However, I came to realise with the latest Rancher version, the same approach no longer works. The issue for me was that I was unable to deploy downstream RKE2 clusters due to a `cloud-init` error pointing to an incorrect TLS certificate hash. Thus, no RKE2 downstream clusters were deployed. I had a similar experience with a `v2.7.x` installation, however, I thought any issues were resolved in the meantime.
+The deployment demonstrated some months back worked on a Rancher server `v2.8.4` version. However, I came to realise with the latest Rancher version, the same approach no longer works. The issue for me was that I was unable to deploy downstream RKE2 clusters due to a `cloud-init` error pointing to an incorrect TLS certificate hash. Thus, no RKE2 downstream clusters were deployed. I had a similar experience with a `v2.7.x` installation and knew somehow how to overcome the issues.
 
 ## What's new with Rancher v2.10.0
 
@@ -84,7 +84,7 @@ $ helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
  --version 4.11.3
 ```
 
-We perform the Nginx Ingress Controller installation and we expose the service to be of type `LoadBalancer`. The allocated `External IP address` will be used at the next step to create an A DNS record in Cloudflare.
+We perform the Nginx Ingress Controller installation and we expose the service to be of type `LoadBalancer`. The allocated `External-IP` address will be used at the next step to create an `A` DNS record in Cloudflare.
 
 ## Step 3: Update DNS Records
 
