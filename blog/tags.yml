@@ -90,3 +90,7 @@ vcluster:
   label: vCluster
   permalink: /vcluster
   description: Kubernetes multitenancy solution - Loft
+let's encrypt:
+  label: let's encrypt
+  permalink: /let's encrypt
+  description: Let's Encrypt

@@ -2,7 +2,7 @@
 slug: experimenting-vcluster-multitenancy
 title: "Explore Multitenancy with vCluster using GitOps - Updates"
 authors: [egrosdou01]
-date: 2024-12-20
+date: 2024-12-29
 tags: [kubernetes,open-source,vcluster,cloudflare,"2024"]
 ---
 
@@ -10,7 +10,7 @@ tags: [kubernetes,open-source,vcluster,cloudflare,"2024"]
 
 In a [previous post](https://medium.com/@eleni.grosdouli/explore-multitenancy-with-vcluster-using-the-gitops-approach-96381d950372), we described how to install multiple virtual clusters in a [Civo](https://www.civo.com/) cloud environment with [vCluster](https://www.vcluster.com/).
 
-Today's post is an update of the older deployment interacting with our virtual clusters via a registered domain hosted in [Cloudflare](https://www.cloudflare.com/de-de/) and using a `LoadBalancer` service to achieve that. Let's dive into it.
+Today's post is an update of the older deployment interacting with virtual clusters via a registered domain hosted in [Cloudflare](https://www.cloudflare.com/de-de/) and using a `LoadBalancer` service to achieve that. Let's dive into it.
 
 <!--truncate-->
 
@@ -32,14 +32,13 @@ The requirement was to create a fast and easy multitenant setup for an upcoming 
 
 ## Prerequisites
 1. Helm version **≥ v3.10.0**
-1. kubectl installed/available. Find the guide [here](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/).
+1. **kubectl** installed/available. Find the guide [here](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/).
 
 ## Step 1: Prepare Custom values.yaml file
 
-To allow the virtual cluster to be accessible from the outside, we need a `LoadBalancer` service for reachability. The `External` IP address assigned will be used during the Helm chart installation and when defining an `A record` in Cloudflare.
+To allow the virtual cluster to be accessible from the outside, we need a `LoadBalancer` service for reachability. The `External-IP` address assigned will be used during the Helm chart installation and when defining an `A` record in Cloudflare.
 
 ```yaml
-$ cat vcluster-lb.yaml
 ---
 apiVersion: v1
 kind: Service
@@ -62,7 +61,7 @@ spec:
 
 ```bash
 $ export KUBECONFIG=/the/path/to/parent/kubeconfig
-$ kubectl create ns dev # The vCluster will be registered in the dev namespace
+$ kubectl create ns dev # vCluster resources will be created in the `dev` namespace
 $ kubectl apply -f vcluster-lb.yaml
 
 $ kubectl get svc -n dev
@@ -177,19 +176,20 @@ experimental:
 
 ## Step 3: Create A Record Cloudflare
 
-1. Login to Cloudflare
-1. Click on your domain name
-1. From the left-hand-side navigate to **DNS > Records > Add record**
-1. Create an A Record
+Navigate to **Home > click your Domain name > from the left-hand side menu choose DNS > Records > Add Record > Save**
 
-    ![title image reading "Cloudflare CNAME"](vcluster_cloudflare_a_record.png)
+  ![title image reading "Cloudflare CNAME"](vcluster_cloudflare_a_record.png)
 
 ## Step 4: vCluster Installation 
 
 As we have the custom values ready, we can proceed with the installation.
 
 ```bash
-$ helm upgrade --install vcluster-dev vcluster --namespace dev --values /the/path/to/configuration/vcluster.yaml --repo https://charts.loft.sh  --repository-config=''
+$ helm upgrade --install vcluster-dev vcluster \
+  --namespace dev \
+  --values /the/path/to/configuration/vcluster.yaml \
+  --repo https://charts.loft.sh \
+  --repository-config=''
 ```
 
 ### vCluster Validation
@@ -256,7 +256,7 @@ namespace/kube-system       Active   22h
 namespace/nginx-app         Active   2m20s
 ```
 
-### Nginx Validation
+### vCluster - Nginx Validation
 
 ```bash
 $ kubectl get all -n nginx-app

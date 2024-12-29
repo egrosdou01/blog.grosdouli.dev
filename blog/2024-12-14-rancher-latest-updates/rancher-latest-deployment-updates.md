@@ -2,7 +2,7 @@
 slug: rancher-latest-deployment-updates
 title: "Rancher Installation with Nginx Ingress and Let’s Encrypt - Updates"
 authors: [egrosdou01]
-date: 2024-12-19
+date: 2024-12-21
 tags: [kubernetes,open-source,rancher,cloudflare,let's encrypt,"2024"]
 ---
 
@@ -33,14 +33,14 @@ Today's post is an **update** of the old deployment which includes the **lates
 
 To follow along, ensure the below points are satisfied.
 
-- A valid Kubernetes Cluster that meets the [installation requirements](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-9-4/)
+- A valid Kubernetes Cluster that meets the [installation requirements](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-1/)
 - A valid DNS domain name
 - kubectl installed
 - Helm CLI installed
 
 ## Scenario
 
-The deployment demonstrated a couple of months back worked on a Rancher server `v2.8.4` version. However, I came to realise with the latest Rancher version, the same approach no longer works. The issue for me was that I was unable to deploy downstream RKE2 clusters due to a `cloud-init` error pointing to an incorrect TLS certificate hash. Thus, no RKE2 downstream clusters were deployed. I had a similar experience with a `v2.7.x` installation, however, I thought any issues were resolved in the meantime.
+The deployment demonstrated some months back worked on a Rancher server `v2.8.4` version. However, I came to realise with the latest Rancher version, the same approach no longer works. The issue for me was that I was unable to deploy downstream RKE2 clusters due to a `cloud-init` error pointing to an incorrect TLS certificate hash. Thus, no RKE2 downstream clusters were deployed. I had a similar experience with a `v2.7.x` installation, however, I thought any issues were resolved in the meantime.
 
 ## What's new with Rancher v2.10.0
 
@@ -95,6 +95,8 @@ $ kubectl get svc -n ingress-nginx | grep -i 'LoadBalancer'
 ```
 
 Copy the `External-IP` address and head to Cloudflare. Navigate to **Home > click your Domain name > from the left-hand side menu choose DNS > Records > Add Record > Save**.
+
+  ![title image reading "Cloudflare A Record"](rancher_a_record_cloudflare.png)
 
 ### Validate DNS Deployment
 
