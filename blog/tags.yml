@@ -86,3 +86,11 @@ troubleshooting-insights:
   label: Troubleshooting Insights
   permalink: /troubleshooting-insights
   description: Label attached to posts related to K8s insights
+vcluster:
+  label: vCluster
+  permalink: /vcluster
+  description: Kubernetes multitenancy solution - Loft
+let's encrypt:
+  label: let's encrypt
+  permalink: /let's encrypt
+  description: Let's Encrypt
