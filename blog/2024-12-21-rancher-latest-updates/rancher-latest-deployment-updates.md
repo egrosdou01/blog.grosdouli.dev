@@ -167,7 +167,7 @@ Access the Rancher UI based on the domain defined! If you click on the certifica
 
 ## Step 6: Rancher Downstream Cluster
 
-The easiest way to deploy downstream RKE2 clusters is with the use of an IaC tool like [OpenTofu](https://search.opentofu.org/provider/hashicorp/rancher2/latest) or [Terraform](https://registry.terraform.io/providers/rancher/rancher2/latest/docs).
+The easiest way to deploy downstream RKE2 clusters is with the use of an IaC tool like [OpenTofu](https://search.opentofu.org/provider/hashicorp/rancher2/latest) or [Terraform](https://registry.terraform.io/providers/rancher/rancher2/latest/docs). An example deployment can be found [here](../2024-07-26-rancher-rke2-azure/rancher-rke2-cilium-azure.md).
 
 ## Resources
 
