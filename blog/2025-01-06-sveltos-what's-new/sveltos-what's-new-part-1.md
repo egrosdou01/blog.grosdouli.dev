@@ -1,6 +1,6 @@
 ---
 slug: sveltos-what's-new-part-1
-title: "Sveltos: What's new - Part 1"
+title: "Sveltos: What's New in Kubernetes Deployments – Part 1"
 authors: [egrosdou01]
 date: 2025-01-06
 tags: [sveltos,open-source,beginner-guide,"2025"]
@@ -224,7 +224,7 @@ This is an introduction series to Sveltos, how it works and how the Sveltos Dash
 
 ## ✉️ Contact
 
-We are here to help! Whether you have questions, or issues or need assistance, our Slack channel is the perfect place for you. Click here to [join us](https://app.slack.com/client/T0471SNT5CZ/C06UZCXQLGP) us.
+We are here to help! Whether you have questions, or issues or need assistance, our Slack channel is the perfect place for you. Click here to [join us](https://join.slack.com/t/projectsveltos/shared_invite/zt-1hraownbr-W8NTs6LTimxLPB8Erj8Q6Q) us.
 
 ## 👏 Support this project
 
