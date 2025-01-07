@@ -2,6 +2,10 @@
   label: "2024"
   permalink: /2024
   description: The year the post went online
+"2025":
+  label: "2025"
+  permalink: /2025
+  description: The year the post went online
 hello:
   label: Hello
   permalink: /hello
