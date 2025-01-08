@@ -211,14 +211,14 @@ locals {
 data "talos_client_configuration" "talosconfig" {
   cluster_name         = var.talos_cluster_details.name
   client_configuration = talos_machine_secrets.this.client_configuration
-  endpoints            = [for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address]
-  nodes                = [for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address]
+  endpoints            = [for v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address]
+  nodes                = [for v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address]
 }
 # Generate the controller configuration and instantiate the Initial Image for the Talos configuration
 data "talos_machine_configuration" "machineconfig_controller" {
   cluster_name     = var.talos_cluster_details.name
   talos_version    = var.talos_cluster_details.version
-  cluster_endpoint = "https://${tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443" # Use the first controller node IP address from the list as the cluster_endpoint
+  cluster_endpoint = "https://${tolist([for v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443" # Use the first controller node IP address from the list as the cluster_endpoint
   machine_type     = "controlplane"
   machine_secrets  = talos_machine_secrets.this.machine_secrets
   config_patches = [
@@ -230,7 +230,7 @@ data "talos_machine_configuration" "machineconfig_controller" {
 data "talos_machine_configuration" "machineconfig_worker" {
   cluster_name     = var.talos_cluster_details.name
   talos_version    = var.talos_cluster_details.version
-  cluster_endpoint = "https://${tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443" # Use the first controller node IP address from the list as the cluster_endpoint
+  cluster_endpoint = "https://${tolist([for v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443" # Use the first controller node IP address from the list as the cluster_endpoint
   machine_type     = "worker"
   machine_secrets  = talos_machine_secrets.this.machine_secrets
   config_patches = [
@@ -267,13 +267,13 @@ resource "talos_machine_configuration_apply" "worker_config_apply" {
 resource "talos_machine_bootstrap" "bootstrap" {
   depends_on           = [talos_machine_configuration_apply.controller_config_apply]
   client_configuration = talos_machine_secrets.this.client_configuration
-  node                 = tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]
+  node                 = tolist([for v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]
 }
 # Collect the kubeconfig of the Talos cluster created
 resource "talos_cluster_kubeconfig" "kubeconfig" {
   depends_on           = [talos_machine_bootstrap.bootstrap, data.talos_cluster_health.cluster_health]
   client_configuration = talos_machine_secrets.this.client_configuration
-  node                 = tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]
+  node                 = tolist([for v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]
 }
 ...
 ```

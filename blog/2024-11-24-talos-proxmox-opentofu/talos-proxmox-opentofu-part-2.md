@@ -263,7 +263,7 @@ The difference with the previous configuration is that will split the `init_inst
 data "talos_machine_configuration" "machineconfig_controller" {
   cluster_name     = var.talos_cluster_details.name
   talos_version    = var.talos_cluster_details.version
-  cluster_endpoint = "https://${tolist([for i, v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443"
+  cluster_endpoint = "https://${tolist([for v in proxmox_vm_qemu.talos_vm_controller : v.default_ipv4_address])[0]}:6443"
   machine_type     = "controlplane"
   machine_secrets  = talos_machine_secrets.this.machine_secrets
   config_patches = [
