@@ -89,7 +89,7 @@ const config = {
           {to: '/blog/tags', label: 'Tags', position: 'left'},
           {to: 'talks', label: 'Talks', position: 'left'},
           {to: 'favourites', label: 'Favourites', position: 'left'},
-          {href: 'https://github.com/egrosdou01', label: 'GitHub',position: 'right'},
+          {label: 'GitHub', href: 'https://github.com/egrosdou01', position: 'right'},
           {type: 'search', position: 'right'},
         ],
       },
@@ -116,7 +116,7 @@ const config = {
           {
             title: 'More',
             items: [
-              {href: 'https://blog.grosdouli.dev/blog/rss.xml', label: 'RSS'},
+              {label: 'RSS', href: 'https://blog.grosdouli.dev/blog/rss.xml'},
             ],
           },
         ],
