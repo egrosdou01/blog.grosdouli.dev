@@ -48,6 +48,17 @@ const config = {
           postsPerPage: 10,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 6,
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} Eleni Grosdouli Blog`,
+            createFeedItems: async (params) => {
+              const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+              return defaultCreateFeedItems({
+                blogPosts: blogPosts.filter((item, index) => index < 5),
+                ...rest,
+              });
+            },
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -78,15 +89,8 @@ const config = {
           {to: '/blog/tags', label: 'Tags', position: 'left'},
           {to: 'talks', label: 'Talks', position: 'left'},
           {to: 'favourites', label: 'Favourites', position: 'left'},
-          {
-            href: 'https://github.com/egrosdou01',
-            label: 'GitHub',
-            position: 'right',
-          },
-          {
-            type: 'search',
-            position: 'right',
-          },
+          {href: 'https://github.com/egrosdou01', label: 'GitHub',position: 'right'},
+          {type: 'search', position: 'right'},
         ],
       },
       footer: {
@@ -104,27 +108,15 @@ const config = {
           {
             title: 'Socials',
             items: [
-              {
-                label: 'LinkedIn',
-                href: 'https://linkedin.com/in/eleni-grosdouli-85a1a5116',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/egrosdou01',
-              },
-              {
-                label: 'Medium',
-                href: 'https://medium.com/@eleni.grosdouli',
-              },
+              {label: 'LinkedIn', href: 'https://linkedin.com/in/eleni-grosdouli-85a1a5116'},
+              {label: 'GitHub', href: 'https://github.com/egrosdou01'},
+              {label: 'Medium', href: 'https://medium.com/@eleni.grosdouli'},
             ],
           },
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: 'blog',
-              },
+              {href: 'https://blog.grosdouli.dev/blog/rss.xml', label: 'RSS'},
             ],
           },
         ],
