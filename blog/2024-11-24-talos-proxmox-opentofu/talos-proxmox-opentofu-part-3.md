@@ -2,7 +2,7 @@
 slug: talos-on-proxmox-opentofu-part-3
 title: "Talos, Proxmox and OpenTofu: Beginner's Guide – Part 3"
 authors: [egrosdou01]
-date: 2025-02-04
+date: 2025-01-23
 tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide,"2025"]
 ---
 
@@ -62,7 +62,7 @@ As we already know we need two different node types to form a Talos cluster, ins
 
 ```hcl
 variable "node" {
-  description = "Condifuration for the Talos cluster nodes"
+  description = "Configuration for the Talos cluster nodes"
   type = map(object({
     vmodel       = string
     hdd_capacity = string
@@ -129,10 +129,17 @@ To allow different users to reuse the `tofu plan`, it might be a good idea to co
 
 Following the instructions and recommendations from the mentioned link, we managed to convert the code into a module. Also, the `examples/complete` directory was created to help users use the module. The information is useful when the module is called from a pipeline (GitHub actions, GitLab pipelines etc.).
 
+:::note
+For the module to work in your environment, ensure the information provided in the `main.tf` file reflects the data found within your Proxmox installation. If example values do not fit your setup, please update them accordingly.
+:::
+
+:::tip
+In case the installation of the Talos cluster takes longer than 10min, you can update the `data.talos_cluster_health.cluster_health` timeout value to a greater value found within the **module** and file `data.tf`.
+:::
+
 ### Tofu State to Backend
 
 The `tofu state` is a critical component of the infrastructure deployment. Thus, it might be a good idea to store it in a backend. Backends are primarily used as a means of managing the information contained within a `tofu state` file. OpenTofu recommends storing the `tofu state` file in a [TACOS (TF Automation and Collaboration Software)](https://opentofu.org/docs/language/state/remote/) system. In my case, I tend to store the `state` file on a GitLab project while executing pipelines. For better scalability and if you want to be independent of a GitLab server, it is very simple to store the `state` files in an S3 bucket. More information can be found [here](https://spacelift.io/blog/terraform-s3-backend).
-
 
 ### Work with Sensitive Information
 
@@ -150,4 +157,4 @@ As I am working in my home-lab setup, I am more than happy with storing sensitiv
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
 
 ## Conclusions
-🚀 In part 3, we outlines potential improvements on the existing setup. Thanks for reading, and stay tuned for the next post!
+🚀 In Part 3, we explored potential improvements to the current setup. If you have any ideas or suggestions for enhancing the module further, feel free to get in touch. Thanks for reading, and stay tuned for the next post!

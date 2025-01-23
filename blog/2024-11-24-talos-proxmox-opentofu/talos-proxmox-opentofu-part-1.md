@@ -97,6 +97,7 @@ Going through the official documentation [here](https://www.talos.dev/), I stumb
 
 ## File structure
 
+- `creds/`: This is a **hidden directory** which holds the `api_token_id.txt`, `api_token_secret.txt` and `api_url.txt`
 - `files/`: Contains files and templates for the initial image configuration of the Talos cluster
 - `providers.tf`: Contains the required providers used in the resource blocks
 - `virtual_machines.tf`: Contains the resources to spin up the virtual machines
