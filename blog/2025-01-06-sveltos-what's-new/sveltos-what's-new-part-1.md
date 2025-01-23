@@ -1,6 +1,6 @@
 ---
 slug: sveltos-what's-new-part-1
-title: "Sveltos: What's New in Kubernetes Deployments – Part 1"
+title: "Sveltos: What's New in Kubernetes Deployments - Part 1"
 authors: [egrosdou01]
 date: 2025-01-06
 tags: [sveltos,open-source,beginner-guide,"2025"]
