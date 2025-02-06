@@ -1,6 +1,6 @@
 ---
 slug: talos-on-proxmox-opentofu-part-2
-title: "Talos, Proxmox and OpenTofu: Beginner's Guide – Part 2"
+title: "Talos, Proxmox and OpenTofu: Beginner's Guide - Part 2"
 authors: [egrosdou01]
 date: 2024-12-14
 tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide,"2024"]
@@ -8,7 +8,7 @@ tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide,"2024"]
 
 ## Introduction
 
-Welcome to part 2 of the Talos Linux Kubernetes cluster bootstrap on the Proxmox series. Today, we will take the next step with our configuration and go through the process of enabling [Cilium](https://docs.cilium.io/en/stable/) as our CNI (Container Network Interface) with `KubeProxy` replacement enabled and `Cilium Hubble` for network observability. We will outline basic `kubectl` commands to evaluate the Cilium setup alongside network tests.
+Welcome to **part 2** of the Talos Linux Kubernetes cluster bootstrap on the Proxmox series. Today, we will take the next step with our configuration and go through the process of enabling [Cilium](https://docs.cilium.io/en/stable/) as our CNI (Container Network Interface) with `KubeProxy` replacement enabled and `Cilium Hubble` for network observability. We will outline basic `kubectl` commands to evaluate the Cilium setup alongside network tests.
 
 We assume you already have the basic [project structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox) from part 1 as we will extend the configuration for Cilium. To follow along, check out the [part 1 post](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md).
 

@@ -1,6 +1,6 @@
 ---
 slug: talos-on-proxmox-opentofu-part-1
-title: "Talos, Proxmox and OpenTofu: Beginner's Guide – Part 1"
+title: "Talos, Proxmox and OpenTofu: Beginner's Guide - Part 1"
 authors: [egrosdou01]
 date: 2024-11-24
 tags: [talos,opentofu,proxmox,open-source,beginner-guide,"2024"]
