@@ -10,6 +10,10 @@ hello:
   label: Hello
   permalink: /hello
   description: Hello tag description
+off-topic:
+  label: off-topic
+  permalink: /off-topic
+  description: Non Technical Posts
 docusaurus:
   label: Docusaurus
   permalink: /docusaurus
