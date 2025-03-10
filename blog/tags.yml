@@ -102,3 +102,15 @@ let's encrypt:
   label: let's encrypt
   permalink: /let's encrypt
   description: Let's Encrypt
+pfsense:
+  label: pfSense
+  permalink: /pfsense
+  description: pfSense Virtual Router
+ipv6:
+  label: ipv6
+  permalink: /ipv6
+  description: IPv6 Addressing space
+FRITZ!Box:
+  label: FRITZ!Box
+  permalink: /FRITZ!Box
+  description: FRITZ!Box Router
