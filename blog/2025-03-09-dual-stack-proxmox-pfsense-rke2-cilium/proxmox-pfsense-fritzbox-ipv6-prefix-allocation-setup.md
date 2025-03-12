@@ -49,7 +49,7 @@ In my case, I have two IPv6 information available. A `/64` Prefix is used for **
 Internet Providers offer to end customers **temporary** IPv6 Prefixes. The Prefix delegation is owned by the Internet Provider. That means the Prefixes could change at any time with no warning. 
 :::
 
-## PfSense
+## pfSense
 
 The official documentation is located [here](https://docs.netgate.com/pfsense/en/latest/services/dhcp/ipv6.html). However, I found it hard sometimes to understand what exactly needs to be configured to enable an Interface for IPv6. Follow the sub-sections below to enable `DHCPv6` services on pfSense.
 
