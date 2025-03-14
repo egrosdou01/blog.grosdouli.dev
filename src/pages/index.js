@@ -17,7 +17,7 @@ function HomepageHeader() {
           <p className="tagline">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
             <Link className="button button--secondary button--lg" to="/blog">
-              Explore Blog Posts 📚
+              Explore Blog Posts 🖋️💡
             </Link>
           </div>
         </div>

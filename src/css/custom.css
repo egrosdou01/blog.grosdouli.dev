@@ -16,7 +16,7 @@
   --ifm-color-primary-lightest: #853cad;
   --ifm-background-color: #fafafa;
   --delay: 0;
-  --duration: 800ms;
+  --duration: 500ms;
   --iterations: 1;
 }
 
@@ -60,13 +60,19 @@ code {
 
 .footer__links {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: flex-start;
   text-align: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .footer__col {
-  flex: 1;
-  margin: 0 1rem;
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
 }
 
 .footer__item {
@@ -74,24 +80,44 @@ code {
 }
 
 .footer__links .footer__link-item {
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 .footer__links .footer__link-item a.footer__link {
   padding-left: 10px;
   padding-right: 10px;
+  text-decoration: none;
 }
 
 .footer__bottom {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  padding: 1rem 0;
 }
 
-.footer__title {
-  text-align: center;
-  padding-left: 10px;
-  padding-right: 30px;
-  margin-left: 0;
+@media (max-width: 768px) {
+  .footer__links {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer__col {
+    margin: 1rem 0;
+    flex: none;
+    width: 100%;
+  }
+
+  .footer__links .footer__link-item {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .footer__title {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+  }
 }
 
 .mixmax {
@@ -162,14 +188,14 @@ code {
 .reveal-text::after {
   animation-delay: var(--animation-delay, 2s);
   animation-iteration-count: var(--iterations, 1);
-  animation-duration: var(--duration, 800ms);
+  animation-duration: var(--duration, 500ms);
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.0, 0.0, 0.2, 1);
 }
 
 .reveal-text {
   --animation-delay: var(--delay, 0);
-  --animation-duration: var(--duration, 800ms);
+  --animation-duration: var(--duration, 500ms);
   --animation-iterations: var(--iterations, 1);
   position: relative;
   animation-name: clip-text;
