@@ -24,17 +24,17 @@ const AboutMeList = [
     title: '💻 Expertise',
     description: (
       <>
-      My expertise lies around GitOps practices.
-      I create content about <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8s Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2 deployments</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Openshift</a> deployments in on-prem and cloud environments.
+      My expertise lies around DevOps and GitOps practices.
+      I create content about <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8s Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Openshift</a> deployments in on-prem and cloud environments.
       </>
     ),
   },
   {
-    title: '🏉 Sports Enthusiast',
+    title: '🏃‍♀️ Sports Enthusiast',
     description: (
       <>
-      You will often find me enjoying nature or on the field, playing team sports.
-      Recently, I joined a local women’s rugby team, where I am embracing the creativity of the sport itself.
+      You will often find me enjoying nature or on the field, playing team sports. Boxing and kickboxing are my go-to activities, and 
+      recently, I joined a local women’s rugby team, where I am embracing the creativity of the sport itself. 🥊🏉💪
       </>
     ),
     center: true,
