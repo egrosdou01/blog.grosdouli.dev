@@ -34,7 +34,7 @@ const AboutMeList = [
     description: (
       <>
       You will often find me enjoying nature or on the field, playing team sports. Boxing and kickboxing are my go-to activities, and 
-      recently, I joined a local women’s rugby team, where I am embracing the creativity of the sport itself. 🥊🏉💪
+      recently, I joined a local women’s rugby team, where I am embracing the creativity of the sport itself. 🥊🏉
       </>
     ),
     center: true,
