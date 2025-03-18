@@ -27,6 +27,9 @@ Today's post is an update of the older deployment interacting with virtual clust
 +----------------------+--------------------+-------------------------------------+
 ```
 
+## GitHub Resources
+The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/experimenting-vcluster-multitenancy).
+
 ## Scenario
 
 The requirement was to create a fast and easy multitenant setup for an upcoming project. However, I came to realise that many things have evolved since the time I wrote the vCluster post. The Loft team performed many changes on how we specify additional vCluster values for a Helm chart deployment. After going through the documentation, I believe more structure and clarity are provided with the [latest release](https://github.com/loft-sh/vcluster/releases). The post is an attempt to show readers how to create virtual clusters using the GitOps approach while utilising a domain for outside reachability.
