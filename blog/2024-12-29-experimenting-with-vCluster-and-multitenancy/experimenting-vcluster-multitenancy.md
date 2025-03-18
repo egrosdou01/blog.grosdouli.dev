@@ -3,6 +3,7 @@ slug: experimenting-vcluster-multitenancy
 title: "Explore Multitenancy with vCluster using GitOps - Updates"
 authors: [egrosdou01]
 date: 2024-12-29
+updated: 2025-03-18
 tags: [kubernetes,open-source,vcluster,cloudflare,"2024"]
 ---
 
@@ -17,13 +18,13 @@ Today's post is an update of the older deployment interacting with virtual clust
 ## Environment Setup
 
 ```bash
-+----------------------+------------+-------------------------------------+
-|    Cluster Name      |  Version   |              Comments               |
-+----------------------+------------+-------------------------------------+
-|   cluster01-test     |v1.30.5+k3s1|  Civo 3 Node - Medium Standard      |
-|   vcluster-dev       |v1.31.1+k3s1|  Defined in the `dev` namespace     |
-+----------------------+------------+-------------------------------------+
-
++----------------------+--------------------+-------------------------------------+
+|    Cluster Name      |      Version       |              Comments               |
++----------------------+--------------------+-------------------------------------+
+|   cluster01-test     |   v1.30.5+k3s1     |  Civo 3 Node - Medium Standard      |
+|   vcluster-dev       |   v1.31.1+k3s1     |  Defined in the `dev` namespace     |
+| vCluster Helm Chart  |     v0.22.0        |               N/A                   |
++----------------------+--------------------+-------------------------------------+
 ```
 
 ## Scenario
@@ -94,7 +95,7 @@ controlPlane:
           memory: 64Mi
   proxy:
     extraSANs:
-      - YOUR Domain
+      - YOUR Domain - For Example my-vcluster.my-domain.com
   coredns:
     enabled: true
   statefulSet:
@@ -123,7 +124,10 @@ controlPlane:
         accessModes: ["ReadWriteOnce"]
 exportKubeConfig:
   server: "https://Your Domain Name:443"
+  context: vcluster-dev
   insecure: false
+  secret:
+    name: vcluster-dev
 experimental:
   deploy:
     vcluster:
@@ -174,11 +178,23 @@ experimental:
 **Notable changes**: Include the `controlPlane` and `k3s` configuration at the top level. Set the `extraSANs` to **your custom domain**. Enable `CoreDNS` and set the virtual cluster `statefulSet` details as well. Make changes to the storage requirements that are needed. Use the `exportKubeConfig` section to expose the cluster with a valid domain. Move the application manifest to be created with the virtual cluster deployment under the `experimental` section.
 :::
 
+:::note
+The `kubeconfig` of the vCluster will be saved as a secret named `vcluster-dev` in the `dev` namespace.
+:::
+
 ## Step 3: Create A Record Cloudflare
 
 Navigate to **Home > click your Domain name > from the left-hand side menu choose DNS > Records > Add Record > Save**
 
   ![title image reading "Cloudflare CNAME"](vcluster_cloudflare_a_record.png)
+
+### DNS Validation
+
+```bash
+$ dig +short {A Record Name}.{YOUR DOMAIN}
+```
+
+The above should return the IP address of the `LoadBalancer` service created in a previous step.
 
 ## Step 4: vCluster Installation 
 
@@ -224,20 +240,17 @@ secret/sh.helm.release.v1.vcluster-dev.v6   helm.sh/release.v1   1      35s
 secret/vc-config-vcluster-dev               Opaque               1      23m
 secret/vc-k3s-vcluster-dev                  Opaque               1      22h
 secret/vc-vcluster-dev                      Opaque               5      22m
+secret/vcluster-dev                         Opaque               5      22m
 secret/vcluster-dev-certs                   Opaque               25     22m
 ```
 
 ## Step 5: Retrieve vCluster Kubeconfig
 
-Once the virtual cluster is deployed, we can retrieve the `kubeconfig` by decoding the configuration of the secret with the name `vc-cluster-dev`.
+Once the virtual cluster is deployed, we can retrieve the `kubeconfig` by decoding the configuration of the secret with the name `vcluster-dev`.
 
 ```bash
-$ kubectl get secret vc-vcluster-dev -n dev --template={{.data.config}} | base64 -d > /the/path/to/configuration/vcluster-dev.yaml
+$ kubectl get secret vcluster-dev -n dev --template={{.data.config}} | base64 -d > /the/path/to/configuration/vcluster-dev.yaml
 ```
-
-:::note
-Even if the `exportKubeConfig.server` configuration was set to a custom domain, the `kubeconfig` still holds the `localhost` value. Ensure you update `localhost:8443` to `your domain:443`.
-:::
 
 ### Validation
 
