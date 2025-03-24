@@ -15,6 +15,7 @@
   --ifm-color-primary-lighter: #753599;
   --ifm-color-primary-lightest: #853cad;
   --ifm-background-color: #fafafa;
+  --docusaurus-highlighted-code-line-bg: rgba(174, 139, 226, 0.2);
   --delay: 0;
   --duration: 500ms;
   --iterations: 1;
@@ -45,6 +46,7 @@ code {
   --ifm-color-primary-lightest: #e2ccfa;
   --ifm-background-color: #121212;
   --ifm-text-color: #ffffff;
+  --docusaurus-highlighted-code-line-bg: rgba(209, 180, 234, 0.3);
 }
 
 :root[data-theme='dark'] pre {
