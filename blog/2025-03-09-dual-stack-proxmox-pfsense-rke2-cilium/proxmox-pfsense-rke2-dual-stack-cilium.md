@@ -382,10 +382,10 @@ service-cidr: "10.45.0.0/16,2001:cafe:43::/112"
 
 In the upcoming post, we will set up a `Cilium Service Mesh` and share `IPv4` and `IPv6` `Global Services`.
 
-## ✉️ Contact
-
-If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
-
 ## Conclusions
 
 `Dual-stack` deployment on an RKE2 cluster, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
+
+## ✉️ Contact
+
+If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!

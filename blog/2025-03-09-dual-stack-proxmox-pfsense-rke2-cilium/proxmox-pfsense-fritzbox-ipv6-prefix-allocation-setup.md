@@ -182,10 +182,10 @@ Hehe, everything is fine! It is just that `github.com` does not have IPv6 supp
 
 In the upcoming posts, we will go through enabling `dual-stack` on [RKE2](https://docs.rke2.io/) clusters alongside testing and validation of the deployment. For the last part of the series, we will introduce `Cilium service mesh` and IPv6 `Global services` sharing between clusters.
 
-## ✉️ Contact
-
-If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
-
 ## Conclusions
 
 IPv6 Prefix allocation on Proxmox with Pfsense, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
+
+## ✉️ Contact
+
+If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
