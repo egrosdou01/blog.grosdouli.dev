@@ -476,14 +476,14 @@ rke2-snapshot-validation-webhook-54c5989b65-zqxgz                   1/1     Runn
 
 It is very easy to delete the resources created, simply perform the `tofu destroy` and confirm the action. The deletion of the resources will take up to 2 minutes.
 
+## Conclusion
+
+This is it! Automate the creation of RKE2 clusters in Azure with OpenTofu! 🎉
+
+It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!
+
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊
 
 We look forward to hearing from you!
-
-## Conclusions
-
-This is it! Automate the creation of RKE2 clusters in Azure with OpenTofu! 🎉
-
-It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!

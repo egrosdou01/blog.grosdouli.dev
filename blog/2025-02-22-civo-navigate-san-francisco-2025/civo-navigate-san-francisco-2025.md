@@ -48,7 +48,7 @@ For the conference, we demonstrated how Sveltos is used to deploy and take over 
 
 The Git repository with the manifest files and the execution instructions are located [here](https://github.com/egrosdou01/civo-navigate/tree/main/resources/civo_navigate_north_america_2025).
 
-## Conclusions
+## Conclusion
 
 All in all, it was an awesome experience to have the chance to attend and speak at the conference. If you plan to attend any upcoming Civo Navigate conferences, check out the [link](https://www.civo.com/navigate). I am pretty confident you will have an enjoyable experience!
 

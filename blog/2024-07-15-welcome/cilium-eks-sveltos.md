@@ -300,7 +300,7 @@ From the output above, we can observe that Cilium eBPF kube-proxy replacement cr
 
 As the blog post is not intended to outline in depth how the kube-proxy replacement works, check out the [link](https://docs.cilium.io/en/v1.14/network/kubernetes/kubeproxy-free/) for further tests.
 
-## Conclusions
+## Conclusion
 
 We demonstrated an easy way of deploying Cilium CNI to an EKS cluster with the Sveltos ClusterProfile. The complete lifecycle of the CNI is now controlled by Sveltos and without external dependencies.
 

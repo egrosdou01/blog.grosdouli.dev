@@ -93,7 +93,7 @@ For the conference, we decided to demonstrate how Sveltos can be used to deploy 
 
 The Git repository with the manifest files and the execution instructions is located [here](https://github.com/egrosdou01/OSSummit_2024).
 
-## Conclusions
+## Conclusion
 
 I had a great fun at the conference! Not only had the chance to present alongside Gianluca, but I also met and interacted with cloud-native enthusiasts.
 

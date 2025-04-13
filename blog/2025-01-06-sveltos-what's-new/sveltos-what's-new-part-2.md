@@ -154,6 +154,10 @@ For the template example above, we used the `templateResourceRefs` and `.Cluster
 
 More information and examples are located [here](https://projectsveltos.github.io/sveltos/template/intro_template/#templateresourcerefs-namespace-and-name).
 
+## Conclusion
+
+Make your deployments **highly automated** and **dynamic** using the power of Sveltos! If you have any questions or issues, feel free to get in touch with us via Slack or any available social media channels!
+
 ## Resources
 
 - **Sveltos Dry-run**: https://projectsveltos.github.io/sveltos/features/dryrun/
@@ -161,9 +165,6 @@ More information and examples are located [here](https://projectsveltos.github.i
 - **Code Resources**: https://github.com/egrosdou01/blog-post-resources
 - **Automate vCluster Management in EKS with Sveltos and Helm (by Colin Lacy)**: https://www.youtube.com/watch?v=GQM7Qn9rWVU
 
-## Conclusions
-
-Make your deployments **highly automated** and **dynamic** using the power of Sveltos! If you have any questions or issues, feel free to get in touch with us via Slack or any available social media channels!
 
 ## ✉️ Contact
 

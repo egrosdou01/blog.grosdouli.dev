@@ -158,6 +158,10 @@ As I am working in my home-lab setup, I am more than happy with storing sensitiv
 - [Hashicorp Vault](https://www.vaultproject.io/)
 - [AWS Secret Manager](https://aws.amazon.com/secrets-manager/)
 
+## Conclusion
+
+🚀 In Part 3, we explored potential improvements to the current setup. If you have any ideas or suggestions for enhancing the module further, feel free to get in touch. Thanks for reading, and stay tuned for the next post!
+
 ## Resources
 
 - [OpenTofu Module](https://opentofu.org/docs/language/modules/)
@@ -168,6 +172,3 @@ As I am working in my home-lab setup, I am more than happy with storing sensitiv
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
-
-## Conclusions
-🚀 In Part 3, we explored potential improvements to the current setup. If you have any ideas or suggestions for enhancing the module further, feel free to get in touch. Thanks for reading, and stay tuned for the next post!

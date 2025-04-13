@@ -417,14 +417,14 @@ To work with the Hubble UI we can use the `kubectl port-forward` of the Hubble U
 
 For more information about the RKE2 Cilium Helm Chart values, have a look [here](https://artifacthub.io/packages/helm/rke2-charts/rke2-cilium/1.15.500).
 
+## Conclusion
+
+This is it! We performed a Cilium cluster mesh between two on-prem RKE2 clusters in just a few steps! 🎉
+
+It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!
+
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊
 
 We look forward to hearing from you!
-
-## Conclusions
-
-This is it! We performed a Cilium cluster mesh between two on-prem RKE2 clusters in just a few steps! 🎉
-
-It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!
