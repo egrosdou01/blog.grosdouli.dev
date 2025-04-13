@@ -95,14 +95,14 @@ We are almost done with the deployment, we just need to create a new `CNAME` in 
 Depending on your DNS provider and the time to propagate the record, the blog might not be available or be available after some minutes.
 :::
 
+## Conclusion
+
+Docusaurus deployment with a custom DNS domain made easy!
+
+It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!
+
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊
 
 We look forward to hearing from you!
-
-## Conclusions
-
-Docusaurus deployment with a custom DNS domain made easy!
-
-It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!

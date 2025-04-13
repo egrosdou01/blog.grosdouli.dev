@@ -289,6 +289,12 @@ NAME                                   DESIRED   CURRENT   READY   AGE
 replicaset.apps/nginx-dev-54b9c68f67   1         1         1       2m42s
 ```
 
+## Conclusion
+
+We successfully deployed a vCluster on K3s in just a few simple steps! 🚀 I will be diving deeper into vCluster and exploring more advanced configurations in upcoming posts.
+
+That’s a wrap for this one! 🎉 Thanks for reading, and stay tuned for more exciting updates!
+
 ## Resources
 
 - **vCluster Documentation**: https://www.vcluster.com/docs/vcluster/deploy/basics
@@ -301,8 +307,3 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 
 We look forward to hearing from you!
 
-## Conclusions
-
-We successfully deployed a vCluster on K3s in just a few simple steps! 🚀 I will be diving deeper into vCluster and exploring more advanced configurations in upcoming posts.
-
-That’s a wrap for this one! 🎉 Thanks for reading, and stay tuned for more exciting updates!

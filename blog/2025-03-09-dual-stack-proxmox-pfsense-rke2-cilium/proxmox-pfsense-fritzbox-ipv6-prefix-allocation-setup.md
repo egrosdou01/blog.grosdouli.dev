@@ -171,6 +171,10 @@ ping6: github.com: Address family for hostname not supported
 
 Hehe, everything is fine! It is just that `github.com` does not have IPv6 support (**Joke Credit: Justus Mungard**)! For more information about the IPv6 `Wall of Shame` have a look [here](https://whynoipv6.com/).
 
+## Conclusion
+
+IPv6 Prefix allocation on Proxmox with Pfsense, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
+
 ## Resources
 
 - [pfSense - DHCPv6 Server](https://docs.netgate.com/pfsense/en/latest/services/dhcp/ipv6.html)
@@ -181,10 +185,6 @@ Hehe, everything is fine! It is just that `github.com` does not have IPv6 supp
 ## Next Steps
 
 In the upcoming posts, we will go through enabling `dual-stack` on [RKE2](https://docs.rke2.io/) clusters alongside testing and validation of the deployment. For the last part of the series, we will introduce `Cilium service mesh` and IPv6 `Global services` sharing between clusters.
-
-## Conclusions
-
-IPv6 Prefix allocation on Proxmox with Pfsense, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
 
 ## ✉️ Contact
 

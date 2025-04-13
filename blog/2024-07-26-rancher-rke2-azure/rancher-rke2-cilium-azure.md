@@ -244,14 +244,14 @@ Modules Health:          Stopped(0) Degraded(0) OK(11)
 
 ```
 
+## Conclusion
+
+This is it! We performed an RKE2 cluster with Cilium using the Rancher UI in just a few clicks. 🎉 In an upcoming blog post, we will demonstrate how to perform the same with either [Terraform](https://www.terraform.io/) or [OpenTofu](https://opentofu.org/)!
+
+It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!
+
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊
 
 We look forward to hearing from you!
-
-## Conclusions
-
-This is it! We performed an RKE2 cluster with Cilium using the Rancher UI in just a few clicks. 🎉 In an upcoming blog post, we will demonstrate how to perform the same with either [Terraform](https://www.terraform.io/) or [OpenTofu](https://opentofu.org/)!
-
-It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!

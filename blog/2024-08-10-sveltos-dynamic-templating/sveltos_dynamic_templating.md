@@ -336,7 +336,7 @@ Sveltos templating enables users to utilise the **same add-on configuration** ac
 
 Sveltos lets users define add-ons and applications in a **reusable** way. We can deploy the definitions across **multiple** clusters with **minor adjustments**. The approach saves **time**, **effort**, and **headaches**, especially in large-scale environments.
 
-## Conclusions
+## Conclusion
 
 In a couple of minutes and with a minimal configuration effort we formed a cluster mesh between two Kubernetes clusters. This is the power of Sveltos templating.
 

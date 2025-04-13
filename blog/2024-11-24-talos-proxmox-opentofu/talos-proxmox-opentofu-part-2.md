@@ -367,6 +367,10 @@ You can apply similar network tests like the following example located at the of
 When the Cilium tests are deployed on the cluster, you might get warnings due to the Talos Linux minimalistic setup. Feel free to use your tests for further validation.
 :::
 
+## Conclusion
+
+In today's post, we showed how to quickly set up a Talos Kubernetes cluster with Cilium as the CNI in just a few simple steps. 🚀 In [Part 3](https://blog.grosdouli.dev/blog/talos-on-proxmox-opentofu-part-3), we will outline potential improvements to make the setup even better. Thanks for reading, and stay tuned for the next post!
+
 ## Resources
 
 - [Cilium - Getting Started](https://docs.cilium.io/en/stable/gettingstarted/k8s-install-default/)
@@ -375,6 +379,3 @@ When the Cilium tests are deployed on the cluster, you might get warnings due to
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
-
-## Conclusions
-In today's post, we showed how to quickly set up a Talos Kubernetes cluster with Cilium as the CNI in just a few simple steps. 🚀 In part 3, we will outline potential improvements to make the setup even better. Thanks for reading, and stay tuned for the next post!

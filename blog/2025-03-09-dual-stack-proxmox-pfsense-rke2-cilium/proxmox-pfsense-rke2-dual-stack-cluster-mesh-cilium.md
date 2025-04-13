@@ -326,15 +326,15 @@ $ kubectl exec -it ds/cilium -n kube-system -- hubble observe --ipv4 --from-pod 
 Check out the [Cilium Hubble Cheatsheet](https://isovalent.com/blog/post/cilium-hubble-cheat-sheet-observability/) for more advanced commands.
 :::
 
+## Conclusion
+
+Cluster Mesh setup and Global Service Sharing (IPv4 and IPV6) between clusters, check! ✅ In the upcoming and final part of the series, we will explore complementary features of a [Cilium Service Mesh](http://docs.cilium.io/en/latest/network/servicemesh/index.html) approach.
+
 ## Resources
 
 - [Cilium Cluster Mesh](https://docs.cilium.io/en/stable/network/clustermesh/clustermesh/)
 - [Cilium Cluster Mesh - Tshoot](https://docs.cilium.io/en/stable/operations/troubleshooting/#troubleshooting-clustermesh)
 - [Kubernetes IPv6](https://kubernetes.io/docs/concepts/services-networking/dual-stack/)
-
-## Conclusions
-
-Cluster Mesh setup and Global Service Sharing (IPv4 and IPV6) between clusters, check! ✅ In the upcoming and final part of the series, we will explore complementary features of a [Cilium Service Mesh](http://docs.cilium.io/en/latest/network/servicemesh/index.html) approach.
 
 ## ✉️ Contact
 

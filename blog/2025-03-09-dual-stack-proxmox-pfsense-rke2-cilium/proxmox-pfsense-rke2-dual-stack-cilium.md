@@ -373,6 +373,10 @@ cluster-cidr: "10.44.0.0/16,2001:cafe:42::/56"
 service-cidr: "10.45.0.0/16,2001:cafe:43::/112"
 ```
 
+## Conclusion
+
+`Dual-stack` deployment on an RKE2 cluster, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
+
 ## Resources
 
 - [Dual Stack on AKS by Amit Gupta](https://isovalent.com/blog/post/cilium-dual-stack-aks/)
@@ -381,10 +385,6 @@ service-cidr: "10.45.0.0/16,2001:cafe:43::/112"
 ## Next Steps
 
 In the upcoming post, we will set up a `Cilium Service Mesh` and share `IPv4` and `IPv6` `Global Services`.
-
-## Conclusions
-
-`Dual-stack` deployment on an RKE2 cluster, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
 
 ## ✉️ Contact
 

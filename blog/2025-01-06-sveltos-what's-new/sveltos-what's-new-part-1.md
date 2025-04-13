@@ -211,16 +211,16 @@ $ curl -O https://raw.githubusercontent.com/projectsveltos/sveltos/main/docs/ass
 
 Open the Grafana UI and navigate to **Home > Dashboards > New > Import > Choose the .json file downloaded > Set `Prometheus` as the data source**.
 
+## Conclusion
+
+This is an introduction series to Sveltos, how it works and how the Sveltos Dashboard alongside the Sveltos Grafana Dashboard can be utilised. In Part 2, we will update the existing Sveltos ClusterProfle and utilise the latest features for advanced deployments. Stay tuned!
+
 ## Resources
 
 - **Sveltos Official Documentation**: https://projectsveltos.github.io/sveltos/
 - **Sveltos Add-on Deployment**: https://projectsveltos.github.io/sveltos/addons/addons/
 - **Sveltos Dashboard**: https://projectsveltos.github.io/sveltos/getting_started/install/dashboard/
 - **Sveltos Grafana Dashboard**: https://projectsveltos.github.io/sveltos/getting_started/install/grafanadashboard/
-
-## Conclusions
-
-This is an introduction series to Sveltos, how it works and how the Sveltos Dashboard alongside the Sveltos Grafana Dashboard can be utilised. In Part 2, we will update the existing Sveltos ClusterProfle and utilise the latest features for advanced deployments. Stay tuned!
 
 ## ✉️ Contact
 
