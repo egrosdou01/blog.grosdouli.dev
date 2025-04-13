@@ -288,7 +288,7 @@ From the output above, we see the logs collected from the Tetragon TracingPolicy
 
 Sveltos allows users to deploy the required add-on and deployments to a fleet of clusters while allowing platform administrators and operators to **enhance** the **security posture** and **observability** of the clusters in a simple and meaningful way. Use the Sveltos `Event Framework`, `Tiers`, `ClusterHealthCheck`, and `HealthCheck` features to enhance the posture of different platforms!
 
-## Conclusions
+## Conclusion
 
 In a few minutes ⏳, with minimal configuration effort and following the GitOps approach, we deployed Cilium as our CNI, Cilium Tetragon for observability alongside polling and displaying of critical tracing results to the management cluster painlessly! 🎉
 

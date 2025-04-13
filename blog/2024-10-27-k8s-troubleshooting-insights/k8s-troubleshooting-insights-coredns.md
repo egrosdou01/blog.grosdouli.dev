@@ -255,6 +255,12 @@ listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
 
 The output above indicates that a client queries a DNS server, and the server responds that the domain **does not exist**. This would be a hint to check the `CoreDNS` configuration! :)
 
+## Conclusion
+
+Is it DNS at the end? This is something you will have to find out! Hopefully, the post gave you some ideas to troubleshoot with confidence DNS issues in a Kubernetes environment.
+
+It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!
+
 ## Resources
 
 - **Debugging DNS**: https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/
@@ -264,9 +270,3 @@ The output above indicates that a client queries a DNS server, and the server re
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊
 
 We look forward to hearing from you!
-
-## Conclusions
-
-Is it DNS at the end? This is something you will have to find out! Hopefully, the post gave you some ideas to troubleshoot with confidence DNS issues in a Kubernetes environment.
-
-It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!

@@ -326,20 +326,20 @@ talos-hi4-p4z   Ready    <none>          3m52s   v1.31.1   x.x.x.x        <none>
 talos-yvq-7ic   Ready    <none>          3m39s   v1.31.1   x.x.x.x        <none>        Talos (v1.8.1)   6.6.54-talos     containerd://2.0.0-rc.5
 ```
 
+## Conclusion
+
+Hope the post gave you an overview on how to bootstrap a basic Talos Linux cluster with OpenTofu! The Siderolab folks prepared material for beginners and experts on how to deploy Talos Linux clusters!
+
+## Part-2 Outline
+
+In [Part 2](https://blog.grosdouli.dev/blog/talos-on-proxmox-opentofu-part-2), we will cover how to update the default CNI with [Cilium](https://docs.cilium.io/en/stable/index.html). Stay Tuned!
+
 ## Resources
 
 - [Talos - Quick Guide](https://www.talos.dev/v1.8/introduction/quickstart/)
 - [Talos Linux Guides](https://www.talos.dev/v1.8/talos-guides/)
 - [Advanced Talos Cluster Setup](https://blog.stonegarden.dev/articles/2024/08/talos-proxmox-tofu/)
 
-## Part-2 Outline
-
-In **Part 2**, we will cover how to update the default CNI with [Cilium](https://docs.cilium.io/en/stable/index.html). Stay Tuned!
-
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
-
-## Conclusions
-
-Hope the post gave you an overview on how to bootstrap a basic Talos Linux cluster with OpenTofu! The Siderolab folks prepared material for beginners and experts on how to deploy Talos Linux clusters!
