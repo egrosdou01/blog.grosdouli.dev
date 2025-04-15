@@ -85,8 +85,8 @@ Open, update and save the `values_cluster01.yaml` file with the details below.
 ```yaml showLineNumbers
 tls:
   ca:
-    cert: "YOUR CERT"
-    key: "YOUR KEY"
+    cert: "YOUR BASE64 CERT"
+    key: "YOUR BASE64 KEY"
 cluster:
   name: cluster01
   id: 1
@@ -130,8 +130,8 @@ We take the same approach for `cluster02`. The only difference is the values for
 ```yaml showLineNumbers
 tls:
   ca:
-    cert: "YOUR CERT"
-    key: "YOUR KEY"
+    cert: "YOUR BASE64 CERT"
+    key: "YOUR BASE64 KEY"
 cluster:
   name: cluster02
   id: 2
