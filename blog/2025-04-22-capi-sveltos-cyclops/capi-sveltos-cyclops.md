@@ -34,7 +34,7 @@ For the demo, I kept the costs to the minimum using [Civo Cloud](https://www.civ
 
 ## GitHub Resources
 
-The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-cilium-proxmox-module).
+The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/capi-sveltos-cyclops).
 
 ## Prerequisites
 
@@ -357,7 +357,7 @@ The developers can work on specific applications based on their needs in a user-
 
 Looking at the next steps, we can integrate [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) into the deployment and include a GitOps approach towards Sveltos resources deployed at the management cluster. This requires additional steps to be taken, however, there might be a part 2 outlining what the architecture might look like. The advantage of integrating ArgoCD is that every time a user updates the `existing_users` `ConfigMap` with new details, ArgoCD will synchronise with the repository and automatically push the updates to the management cluster. Then, Sveltos will notice the changes and take action (create or remove CAPI cluster). 
 
-## Conclusions: CAPI, Sveltos and Cyclops Better Together
+## Conclusion: CAPI, Sveltos and Cyclops Better Together
 
 All in all, the approach simplifies both development and platform administration. The Sveltos use case discussed today focuses on automating the creation of development environments across on-prem and cloud platforms. When combined with Cyclops, it offers a streamlined and intuitive interface, enabling developers to simplify complex operations while efficiently orchestrating applications. This not only makes platform administration easier but also provides developers and users with a user-friendly Kubernetes experience and global control over operations and user permissions.
 
