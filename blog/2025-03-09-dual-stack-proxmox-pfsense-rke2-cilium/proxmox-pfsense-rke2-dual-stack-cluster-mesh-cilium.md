@@ -312,6 +312,10 @@ As the application is deployed in the `default` namespace, from the Hubble UI, c
 
 ![title image reading "Hubble UI"](hubble_ui_02.png)
 
+:::note
+The names are mismatched in the Hubble UI screenshots: `mesh02` corresponds to the `cluster02` configuration, and `mesh03` corresponds to the `cluster01` configuration.
+:::
+
 ### Cilium DaemonSet - Hubble Interaction
 
 The same results are visible if we `exec` to the Cilium `daemonset`.
