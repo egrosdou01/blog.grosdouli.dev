@@ -16,6 +16,12 @@ Today's post is an **update** of the old deployment which includes the **lates
 
 <!--truncate-->
 
+:::note
+The Rancher Server **v2.10.3** (stable Helm chart release) was tested on an **EKS** cluster **v1.31** with no issues. The proposed commands are valid and functional.
+
+For the EKS deployment, ensure the **user** interacting with the `kubeconfig` file has the correct permissions to perform actions on the cluster.
+:::
+
 ## Lab Setup
 
 ```bash
