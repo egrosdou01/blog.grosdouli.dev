@@ -54,6 +54,10 @@ gitops:
   label: GitOps
   permalink: /gitops
   description: Operational framework that uses Git as a single source of truth for declarative infrastructure and applications
+devx:
+  label: DevX
+  permalink: /devx
+  description: Developer experience
 sveltos:
   label: Sveltos
   permalink: /sveltos
@@ -114,3 +118,11 @@ FRITZ!Box:
   label: FRITZ!Box
   permalink: /FRITZ!Box
   description: FRITZ!Box Router
+civo cloud:
+  label: civo cloud
+  permalink: /civo
+  description: Civo Cloud
+akamai cloud:
+  label: akamai cloud
+  permalink: /akamai
+  description: Akamai Cloud
