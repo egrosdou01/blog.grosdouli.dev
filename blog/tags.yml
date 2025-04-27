@@ -118,3 +118,11 @@ FRITZ!Box:
   label: FRITZ!Box
   permalink: /FRITZ!Box
   description: FRITZ!Box Router
+civo cloud:
+  label: civo cloud
+  permalink: /civo
+  description: Civo Cloud
+akamai cloud:
+  label: akamai cloud
+  permalink: /akamai
+  description: Akamai Cloud
