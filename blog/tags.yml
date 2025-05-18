@@ -6,6 +6,10 @@
   label: "2025"
   permalink: /2025
   description: The year the post went online
+argoCD:
+  label: argocd
+  permalink: /argocd
+  description: ArgoCD is a CI/CD tool
 hello:
   label: Hello
   permalink: /hello

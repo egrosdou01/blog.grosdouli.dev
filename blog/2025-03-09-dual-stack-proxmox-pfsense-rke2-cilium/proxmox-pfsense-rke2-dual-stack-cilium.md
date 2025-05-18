@@ -23,7 +23,6 @@ In later sections, we go through configuring the **RKE2** clusters and performin
 |        Deployment           |         Version         |
 +----------------------------+-------------------------+
 |        Proxmox VE           |          8.2.4          |
-|        pfSense              |          1.8.1          |
 |        RKE2                 |      v1.29.12+rke2r1    |
 |        Cilium               |          1.16.4         |
 +----------------------------+-------------------------+

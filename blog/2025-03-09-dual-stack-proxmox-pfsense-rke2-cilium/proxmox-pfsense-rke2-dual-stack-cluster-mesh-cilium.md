@@ -23,7 +23,6 @@ Welcome to **part 3** of the `dual-stack` series! In [part 1](https://blog.grosd
 |        Deployment           |         Version         |
 +----------------------------+-------------------------+
 |        Proxmox VE           |          8.2.4          |
-|        pfSense              |          1.8.1          |
 |        RKE2                 |      v1.29.12+rke2r1    |
 |        Cilium               |          1.16.4         |
 +----------------------------+-------------------------+
