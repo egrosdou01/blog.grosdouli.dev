@@ -3,7 +3,7 @@ slug: rke2-dual-stack-cluster-mesh-cilium-complementary-features
 title: "Dual-Stack: Cilium Complementary Features"
 authors: [egrosdou01]
 date: 2025-05-20
-tags: [proxmox,open-source,kubernetes,rke2,cilium,argocd,ipv6,"2025"]
+tags: [proxmox,open-source,kubernetes,rke2,cilium,argoCD,ipv6,"2025"]
 ---
 
 ## Introduction
