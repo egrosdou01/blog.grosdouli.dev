@@ -22,6 +22,10 @@ docusaurus:
   label: Docusaurus
   permalink: /docusaurus
   description: Docusaurus related documentation
+mkdocs:
+  label: mkdocs
+  permalink: /mkdocs
+  description: Mkdocs documentation
 github:
   label: GitHub
   permalink: /github
