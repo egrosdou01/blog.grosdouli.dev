@@ -1,13 +1,14 @@
 ---
-slug: update-docusautus-3.4.0-3.7.0
-title: "Docusaurus: Update from 3.4.0 to 3.7.0"
+slug: update-docusautus-v3.4.0-v3.7.0
+title: "Docusaurus: Update from v3.4.0 to v3.7.0"
 authors: [egrosdou01]
 date: 2025-06-20
 tags: [docusaurus,github,beginner-guide,"2025"]
 ---
 
-Docusaurus: Update from **v3.4.0** to **v3.7.0**. Tips and Tricks.
+**Summary**:
 
+The blog post covers an upgrade from Docusaurus **v3.4.0** to **v3.7.0**, along with tips, tricks, and key lessons learned.
 <!--truncate-->
 
 ## Introduction
