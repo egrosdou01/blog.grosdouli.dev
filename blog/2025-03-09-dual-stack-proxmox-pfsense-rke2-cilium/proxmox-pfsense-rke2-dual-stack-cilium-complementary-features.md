@@ -14,6 +14,31 @@ Welcome to **part 4** of the `dual-stack` series! In [parts 1](https://blog.gros
 
 <!--truncate-->
 
+:::warning
+While testing with RKE2 v1.31.9+rke2r1 and Cilium v1.17.3, I realised changes were performed to the way **L2Annoucements** and **Gateway API** work. First off, I had to include the below argument in the Cilium Helm chart values. **The Helm chart was updated after the initial installation of the cluster**. The change will create the `Cilium GatewayClass` in the cluster.
+
+```yaml
+gatewayAPI:
+  enabled: true
+  gatewayClass:
+    create: "true"
+```
+
+**Optional**
+
+I had to deploy the experimental CRD `TLSRoute`. This is required only if you utilise `TLSRoutes` within the `Gateway` definition.
+
+```bash
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/experimental/gateway.networking.k8s.io_tlsroutes.yaml
+```
+
+If you still face issues, check out the `cilium-operator` logs.
+
+```bash
+$ kubectl logs -n kube-system deployments/cilium-operator | grep gateway
+```
+:::
+
 :::note
 To use the **latest** Cilium features, I decided to update the RKE2 cluster to version `v1.29.15+rke2r1` and Cilium version `v1.17.1`.
 
@@ -85,7 +110,7 @@ l2announcements:
 The final step is to reapply the Helm Chart with the changes performed.
 
 ```bash
-$ helm upgrade rke2-cilium rke2-charts/rke2-cilium --version 1.17.1 --namespace kube-system -f values_cluster01.yaml
+$ helm upgrade rke2-cilium rke2-charts/rke2-cilium --version 1.17.100 --namespace kube-system -f values_cluster01.yaml
 ```
 
 ### Gateway API Specific
@@ -363,7 +388,7 @@ $ kubectl create secret tls argocd-server-tls -n argocd --key=argocd-key.pem --c
 
 ```yaml showLineNumbers
 ---
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway
 metadata:
   name: argocd
@@ -389,7 +414,7 @@ spec:
 
 ```yaml showLineNumbers
 ---
-apiVersion: gateway.networking.k8s.io/v1beta1
+apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   creationTimestamp: null
