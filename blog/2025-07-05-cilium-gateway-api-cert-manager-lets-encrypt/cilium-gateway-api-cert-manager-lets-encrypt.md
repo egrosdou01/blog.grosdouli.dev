@@ -184,12 +184,6 @@ $ helm install cert-manager jetstack/cert-manager --version v1.18.1 \
  --set "extraArgs={--enable-gateway-api}"
 ```
 
-**Validation**
-
-```bash
-$ kubectl get all -n cert-manager
-```
-
 ### Cloudflare Issuer
 
 cert-manager allows us to utilise the `Issuers` and `ClusterIssuers` resources. They represent certificate authorities (CAs) that can generate signed certificates by honouring certificate signing requests.
