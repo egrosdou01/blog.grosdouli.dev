@@ -2,7 +2,7 @@
 slug: cilium-gateway-api-cert-manager-let's-encrypt
 title: "Cilium, Gateway API, Cert-Manager and Let’s Encrypt - Updates"
 authors: [egrosdou01]
-date: 2025-07-04
+date: 2025-07-10
 tags: [cilium,gateway-api,cert-manager,let's encrypt,cloudflare,argoCD,devops,beginner-guide,"2025"]
 ---
 
@@ -113,9 +113,13 @@ cilium   io.cilium/gateway-controller   True       4m28s
 
 ## IPv4 Pool and L2Accouncements
 
+:::note
+If you have an IPAM in place and BGP already working, you can skip this section.
+:::
+
 ### IPv4 Pool
 
-For this lab setup, I would like to allow services of type `LoadBalancer` to get an IP from a custom pool. For that reason, the `CiliumLoadBalancerIPPool` and the `CiliumL2AnnouncementPolicy` will be created.
+For this lab setup, I would like to allow services of type `LoadBalancer` to get an IP from a custom pool. For that reason, the `CiliumLoadBalancerIPPool` and the `CiliumL2AnnouncementPolicy` resources will be created.
 
 ```yaml showLineNumbers
 ---
@@ -161,7 +165,12 @@ l2-announcement-policy   7m50s
 
 ## Kubernetes Resources Deployment
 
-The end goal is to automatically provision TLS certificates for ArgoCD using cert-manager, let's encrypt and Gateway API resources. When we create a `Gateway` resource, a TLS certificate is created automatically.
+The end goal is to automatically provision TLS certificates for ArgoCD using cert-manager, Let's Encrypt and Gateway API resources. cert-manager can issue certificates for clients who own a domain. Two different types of challenge validations exist: HTTP01 and DNS01.
+
+- **HTTP01**: Challenges are completed by presenting a computed key present at an HTTP URL endpoint that is routable over the Internet
+- **DNS01**: Challenges are completed by providing a computed key that is present at a DNS TXT record
+
+The second option is more preferred and secure as we do not have to expose an endpoint to the Internet. For more information about the different cert-manager challenges, take a look  [here](https://cert-manager.io/docs/configuration/acme/).
 
 ### Install ArgoCD
 
@@ -188,7 +197,7 @@ $ helm install cert-manager jetstack/cert-manager --version v1.18.1 \
 
 cert-manager allows us to utilise the `Issuers` and `ClusterIssuers` resources. They represent certificate authorities (CAs) that can generate signed certificates by honouring certificate signing requests.
 
-First off, we need to have a valid [Cloudflare Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) that can **Read** and **Edit** DNS Zones. Once the token is generated, we will create a Kubernete secret. Afterwards, an `Issuer` resource is created that allows us to complete a DNS-01 challenge and issue a certificate for a valid DNS domain.
+First off, we need to have a valid [Cloudflare Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) that can **Read** and **Edit** DNS Zones. Once the token is generated, we will create a Kubernete secret. Afterwards, an `Issuer` resource is created that allows us to complete a **DNS01** challenges and issue certificates for a valid DNS domain.
 
 **Secret**
 
@@ -243,7 +252,7 @@ cloudflare-issuer   True    13s
 
 ### Gateway Resource
 
-The `Gateway` resource is an instance of traffic handling infrastructure. Once deployed, it will create a service of type `LoadBalancer` within the `argocd` namespace. If routing is configured properly in your lab, the ArgoCD instance will be accessible via the FQDN.
+The `Gateway` resource is an instance of traffic handling infrastructure. Once deployed, it will create a service of type `LoadBalancer` within the `argocd` namespace. If routing is configured properly in your lab, the ArgoCD instance will be accessible via the FQDN. Due to the annotation set to the resource, it will notify cert-manager to initiate the creation of a certificate named `argocd-server-tls`.
 
 ```yaml showLineNumbers
 ---
@@ -274,11 +283,9 @@ spec:
         from: All
 ```
 
-Once the `Gateway` resource is created, the process of getting a valid TLS certificate for a valid DNS domain is instantiated.
-
 ### HTTPRoute Resource
 
-The `HTTPRoute` resource specifies rules for mapping traffic from a Gateway listener to a representation of backend network endpoints.
+The `HTTPRoute` resource specifies rules for mapping traffic from a `Gateway` listener to a representation of backend network endpoints.
 
 ```yaml showLineNumbers
 ---
