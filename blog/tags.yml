@@ -10,6 +10,10 @@ argoCD:
   label: argocd
   permalink: /argocd
   description: ArgoCD is a CI/CD tool
+flux-operator:
+  label: flux-operator
+  permalink: /flux-operator
+  description: Flux Operator
 hello:
   label: Hello
   permalink: /hello
@@ -30,6 +34,10 @@ github:
   label: GitHub
   permalink: /github
   description: GitHub source control
+gitlab:
+  label: GitLab
+  permalink: /gitlab
+  description: GitLab source control
 cloudflare:
   label: Cloudflare
   permalink: /cloudflare
