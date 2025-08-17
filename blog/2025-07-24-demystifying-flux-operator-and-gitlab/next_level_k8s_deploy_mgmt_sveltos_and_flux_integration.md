@@ -255,13 +255,27 @@ spec:
   - kind: GitRepository
     name: staging-env
     namespace: flux-system
-    path: "test/{{ .Resource.metadata.name }}"
+    path: "staging/{{ .Resource.metadata.name }}"
 // highlight-end
 ```
 
 :::tip
-Looking at line **21**, we instruct Sveltos to deploy any Kubernetes manifests included under the repository directory `test/<cluster-name>/`. If the directory does not exist, Sveltos will not deploy something to the cluster.
+Looking at line **21**, we instruct Sveltos to deploy any Kubernetes manifests included under the repository directory `staging/<cluster-name>/`. If the directory does not exist, Sveltos will not deploy something to the cluster.
 :::
+
+### RKE2 Managed Cluster Registration
+
+We will register an RKE2 managed cluster with Sveltos and set the required Kubernetes label `register: ok` to trigger an Event. Once the cluster is defined as "Ready" by Sveltos, the `EventSource` will notice the new cluster with the label `register: ok` and install any manifests located in the directory `path: "staging/cluster01"`
+
+```bash
+$ sveltosctl register cluster \
+    --namespace=cluster01 \
+    --cluster=cluster01 \
+    --kubeconfig=~/.kube/cluster01.config \
+    --labels=register=ok
+```
+
+For more details about the registration process or how to register a cluster programmatically, check out the [official documentation](https://projectsveltos.github.io/sveltos/main/register/register-cluster/).
 
 ### Validation
 
