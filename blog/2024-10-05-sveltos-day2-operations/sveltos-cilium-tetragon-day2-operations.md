@@ -40,7 +40,7 @@ The goal of the demonstration is to showcase how Sveltos can be used for differe
 
 ## GitHub Resources
 
-The YAML definition files are located [here](https://github.com/egrosdou01/sveltos-demo-resources/tree/main/day-2-operations/sveltos-cilium-tetragon).
+The YAML definition files are located [here](https://github.com/egrosdou01/blog-post-resources/tree/main/day-2-operations/sveltos-cilium-tetragon).
 
 ## Prerequisites
 
@@ -116,7 +116,7 @@ spec:
     helmChartAction: Install
     releaseName: tetragon
     releaseNamespace: kube-system
-    repositoryName: tetragon
+    repositoryName: cilium
     repositoryURL: https://helm.cilium.io/
   policyRefs:
   - name: tetragon-policy-socket-log
