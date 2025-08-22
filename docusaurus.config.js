@@ -76,7 +76,7 @@ const config = {
         title: 'About',
         logo: {
           alt: 'My Site Logo',
-          src: 'https://github.com/egrosdou01.png',
+          src: 'https://github.com/egrosdou01.jpg',
         },
         items: [
           // {
