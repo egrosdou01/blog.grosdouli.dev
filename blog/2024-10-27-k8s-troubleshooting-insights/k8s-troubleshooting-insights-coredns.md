@@ -12,7 +12,7 @@ Welcome to the the first post of the brand new Kubernetes Troubleshooting Insi
 
 In today’s blog post, we’ll explore an issue with [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/coredns/) setup on [RKE2](https://docs.rke2.io/) clusters. [Cilium](https://docs.cilium.io/en/stable/overview/intro/#what-is-cilium) CNI with [Hubble](https://docs.cilium.io/en/stable/overview/intro/#what-is-hubble) were enabled for this setup. Let’s jump right in!
 
-![title image reading "It's not DNS"](its_not_dns.jpeg)
+![title image reading "It's not DNS"](its_not_dns.jpg)
 
 <!--truncate-->
 

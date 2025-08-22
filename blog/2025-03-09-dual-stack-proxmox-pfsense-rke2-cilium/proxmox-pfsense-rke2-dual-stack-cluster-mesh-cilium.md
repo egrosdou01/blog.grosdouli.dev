@@ -10,7 +10,7 @@ tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6,"2025"]
 
 Welcome to **part 3** of the `dual-stack` series! In [part 1](https://blog.grosdouli.dev/blog/proxmox-pfsense-FRITZ!Box-ipv6-prefix-allocation-setup) and [part 2](https://blog.grosdouli.dev/blog/rke2-dual-stack-cilium-proxmox), we discovered how to enable `dual-stack` on a Proxmox server using our Internet Provider and deploy RKE2 clusters. In today's post, we continue our journey and enable a `Cilium Cluster Mesh` between two RKE2 clusters. The goal is to share `IPv4` and `IPv6` services between the different clusters effortlessly. Let’s dive in!
 
-![title image reading "What gives people joy?"](what_gives_people_joy.png)
+![title image reading "What gives people joy?"](what_gives_people_joy.jpg)
 <!--truncate-->
 [Source](https://imgflip.com)
 
@@ -307,9 +307,9 @@ In **part 2**, we enabled [Hubble](https://github.com/cilium/hubble) for network
 
 As the application is deployed in the `default` namespace, from the Hubble UI, choose the `default` namespace from the top left drop-down box and check the traffic flow while performing different `CURL` requests to a test service. You should see something similar and observe `IPv4` and `IPv6` service sharing between clusters within a mesh.
 
-![title image reading "Hubble UI"](hubble_ui_01.png)
+![title image reading "Hubble UI"](hubble_ui_01.jpg)
 
-![title image reading "Hubble UI"](hubble_ui_02.png)
+![title image reading "Hubble UI"](hubble_ui_02.jpg)
 
 :::note
 The names are mismatched in the Hubble UI screenshots: `mesh02` corresponds to the `cluster02` configuration, and `mesh03` corresponds to the `cluster01` configuration.

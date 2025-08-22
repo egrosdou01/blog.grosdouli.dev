@@ -354,19 +354,19 @@ CAPI clusters are automatically detected by Sveltos. If the right labels are app
 
 To login to the Sveltos Dashboard, have a look [here](https://projectsveltos.github.io/sveltos/getting_started/optional/dashboard/#authentication). After deployment, we have the below view.
 
-![title image reading "Sveltos UI "](sveltos_clusterapi_01.png)
-![title image reading "Sveltos UI "](sveltos_clusterapi_02.png)
-![title image reading "Sveltos UI "](sveltos_clusterapi_03.png)
-![title image reading "Sveltos UI "](sveltos_clusterapi_04.png)
+![title image reading "Sveltos UI "](sveltos_clusterapi_01.jpg)
+![title image reading "Sveltos UI "](sveltos_clusterapi_02.jpg)
+![title image reading "Sveltos UI "](sveltos_clusterapi_03.jpg)
+![title image reading "Sveltos UI "](sveltos_clusterapi_04.jpg)
 
 ### Cyclops UI
 
 The developers can work on specific applications based on their needs in a user-friendly UI. For this demonstration, we imported a custom Helm Chart to the Cyclops setup.
 
-![title image reading "Cyclops UI"](cyclops_01.png)
-![title image reading "Cyclops UI"](cyclops_02.png)
-![title image reading "Cyclops UI"](cyclops_03.png)
-![title image reading "Cyclops UI"](cyclops_04.png)
+![title image reading "Cyclops UI"](cyclops_01.jpg)
+![title image reading "Cyclops UI"](cyclops_02.jpg)
+![title image reading "Cyclops UI"](cyclops_03.jpg)
+![title image reading "Cyclops UI"](cyclops_04.jpg)
 
 ## GitOps Integration
 

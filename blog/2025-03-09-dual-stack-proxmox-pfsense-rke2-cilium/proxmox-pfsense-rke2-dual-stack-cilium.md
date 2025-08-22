@@ -10,7 +10,7 @@ tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6,"2025"]
 
 Welcome to **part 2** of the `dual-stack` series! In [part 1](https://blog.grosdouli.dev/blog/proxmox-pfsense-FRITZ!Box-ipv6-prefix-allocation-setup), we covered how to enable `IPv6 Prefix` allocation using `pfsense` on `Proxmox` with `Fritz!Box` as a home router. The setup allows virtual machines in a dedicated interface to receive an `IPv4` and an `IPv6` address. If you have completed **part 1**, you can continue with the `dual-stack` [RKE2](https://docs.rke2.io/) setup powered by [Cilium](https://cilium.io/).
 
-![title image reading "What gives people joy?"](what_gives_people_joy.png)
+![title image reading "What gives people joy?"](what_gives_people_joy.jpg)
 <!--truncate-->
 [Source](https://imgflip.com)
 

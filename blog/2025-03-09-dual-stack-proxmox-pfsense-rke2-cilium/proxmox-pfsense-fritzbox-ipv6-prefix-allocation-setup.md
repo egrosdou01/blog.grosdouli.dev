@@ -10,7 +10,7 @@ tags: [proxmox,pfsense,FRITZ!Box,open-source,ipv6,"2025"]
 
 Welcome to the first post in the `dual-stack` deployments series! In **part 1** of the series will set the stage for everything to come. `Dual-stack` is when a machine can talk both [IPv4](https://datatracker.ietf.org/doc/html/rfc791) and [IPv6](https://datatracker.ietf.org/doc/html/rfc8200). **Part 1** aims to guide users through enabling and configuring [IPv6 Prefix](https://networklessons.com/ipv6/how-to-find-ipv6-prefix) allocation for virtual machines in a [Proxmox](https://www.proxmox.com/en/) environment, using [pfsense](https://www.pfsense.org/). The setup will be used later on for **Kubernetes Deployments**, [Service Mesh](https://cilium.io/use-cases/service-mesh/) and [Global Service Sharing](https://docs.cilium.io/en/latest/network/clustermesh/services/) powered by [Cilium](https://cilium.io/).
 
-![title image reading "IPv6 Everywhere"](ipv6_everywhere.png)
+![title image reading "IPv6 Everywhere"](ipv6_everywhere.jpg)
 <!--truncate-->
 
 ## Lab Setup
@@ -166,7 +166,7 @@ $ ping6 github.com
 ping6: github.com: Address family for hostname not supported
 ```
 
-![title image reading "Catastrophe"](catastrophe.png)
+![title image reading "Catastrophe"](catastrophe.jpg)
 > Image Source: imgflip.com
 
 Hehe, everything is fine! It is just that `github.com` does not have IPv6 support (**Joke Credit: Justus Mungard**)! For more information about the IPv6 `Wall of Shame` have a look [here](https://whynoipv6.com/).

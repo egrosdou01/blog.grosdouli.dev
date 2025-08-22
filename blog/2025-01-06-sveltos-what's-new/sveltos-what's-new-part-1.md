@@ -163,8 +163,8 @@ $ kubectl create token tenant-admin-staging -n staging --duration=24h
 
 Copy the `token` generated in the previous step, choose a browser of your preference and open the Sveltos Dashboard. Check the registred clusters and deploy applications with ease.
 
-![title image reading "Sveltos Dashboard 01"](sveltos_dashboard_01.png)
-![title image reading "Sveltos Dashboard 02"](sveltos_dashboard_02.png)
+![title image reading "Sveltos Dashboard 01"](sveltos_dashboard_01.jpg)
+![title image reading "Sveltos Dashboard 02"](sveltos_dashboard_02.jpg)
 
 ## Sveltos Grafana Dashboard
 

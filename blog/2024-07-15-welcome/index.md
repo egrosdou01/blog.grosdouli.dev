@@ -2,7 +2,7 @@
 slug: welcome
 title: Welcome
 authors: [egrosdou01]
-tags: [hello]
+tags: ["2024"]
 ---
 
 ## 🌟 Welcome!

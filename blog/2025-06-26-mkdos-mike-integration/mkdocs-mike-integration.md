@@ -10,7 +10,7 @@ tags: [mkdocs,github,beginner-guide,"2025"]
 
 Learn how to implement documentation versioning in MkDocs using Mike. Mike is a plugin designed for managing multiple documentation versions. The guide covers setting up versioning from day one and integrating it with GitHub Pages for streamlined, automated deployments.
 <!--truncate-->
-![title image reading "Documentation"](documentation.jpeg)
+![title image reading "Documentation"](documentation.jpg)
 
 ## Introduction
 

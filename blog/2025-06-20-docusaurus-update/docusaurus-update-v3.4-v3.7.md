@@ -15,7 +15,7 @@ The blog post covers an upgrade from Docusaurus **v3.4.0** to **v3.7.0**, along 
 
 As Docusaurus announced a minor release in January 2025, I have decided to perform an npm and docusaurus upgrade to benefit from the new features and bug fixes. The blog post will guide you through an update from **v3.4.0** to **v3.7.0**.
 
-![title image reading "Docusaurus"](docusaurus.png)
+![title image reading "Docusaurus"](docusaurus.jpg)
 
 ## Release Notes
 
