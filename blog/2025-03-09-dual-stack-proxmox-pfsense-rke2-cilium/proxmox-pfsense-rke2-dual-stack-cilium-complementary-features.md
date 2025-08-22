@@ -75,7 +75,7 @@ You guessed it right, there is more! I would like to use the [Cilium Gateway API
 
 Ready to continue? Let's head into it.
 
-![title image reading "Bob Sponge Kubernetes"](spongebob_kubernetes.png)
+![title image reading "Bob Sponge Kubernetes"](spongebob_kubernetes.jpg)
 
 [Source](https://faun.pub/top-20-kubernetes-memes-b5cb4c5af395)
 

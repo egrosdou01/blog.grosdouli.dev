@@ -189,7 +189,7 @@ The `kubeconfig` of the vCluster will be saved as a secret named `vcluster-dev` 
 
 Navigate to **Home > click your Domain name > from the left-hand side menu choose DNS > Records > Add Record > Save**
 
-  ![title image reading "Cloudflare CNAME"](vcluster_cloudflare_a_record.png)
+  ![title image reading "Cloudflare CNAME"](vcluster_cloudflare_a_record.jpg)
 
 ### DNS Validation
 

@@ -78,7 +78,7 @@ The `rancher2` provider is supported by OpenTofu. The details can be found [here
 
 Before we even begin with the actual coding, it is a nice opportunity to familiarise with the [Rancher2 provider](https://search.opentofu.org/provider/opentofu/rancher2/v4.1.0).
 
-    ![title image reading "Rancher2 Terraform Provider"](rancher2_tf_provider.png)
+    ![title image reading "Rancher2 Terraform Provider"](rancher2_tf_provider.jpg)
 
 :::tip
 Check out the example sections of the resources available and the supported Cloud providers.
@@ -436,7 +436,7 @@ The above will first create the Azure Cloud Credentials in the Rancher instance,
 
 If the `tofu apply` command completes successfully, we should have a cluster with two nodes. One `controller` and one `worker` node in the `westus` region.
 
-![title image reading "Rancher2 Terraform Provider"](rke2_opentofu_azure.png)
+![title image reading "Rancher2 Terraform Provider"](rke2_opentofu_azure.jpg)
 
 ```bash
 $ kubectk get nodes

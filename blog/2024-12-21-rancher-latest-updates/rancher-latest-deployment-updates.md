@@ -12,7 +12,7 @@ In a [previous post](https://medium.com/@eleni.grosdouli/rancher-on-eks-with-ngi
 
 Today's post is an **update** of the old deployment which includes the **latest Rancher stable** Helm chart release and Proxy details hoping to fix cloud-init issues. We will provide an easy-to-follow guide outlining what's new, and why updating Rancher to a later version alongside caveats or issues faced during the deployment. For this demonstration, we will use a [k3s](https://k3s.io/) cluster hosted on [Civo Cloud](https://www.civo.com/).
 
-![title image reading "Rancher, Nginx, Let's Encrypt, Cloudfalre"](rancher_nginx_let's_encrypt_cloudflare.png)
+![title image reading "Rancher, Nginx, Let's Encrypt, Cloudfalre"](rancher_nginx_let's_encrypt_cloudflare.jpg)
 
 <!--truncate-->
 
@@ -102,7 +102,7 @@ $ kubectl get svc -n ingress-nginx | grep -i 'LoadBalancer'
 
 Copy the `External-IP` address and head to Cloudflare. Navigate to **Home > click your Domain name > from the left-hand side menu choose DNS > Records > Add Record > Save**.
 
-  ![title image reading "Cloudflare A Record"](rancher_a_record_cloudflare.png)
+  ![title image reading "Cloudflare A Record"](rancher_a_record_cloudflare.jpg)
 
 ### Validate DNS Deployment
 

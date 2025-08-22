@@ -61,7 +61,7 @@ The `Tenant ID` identifies which Azure Active Directory (AD) instance the applic
 1. Login to Azure [portal](https://portal.azure.com/)
 1. Navigate to **Home**
 1. Search for `Microsoft Entra ID`
-  ![title image reading "Microsoft Entra ID"](microsoft_entra_id.png)
+  ![title image reading "Microsoft Entra ID"](microsoft_entra_id.jpg)
 1. Navigate to **Manage > Properties**
 1. Grab the `Tenant ID` once the new windows appear
 
@@ -77,14 +77,14 @@ Azure App Registration is the process of registering an application with Azure A
     - `Redirect URI (optional)`: set `Web` and leave the `Sign-on URL` empty or add your own URI
 1. Click the **Register** button to create the application
 
-    ![title image reading "App Registration"](app_registration.png)
+    ![title image reading "App Registration"](app_registration.jpg)
 
 ### Create an Azure Client Secret for App Registration
 
 1. Access the Azure [portal](https://portal.azure.com/)  
 1. Navigate to **Home > App registrations > App name**
 1. Navigate to **Manage > Certificates & secrets**
-  ![title image reading "Client Secret"](client_secret.png)
+  ![title image reading "Client Secret"](client_secret.jpg)
 1. Click on the **+ New client secret**
 1. Provide a `description` and an `expiry date`
 1. Click **+ Add**
@@ -94,9 +94,9 @@ Azure App Registration is the process of registering an application with Azure A
 
 1. Access the Azure [portal](https://portal.azure.com/) 
 1. Navigate to **Home > Subscriptions > Your subscription name > Access Control (IAM)**
-    ![title image reading "IAM"](iam.png)
+    ![title image reading "IAM"](iam.jpg)
 1. Click on the **+ Add > Add role assigment**
-    ![title image reading "IAM"](add_role_assigment.png)
+    ![title image reading "IAM"](add_role_assigment.jpg)
 1. Open the `Privileged administrator roles` tab
 1. For Role, select `Contributor`
 1. Click on **Next**
@@ -117,7 +117,7 @@ Find below some of the limitations spotted with the `free-credit` subscription.
 Once we have the Azure environment ready, we can move on with Rancher. The first thing we have to do is to create `Azure Cloud Credentials`. The cloud credentials will be used to provision clusters or can be used in other node templates.
 
 1. Login to Rancher
-1. Navigate to **Home > Cluster management ![title image reading "Cluster Management"](cluster_management.png) > Cloud Credentials > Create > Choose Azure**
+1. Navigate to **Home > Cluster management ![title image reading "Cluster Management"](cluster_management.jpg) > Cloud Credentials > Create > Choose Azure**
 1. Provide a `name`, `tenant ID` (**Home > Subscriptions**), `clientID` (**Home > App registrations > Rancher > copy the Application (client) ID**), `client secret` (**Home > App registrations > App name > manage > certificates & secrets**)
 1. Click the **"Create"** button and ensure no error appears on the screen
 
@@ -127,7 +127,7 @@ Once we have the Azure environment ready, we can move on with Rancher. The first
 It is time to use the Azure cloud credentials to create an RKE2 cluster on Azure with Cilium.
 
 1. Login to the **Rancher UI**
-1. Navigiate to **Home > Cluster management ![title image reading "Cluster Management"](cluster_management.png) > Create > ensure RKE2 is selected > Choose Azure**
+1. Navigiate to **Home > Cluster management ![title image reading "Cluster Management"](cluster_management.jpg) > Create > ensure RKE2 is selected > Choose Azure**
 1. The `Cloud Credentials` field will get populated automatically. Fill out the details below.
     - `Cluster Name`: Set a cluster name
     - `Cluster Description`: Set a cluster description
@@ -135,24 +135,24 @@ It is time to use the Azure cloud credentials to create an RKE2 cluster on Azure
       - `Pool Name`: Left the default
       - `Machine Count`: Set to 2 due to limitations
       - `Location`: Choose your favourable location
-        ![title image reading "Azure RKE2 Cluster Page 01"](azure_rke2_page01.png)
+        ![title image reading "Azure RKE2 Cluster Page 01"](azure_rke2_page01.jpg)
     - Continue with the **Cluster Configuration > Basics**
       - `Kubernetes Version`: Define the preferred Kubernetes version
       - `Container Network`: Choose **Cilium**
-        ![title image reading "Azure RKE2 Cluster Page 02"](azure_rke2_page02.png)
+        ![title image reading "Azure RKE2 Cluster Page 02"](azure_rke2_page02.jpg)
         :::tip
         We can leave the rest of the configuration as default. However, if we want to enable Cilium with `kube-proxy` replacement, we can update the cluster by editing the YAML configuration instead. This can be done by clicking the `Edit as YAML` button at the bottom right-hand side.
         :::
     - Continue with the **Cluster Configuration > Advanced**
       - `Additional Controller Manager Args`: Set `--configure-cloud-routes=false`
-        ![title image reading "Azure RKE2 Cluster Page 03"](azure_rke2_page03.png)
+        ![title image reading "Azure RKE2 Cluster Page 03"](azure_rke2_page03.jpg)
 1. Click **"Save"**
 
 :::note
 The cluster creation might take up to 20 minutes. Be patient as a couple of resources and Azure items are created for this cluster.
 
 After 20 minutes:
-  ![title image reading "Azure RKE2 Cluster Page Success"](azure_rke2_success.png)
+  ![title image reading "Azure RKE2 Cluster Page Success"](azure_rke2_success.jpg)
 :::
 
 

@@ -64,7 +64,7 @@ To allow the blog to be available under a custom domain, we have to include the 
 1. Add the domain you would like the blog to be available
     - Example: `blog.<your domain>`
 1. Click Save
-    ![title image reading "GitHub Pages Custom Domain"](github_pages_custom_domain.png)
+    ![title image reading "GitHub Pages Custom Domain"](github_pages_custom_domain.jpg)
 
 :::tip
 Once the `save` button is clicked, a `CNAME` file including the custom domain provided will be included in the branch where the GitHub Pages site is being built.
@@ -84,7 +84,7 @@ We are almost done with the deployment, we just need to create a new `CNAME` in 
 1. Click on your domain name
 1. From the left-hand-side navigate to **DNS > Records > Add record**
 1. Add the below CNAME entry
-    ![title image reading "Cloudflare CNAME"](cloudflare_cname.png)
+    ![title image reading "Cloudflare CNAME"](cloudflare_cname.jpg)
 
 ### Validate
 

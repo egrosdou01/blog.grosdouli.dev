@@ -12,14 +12,14 @@ Another amazing [Civo Navigate](https://www.civo.com/navigate/north-america/2025
 
 Below, I will dive into the key highlights from the conference, provide resources about tooling I found interesting and last but not least, provide more details about the Sveltos presentation!
 
-![title image reading "Civo Navigate San Francisco 2025"](civo_navigate_san_francisco_2025.png)
+![title image reading "Civo Navigate San Francisco 2025"](civo_navigate_san_francisco_2025.jpg)
 <!--truncate-->
 
 ## Civo Navigate - Day 1
 
 The day started smoothly by registering at the event, receiving a badge and becoming familiar with the location. Great coffee was served all day long!
 
-![title image reading "Coffee"](coffee.png)
+![title image reading "Coffee"](coffee.jpg)
 
 [Image Source](https://imgflip.com/memegenerator/43713348/large-coffee)
 
