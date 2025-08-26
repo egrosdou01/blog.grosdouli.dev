@@ -7,45 +7,41 @@
   permalink: /2025
   description: The year the post went online
 argoCD:
-  label: argocd
+  label: ArgoCD
   permalink: /argocd
-  description: ArgoCD is a CI/CD tool
+  description: ArgoCD is a Kubernetes continuous Deployment (CD) tool
 flux-operator:
-  label: flux-operator
+  label: Flux Operator
   permalink: /flux-operator
-  description: Flux Operator
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+  description: Flux Operator is a Kubernetes CRD controller for managing Flux CD and ControlPlane enterprise distribution
 off-topic:
-  label: off-topic
+  label: Off-topic
   permalink: /off-topic
   description: Non Technical Posts
 docusaurus:
   label: Docusaurus
   permalink: /docusaurus
-  description: Docusaurus related documentation
+  description: Docusaurus documentation-related material
 mkdocs:
-  label: mkdocs
+  label: MkDocs
   permalink: /mkdocs
-  description: Mkdocs documentation
+  description: MkDocs is a fast, simple and downright static site generator
 github:
   label: GitHub
   permalink: /github
-  description: GitHub source control
+  description: GitHub is a platform to store, share and work together with others to write code
 gitlab:
   label: GitLab
   permalink: /gitlab
-  description: GitLab source control
+  description: GitLab is a version control system including issue tracking, code review and CI/CD functionality
 cloudflare:
   label: Cloudflare
   permalink: /cloudflare
-  description: Cloudflare
+  description: Cloudflare is a company that provides content delivery network, cybersecurity and more services
 ci/cd:
   label: CI/CD
   permalink: /ci-cd
-  description: "Continuous Integration and Continuous Delivery"
+  description: "Continuous Integration and Continuous Deployment/Delivery"
 open-source:
   label: Open Source
   permalink: /open-source
@@ -63,17 +59,17 @@ tetragon:
   permalink: /tetragon
   description: Cilium Tetragon - powerful real-time, eBPF-based Security Observability and Runtime Enforcement
 gateway-api:
-  label: gateway-api
+  label: Gateway API
   permalink: /gateway-api
   description: Gateway API is an official Kubernetes project focused on L4 and L7 routing in Kubernetes
 cert-manager:
-  label: cert-manager
+  label: Cert-manager
   permalink: /cert-manager
   description: cert-manager creates TLS certificates for workloads in your Kubernetes or OpenShift cluster and renews the certificates before they expire.
 devops:
   label: DevOps
   permalink: /devops
-  description: Set of practices that combines software development and IT operations
+  description: A set of practices that combines software development and IT operations
 gitops:
   label: GitOps
   permalink: /gitops
@@ -93,7 +89,7 @@ rke2:
 rancher:
   label: Rancher
   permalink: /rancher
-  description: Rancher
+  description: Rancher is an open-source platform for managing container clusters
 azure:
   label: Azure
   permalink: /azure
@@ -107,7 +103,7 @@ talos:
   permalink: /talos
   description: Talos Kubernetes cluster
 beginner-guide:
-  label: Begginer Guide
+  label: Beginner Guide
   permalink: /beginner-guide
   description: Beginner guide blog posts
 proxmox:
@@ -117,36 +113,36 @@ proxmox:
 conference:
   label: Conference
   permalink: /conference
-  description: General Conference Tag
+  description: General Tech Conferences
 troubleshooting-insights:
   label: Troubleshooting Insights
   permalink: /troubleshooting-insights
-  description: Label attached to posts related to K8s insights
+  description: Label attached to posts related to k8s insights
 vcluster:
   label: vCluster
   permalink: /vcluster
   description: Kubernetes multitenancy solution - Loft
 let's encrypt:
-  label: let's encrypt
-  permalink: /let's encrypt
-  description: Let's Encrypt
+  label: Let's Encrypt
+  permalink: /lets-encrypt
+  description: Let's Encrypt is a Certificate Authority for free TLS certificates
 pfsense:
   label: pfSense
   permalink: /pfsense
   description: pfSense Virtual Router
 ipv6:
-  label: ipv6
+  label: IPv6
   permalink: /ipv6
   description: IPv6 Addressing space
 FRITZ!Box:
   label: FRITZ!Box
-  permalink: /FRITZ!Box
+  permalink: /fritzbox
   description: FRITZ!Box Router
 civo cloud:
-  label: civo cloud
+  label: Civo Cloud
   permalink: /civo
-  description: Civo Cloud
+  description: Civo Cloud Platform
 akamai cloud:
-  label: akamai cloud
+  label: Akamai Cloud
   permalink: /akamai
-  description: Akamai Cloud
+  description: Akamai Cloud Platform
