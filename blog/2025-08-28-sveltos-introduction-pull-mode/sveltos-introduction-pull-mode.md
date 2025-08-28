@@ -3,20 +3,19 @@ slug: sveltos-introduction-pull-mode
 title: "Sveltos: Introduction to Pull Mode"
 authors: [egrosdou01]
 date: 2025-08-28
-tags: [open-source,sveltos,rke2,civo cloud,aks,beginner-guide,"2025"]
+tags: [open-source,sveltos,rke2,civo cloud,aws,aks,beginner-guide,"2025"]
 ---
 
 **Summary**:
 
 [Sveltos](https://projectsveltos.github.io/sveltos/main/) **v1.0.0** release introduced a way to manage Kubernetes clusters in restricted network, environments behind a firewall or edge locations. Follow along to understand how the Sveltos **Pull Mode** works and how it can be deployed.
-
 <!--truncate-->
 
 ## Scenario
 
 When working with multi-cloud setups, there are scenarios where Kubernetes clusters reside in isolated network segments, behind firewalls, at edge locations with limited connectivity, or within air-gapped environments that require careful configuration and security controls. How can we manage these clusters and deploy add-ons and applications seamlessly while ensuring continuous drift-detection and reconciliation?
 
-In today's post, we will install Sveltos in a [Civo](https://www.civo.com/) cluster, register an [RKE2](https://docs.rke2.io/) cluster hosted in AWS behind a firewall using the **Pull Mode** and an [AKS](https://azure.microsoft.com/products/kubernetes-service) cluster in default mode, **Push Mode**. After the cluster registration, we will proceed with the [Kyverno](https://kyverno.io/) installation on both clusters for policy management, security and compliance, while installing [Cilium Tetragon](https://tetragon.io/docs/installation/) on the RKE2 cluster for security observability and runtime enforcement. Let's dive into the details!
+In today's post, we will install Sveltos in a [Civo](https://www.civo.com/) cluster, register an [RKE2](https://docs.rke2.io/) cluster hosted in [AWS](https://aws.amazon.com/) behind a firewall using the **Pull Mode** and an [AKS](https://azure.microsoft.com/products/kubernetes-service) cluster in default mode, **Push Mode**. After the cluster registration, we will proceed with the [Kyverno](https://kyverno.io/) installation on both clusters for policy management, security and compliance, while installing [Cilium Tetragon](https://tetragon.io/docs/installation/) on the RKE2 cluster for security observability and runtime enforcement. Let's dive into the details!
 
 ## Lab Setup
 
@@ -30,6 +29,7 @@ In today's post, we will install Sveltos in a [Civo](https://www.civo.com/) clus
 |          Sveltos               |      v1.0.1        |
 +-------------------------------+---------------------+
 ```
+
 ## Diagram
 
 ![title image reading "Sveltos Pull Mode](sveltos_pull_mode.jpg)
@@ -39,15 +39,19 @@ In today's post, we will install Sveltos in a [Civo](https://www.civo.com/) clus
 1. A Kubernetes management cluster
 1. [sveltosctl](https://github.com/projectsveltos/sveltosctl/releases) installed
 1. Sufficient rights to access the **management** and the **managed** clusters
+1. (Optional) access to the AWS and AKS environment
 
 ## How does Pull Mode work?
 
 Coming directly from the [Sveltos official documentation](https://projectsveltos.github.io/sveltos/main/register/register_cluster_pull_mode/).
+
 >1. **Management Cluster**: It defines the desired state. We define our `ClusterProfile/Profile` resources in the **management** cluster, specifying which add-ons and configurations should be applied to which managed clusters by utilising the Kubernetes labels selection concept.
 >2. **Managed Cluster**: Rather than the **management** cluster initiating all deployments, a component on the managed cluster initiates a connection to the management cluster.
 >3. **Configuration Fetching**: The managed cluster pulls the relevant configuration, manifest, or Helm chart **from** the **management** cluster. The management cluster prepares the relevant configuration bundle for the managed clusters in Pull Mode.
 >4. **Apply**: The managed cluster's local agent applies the pulled configurations to the cluster.
-As the managed cluster sits in a restricted location, the **configuration bundle** is prepared by the **management** cluster. The managed cluster initiates a connection to the **management** cluster and gets the configuration bundle. Once the resources are provisioned, the configuration bundle is removed from the **management** cluster.
+
+As the **managed** cluster sits in a restricted location, the **configuration bundle** is prepared by the **management** cluster. The **managed** cluster **initiates** a **connection** to the **management** cluster and gets the configuration bundle. Once the resources are provisioned, the configuration bundle is removed from the **management** cluster.
+
 ## Sveltos Installation
 
 We will install Sveltos as a Helm chart in **Mode 1**. To explore more about the different installation methods, have a look [here](https://projectsveltos.github.io/sveltos/main/getting_started/install/install/).
@@ -57,9 +61,11 @@ We will install Sveltos as a Helm chart in **Mode 1**. To explore more about the
 Follow the commands below and install Sveltos on a Kubernetes management cluster.
 
 ```bash
-$ export KUBECONFIG=<directory Civo management cluster kubeconfig>
+$ export KUBECONFIG=</path/to/Civo/management-cluster/kubeconfig>
+
 $ helm repo add projectsveltos https://projectsveltos.github.io/helm-charts
 $ helm repo update
+
 $ helm install projectsveltos projectsveltos/projectsveltos -n projectsveltos --create-namespace --version=1.0.1
 ```
 
@@ -67,6 +73,7 @@ $ helm install projectsveltos projectsveltos/projectsveltos -n projectsveltos --
 
 ```bash
 $ kubectl get pods -n projectsveltos
+
 $ kubectl get sveltoscluster -A
 NAMESPACE   NAME         READY   VERSION        AGE
 mgmt        mgmt         true    v1.31.6+k3s1   39m
@@ -79,16 +86,17 @@ mgmt        mgmt         true    v1.31.6+k3s1   39m
 As mentioned, the RKE2 cluster is behind a firewall. Only specific resources can be reached by the cluster. Thus, we will register this cluster in **Pull Mode**. Pointing the `KUBECONFIG` to the **management** cluster, execute the registration command. For more information about the registration process, visit [here](https://projectsveltos.github.io/sveltos/main/register/register_cluster_pull_mode/).
 
 ```bash showLineNumbers
-$ export KUBECONFIG=<directory Civo management cluster kubeconfig>
+$ export KUBECONFIG=</path/to/Civo/management-cluster/kubeconfig>
+
 $ sveltosctl register cluster \
     --namespace=rke2\
     --cluster=cluster01 \
     --pullmode \
     --labels=env=test \
-    > rke2_registration.yaml
+    > rke2_reg.yaml
 ```
 
-Once the command is executed, Sveltos creates a manifest file that holds relevant resources about the cluster to be registered in **Pull Mode**. The secret contains `a kubeconfig` that is dynamically generated using the token associated with the service account located in the same file. Apart from that, Sveltos adds a new entry to the `Sveltoscluster` resource.
+Once the command is executed, Sveltos creates a manifest file that holds relevant resources about the cluster to be registered in **Pull Mode**. The secret contains the `kubeconfig` that is dynamically generated using the **token** associated with the **service account** located in the same file. Apart from that, Sveltos adds a new entry to the `Sveltoscluster` resource.
 
 ```bash
 $ kubectl get sveltosclusters -A
@@ -97,11 +105,14 @@ mgmt        mgmt        true    v1.31.6+k3s1   50m
 rke2        cluster01                          2s
 ```
 
-We can see that `cluster01` in the `rke2` namespace is not READY yet, as it has no way to connect with the Sveltos management cluster. Let's go ahead and register the RKE2 cluster with Sveltos. Ensure the **KUBECONFIG** points to the RKE2 cluster and apply the `rke2_registration.yaml` manifest created above.
+We can see that `cluster01` in the `rke2` namespace is **not** **READY** yet, as it has no way to connect with the Sveltos management cluster. Let's go ahead and register the RKE2 cluster with Sveltos.
+
+Ensure the **KUBECONFIG** points to the **RKE2** cluster and apply the `rke2_reg.yaml` manifest created above.
 
 ```bash
-$ export KUBECONFIG=<directory RKE2 cluster kubeconfig>
-$ kubectl apply -f rke2_registration.yaml 
+$ export KUBECONFIG=</path/to/RKE2/managed-cluster/kubeconfig>
+
+$ kubectl apply -f rke2_reg.yaml 
 namespace/projectsveltos created
 serviceaccount/sveltos-applier-manager created
 clusterrole.rbac.authorization.k8s.io/sveltos-applier-manager-role created
@@ -110,13 +121,13 @@ service/sveltos-applier-metrics-service created
 deployment.apps/sveltos-applier-manager created
 secret/cluster01-sveltos-kubeconfig created
 ```
-
 #### Validation
 
 Once the resources are available, heading back to the Sveltos **management** cluster, we can see that `cluster01` is in a **READY** state.
 
 ```bash
-$ export KUBECONFIG=<directory Civo management cluster kubeconfig>
+$ export KUBECONFIG=</path/to/Civo/management-cluster/kubeconfig>
+
 $ kubectl get sveltosclusters -A
 NAMESPACE   NAME        READY   VERSION        AGE
 mgmt        mgmt        true    v1.31.6+k3s1   51m
@@ -130,7 +141,8 @@ This is great! We can now proceed with the AKS cluster and then start with the d
 Either using the `sveltosctl` or the [programmatic approach](https://projectsveltos.github.io/sveltos/main/register/register-cluster/#programmatic-registration), we will register the AKS cluster with Sveltos in **Push Mode**. To keep it concise, the `sveltosctl` is used.
 
 ```bash showLineNumbers
-$ export KUBECONFIG=<directory Civo management cluster kubeconfig>
+$ export KUBECONFIG=</path/to/Civo/management-cluster/kubeconfig>
+
 $ sveltosctl register cluster \
     --namespace=aks \
     --cluster=cluster02 \
@@ -141,7 +153,8 @@ $ sveltosctl register cluster \
 #### Validation
 
 ```bash
-$ export KUBECONFIG=<directory Civo management cluster kubeconfig>
+$ export KUBECONFIG=</path/to/Civo/management-cluster/kubeconfig>
+
 $ kubectl get sveltosclusters -A --show-labels
 NAMESPACE   NAME        READY   VERSION        AGE      LABELS
 aks         cluster02   true    v1.32.6        20s      env=test,projectsveltos.io/k8s-version=v1.32.6,sveltos-agent=present
@@ -151,7 +164,7 @@ rke2        cluster01   true    v1.32.5        125s     env=test
 
 ## Sveltos ClusterProfiles
 
-During the registration process, we assigned the label `env: test` to both clusters. In this section, we will install Kyverno as a common Helm chart deployment and then Cilium Tetragon only in the **RKE2** cluster.
+During the registration process, we assigned the label `env: test` to both clusters. In this section, we will install **Kyverno** as a common Helm chart deployment and then **Cilium Tetragon** only in the **RKE2** cluster.
 
 ### Kyverno
 
@@ -177,7 +190,8 @@ spec:
 ```
 
 ```bash
-$ export KUBECONFIG=<directory Civo management cluster kubeconfig>
+$ export KUBECONFIG=</path/to/Civo/management-cluster/kubeconfig>
+
 $ kubectl apply -f clusterprofile_kyverno.yaml
 ```
 
@@ -185,7 +199,9 @@ $ kubectl apply -f clusterprofile_kyverno.yaml
 
 - **AKS Push Mode**: In the default mode, Sveltos fetches the Kyverno Helm Chart to the **management** cluster and uses the **Helm golang libraries** to deploy it to the selected managed clusters.
 - **RKE2 Pull Mode**: In this mode, Sveltos fetches the required resources and builds a **configuration bundle** for the **management** cluster. The agent in the RKE2 cluster starts a watcher and immediately knows when a new configuration needs to be depoloyed or withdrawn. **The managed cluster initiates a connection to the management cluster**.
+
 To check what the configuration bundle looks like in the management cluster, execute the command below.
+
 ```bash
 $ kubectl get configurationbundle -A
 NAMESPACE   NAME                          AGE
@@ -204,11 +220,11 @@ In **Pull Mode**, once the resources are provisioned, they are deleted from the 
 ### Cilium Tetragon
 
 >Cilium Tetragon enables powerful realtime, eBPF-based Security Observability and Runtime Enforcement.
-It is required only on the RKE2 cluster. For that reason, we will add a new label to the `cluster01` named `req: tetragon` and create a new `ClusterProfile`.
+
+It is required only on the **RKE2** cluster. For that reason, we will add a new label to the `cluster01` named `req: tetragon` and create a new `ClusterProfile`.
 
 ```bash
 $ kubectl label sveltosclusters cluster01 -n rke2 req=tetragon
-sveltoscluster.lib.projectsveltos.io/cluster01 labeled
 ```
 
 ```yaml showLineNumbers
@@ -232,7 +248,8 @@ spec:
 ```
 
 ```bash
-$ export KUBECONFIG=<directory Civo management cluster kubeconfig>
+$ export KUBECONFIG=</path/to/Civo/management-cluster/kubeconfig>
+
 $ kubectl apply -f clusterprofile_tetragon.yaml
 ```
 
@@ -245,6 +262,7 @@ $ kubectl get clusterprofile,clustersummary -A
 NAME                                                     AGE
 clusterprofile.config.projectsveltos.io/deploy-kyverno   39s
 clusterprofile.config.projectsveltos.io/tetragon-rke2-deploy  10s
+
 NAMESPACE   NAME                                                                       AGE
 aks         clustersummary.config.projectsveltos.io/deploy-kyverno-sveltos-cluster02   39s
 rke2        clustersummary.config.projectsveltos.io/deploy-kyverno-sveltos-cluster01   39s
@@ -265,7 +283,7 @@ With Sveltos, you can easily manage different Kubernetes clusters, no matter whe
 
 We are here to help! Whether you have questions, or issues or need assistance, our Slack channel is the perfect place for you. Click here to [join us](https://join.slack.com/t/projectsveltos/shared_invite/zt-1hraownbr-W8NTs6LTimxLPB8Erj8Q6Q).
 
-## 👏 Support this project
+## 👏 Support this project
 
 Every contribution counts! If you enjoyed this article, check out the Projectsveltos [GitHub repo](https://github.com/projectsveltos). You can [star 🌟 the project](https://github.com/projectsveltos) if you find it helpful.
 
