@@ -94,6 +94,10 @@ azure:
   label: Azure
   permalink: /azure
   description: Azure Cloud
+aks:
+  label: AKS
+  permalink: /aks
+  description: Azure Kubernetes Service
 opentofu:
   label: OpenTofu
   permalink: /opentofu
@@ -138,6 +142,10 @@ FRITZ!Box:
   label: FRITZ!Box
   permalink: /fritzbox
   description: FRITZ!Box Router
+aws:
+  label: AWS
+  permalink: /aws
+  description: Amazon Web Services related blog posts
 civo cloud:
   label: Civo Cloud
   permalink: /civo
