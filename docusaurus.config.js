@@ -5,6 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import 'dotenv/config';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -35,6 +36,17 @@ const config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  headTags: [
+  {
+    tagName: 'script',
+    attributes: {
+      defer: 'true',
+      scr: 'https://static.cloudflareinsights.com/beacon.min.js',
+      'data-cf-beacon': `{"token": "${process.env.CLOUDFLARE_TOKEN}"}`,
+    },
+  },
+],
 
   presets: [
     [
