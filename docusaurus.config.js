@@ -42,7 +42,7 @@ const config = {
     tagName: 'script',
     attributes: {
       defer: 'true',
-      scr: 'https://static.cloudflareinsights.com/beacon.min.js',
+      src: 'https://static.cloudflareinsights.com/beacon.min.js',
       'data-cf-beacon': `{"token": "${process.env.CLOUDFLARE_TOKEN}"}`,
     },
   },
