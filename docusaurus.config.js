@@ -37,14 +37,11 @@ const config = {
     locales: ['en'],
   },
 
-  headTags: [
+scripts: [
   {
-    tagName: 'script',
-    attributes: {
-      defer: 'true',
-      src: 'https://static.cloudflareinsights.com/beacon.min.js',
-      'data-cf-beacon': `{"token": "${process.env.CLOUDFLARE_TOKEN}"}`,
-    },
+    src: 'https://static.cloudflareinsights.com/beacon.min.js',
+    defer: true,
+    'data-cf-beacon': `{"token": "${process.env.CLOUDFLARE_TOKEN}"}`,
   },
 ],
 
