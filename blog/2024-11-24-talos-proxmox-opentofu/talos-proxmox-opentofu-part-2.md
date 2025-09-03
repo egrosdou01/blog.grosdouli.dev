@@ -3,6 +3,7 @@ slug: talos-on-proxmox-opentofu-part-2
 title: "Talos, Proxmox and OpenTofu: Beginner's Guide - Part 2"
 authors: [egrosdou01]
 date: 2024-12-14
+description: A step-by-step guide installing a Talos Cluster on Proxmox with OpenTofu - Part 2.
 tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide,"2024"]
 ---
 

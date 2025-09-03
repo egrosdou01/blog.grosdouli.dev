@@ -3,6 +3,7 @@ slug: off-topic-15-days-in-California
 title: "Off Topic: 15 Days in California"
 authors: [egrosdou01]
 date: 2025-02-25
+description: Out of the ordinary content. Two weeks in California.
 tags: [off-topic,"2025"]
 ---
 

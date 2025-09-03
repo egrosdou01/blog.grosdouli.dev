@@ -3,6 +3,7 @@ slug: mkdocs-mike-integration
 title: "Mkdocs: Documentation Versioning with Mike"
 authors: [egrosdou01]
 date: 2025-06-26
+description: A step-by-step guide working with MkDocs and the Mike plugin.
 tags: [mkdocs,github,beginner-guide,"2025"]
 ---
 

@@ -3,6 +3,7 @@ slug: capi-sveltos-cyclops
 title: "Better Together: CAPI, Sveltos, and Cyclops for Automated Development Environments"
 authors: [egrosdou01]
 date: 2025-04-29
+description: A step-by-step guide outlining the creation of automated development environments using Sveltos, ClusterAPI and Cyclops.
 tags: [open-source,kubernetes,sveltos,cilium,civo cloud,akamai cloud,devops,devx,"2025"]
 ---
 
