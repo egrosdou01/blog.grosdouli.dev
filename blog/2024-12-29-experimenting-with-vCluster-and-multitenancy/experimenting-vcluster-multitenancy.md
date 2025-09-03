@@ -4,6 +4,7 @@ title: "Explore Multitenancy with vCluster using GitOps - Updates"
 authors: [egrosdou01]
 date: 2024-12-29
 updated: 2025-03-18
+description: An introduction to vCluster and why it matters.
 tags: [kubernetes,open-source,vcluster,cloudflare,"2024"]
 ---
 

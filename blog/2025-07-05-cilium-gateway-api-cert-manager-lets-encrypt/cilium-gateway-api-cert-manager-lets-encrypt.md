@@ -3,6 +3,7 @@ slug: cilium-gateway-api-cert-manager-let's-encrypt
 title: "Cilium, Gateway API, Cert-Manager and Let’s Encrypt - Updates"
 authors: [egrosdou01]
 date: 2025-07-10
+description: A step-by-step guide working with Cilium Gateway API, cert-manager and let's encrypt.
 tags: [cilium,gateway-api,cert-manager,let's encrypt,cloudflare,argoCD,devops,beginner-guide,"2025"]
 ---
 

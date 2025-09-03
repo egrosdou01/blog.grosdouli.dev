@@ -3,6 +3,7 @@ slug: update-docusautus-v3.4.0-v3.7.0
 title: "Docusaurus: Update from v3.4.0 to v3.7.0"
 authors: [egrosdou01]
 date: 2025-06-20
+description: This is a Docusaurus note update from 3.4.0 to v3.7.0.
 tags: [docusaurus,github,beginner-guide,"2025"]
 ---
 

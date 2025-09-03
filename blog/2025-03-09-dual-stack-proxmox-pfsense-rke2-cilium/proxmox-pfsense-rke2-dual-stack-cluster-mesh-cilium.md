@@ -3,6 +3,7 @@ slug: rke2-dual-stack-cluster-mesh-cilium-proxmox
 title: "Dual-Stack: Global Service Sharing Rancher RKE2 With Cilium on Proxmox"
 authors: [egrosdou01]
 date: 2025-04-08
+description: A step-by-step guide to dual-stack deployment on a Rancher RKE2 cluster with Cilium complementary features.
 tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6,"2025"]
 ---
 

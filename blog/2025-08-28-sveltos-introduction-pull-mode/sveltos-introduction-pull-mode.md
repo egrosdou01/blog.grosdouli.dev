@@ -3,6 +3,7 @@ slug: sveltos-introduction-pull-mode
 title: "Sveltos: Introduction to Pull Mode"
 authors: [egrosdou01]
 date: 2025-08-28
+description: An introduction to Sveltos Pull Mode feature.
 tags: [open-source,sveltos,rke2,civo cloud,aws,aks,beginner-guide,"2025"]
 ---
 

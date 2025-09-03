@@ -4,6 +4,7 @@ title: "Sveltos Templating: Cilium Cluster Mesh in One Run"
 authors: [egrosdou01]
 date: 2024-08-10
 image: ./Sveltos_Templating_Cilium.jpg
+description: An introduction to Sveltos advanced Templating capabilities.
 tags: [sveltos,cilium,open-source,kubernetes,gitops,devops,"2024"]
 ---
 

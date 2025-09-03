@@ -3,6 +3,7 @@ slug: proxmox-pfsense-FRITZ!Box-ipv6-prefix-allocation-setup
 title: "IPv6 Prefix Allocation in Proxmox with pfSense Setup"
 authors: [egrosdou01]
 date: 2025-03-10
+description: An introduction to IPv6 and setup on Proxmox.
 tags: [proxmox,pfsense,FRITZ!Box,open-source,ipv6,"2025"]
 ---
 

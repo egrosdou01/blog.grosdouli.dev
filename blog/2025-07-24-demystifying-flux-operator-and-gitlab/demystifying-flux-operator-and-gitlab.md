@@ -3,6 +3,7 @@ slug: flux-operator-and-gitlab-demystifying
 title: "Demystifying the Flux Operator Installation for Self-Managed Source Control System"
 authors: [egrosdou01]
 date: 2025-07-24
+description: A step-by-step guide working with the Flux Operator helm chart.
 tags: [open-source,flux-operator,gitlab,gitops,devops,beginner-guide,"2025"]
 ---
 

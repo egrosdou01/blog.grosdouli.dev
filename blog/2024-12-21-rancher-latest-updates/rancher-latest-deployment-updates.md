@@ -3,6 +3,7 @@ slug: rancher-latest-deployment-updates
 title: "Rancher Installation with Nginx Ingress and Let’s Encrypt - Updates"
 authors: [egrosdou01]
 date: 2024-12-21
+description: A step-by-step guide Rancher on a Kubernetes cluster using Nginx Ingress Controller and Let's Encrypt.
 tags: [kubernetes,open-source,rancher,cloudflare,let's encrypt,"2024"]
 ---
 
