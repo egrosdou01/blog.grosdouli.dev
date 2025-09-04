@@ -12,6 +12,10 @@ tags: [open-source,sveltos,rke2,civo cloud,aws,aks,beginner-guide,"2025"]
 [Sveltos](https://projectsveltos.github.io/sveltos/main/) **v1.0.0** release introduced a way to manage Kubernetes clusters in restricted network, environments behind a firewall or edge locations. Follow along to understand how the Sveltos **Pull Mode** works and how it can be deployed.
 <!--truncate-->
 
+## Diagram
+
+![title image reading "Sveltos Pull Mode"](sveltos_pull_mode.jpg)
+
 ## Scenario
 
 When working with multi-cloud setups, there are scenarios where Kubernetes clusters reside in isolated network segments, behind firewalls, at edge locations with limited connectivity, or within air-gapped environments that require careful configuration and security controls. How can we manage these clusters and deploy add-ons and applications seamlessly while ensuring continuous drift-detection and reconciliation?
@@ -30,10 +34,6 @@ In today's post, we will install Sveltos in a [Civo](https://www.civo.com/) clus
 |          Sveltos               |      v1.0.1        |
 +-------------------------------+---------------------+
 ```
-
-## Diagram
-
-![title image reading "Sveltos Pull Mode](sveltos_pull_mode.jpg)
 
 ## Prerequisites
 
