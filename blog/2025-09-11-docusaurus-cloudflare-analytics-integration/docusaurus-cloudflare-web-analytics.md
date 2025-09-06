@@ -16,12 +16,13 @@ This is a step-by-step guide outlining the process of integrating Docusaurus wit
 
 When I decided to move my blog to a self-managed instance, I did not fully consider how I would keep track of website traffic stats, SEO scores, and all those nitty-gritty details that blog hosting platforms usually provide right out of the box. This post is the first in a two or maybe three-part part series focused on analytics, SEO, and the improvements I have made over the past few weeks to make the site more efficient.
 
-Previously, I used Medium to publish articles and loved being able to see stats on post views and reads. After some thought, I realised I needed a way to gain similar insights on my setup. Since I use [Cloudflare](https://www.cloudflare.com/en-gb/) to host my domain, I found out they offer a `free tier` service called [Cloudflare Web Analytics](https://www.cloudflare.com/en-gb/web-analytics/). Anyone can add their JavaScript snippet and start receiving real-time analytics. If you deploy your website directly with Cloudflare, analytics integration is automatic, but this is not the case for me. My blog is hosted on [GitHub](https://github.com/), using [GitHub Pages](https://docs.github.com/en/pages). So, in today’s post, we will dive into how to integrate analytics into the site!
+Previously, I used Medium to publish articles and loved being able to see stats on post views and reads. After some thought, I realised I needed a way to gain similar insights on my setup. Since I use [Cloudflare](https://www.cloudflare.com/en-gb/) to host my domain, I found out they offer a `free tier` service called [Cloudflare Web Analytics](https://www.cloudflare.com/en-gb/web-analytics/). Anyone can add their JavaScript snippet and start receiving real-time analytics. If you deploy your website  directly with Cloudflare, analytics integration is automatic, but this is not the case for me. My blog is hosted on [GitHub](https://github.com/), using [GitHub Pages](https://docs.github.com/en/pages). So, in today’s post, we will dive into how to integrate analytics into the site!
 
 ## Prerequisites
 
 1. Docusaurus static site deployed
-1. A Cloudflare account and a valid domain
+1. A Cloudflare account
+1. A valid domain
 
 ## What is Cloudflare Web Analytics?
 
@@ -38,7 +39,7 @@ The section describes how to work with the Cloudflare UI, create a `site` and re
 1. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/)
 1. Navigate to `Analytics & Logs > Web Analytics`
 1. Click on the `Add a site` button
-1. Provide a website domain. For me, I defined `blog.grosdouli.dev`
+1. Provide a website domain. In my case, I defined `blog.grosdouli.dev`
 1. Click Done
 
 If the website is proxied by Cloudflare, no further action is required. If the website is not proxied by Cloudflare, copy the `.js` snippet script from the screen and proceed with the next steps.
@@ -81,11 +82,11 @@ scripts: [
 ],
 ```
 
-For this setup, we use the GitHub secrets functionality to store the Beacon token in a secret and use it when we build the Docusaurus site using the GitHub workflows.
+For this setup, we use the GitHub secrets functionality to store the Beacon token and use it when we build the Docusaurus site using a GitHub workflows.
 
 ## GitHub Configuration
 
-To define the `CLOUDFLARE_TOKEN` as a secret in GitHub, follow the steps below.
+To define the `CLOUDFLARE_TOKEN` as a secret, follow the steps below.
 
 1. Log in to GitHub
 1. Access the Docusaurus site repository
@@ -119,7 +120,7 @@ $ npm run serve
 
 Ensure everything is working as expected. You can access the site on `localhost:3000`, and no warnings are visible in the terminal. Once the smoke tests are done, navigate to the `build/` directory and open the `index.html` file with an editor. Search for `cloudflareinsights` and ensure the script section added in the previous step is already visible.
 
-Next steps are `git add, commit, and push`!
+The next steps are `git add, commit, and push`!
 
 ## Conclusion
 
@@ -134,4 +135,3 @@ With just a few easy tweaks, we added Cloudflare Web Analytics to the Docusaurus
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
-
