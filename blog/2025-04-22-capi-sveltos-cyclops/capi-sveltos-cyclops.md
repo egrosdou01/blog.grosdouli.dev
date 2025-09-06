@@ -382,6 +382,9 @@ The approach simplifies both development and platform administration. The Svelto
 - [Linode CAPI Installation](https://linode.github.io/cluster-api-provider-linode/topics/getting-started.html)
 - [Sveltos ClusterProfile](https://projectsveltos.github.io/sveltos/deployment_order/tiers/#efficient-cluster-management-with-clusterprofilesprofiles)
 - [Sveltos Deployments](https://projectsveltos.github.io/sveltos/addons/addons/)
+- [Sveltos What's New - Part 1](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-1.md)
+- [Sveltos What's New - Part 2](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-2.md)
+- [Sveltos Day 2 Operations](../2024-10-05-sveltos-day2-operations/sveltos-cilium-tetragon-day2-operations.md)
 - [Cyclops - Quick Start](https://cyclops-ui.com/docs/about/)
 - [Click-to-Cluster: GitOps EKS Provisioning by Gianluca Mardente](https://medium.com/itnext/click-to-cluster-gitops-eks-provisioning-8c9d3908cb24)
 

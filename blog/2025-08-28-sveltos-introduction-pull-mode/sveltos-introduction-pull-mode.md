@@ -279,6 +279,9 @@ With Sveltos, you can easily manage different Kubernetes clusters, no matter whe
 - [Sveltos - Quick Start](https://projectsveltos.github.io/sveltos/main/getting_started/install/quick_start/)
 - [Sveltos Pull Mode](https://projectsveltos.github.io/sveltos/main/register/register_cluster_pull_mode/)
 - [Deploy Add-ons and Applications](https://projectsveltos.github.io/sveltos/main/addons/addons/)
+- [Sveltos What's New - Part 1](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-1.md)
+- [Sveltos What's New - Part 2](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-2.md)
+- [Sveltos Day 2 Operations](../2024-10-05-sveltos-day2-operations/sveltos-cilium-tetragon-day2-operations.md)
 
 ## ✉️ Contact
 

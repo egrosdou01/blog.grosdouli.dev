@@ -11,7 +11,7 @@ tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide,"2025"]
 
 Welcome to **part 3** of the **Talos Linux Kubernetes cluster** bootstrap of the **Proxmox** series. In today's post, we will perform changes to make the code **reusable** and **extensible**. Users can follow a GitOps approach towards Talos deployments.
 
-We assume you already have the basic [project structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox). To follow along, check out the [part 1](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md) and [part 2](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-2.md) posts.
+We assume you already have the basic [project structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox). To follow along, check out the [part 1](./talos-proxmox-opentofu-part-1.md) and [part 2](./talos-proxmox-opentofu-part-2.md) posts.
 
 ![title image reading "Talos Cluster on Proxmox with OpenTofu and Cilium"](Proxmox_OpenTofu_Talos_Cilium.jpg)
 

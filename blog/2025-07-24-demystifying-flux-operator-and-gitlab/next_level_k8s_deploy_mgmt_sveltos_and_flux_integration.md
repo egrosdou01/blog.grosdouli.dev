@@ -9,7 +9,7 @@ tags: [open-source,sveltos,flux-operator,gitlab,gitops,devops,beginner-guide,"20
 
 **Summary**:
 
-This post picks up where the Flux Operator [blog](https://blog.grosdouli.dev/blog/flux-operator-and-gitlab-demystifying) left off, diving deeper to demonstrate the power of Sveltos and Flux for Kubernetes add-on deployment and management. Join the club as we explore what next-level Kubernetes deployments and management look like in action!
+This post picks up where the Flux Operator [blog](demystifying-flux-operator-and-gitlab.md) left off, diving deeper to demonstrate the power of Sveltos and Flux for Kubernetes add-on deployment and management. Join the club as we explore what next-level Kubernetes deployments and management look like in action!
 <!--truncate-->
 
 ![title image reading "Sveltos and Flux"](fluxcd_and_sveltos.jpg)
