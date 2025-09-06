@@ -214,7 +214,7 @@ Open the Grafana UI and navigate to **Home > Dashboards > New > Import > Choose 
 
 ## Conclusion
 
-This is an introduction series to Sveltos, how it works and how the Sveltos Dashboard alongside the Sveltos Grafana Dashboard can be utilised. In [Part 2](./sveltos-what's-new-part-2.md), we will update the existing Sveltos ClusterProfle and utilise the latest features for advanced deployments. Stay tuned!
+This is an introduction series to Sveltos, how it works and how the Sveltos Dashboard alongside the Sveltos Grafana Dashboard can be utilised. In [Part 2](sveltos-what's-new-part-2.md), we will update the existing Sveltos ClusterProfle and utilise the latest features for advanced deployments. Stay tuned!
 
 ## Resources
 

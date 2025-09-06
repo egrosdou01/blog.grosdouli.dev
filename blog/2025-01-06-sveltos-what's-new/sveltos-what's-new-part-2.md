@@ -9,12 +9,12 @@ tags: [sveltos,open-source,beginner-guide,"2025"]
 
 ## Introduction
 
-In [Part 1](./sveltos-what's-new-part-1.md) of the series, we demonstrated how to install [Sveltos](https://github.com/projectsveltos) on a Kubernetes **management** cluster, deploy [Kyverno](https://kyverno.io/docs/) and afterwards use the [sveltosctl](https://projectsveltos.github.io/sveltos/getting_started/sveltosctl/sveltosctl/), the [Sveltos Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/dashboard/), alongside the [Grafana Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/grafanadashboard/) for observability. In today's post, we will take the next step and talk about the `Dry-run` feature, how to express a Sveltos `ClusterProfile` as a `template` and what the latest `templateResourceRefs` are.
+In [Part 1](sveltos-what's-new-part-1.md) of the series, we demonstrated how to install [Sveltos](https://github.com/projectsveltos) on a Kubernetes **management** cluster, deploy [Kyverno](https://kyverno.io/docs/) and afterwards use the [sveltosctl](https://projectsveltos.github.io/sveltos/getting_started/sveltosctl/sveltosctl/), the [Sveltos Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/dashboard/), alongside the [Grafana Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/grafanadashboard/) for observability. In today's post, we will take the next step and talk about the `Dry-run` feature, how to express a Sveltos `ClusterProfile` as a `template` and what the latest `templateResourceRefs` are.
 <!--truncate-->
 
 ## Pre-requisites
 
-Go through [Part 1](./sveltos-what's-new-part-1.md) before continuing with the rest of the post.
+Go through [Part 1](sveltos-what's-new-part-1.md) before continuing with the rest of the post.
 
 ## Sveltos Dry-run Feature
 

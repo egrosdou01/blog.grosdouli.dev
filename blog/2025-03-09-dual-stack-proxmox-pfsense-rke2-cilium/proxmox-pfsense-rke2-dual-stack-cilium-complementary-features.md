@@ -9,7 +9,7 @@ tags: [proxmox,open-source,kubernetes,rke2,cilium,argoCD,ipv6,"2025"]
 
 ## Introduction
 
-Welcome to **part 4** of the `dual-stack` series! In [parts 1](./proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md), [2](./proxmox-pfsense-rke2-dual-stack-cilium.md), and [3](./proxmox-pfsense-rke2-dual-stack-cluster-mesh-cilium.md), we walked through how to set up `dual-stack` networking on a Proxmox server using our Internet Provider. We also showed you how to deploy RKE2 Kubernetes clusters and share both IPv4 and IPv6 services across them. Now, in the **final part** of the series, we are diving into some of the most commonly used features of [Cilium](https://docs.cilium.io/en/stable/index.html) for a home lab setup! Let’s get started!
+Welcome to **part 4** of the `dual-stack` series! In [parts 1](proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md), [2](proxmox-pfsense-rke2-dual-stack-cilium.md), and [3](proxmox-pfsense-rke2-dual-stack-cluster-mesh-cilium.md), we walked through how to set up `dual-stack` networking on a Proxmox server using our Internet Provider. We also showed you how to deploy RKE2 Kubernetes clusters and share both IPv4 and IPv6 services across them. Now, in the **final part** of the series, we are diving into some of the most commonly used features of [Cilium](https://docs.cilium.io/en/stable/index.html) for a home lab setup! Let’s get started!
 
 ![title image reading "Proxmox Rancher and Cilium"](proxmox_rancher_cilium.jpg)
 

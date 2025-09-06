@@ -9,7 +9,7 @@ tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6,"2025"]
 
 ## Introduction
 
-Welcome to **part 2** of the `dual-stack` series! In [part 1](./proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md), we covered how to enable `IPv6 Prefix` allocation using `pfsense` on `Proxmox` with `Fritz!Box` as a home router. The setup allows virtual machines in a dedicated interface to receive an `IPv4` and an `IPv6` address. If you have completed **part 1**, you can continue with the `dual-stack` [RKE2](https://docs.rke2.io/) setup powered by [Cilium](https://cilium.io/).
+Welcome to **part 2** of the `dual-stack` series! In [part 1](proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md), we covered how to enable `IPv6 Prefix` allocation using `pfsense` on `Proxmox` with `Fritz!Box` as a home router. The setup allows virtual machines in a dedicated interface to receive an `IPv4` and an `IPv6` address. If you have completed **part 1**, you can continue with the `dual-stack` [RKE2](https://docs.rke2.io/) setup powered by [Cilium](https://cilium.io/).
 
 ![title image reading "What gives people joy?"](what_gives_people_joy.jpg)
 <!--truncate-->
@@ -384,7 +384,7 @@ service-cidr: "10.45.0.0/16,2001:cafe:43::/112"
 
 ## Next Steps
 
-In the [upcoming post](./proxmox-pfsense-rke2-dual-stack-cluster-mesh-cilium.md), we will set up a `Cilium Service Mesh` and share `IPv4` and `IPv6` `Global Services`.
+In the [upcoming post](proxmox-pfsense-rke2-dual-stack-cluster-mesh-cilium.md), we will set up a `Cilium Service Mesh` and share `IPv4` and `IPv6` `Global Services`.
 
 ## ✉️ Contact
 
