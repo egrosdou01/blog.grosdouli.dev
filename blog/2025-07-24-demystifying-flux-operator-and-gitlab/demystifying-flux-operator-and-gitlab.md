@@ -223,7 +223,7 @@ $ kubectl get helmrepositories.source.toolkit.fluxcd.io -A
 
 ## Conclusion
 
-We bootstraped and deployed Flux using the Flux operator on a Kubernetes cluster while connecting a GitLab repository on a self-hosted installation. In the next blog post, we will showcase how to use Sveltos to automatically bootstrap and deploy Flux alongside dynamic application deployment using the upcoming Sveltos EventFramework features! Stay tuned!
+We bootstraped and deployed Flux using the Flux operator on a Kubernetes cluster while connecting a GitLab repository on a self-hosted installation. In the [next blog post](next_level_k8s_deploy_mgmt_sveltos_and_flux_integration.md), we will showcase how to use Sveltos to automatically bootstrap and deploy Flux alongside dynamic application deployment using the upcoming Sveltos EventFramework features! Stay tuned!
 
 ## Resources
 

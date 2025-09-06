@@ -333,7 +333,7 @@ Hope the post gave you an overview on how to bootstrap a basic Talos Linux clust
 
 ## Part-2 Outline
 
-In [Part 2](https://blog.grosdouli.dev/blog/talos-on-proxmox-opentofu-part-2), we will cover how to update the default CNI with [Cilium](https://docs.cilium.io/en/stable/index.html). Stay Tuned!
+In [Part 2](talos-proxmox-opentofu-part-2.md), we will cover how to update the default CNI with [Cilium](https://docs.cilium.io/en/stable/index.html). Stay Tuned!
 
 ## Resources
 

@@ -372,6 +372,7 @@ Integrating **Cilium** and **cert-manager** with **Gateway API** makes TLS certi
 
 - [GitHub Issue -  CiliumLoadBalancerIPPool and Gateway API](https://github.com/cilium/cilium/issues/38123)
 - [GitHub Issue - Gateway API reconciler fails TLSRoute ](https://github.com/cilium/cilium/issues/38123)
+- [Cilium - Dual-Stack Example](../2025-03-09-dual-stack-proxmox-pfsense-rke2-cilium/proxmox-pfsense-rke2-dual-stack-cilium.md)
 
 ## ✉️ Contact
 

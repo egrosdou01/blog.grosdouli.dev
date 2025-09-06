@@ -9,7 +9,7 @@ tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6,"2025"]
 
 ## Introduction
 
-Welcome to **part 3** of the `dual-stack` series! In [part 1](https://blog.grosdouli.dev/blog/proxmox-pfsense-FRITZ!Box-ipv6-prefix-allocation-setup) and [part 2](https://blog.grosdouli.dev/blog/rke2-dual-stack-cilium-proxmox), we discovered how to enable `dual-stack` on a Proxmox server using our Internet Provider and deploy RKE2 clusters. In today's post, we continue our journey and enable a `Cilium Cluster Mesh` between two RKE2 clusters. The goal is to share `IPv4` and `IPv6` services between the different clusters effortlessly. Let’s dive in!
+Welcome to **part 3** of the `dual-stack` series! In [part 1](proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md) and [part 2](proxmox-pfsense-rke2-dual-stack-cilium.md), we discovered how to enable `dual-stack` on a Proxmox server using our Internet Provider and deploy RKE2 clusters. In today's post, we continue our journey and enable a `Cilium Cluster Mesh` between two RKE2 clusters. The goal is to share `IPv4` and `IPv6` services between the different clusters effortlessly. Let’s dive in!
 
 ![title image reading "What gives people joy?"](what_gives_people_joy.jpg)
 <!--truncate-->

@@ -48,7 +48,7 @@ The showcase repository is available [here](https://github.com/egrosdou01/blog-p
 
 ## Prerequisites
 
-As this is part 2 of the blog post series, we assume the prerequisites are already satisfied. If not, go to the previous [post](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md) and check out the prerequisites.
+As this is part 2 of the blog post series, we assume the prerequisites are already satisfied. If not, go to the previous [post](talos-proxmox-opentofu-part-1.md) and check out the prerequisites.
 
 ## Pre-work
 
@@ -370,7 +370,7 @@ When the Cilium tests are deployed on the cluster, you might get warnings due to
 
 ## Conclusion
 
-In today's post, we showed how to quickly set up a Talos Kubernetes cluster with Cilium as the CNI in just a few simple steps. 🚀 In [Part 3](https://blog.grosdouli.dev/blog/talos-on-proxmox-opentofu-part-3), we will outline potential improvements to make the setup even better. Thanks for reading, and stay tuned for the next post!
+In today's post, we showed how to quickly set up a Talos Kubernetes cluster with Cilium as the CNI in just a few simple steps. 🚀 In [Part 3](talos-proxmox-opentofu-part-3.md), we will outline potential improvements to make the setup even better. Thanks for reading, and stay tuned for the next post!
 
 ## Resources
 

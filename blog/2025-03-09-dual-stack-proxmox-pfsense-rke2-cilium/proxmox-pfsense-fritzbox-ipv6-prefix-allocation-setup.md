@@ -185,7 +185,7 @@ IPv6 Prefix allocation on Proxmox with Pfsense, check! ✅ Thanks for reading, a
 
 ## Next Steps
 
-In the upcoming posts, we will go through enabling `dual-stack` on [RKE2](https://docs.rke2.io/) clusters alongside testing and validation of the deployment. For the last part of the series, we will introduce `Cilium service mesh` and IPv6 `Global services` sharing between clusters.
+In [part 2](proxmox-pfsense-rke2-dual-stack-cilium.md), we will go through enabling `dual-stack` on [RKE2](https://docs.rke2.io/) clusters alongside testing and validation of the deployment. For the [last part](proxmox-pfsense-rke2-dual-stack-cluster-mesh-cilium.md) of the series, we will introduce `Cilium service mesh` and IPv6 `Global services` sharing between clusters.
 
 ## ✉️ Contact
 
