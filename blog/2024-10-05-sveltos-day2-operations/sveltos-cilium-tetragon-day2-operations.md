@@ -3,6 +3,7 @@ slug: sveltos-cilium-tetragon-day2-operations
 title: "Sveltos: Optimising Day-2 Operations with Cilium and Tetragon"
 authors: [egrosdou01]
 date: 2024-10-05
+image: ./Sveltos_Cilium_Tetragon_HealthCheck.jpg
 description: A step-by-step guide outlining how to use Sveltos to deploy and configure Cilium Tetragon for Day-2 Operations.
 tags: [sveltos,cilium,tetragon,open-source,kubernetes,gitops,devops,"2024"]
 ---

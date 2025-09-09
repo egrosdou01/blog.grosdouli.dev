@@ -3,6 +3,7 @@ slug: Better Together Sveltos and Flux Integration
 title: "Next-Level Kubernetes Deployment and Management: Sveltos and Flux in Action"
 authors: [egrosdou01]
 date: 2025-08-14
+image: ./fluxcd_and_sveltos.jpg
 description: A step-by-step guide working with the Sveltos and the Flux Operator helm chart to achieve the best GitOps experience.
 tags: [open-source,sveltos,flux-operator,gitlab,gitops,devops,beginner-guide,"2025"]
 ---

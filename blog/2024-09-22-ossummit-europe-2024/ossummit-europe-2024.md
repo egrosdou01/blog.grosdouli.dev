@@ -3,6 +3,7 @@ slug: ossummit-europe-2024
 title: "OSSummit Europe 2024"
 authors: [egrosdou01]
 date: 2024-09-22
+image: ./ossummit_europe_2024.jpg
 description: An outline of the Open Source Summit conference in Austria 2024.
 tags: [conference,open-source,kubernetes,gitops,devops,"2024"]
 ---

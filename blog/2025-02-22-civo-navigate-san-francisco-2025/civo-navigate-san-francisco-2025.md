@@ -3,6 +3,7 @@ slug: civo-navigate-san-francisco-2025
 title: "Civo Navigate San Francisco 2025"
 authors: [egrosdou01]
 date: 2025-02-22
+image: ./civo_navigate_san_francisco_2025.jpg
 description: An outline of the Civo Navigate conference in San Francisco 2025.
 tags: [conference,open-source,kubernetes,gitops,devops,"2025"]
 ---

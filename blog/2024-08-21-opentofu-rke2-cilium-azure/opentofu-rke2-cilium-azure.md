@@ -3,6 +3,7 @@ slug: opentofu-rke2-cilium-azure
 title: "OpenTofu: RKE2 Cluster with Cilium on Azure"
 authors: [egrosdou01]
 date: 2024-08-21
+image: ./openTofu_rancher_intro_image.jpg
 description: A step-by-step guide to deploying a Rancher RKE2 cluster with Cilium on Azure Cloud using OpenTofu.
 tags: [opentofu,cilium,rke2,azure,open-source,kubernetes,gitops,devops,"2024"]
 ---
