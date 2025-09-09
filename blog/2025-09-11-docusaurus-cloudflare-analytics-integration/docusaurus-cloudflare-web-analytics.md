@@ -11,12 +11,13 @@ tags: [open-source,docusaurus,cloudflare,beginner-guide,"2025"]
 
 This is a step-by-step guide outlining the process of integrating Docusaurus with Cloudflare Analytics.
 <!--truncate-->
+![title image reading "Cloudflare and Docusaurus"](cloudflare_docusaurus.jpg)
 
 ## Scenario
 
-When I decided to move my blog to a self-managed instance, I did not fully consider how I would keep track of website traffic stats, SEO scores, and all those nitty-gritty details that blog hosting platforms usually provide right out of the box. This post is the first in a two or maybe three-part part series focused on analytics, SEO, and the improvements I have made over the past few weeks to make the site more efficient.
+When I decided to move my blog to a self-managed instance, I did not fully consider how I would keep track of website traffic stats, SEO scores, and all those nitty-gritty details that blog hosting platforms usually provide right out of the box. This post is the first in a two or maybe three-part series focused on analytics, SEO, and the improvements I have made over the past few weeks to make the site more efficient.
 
-Previously, I used Medium to publish articles and loved being able to see stats on post views and reads. After some thought, I realised I needed a way to gain similar insights on my setup. Since I use [Cloudflare](https://www.cloudflare.com/en-gb/) to host my domain, I found out they offer a `free tier` service called [Cloudflare Web Analytics](https://www.cloudflare.com/en-gb/web-analytics/). Anyone can add their JavaScript snippet and start receiving real-time analytics. If you deploy your website  directly with Cloudflare, analytics integration is automatic, but this is not the case for me. My blog is hosted on [GitHub](https://github.com/), using [GitHub Pages](https://docs.github.com/en/pages). So, in today’s post, we will dive into how to integrate analytics into the site!
+Previously, I used Medium to publish articles and loved being able to see stats on post views and reads. After some thought, I realised I needed a way to gain similar insights on my setup. Since I use [Cloudflare](https://www.cloudflare.com/en-gb/) to host my domain, I found out that they offer a `free tier` service called [Cloudflare Web Analytics](https://www.cloudflare.com/en-gb/web-analytics/). Anyone can add their JavaScript snippet and start receiving real-time analytics. If you deploy your website  directly with Cloudflare, analytics integration is automatic, but this is not the case for me. My blog is hosted on [GitHub](https://github.com/), using [GitHub Pages](https://docs.github.com/en/pages). In today’s post, we will dive into how to integrate analytics into the site!
 
 ## Prerequisites
 
@@ -34,7 +35,7 @@ Previously, I used Medium to publish articles and loved being able to see stats 
 
 ## Cloudflare Configuration
 
-The section describes how to work with the Cloudflare UI, create a `site` and retrieve the beacon for the setup.
+The section describes how to work with the Cloudflare UI, create a `site` and retrieve the beacon Token for the setup.
 
 1. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/)
 1. Navigate to `Analytics & Logs > Web Analytics`
@@ -50,9 +51,9 @@ Cool! We created a new `site` in the Cloudflare Dashboard, but now what? We ha
 
 ### Research
 
-First off, I had to search the different possibilities provided by Docusaurus to run scripts. Docusaurus [official documentation](https://docusaurus.io/docs/api/docusaurus-config#scripts) to the rescue! Looking at the `docusaurus.config.js` configuration reference, the `scripts` section appeared to be the right place for the `.js` script.
+First things first, I had to explore the different ways Docusaurus allows you to run custom scripts. The [official Docusaurus documentation](https://docusaurus.io/docs/api/docusaurus-config#scripts) came in handy. After digging into the `docusaurus.config.js` file, the `scripts` section stood out as the right spot to plug in a `.js` script.
 
-On a second base, it was time to integrate `dotenv`, as in the future it might be useful to mask sensitive data in the `docusaurus.config.js` file. For this setup, the Beakon token is used to track and identify requests. It is not a token used for Authentication or authorisation. Plus, once the site is built, the token is visible in the `index.html` page under scripts.
+Next up: integrating `dotenv`. This step is mainly future-proofing—useful if we ever need to mask sensitive data in `docusaurus.config.js`. In this case, we are using a beacon token to track and identify requests. It is worth noting that the token is not tied to any authentication or authorisation process. Also, once the site is built, the token will be visible in the `index.html` file under scripts.
 
 ### npm dotenv Package
 
@@ -82,7 +83,7 @@ scripts: [
 ],
 ```
 
-For this setup, we use the GitHub secrets functionality to store the Beacon token and use it when we build the Docusaurus site using a GitHub workflows.
+For my setup, the GitHub secrets are used to store the beacon token when the Docusaurus site is built using GitHub workflows.
 
 ## GitHub Configuration
 
@@ -92,7 +93,7 @@ To define the `CLOUDFLARE_TOKEN` as a secret, follow the steps below.
 1. Access the Docusaurus site repository
 1. Navigate to `Settings > Secrets and variables > Actions`
 1. Click the `New repository secret`
-1. Define the **name** of the secret and the Beacon token
+1. Define the **name** of the secret and the beacon token
 
 :::tip
 For a 2FA setup, GitHub will request verification before creating the secret.
@@ -100,7 +101,7 @@ For a 2FA setup, GitHub will request verification before creating the secret.
 
 ## GitHub Workflows
 
-Nothing will happen unless we update the existing GitHub Workflows and instruct them to use the secret defined previously. Update the existing workflows to include the lines below.
+Nothing will happen unless we update the Workflows and instruct them to use the secret defined previously. Include the example lines below.
 
 ```yaml
 - name: Create .env file
@@ -111,7 +112,7 @@ Nothing will happen unless we update the existing GitHub Workflows and instruct 
 
 ## Local Testing
 
-Before we push any changes to the site, we can test the deployment locally. Then we could use the `test-deploy` GitHub workflow to ensure the **build** of the site is successful.
+Before we push any changes to the site, we can test them locally. Afterwards, we could use the `test-deploy` GitHub workflow to ensure the **build** of the site is successful.
 
 ```bash
 $ npm run build
@@ -124,7 +125,7 @@ The next steps are `git add, commit, and push`!
 
 ## Conclusion
 
-With just a few easy tweaks, we added Cloudflare Web Analytics to the Docusaurus site to track traffic and performance. In the next post, we will look at simple ways to improve our Search Engine Optimization (SEO). 🚀
+With just a few easy tweaks, we added Cloudflare Web Analytics to the Docusaurus site to track traffic and performance. In the next post, we will look into simple ways of improving the Search Engine Optimization (SEO). 🚀
 
 ## Resources
 
