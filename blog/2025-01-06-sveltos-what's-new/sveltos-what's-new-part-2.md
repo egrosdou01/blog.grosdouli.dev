@@ -3,6 +3,7 @@ slug: sveltos-what's-new-part-2
 title: "Sveltos: What's New in Kubernetes Deployments - Part 2"
 authors: [egrosdou01]
 date: 2025-01-23
+image: ./sveltos_logo.jpg
 description: Sveltos post-update release feedback - Part 2.
 tags: [sveltos,open-source,beginner-guide,"2025"]
 ---

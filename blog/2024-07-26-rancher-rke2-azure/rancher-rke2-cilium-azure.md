@@ -3,9 +3,9 @@ slug: rancher-rke2-cilium-azure
 title: Rancher RKE2 Cluster on Azure
 authors: [egrosdou01]
 date: 2024-07-26
+image: ./Rancher_RKE2_Cilium_Azure.jpg
 tags: [rancher,cilium,rke2,open-source,kubernetes,gitops,devops,azure,"2024"]
 description: A step-by-step guide to deploying a Rancher RKE2 cluster with Cilium on Azure Cloud.
-image: ./Rancher_RKE2_Cilium_Azure.jpg
 ---
 
 ## Introduction
