@@ -17,8 +17,8 @@ const AboutMeList = [
     title: '🚀 Passionate Explorer',
     description: (
       <>
-      I am excited discovering new things and experimenting in my home lab.
-      My motto, "Break and fix" is all about hands-on learning and embracing every opportunity to grow.
+      I am excited about discovering discovering new things and experimenting in my home lab.
+      My motto, "Break and fix", is all about hands-on learning and embracing every opportunity to grow.
       </>
     ),
   },
@@ -26,8 +26,8 @@ const AboutMeList = [
     title: '💻 Expertise',
     description: (
       <>
-      My expertise lies around DevOps and GitOps practices.
-      I create content about <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8s Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">Openshift</a> deployments in on-prem and cloud environments.
+      My expertise lies in DevOps and GitOps practices.
+      I create content about <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8s Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift</a> deployments in on-prem and cloud environments.
       </>
     ),
   },
