@@ -91,10 +91,12 @@ scripts: [
       // Replace with your project's social card
       image: 'img/social-card.jpg',
       navbar: {
-        title: 'About',
+        title: 'Eleni Grosdouli',
         logo: {
           alt: 'My Site Logo',
           src: 'https://avatars.githubusercontent.com/u/147995681?v=4',
+          width: 32,
+          height: 32,
         },
         items: [
           // {

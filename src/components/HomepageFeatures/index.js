@@ -4,19 +4,21 @@ import styles from './styles.module.css';
 
 const AboutMeList = [
   {
-    title: '🚀 Passionate Explorer',
+    title: '👋 Hello!',
     description: (
       <>
-      I love discovering new things and experimenting in my home lab.
-      My motto, "Break and fix" is all about hands-on learning and embracing every opportunity to grow.
+        I am a DevOps Consulting Engineer at Cisco Solutions GmbH, specialising in DevOps and GitOps, networking, security, and endpoint management.
+        I love solving real-world problems, am a lifelong learner, and enjoy public speaking.
+        I constantly explore new tech in my home lab and share insights on my blog.
       </>
     ),
   },
   {
-    title: '🤝 Community Contributor',
+    title: '🚀 Passionate Explorer',
     description: (
       <>
-      I enjoy creating material and contributing to the community through open-source projects, blog posts, and mentorship.
+      I am excited discovering new things and experimenting in my home lab.
+      My motto, "Break and fix" is all about hands-on learning and embracing every opportunity to grow.
       </>
     ),
   },
@@ -30,20 +32,35 @@ const AboutMeList = [
     ),
   },
   {
+    title: '✍️ Where I Publish',
+    description: (
+      <>
+        You can find my articles and insights here on <a href="/blog">my blog</a>, as well as on <a href="https://medium.com/@eleni.grosdouli">Medium</a>. Part of my work has been published in the <a href="hhttps://cilium.io/blog/categories/how-to/">Cilium Posts</a> area and at <a href="https://projectsveltos.github.io/sveltos/main/blogs/">ProjectSveltos</a>.
+      </>
+    ),
+  },
+  {
+    title: '🤝 Community Contributor',
+    description: (
+      <>
+      I enjoy creating material and contributing to the community through open-source projects, blog posts, and mentorship.
+      </>
+    ),
+  },
+  {
     title: '🏃‍♀️ Sports Enthusiast',
     description: (
       <>
-      You will often find me enjoying nature or on the field, playing team sports. Boxing and kickboxing are my go-to activities, and 
+      You will often find me enjoying nature or on the field, playing team sports. Boxing and kickboxing are my go-to activities, and
       recently, I joined a local women’s rugby team, where I am embracing the creativity of the sport itself. 🥊🏉
       </>
     ),
-    center: true,
   },
 ];
 
-function AboutMe({ Svg, title, description, center }) {
+function AboutMe({ title, description }) {
   return (
-    <div className={clsx('col', center && 'col--4 offset--center')}>
+    <div className={clsx('col col--4 margin-bottom--lg', styles.feature)}>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
@@ -57,8 +74,6 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <Heading as="h1" className="text--center margin-bottom--lg"> A little bit about myself </Heading>
-        <div className="margin-bottom--lg"></div>
-        <div className="margin-bottom--lg"></div>
         <div className="row">
           {AboutMeList.map((props, idx) => (
             <AboutMe key={idx} {...props} />

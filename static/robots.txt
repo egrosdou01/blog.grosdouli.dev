@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+Disallow: /*index.xml$
+Disallow: /index.json
+Disallow: /search/index.json
+
 Sitemap: https://blog.grosdouli.dev/sitemap.xml
