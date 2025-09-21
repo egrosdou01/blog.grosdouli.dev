@@ -1,6 +1,6 @@
 ---
 slug: capi-sveltos-cyclops
-title: "Better Together: CAPI, Sveltos, and Cyclops for Automated Development Environments"
+title: "CAPI, Sveltos, Cyclops: Automated Dev Environments"
 authors: [egrosdou01]
 date: 2025-04-29
 image: ./sveltos_capi_cyclops_blog_post.jpg

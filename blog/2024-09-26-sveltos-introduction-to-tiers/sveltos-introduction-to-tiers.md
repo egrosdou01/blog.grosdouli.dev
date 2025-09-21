@@ -1,6 +1,6 @@
 ---
 slug: sveltos-introduction-to-tiers
-title: "Sveltos Tiers: Efficient Day-2 Operations and Targeted Updates"
+title: "Sveltos Tiers: Day-2 Ops and Targeted Updates"
 authors: [egrosdou01]
 date: 2024-09-26
 image: ./sveltos_tiers.jpg

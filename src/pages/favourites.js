@@ -30,7 +30,9 @@ function Favourites() {
   };
 
   return (
-    <Layout title="Favourites">
+    <Layout title="Favourites"
+      description="A space for sharing helpful learning materials about GitOps and DevOps approaches!"
+      >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

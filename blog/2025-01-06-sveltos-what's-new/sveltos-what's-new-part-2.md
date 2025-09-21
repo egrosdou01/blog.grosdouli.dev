@@ -1,6 +1,6 @@
 ---
-slug: sveltos-what's-new-part-2
-title: "Sveltos: What's New in Kubernetes Deployments - Part 2"
+slug: sveltos-whats-new-part-2
+title: "Sveltos Latest Kubernetes Deployments Pt.2"
 authors: [egrosdou01]
 date: 2025-01-23
 image: ./sveltos_logo.jpg
