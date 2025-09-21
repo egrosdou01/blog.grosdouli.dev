@@ -1,5 +1,5 @@
 ---
-slug: cilium-gateway-api-cert-manager-let's-encrypt
+slug: cilium-gateway-api-cert-manager-lets-encrypt
 title: "Cilium, Gateway API, Cert-Manager, Let's Encrypt"
 authors: [egrosdou01]
 date: 2025-07-10
