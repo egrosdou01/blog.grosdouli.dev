@@ -1,6 +1,6 @@
 ---
 slug: sveltos-cilium-tetragon-day2-operations
-title: "Sveltos: Optimising Day-2 Operations with Cilium and Tetragon"
+title: "Sveltos: Optimize Day-2 Ops, Cilium & Tetragon"
 authors: [egrosdou01]
 date: 2024-10-05
 image: ./Sveltos_Cilium_Tetragon_HealthCheck.jpg

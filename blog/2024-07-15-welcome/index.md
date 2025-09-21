@@ -1,6 +1,6 @@
 ---
 slug: welcome-to-elenis-blog-post
-title: Welcome from Eleni Grosdouli
+title: Welcome note
 authors: [egrosdou01]
 description: Welcome message to readers to land in the blog.
 tags: ["2024"]

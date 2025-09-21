@@ -1,6 +1,6 @@
 ---
 slug: talos-on-proxmox-opentofu-part-2
-title: "Talos, Proxmox and OpenTofu: Beginner's Guide - Part 2"
+title: "Talos, Proxmox, OpenTofu: Beginner's Guide Pt.2"
 authors: [egrosdou01]
 date: 2024-12-14
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg

@@ -1,6 +1,6 @@
 ---
 slug: Better Together Sveltos and Flux Integration
-title: "Next-Level Kubernetes Deployment and Management: Sveltos and Flux in Action"
+title: "Sveltos & Flux: Next-Level K8s Deployments"
 authors: [egrosdou01]
 date: 2025-08-14
 image: ./fluxcd_and_sveltos.jpg

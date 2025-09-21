@@ -1,11 +1,11 @@
 ---
 slug: Docusaurus with GitHub pages and Custom Domain
-title: "Migration: Docusaurus Blog on GitHub Pages with Custom Domain"
+title: "Docusaurus Blog Migration to GitHub Pages"
 authors: [egrosdou01]
 date: 2024-11-06
 image: ./its_dns.jpg
 description: A step-by-step guide setting up Docusaurus on GitHub using GitHub pages and a custom domain
-tags: [docusaurus,github,cloudflare,beginner-guide,troubleshooting-insights,"2024"]
+tags: [docusaurus,github,cloudflare,beginner-guide,tshoot-insights,"2024"]
 ---
 
 ## Introduction

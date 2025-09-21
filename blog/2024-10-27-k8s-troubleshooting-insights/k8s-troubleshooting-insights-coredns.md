@@ -1,11 +1,11 @@
 ---
 slug: k8s-troubleshooting-insights-coredns
-title: "K8s Troubleshooting Insights: Looking into CoreDNS Issues"
+title: "K8s Troubleshooting Insights: CoreDNS Issues"
 authors: [egrosdou01]
 date: 2024-10-27
 image: ./its_not_dns.jpg
 description: A step-by-step guide looking into DNS issues on Kubernetes clusters.
-tags: [kubernetes,open-source,troubleshooting-insights,rke2,"2024"]
+tags: [kubernetes,open-source,tshoot-insights,rke2,"2024"]
 ---
 
 ## Introduction

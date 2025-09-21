@@ -1,6 +1,6 @@
 ---
 slug: experimenting-vcluster-multitenancy
-title: "Explore Multitenancy with vCluster using GitOps - Updates"
+title: "Explore vCluster Multitenancy via GitOps Updates"
 authors: [egrosdou01]
 date: 2024-12-29
 updated: 2025-03-18

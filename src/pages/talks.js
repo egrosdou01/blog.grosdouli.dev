@@ -43,7 +43,9 @@ const structuredData = {
 
 function Talks() {
   return (
-    <Layout title="Talks">
+    <Layout title="Talks"
+    description="A space for sharing thoughts and conversations about ☁️ Cloud Native technologies, Kubernetes, and GitOps practices!"    
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

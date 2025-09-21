@@ -118,9 +118,9 @@ conference:
   label: Conference
   permalink: /conference
   description: General Tech Conferences
-troubleshooting-insights:
-  label: Troubleshooting Insights
-  permalink: /troubleshooting-insights
+tshoot-insights:
+  label: Tshoot Insights
+  permalink: /tshoot-insights
   description: Label attached to posts related to k8s insights
 vcluster:
   label: vCluster
