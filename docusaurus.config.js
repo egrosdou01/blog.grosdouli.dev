@@ -150,9 +150,41 @@ scripts: [
         defaultMode: 'light',
       },
     }),
-    plugins: [[ require.resolve('docusaurus-lunr-search'), {
-      languages: ['en', 'de'],
-    }]],
-};
-
+    plugins: [
+      [ require.resolve('docusaurus-lunr-search'), {
+        languages: ['en', 'de'],
+      }],
+      [
+        '@docusaurus/plugin-client-redirects',
+        {
+          redirects: [
+            {
+              to: '/blog/cilium-gateway-api-cert-manager-lets-encrypt',
+              from: '/blog/cilium-gateway-api-cert-manager-let\'s-encrypt',
+            },
+            {
+              to: '/blog/cilium-gateway-api-cert-manager-lets-encrypt',
+              from: '/blog/cilium-gateway-api-cert-manager-let%27s-encrypt',
+            },
+            {
+              to: '/blog/sveltos-whats-new-part-1',
+              from: '/blog/sveltos-what\'s-new-part-1',
+            },
+            {
+              to: '/blog/sveltos-whats-new-part-1',
+              from: '/blog/sveltos-what%27s-new-part-1',
+            },
+            {
+              to: '/blog/sveltos-whats-new-part-2',
+              from: '/blog/sveltos-what\'s-new-part-2',
+            },
+            {
+              to: '/blog/sveltos-whats-new-part-2',
+              from: '/blog/sveltos-what%27s-new-part-2',
+            },
+          ],
+        },
+      ],
+    ],
+  };
 export default config;
