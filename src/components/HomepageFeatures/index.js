@@ -35,7 +35,7 @@ const AboutMeList = [
     title: '✍️ Where I Publish',
     description: (
       <>
-        You can find my articles and insights here on <a href="/blog">my blog</a>, as well as on <a href="https://medium.com/@eleni.grosdouli">Medium</a>. Part of my work has been published in the <a href="hhttps://cilium.io/blog/categories/how-to/">Cilium Posts</a> area and at <a href="https://projectsveltos.github.io/sveltos/main/blogs/">ProjectSveltos</a>.
+        You can find my articles and insights here on <a href="/blog">my blog</a>, as well as on <a href="https://medium.com/@eleni.grosdouli">Medium</a>. Part of my work has been published in the <a href="https://cilium.io/blog/categories/how-to/">Cilium Posts</a> area and at <a href="https://projectsveltos.github.io/sveltos/main/blogs/">ProjectSveltos</a>.
       </>
     ),
   },
