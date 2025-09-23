@@ -9,7 +9,7 @@ import 'dotenv/config';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Eleni Grosdouli's Blog: DevOps, GitOps, Kubernetes & Cisco Insights | Cloud & On-Prem Solutions",
+  title: "Eleni Grosdouli: DevOps, GitOps & Cisco Insights",
   tagline: 'Passionate about breaking and fixing things in the world of tech! Follow me on this journey into DevOps and GitOps practices, exploring robust cloud-native solutions across on-prem and cloud datacenters!',
   favicon: 'https://avatars.githubusercontent.com/u/147995681?v=4',
 
@@ -52,7 +52,7 @@ scripts: [
       ({
         blog: {
           showReadingTime: true,
-          blogTitle: 'Eleni Grosdouli\'s DevOps, GitOps and more Blog',
+          blogTitle: 'Eleni\'s Blog',
           blogDescription: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
           postsPerPage: 10,
           blogSidebarTitle: 'Recent posts',
