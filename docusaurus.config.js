@@ -9,8 +9,8 @@ import 'dotenv/config';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Welcome to Eleni's Blog",
-  tagline: 'I am passionate about breaking and fixing things! Follow me on this journey of deploying DevOps and GitOps practices on on-prem and Cloud datacenters!',
+  title: "Eleni Grosdouli's Blog: DevOps, GitOps, Kubernetes & Cisco Insights | Cloud & On-Prem Solutions",
+  tagline: 'Passionate about breaking and fixing things in the world of tech! Follow me on this journey into DevOps and GitOps practices, exploring robust cloud-native solutions across on-prem and cloud datacenters!',
   favicon: 'https://avatars.githubusercontent.com/u/147995681?v=4',
 
   // Set the production url of your site here
@@ -52,8 +52,8 @@ scripts: [
       ({
         blog: {
           showReadingTime: true,
-          blogTitle: 'Eleni Blog',
-          blogDescription: 'Eleni Blog',
+          blogTitle: 'Eleni Grosdouli\'s DevOps, GitOps and more Blog',
+          blogDescription: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
           postsPerPage: 10,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 6,
@@ -90,10 +90,17 @@ scripts: [
     ({
       // Replace with your project's social card
       image: 'img/social-card.jpg',
+      metadata: [
+        { property: 'og:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps, Kubernetes & Cisco Insights" },
+        { property: 'og:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters." },
+        { name: 'twitter:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps, Kubernetes & Cisco Insights" },
+        { name: 'twitter:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters." },
+      ],
+      
       navbar: {
         title: 'Eleni Grosdouli',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Eleni Grosdouli Blog Logo',
           src: 'https://avatars.githubusercontent.com/u/147995681?v=4',
           width: 32,
           height: 32,

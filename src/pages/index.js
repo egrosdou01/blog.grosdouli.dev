@@ -12,12 +12,12 @@ function HomepageHeader() {
       <div className="mixmax">
         <div className="main-text-container">
           <p className="hero__title">Welcome to</p>
-          <h2 className="hero__title name reveal-text">Eleni's</h2>
-          <p className="hero__title">blog</p>
+          <h1 className="hero__title name reveal-text">Eleni Grosdouli's</h1>
+          <p className="hero__title">Blog</p>
           <p className="tagline">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
             <Link className="button button--secondary button--lg" to="/blog">
-              Explore Blog Posts 🖋️💡
+              Read My Blog 🖋️💡
             </Link>
           </div>
         </div>
@@ -31,8 +31,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      title={siteConfig.title}
+      description={siteConfig.description}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
