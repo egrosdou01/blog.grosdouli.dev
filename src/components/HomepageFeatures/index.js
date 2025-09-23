@@ -7,9 +7,9 @@ const AboutMeList = [
     title: '👋 Hello!',
     description: (
       <>
-        I am a DevOps Consulting Engineer at Cisco Solutions GmbH, specialising in DevOps and GitOps, networking, security, and endpoint management.
-        I love solving real-world problems, am a lifelong learner, and enjoy public speaking.
-        I constantly explore new tech in my home lab and share insights on my blog.
+        As a <strong>DevOps Consulting Engineer at Cisco Solutions GmbH</strong>, I specialise in cutting-edge <strong>DevOps and GitOps methodologies</strong>, alongside <strong>networking, security, and endpoint management</strong>.
+        I thrive on solving complex real-world problems, constantly learning, and sharing my expertise through public speaking and detailed blog posts.
+        My home lab is my playground!
       </>
     ),
   },
@@ -17,8 +17,8 @@ const AboutMeList = [
     title: '🚀 Passionate Explorer',
     description: (
       <>
-      I am excited about discovering discovering new things and experimenting in my home lab.
-      My motto, "Break and fix", is all about hands-on learning and embracing every opportunity to grow.
+      I am a <strong>passionate tech explorer</strong>, always eager to discover new things and experiment in my home lab.
+      My motto, "Break and fix", is all about hands-on learning and continuous growth in the ever-evolving <strong>cloud-native landscape</strong>.
       </>
     ),
   },
@@ -26,8 +26,8 @@ const AboutMeList = [
     title: '💻 Expertise',
     description: (
       <>
-      My expertise lies in DevOps and GitOps practices.
-      I create content about <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8s Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift</a> deployments in on-prem and cloud environments.
+      My core expertise spans <strong>DevOps and GitOps</strong> practices.
+      I regularly publish content and guides on <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8S Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift deployments</a>, covering robust solutions for <strong>on-prem and cloud environments</strong>.
       </>
     ),
   },
@@ -35,7 +35,7 @@ const AboutMeList = [
     title: '✍️ Where I Publish',
     description: (
       <>
-        You can find my articles and insights here on <a href="/blog">my blog</a>, as well as on <a href="https://medium.com/@eleni.grosdouli">Medium</a>. Part of my work has been published in the <a href="https://cilium.io/blog/categories/how-to/">Cilium Posts</a> area and at <a href="https://projectsveltos.github.io/sveltos/main/blogs/">ProjectSveltos</a>.
+        Discover my <strong>latest articles and technical insights</strong> right here on <a href="/blog">my blog</a> and on <a href="https://medium.com/@eleni.grosdouli">Medium</a>. My contributions are also featured in official platforms like the <a href="https://cilium.io/blog/categories/how-to/">Cilium Blog</a> and the <a href="https://projectsveltos.github.io/sveltos/main/blogs/">ProjectSveltos Blog</a>.
       </>
     ),
   },
@@ -43,7 +43,7 @@ const AboutMeList = [
     title: '🤝 Community Contributor',
     description: (
       <>
-      I enjoy creating material and contributing to the community through open-source projects, blog posts, and mentorship.
+      I enjoy <strong>creating material</strong> and contributing to the community through <strong>open-source</strong> projects, <strong>blog posts</strong>, and <strong>mentorship</strong>.
       </>
     ),
   },
@@ -51,7 +51,7 @@ const AboutMeList = [
     title: '🏃‍♀️ Sports Enthusiast',
     description: (
       <>
-      You will often find me enjoying nature or on the field, playing team sports. Boxing and kickboxing are my go-to activities, and
+      You will often find me enjoying nature or on the field, playing team sports. <strong>Boxing</strong> and <strong>kickboxing</strong> are my go-to activities, and
       recently, I joined a local women’s rugby team, where I am embracing the creativity of the sport itself. 🥊🏉
       </>
     ),
