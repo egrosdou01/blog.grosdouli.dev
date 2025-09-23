@@ -246,7 +246,6 @@ code {
   --animation-iterations: var(--iterations, 1);
   position: relative;
   animation-name: clip-text;
-  /* color: #FFF; */
   white-space: nowrap;
   cursor: default;
   
