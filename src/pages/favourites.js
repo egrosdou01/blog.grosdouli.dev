@@ -30,7 +30,7 @@ function Favourites() {
   };
 
   return (
-    <Layout title="Favourites"
+    <Layout title="Kubernetes & GitOps: My Top Training Picks"
       description="A space for sharing helpful learning materials about GitOps and DevOps approaches!"
       >
       <script
