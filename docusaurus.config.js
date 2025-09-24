@@ -52,7 +52,7 @@ scripts: [
       ({
         blog: {
           showReadingTime: true,
-          blogTitle: 'Eleni\'s Blog',
+          blogTitle: 'Welcome to my blog!',
           blogDescription: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
           postsPerPage: 10,
           blogSidebarTitle: 'Recent posts',
