@@ -4,7 +4,7 @@ title: "Sveltos Latest Kubernetes Deployments Pt.2"
 authors: [egrosdou01]
 date: 2025-01-23
 image: ./sveltos_logo.jpg
-description: Sveltos post-update release feedback - Part 2.
+description: Sveltos post-update release feedback - Part 2 - Initial thoughts and observations on the latest release.
 tags: [sveltos,open-source,beginner-guide,"2025"]
 ---
 

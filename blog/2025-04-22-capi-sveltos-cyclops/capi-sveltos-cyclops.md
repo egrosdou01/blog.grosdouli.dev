@@ -386,7 +386,7 @@ The approach simplifies both development and platform administration. The Svelto
 - [Sveltos What's New - Part 1](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-1.md)
 - [Sveltos What's New - Part 2](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-2.md)
 - [Sveltos Day 2 Operations](../2024-10-05-sveltos-day2-operations/sveltos-cilium-tetragon-day2-operations.md)
-- [Cyclops - Quick Start](https://cyclops-ui.com/docs/about/)
+- [Cyclops - Quick Start](https://github.com/cyclops-ui/cyclops)
 - [Click-to-Cluster: GitOps EKS Provisioning by Gianluca Mardente](https://medium.com/itnext/click-to-cluster-gitops-eks-provisioning-8c9d3908cb24)
 
 ## ✉️ Contact

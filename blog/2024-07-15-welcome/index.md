@@ -2,7 +2,7 @@
 slug: welcome-to-elenis-blog-post
 title: Welcome note
 authors: [egrosdou01]
-description: Welcome message to readers to land in the blog.
+description: Welcome to our blog! Dive into our latest insights.
 tags: ["2024"]
 ---
 

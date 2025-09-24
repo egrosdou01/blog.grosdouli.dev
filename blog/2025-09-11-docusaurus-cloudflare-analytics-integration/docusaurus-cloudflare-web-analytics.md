@@ -4,7 +4,7 @@ title: "Docusaurus: Cloudflare Web Analytics Integration"
 authors: [egrosdou01]
 date: 2025-09-11
 image: ./cloudflare_docusaurus.jpg
-description: A step-by-step guide integrating Docusaurus with Cloudflare Web Analytics.
+description: A comprehensive step-by-step guide to integrating a Docusaurus static site with Cloudflare Web Analytics for enhanced traffic insights.
 tags: [open-source,docusaurus,cloudflare,beginner-guide,"2025"]
 ---
 

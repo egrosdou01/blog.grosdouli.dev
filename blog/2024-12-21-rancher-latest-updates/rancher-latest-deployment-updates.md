@@ -1,6 +1,6 @@
 ---
 slug: rancher-latest-deployment-updates
-title: "Rancher Install with Nginx, Let’s Encrypt Updates"
+title: "Rancher Install Nginx, Let’s Encrypt"
 authors: [egrosdou01]
 date: 2024-12-21
 image: ./rancher_nginx_let's_encrypt_cloudflare.jpg

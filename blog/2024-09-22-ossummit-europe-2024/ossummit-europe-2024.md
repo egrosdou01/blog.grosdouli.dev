@@ -4,7 +4,7 @@ title: "OSSummit Europe 2024"
 authors: [egrosdou01]
 date: 2024-09-22
 image: ./ossummit_europe_2024.jpg
-description: An outline of the Open Source Summit conference in Austria 2024.
+description: A detailed outline and overview of the Open Source Summit conference held in Austria in 2024, highlighting key sessions and speakers.
 tags: [conference,open-source,kubernetes,gitops,devops,"2024"]
 ---
 
