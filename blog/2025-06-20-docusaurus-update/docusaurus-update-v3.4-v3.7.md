@@ -4,7 +4,7 @@ title: "Docusaurus: Update from v3.4.0 to v3.7.0"
 authors: [egrosdou01]
 date: 2025-06-20
 image: ./docusaurus.jpg
-description: This is a Docusaurus note update from 3.4.0 to v3.7.0.
+description: A detailed Docusaurus note outlining the process and considerations for updating from version 3.4.0 to the latest v3.7.0.
 tags: [docusaurus,github,beginner-guide,"2025"]
 ---
 

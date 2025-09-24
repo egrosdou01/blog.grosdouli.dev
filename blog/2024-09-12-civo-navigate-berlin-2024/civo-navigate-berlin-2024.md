@@ -4,7 +4,7 @@ title: "Civo Navigate Berlin 2024"
 authors: [egrosdou01]
 date: 2024-09-12
 image: ./civo_navigate_berlin_2024.png
-description: An outline of the Civo Navigate conference in Berlin 2024.
+description: A detailed outline and overview of the Civo Navigate conference held in Berlin in 2024, highlighting key sessions and speakers.
 tags: [conference,open-source,kubernetes,gitops,devops,"2024"]
 ---
 

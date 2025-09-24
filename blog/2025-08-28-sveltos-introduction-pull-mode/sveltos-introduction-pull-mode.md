@@ -4,7 +4,7 @@ title: "Sveltos: Introduction to Pull Mode"
 authors: [egrosdou01]
 date: 2025-08-28
 image: ./sveltos_pull_mode.jpg
-description: An introduction to Sveltos Pull Mode feature.
+description: An in-depth introduction to Sveltos's Pull Mode feature, explaining its core functionalities and benefits for Kubernetes cluster management.
 tags: [open-source,sveltos,rke2,civo cloud,aws,aks,beginner-guide,"2025"]
 ---
 
