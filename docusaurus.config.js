@@ -9,7 +9,7 @@ import 'dotenv/config';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "DevOps, GitOps & More",
+  title: "Grosdouli's Blog",
   tagline: 'Passionate about breaking and fixing things in the world of tech! Follow me on this journey into DevOps and GitOps practices, exploring robust cloud-native solutions across on-prem and cloud datacenters!',
   favicon: 'https://avatars.githubusercontent.com/u/147995681?v=4',
 
