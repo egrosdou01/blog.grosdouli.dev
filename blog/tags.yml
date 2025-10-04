@@ -6,6 +6,10 @@
   label: "2025"
   permalink: /2025
   description: "This tag marks blog posts that were published online during the year 2025, capturing the tech trends and insights from that period."
+clusterapi:
+  label: Cluster API
+  permalink: /clusterapi
+  description: "Cluster API is a Kubernetes sub-project focused on providing declarative APIs and tooling to simplify provisioning, upgrading, and operating multiple Kubernetes clusters."
 argoCD:
   label: ArgoCD
   permalink: /argocd
