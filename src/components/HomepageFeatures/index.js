@@ -73,7 +73,7 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <Heading as="h1" className="text--center margin-bottom--lg"> A little bit about myself </Heading>
+        <Heading as="h2" className="text--center margin-bottom--lg"> A little bit about myself </Heading>
         <div className="row">
           {AboutMeList.map((props, idx) => (
             <AboutMe key={idx} {...props} />
