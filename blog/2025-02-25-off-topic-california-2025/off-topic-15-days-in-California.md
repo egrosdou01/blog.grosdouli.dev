@@ -4,7 +4,7 @@ title: "Off Topic: 15 Days in California"
 authors: [egrosdou01]
 date: 2025-02-25
 description: Out of the ordinary content. Two weeks in California.
-tags: [off-topic,"2025"]
+tags: [off-topic]
 ---
 
 I love it when work and holidays come together! In this post, I am sharing my recent travel to California during February 2025 - a bit of an off-topic post for my usual content.

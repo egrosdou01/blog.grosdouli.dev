@@ -5,20 +5,20 @@ authors: [egrosdou01]
 date: 2024-07-15
 image: ./cilium_sveltos_eks.jpg
 description: Provide detailed steps on how to install Cilium CNI on EKS with Sveltos as the tool for automated add-ons and deployments.
-tags: [sveltos,cilium,open-source,kubernetes,gitops,devops,"2024"]
+tags: [sveltos,cilium,open-source,kubernetes,gitops,devops]
 ---
 
 ## Introduction
 
-In today's blog post, we will demonstrate an easy way of deploying and controlling [Cilium](https://docs.cilium.io/en/v1.14/) on an [EKS](https://aws.amazon.com/eks/) cluster with [Sveltos](https://github.com/projectsveltos). 
+In today's blog post, we will demonstrate an easy way of deploying and controlling [Cilium](https://docs.cilium.io/en/v1.14/) on an [EKS](https://aws.amazon.com/eks/) cluster with [Sveltos](https://github.com/projectsveltos).
 
-As the majority of the documentation out there provides a step-by-step installation directly with the Helm chart commands, we decided to demonstrate a different approach, the GitOps approach, with the use of [Sveltos ClusterProfile](https://projectsveltos.github.io/sveltos/addons/addons/) CRD (Custom Resource Definition).
+Most documentation shows step-by-step installation using Helm chart commands. So, we chose to show a different way: the GitOps approach. We will use the [Sveltos ClusterProfile](https://projectsveltos.github.io/sveltos/addons/addons/) CRD (Custom Resource Definition) for this.
 
 ![title image reading "Cilium on EKS with Sveltos Diagram"](cilium_sveltos_eks.jpg)
 
 <!--truncate-->
 
-We will utilise the Terraform [AWS EKS module](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) to create an EKS cluster. Once the cluster is up and running, we will register it with Sveltos. Then, we will update the [`aws-core` daemonset](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html) to support  ENI mode and remove the `kube-proxy` Kubernetes resources as Cilium will take over.
+We will utilise the [Terraform AWS EKS](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest) module to create an EKS cluster. Once the cluster is ready, we will get registered with Sveltos. The [`aws-core` daemonset](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html) to support the ENI mode will get updated and the kube-proxy will be removed from the setup. Cilium will take over proxying tasks.
 
 ## Lab Setup
 
@@ -43,7 +43,7 @@ We will utilise the Terraform [AWS EKS module](https://registry.terraform.io/mod
 To follow along with the blog post, ensure the below are satisfied.
 
 1. AWS Service Account
-1. AWS CLI installed
+1. AWS CLI is installed
 1. Terraform installed
 1. kubectl installed
 1. sveltosctl installed
@@ -56,7 +56,7 @@ The easiest way to spin up an EKS cluster is by following the recommended traini
 
 - GitHub Repository: https://github.com/hashicorp/learn-terraform-provision-eks-cluster
 
-To execute the Terraform plan, a valid `AWS Service Account` should be available with the right permissions to create the required resources. For more information about the AWS Service Accounts, have a look [here](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+For a successful Terraform plan, a valid `AWS Service Account` with the right permissions to create the required resources should be available. For more information about the `AWS Service Accounts`, have a look [here](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
 
 To get the cluster `kubeconfig` and start interacting with the cluster, the **AWS CLI** is used. Modify and execute the command below.
 
@@ -65,12 +65,12 @@ $ aws eks update-kubeconfig --region <the region the cluster created> --name <th
 ```
 
 :::tip
-The command will save the kubeconfig in the default directory `~/.kube/config`. If the file should be stored elsewhere, pass the argument `--kubeconfig` and specify the output directory. For more details, check out the [link](https://docs.aws.amazon.com/cli/latest/reference/eks/update-kubeconfig.html).
+The command will save the kubeconfig in the default directory `~/.kube/config`. Pass the argument --kubeconfig and specify the output directory to store it elsewhere. For more details, check out the [link](https://docs.aws.amazon.com/cli/latest/reference/eks/update-kubeconfig.html).
 :::
 
 ## Step 2: Register Cluster with Sveltos
 
-Once we have access to the cluster, it is time to proceed with the Sveltos cluster registration. As this is a cloud Kubernetes cluster, we need to ensure Sveltos has the **right set of permissions** to perform the Kubernetes deployments and add-ons. To do that, we will utilise `sveltosctl` and generate a new kubeconfig file.
+Once we have access to the cluster, it is time to proceed with the Sveltos cluster registration. We need to ensure Sveltos has the **right set of permissions** to perform the Kubernetes deployments and add-ons. To do that, we will utilise the `sveltosctl` and generate a new kubeconfig file.
 
 Download the `sveltosctl` binary [here](https://github.com/projectsveltos/sveltosctl/releases).
 
@@ -98,7 +98,7 @@ $ sveltosctl register cluster --namespace=<namespace> --cluster=<cluster name> \
     --labels=env=test
 ```
 
-The command above will register the EKS cluster with Sveltos on the mentioned **namespace**, and **name** and will attach the cluster **label** `env=test` defined.
+The command above will register the EKS cluster with Sveltos in the specified namespace. It will also name the cluster and attach the label `env=test`.
 
 :::note
 If the namespace does not exist in the management cluster, the command will fail with the namespace not found error. Ensure the defined namespace exists in the cluster before registration.
@@ -115,7 +115,7 @@ test             eks-test01   true    v1.28.10-eks-49c6de4   env=test,sveltos-ag
 
 ## Step 3: Update the EKS cluster
 
-As we would like to use Cilium with the Kube Proxy replacement and the [ENI](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode-awsvpc.html) mode enabled, we need to perform additional actions. As the `kube-proxy` daemonset is already installed, we have to remove all related resources and update the `aws-node` daemonset to support the ENI mode.
+As we would like to use Cilium with the Kube Proxy replacement and the [ENI](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode-awsvpc.html) mode enabled, we need to perform additional actions. We need  to remove all related `kube-proxy` resources and update the `aws-node` `daemonset` to support the defined mode.
 
 ### Validation
 

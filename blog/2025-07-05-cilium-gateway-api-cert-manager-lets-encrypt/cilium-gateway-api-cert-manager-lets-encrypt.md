@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-07-10
 image: ./cilium_gateway_api_lets_encrypt.jpg
 description: A step-by-step guide working with Cilium Gateway API, cert-manager, and let's encrypt.
-tags: [cilium,gateway-api,cert-manager,let's encrypt,cloudflare,argoCD,devops,beginner-guide,"2025"]
+tags: [cilium,gateway-api,cert-manager,let's encrypt,cloudflare,argoCD,devops,beginner-guide]
 ---
 
 **Summary**:
@@ -19,9 +19,9 @@ Learn how to integrate Cilium, Gateway API, cert-manager, let's encrypt and Clou
 
 Whether you are working in a customer environment or a lab setup, being able to automatically provision TLS certificates can save both time and effort. Since the certificate lifecycle is managed by a utility, there is no need for manual intervention or troubleshooting. This means fewer headaches and happier DevOps engineers on the team! 😊
 
-In a [previous post](https://medium.com/itnext/cilium-gateway-api-cert-manager-and-lets-encrypt-updates-cc730818cb17), we described how to utilise [Cilium](https://cilium.io/), [Gateway API](https://gateway-api.sigs.k8s.io/), [cert-manager](https://cert-manager.io/), [let's encrypt](https://letsencrypt.org/) and [Cloudflare](https://www.cloudflare.com/) to dynamically provision TLS certificates for an [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment using an RKE2 cluster. The blog post is an update that includes recent versions and changes performed on individual components.
+In a [previous post](https://medium.com/itnext/cilium-gateway-api-cert-manager-and-lets-encrypt-updates-cc730818cb17), we covered how to use [Cilium](https://cilium.io/), [Gateway API](https://gateway-api.sigs.k8s.io/), [cert-manager](https://cert-manager.io/), [let's encrypt](https://letsencrypt.org/) and [Cloudflare](https://www.cloudflare.com/). This setup helps dynamically provision TLS certificates for an [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) deployment on an RKE2 cluster. The blog post is an update that includes recent versions and changes made to individual components.
 
-We do not cover the theory of each component used. For a better understanding of the tools, check out the official documentation provided. In a nutshell, Cilium is used as our Container Network Interface (CNI), cert-manager is used for handling the lifecycle of certificates, let's-encrypt issues certificates and Cloudflare is the provider where we store a valid DNS domain.  Let's dive in!
+We do not cover the theory of each component used. For a better understanding of the tools, check out the official documentation provided. Cilium acts as our Container Network Interface (CNI). Cert-manager manages the lifecycle of certificates. Let's Encrypt issues those certificates, and we store a valid DNS domain with Cloudflare. Let's dive in!
 
 ## Lab Setup
 
@@ -49,7 +49,7 @@ The showcase repository is available [here](https://github.com/egrosdou01/blog-p
 
 ### Gateway API and L2 Announcements
 
-An RKE2 cluster is already deployed and in a `Ready` state with Cilium as the default CNI. As Cilium is a Helm chart deployment, we will update the provided values and redeploy the Helm chart. The below values are required to enable `Gateway API`, `L2Annoucements` and `ExternalIPs` advertisement.
+An RKE2 cluster is already deployed and in a `Ready` state with Cilium as the default CNI. As Cilium is a Helm chart deployment, we will update the provided values and redeploy the Helm chart. The below values are required to enable `Gateway API`, `L2Announcements` and `ExternalIPs` advertisement.
 
 ```yaml showLineNumbers
 externalIPs:
@@ -72,7 +72,7 @@ $ helm upgrade rke2-cilium rke2-charts/rke2-cilium --version 1.17.100 --namespac
 
 ### Gateway API Specific
 
-To enable Cilium with Gateway API v1.2.0, we need to install the required Custom Resource Definitions (CRDs) to the cluster. For more information, check out the link [here](https://docs.cilium.io/en/v1.17/network/servicemesh/gateway-api/gateway-api/#gs-gateway-api).
+To enable Cilium with Gateway API v1.2.0, we need to install the required Custom Resource Definitions (CRDs) in the cluster. For more information, check out the link [here](https://docs.cilium.io/en/v1.17/network/servicemesh/gateway-api/gateway-api/#gs-gateway-api).
 
 ```bash
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/gateway-api/v1.2.0/config/crd/standard/gateway.networking.k8s.io_gatewayclasses.yaml
@@ -116,7 +116,7 @@ cilium   io.cilium/gateway-controller   True       4m28s
 ## IPv4 Pool and L2Accouncements
 
 :::note
-If you have an IPAM in place and BGP already working, you can skip this section.
+If you have an IPAM in place and BGP is already working, you can skip this section.
 :::
 
 ### IPv4 Pool
@@ -254,7 +254,7 @@ cloudflare-issuer   True    13s
 
 ### Gateway Resource
 
-The `Gateway` resource is an instance of traffic handling infrastructure. Once deployed, it will create a service of type `LoadBalancer` within the `argocd` namespace. If routing is configured properly in your lab, the ArgoCD instance will be accessible via the FQDN. Due to the annotation set to the resource, it will notify cert-manager to initiate the creation of a certificate named `argocd-server-tls`.
+The `Gateway` resource is an instance of traffic-handling infrastructure. Once deployed, it will create a service of type `LoadBalancer` within the `argocd` namespace. If routing is configured properly in your lab, the ArgoCD instance will be accessible via the FQDN. Due to the annotation set to the resource, it will notify cert-manager to initiate the creation of a certificate named `argocd-server-tls`.
 
 ```yaml showLineNumbers
 ---
@@ -367,7 +367,7 @@ If a 307 Temporary Redirect HTTP Status code is returned, modify the `argocd-cmd
 
 ## Conclusion
 
-Integrating **Cilium** and **cert-manager** with **Gateway API** makes TLS certificate management for ArgoCD and other cloud-native applications **simple** and **efficient**. Cilium provides easy and native support for Gateway API, while cert-manager automates certificate provisioning with Let's Encrypt. If the correct solutions are put together, we can achieve a **secure**, **streamlined** solution which is **easy** to **set up** and **maintain**.
+Integrating **Cilium** and **cert-manager** with **Gateway API** makes TLS certificate management for ArgoCD and other cloud-native applications **simple** and **efficient**. Cilium makes it simple to use the Gateway API. Also, cert-manager automates getting certificates from Let's Encrypt. If the correct solutions are put together, we can achieve a **secure**, **streamlined** solution which is **easy** to **set up** and **maintain**.
 
 ## Resources
 

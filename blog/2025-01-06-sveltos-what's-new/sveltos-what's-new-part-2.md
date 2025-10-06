@@ -5,12 +5,12 @@ authors: [egrosdou01]
 date: 2025-01-23
 image: ./sveltos_logo.jpg
 description: Sveltos post-update release feedback - Part 2 - Initial thoughts and observations on the latest release.
-tags: [sveltos,open-source,beginner-guide,"2025"]
+tags: [sveltos,open-source,beginner-guide]
 ---
 
 ## Introduction
 
-In [Part 1](sveltos-what's-new-part-1.md) of the series, we demonstrated how to install [Sveltos](https://github.com/projectsveltos) on a Kubernetes **management** cluster, deploy [Kyverno](https://kyverno.io/docs/) and afterwards use the [sveltosctl](https://projectsveltos.github.io/sveltos/getting_started/sveltosctl/sveltosctl/), the [Sveltos Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/dashboard/), alongside the [Grafana Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/grafanadashboard/) for observability. In today's post, we will take the next step and talk about the `Dry-run` feature, how to express a Sveltos `ClusterProfile` as a `template` and what the latest `templateResourceRefs` are.
+In [Part 1](sveltos-what's-new-part-1.md) of the series, we showed how to install [Sveltos](https://github.com/projectsveltos) on a Kubernetes **management** cluster. We also deployed [Kyverno](https://kyverno.io/docs/). After that, we used [sveltosctl](https://projectsveltos.github.io/sveltos/getting_started/sveltosctl/sveltosctl/), the [Sveltos Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/dashboard/), and the [Grafana Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/grafanadashboard/) for observability. In today's post, we will take the next step and talk about the `Dry-run` feature, how to express a Sveltos `ClusterProfile` as a `template` and what the latest `templateResourceRefs` are.
 <!--truncate-->
 
 ## Pre-requisites
@@ -76,7 +76,7 @@ From the `--raw-diff` output it is clear that the replica count of the `admissio
 
 ## Express Kyverno ClusterProfile as a Template
 
-With the latest Sveltos [release](https://github.com/orgs/projectsveltos/discussions/893), we can express a Sveltos `ClusterProfile` as a **template**. This feature allows us not only to utilise a **GitOps** approach towards Kubernetes deployments but create a dynamic and scalable configuration for a fleet of clusters. In this section, we will update the Kyverno Sveltos `ClusterProfile` to a template and **set conditions** for the Kyverno deployment based on the managed clusters' **Kubernetes version**.
+With the latest Sveltos [release](https://github.com/orgs/projectsveltos/discussions/893), we can express a Sveltos `ClusterProfile` as a **template**. This feature allows us not only to utilise a **GitOps** approach towards Kubernetes deployments but also to create a dynamic and scalable configuration for a fleet of clusters. In this section, we will update the Kyverno Sveltos `ClusterProfile` to a template and **set conditions** for the Kyverno deployment based on the managed clusters' **Kubernetes version**.
 
 ```yaml
 apiVersion: config.projectsveltos.io/v1beta1
@@ -144,7 +144,7 @@ As expected, `cluster01` got the Kyverno deployment **v3.2.8** while `cluster02`
 
 ## Sveltos templateResourceRefs
 
-The `templateResourceRefs` is used by Sveltos within a ClusterProfile/Profiles to retrieve resources in a **Sveltos management cluster**. The **name field** in the `templateResourceRefs` section can be a template. This allows users to dynamically generate names based on information available during deployment plus, making the dynamic automated deployments even easier.
+The `templateResourceRefs` is used by Sveltos within a ClusterProfile/Profiles to retrieve resources in a **Sveltos management cluster**. The **name field** in the `templateResourceRefs` section can be a template. This allows users to dynamically generate names based on information available during deployment, making the dynamic automated deployments even easier.
 
 The available cluster information can be found below.
 

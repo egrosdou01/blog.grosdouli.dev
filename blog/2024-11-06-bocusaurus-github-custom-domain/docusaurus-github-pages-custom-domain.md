@@ -4,15 +4,15 @@ title: "Docusaurus Blog Migration to GitHub Pages"
 authors: [egrosdou01]
 date: 2024-11-06
 image: ./its_dns.jpg
-description: A step-by-step guide setting up Docusaurus on GitHub using GitHub pages and a custom domain.
-tags: [docusaurus,github,cloudflare,beginner-guide,tshoot-insights,"2024"]
+description: A step-by-step guide setting up Docusaurus on GitHub using GitHub Pages and a custom domain.
+tags: [docusaurus,github,cloudflare,beginner-guide,tshoot-insights]
 ---
 
 ## Introduction
 
-Migration alert! For a while, I wanted to move my [Docusaurus](https://docusaurus.io/docs/next) blog to a new custom domain. In the beginning, it appeared like an overwhelming task due to time constraints and of course DNS! However, after some research, I finally managed to make the migration smooth and hassle-free. This blog post is meant to save you time and frustration if you are looking to deploy a Docusaurus site on GitHub Pages with your custom domain without running into DNS problems along the way!
+Migration alert! For a while, I wanted to move my [Docusaurus](https://docusaurus.io/docs/next) blog to a new custom domain. In the beginning, it appeared to be an overwhelming task due to time constraints and, of course, DNS! Nonetheless, after some research, I finally managed to make the migration smooth and hassle-free. This blog post is meant to save you time and frustration if you are looking to deploy a Docusaurus site on GitHub Pages with your custom domain without running into DNS problems along the way!
 
-**Funny Fact**: After spending the last couple of days troubleshooting DNS issues (fun, right?), a colleague and good friend Justus surprised me with this awesome t-shirt! 😂
+**Funny Fact**: After spending the last couple of days troubleshooting DNS issues (fun, right?), a colleague and good friend, Justus, surprised me with this awesome T-shirt! 😂
 
 Now, let's dive into the configuration! 👇
 
@@ -22,7 +22,7 @@ Now, let's dive into the configuration! 👇
 
 ## Private DNS Domain
 
-Before we even begin, ensure you own a valid DNS domain. Once this is done, decide the domain name you would like end-users to reach your blog.
+Before we even begin, ensure you own a valid DNS domain. Once this is done, decide on the domain name you would like end users to reach your blog.
 
 ## GitHub Repository
 
@@ -30,7 +30,7 @@ For the GitHub repository, ensure it is publicly available and choose a meaningf
 
 ## Update docusaurus.config.js
 
-To use GitHub pages with a custom domain, we need to perform changes on the `baseURL` and `url` variables within the `docusaurus.config.js` file. Below are the required changes.
+To use GitHub Pages with a custom domain, we need to perform changes to the `baseURL` and `url` variables within the `docusaurus.config.js` file. Below are the required changes.
 
 ```js
 // This is the URL for your post. It can also be considered the top-level hostname
@@ -62,7 +62,7 @@ To allow the blog to be available under a custom domain, we have to include the 
 1. Login to GitHub
 1. Open the repository created in a previous step
 1. Navigate to **Settings > Code and automation > Pages**
-1. On the right-hand-side, locate the `Custom domain` option
+1. On the right-hand side, locate the `Custom domain` option
 1. Add the domain you would like the blog to be available
     - Example: `blog.<your domain>`
 1. Click Save
@@ -73,14 +73,14 @@ Once the `save` button is clicked, a `CNAME` file including the custom domain pr
 :::
 
 :::note
-GitHub will check whether the custom domain is valid, and will also take care of the HTTPS enforcement.
+GitHub will check whether the custom domain is valid and will also take care of the HTTPS enforcement.
 :::
 
 Have a look at the different custom domain resources listed [here](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
 ## Cloudflare CNAME Setup
 
-We are almost done with the deployment, we just need to create a new `CNAME` in Cloudflare. To do that, follow the steps listed below.
+We are almost done with the deployment; we need to create a new `CNAME` in Cloudflare. To do that, follow the steps listed below.
 
 1. Login to Cloudflare
 1. Click on your domain name
@@ -90,7 +90,7 @@ We are almost done with the deployment, we just need to create a new `CNAME` in 
 
 ### Validate
 
-1. Go back to GitHub pages and ensure the Domain check is green
+1. Go back to GitHub Pages and ensure the Domain check is green
 1. Try to reach the blog on the custom domain via a browser or use CURL
 
 :::tip

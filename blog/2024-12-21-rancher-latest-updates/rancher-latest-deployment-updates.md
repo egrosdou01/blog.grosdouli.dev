@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-12-21
 image: ./rancher_nginx_let's_encrypt_cloudflare.jpg
 description: A step-by-step guide to Rancher on a Kubernetes cluster using Nginx Ingress Controller and Let's Encrypt.
-tags: [kubernetes,open-source,rancher,cloudflare,let's encrypt,"2024"]
+tags: [kubernetes,open-source,rancher,cloudflare,let's encrypt]
 ---
 
 ## Introduction
@@ -39,20 +39,27 @@ For the EKS deployment, ensure the **user** interacting with the `kubeconfig` 
 
 ## Prerequisites
 
-To follow along, ensure the below points are satisfied.
+To follow along, ensure the points below are satisfied.
 
 - A valid Kubernetes Cluster that meets the [installation requirements](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/rancher-v2-10-1/)
 - A valid DNS domain name
 - kubectl installed
-- Helm CLI installed
+- Helm CLI is installed
 
 ## Scenario
 
-The deployment demonstrated some months back worked on a Rancher server `v2.8.4` version. However, I came to realise with the latest Rancher version, the same approach no longer works. The issue for me was that I was unable to deploy downstream RKE2 clusters due to a `cloud-init` error pointing to an incorrect TLS certificate hash. Thus, no RKE2 downstream clusters were deployed. I had a similar experience with a `v2.7.x` installation and knew somehow how to overcome the issues.
+The deployment demonstrated some months back worked on a Rancher server `v2.8.4` version. But, I came to realise with the latest Rancher version, the same approach no longer works. The issue for me was that I was unable to deploy downstream RKE2 clusters due to a `cloud-init` error pointing to an incorrect TLS certificate hash. Thus, no RKE2 downstream clusters were deployed. I had a similar experience with a `v2.7.x` installation and knew somehow how to overcome the issues.
 
 ## What's new with Rancher v2.10.0
 
-With the latest Rancher release, support for Kubernetes **v1.31** was introduced while discontinuing support for **v1.27**, urging users to upgrade to **v1.28** or later before updating. Key enhancements include a new annotation for specifying the creator's principal name, improved handling of SAML authentication, and the capture of token usage times. The **System Upgrade Controller** deployment has been updated for smoother Kubernetes upgrades.
+With the latest Rancher release, support for Kubernetes **v1.31** was introduced while discontinuing support for **v1.27**, urging users to upgrade to **v1.28** or later before updating.
+
+Key enhancements are:
+- A new annotation for the creator's principal name
+- Better handling of SAML authentication
+- Tracking of token usage times
+
+The **System Upgrade Controller** deployment has been updated for smoother Kubernetes upgrades.
 
 Regarding the **Dashboard**, it has been upgraded to **Vue 3**, improving performance and data configuration options and for authentication, **SAML logout-all** is supported, and **Fleet v0.11.0** enhances log and status messages. **RBAC** now supports user impersonation via Rancher proxy and allows opting out of default RBAC settings for new clusters.
 

@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-02-06
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
 description: A step-by-step guide installing a Talos Cluster on Proxmox with OpenTofu - Part 3.
-tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide,"2025"]
+tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide]
 ---
 
 ## Introduction
@@ -45,7 +45,7 @@ We assume you already have the basic [project structure](https://github.com/egr
 
 ## Module Tests
 
-The module was primarily tested from a local MacBook however, it was also tested from an `Ubuntu 22.04` virtual machine within the Proxmox environment.
+The module underwent testing mainly on a local MacBook; it also underwent testing on an `Ubuntu 22.04` virtual machine within the Proxmox environment.
 
 ## GitHub Resources
 

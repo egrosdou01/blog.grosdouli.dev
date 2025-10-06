@@ -5,12 +5,12 @@ authors: [egrosdou01]
 date: 2025-04-08
 image: ./what_gives_people_joy.jpg
 description: A step-by-step guide to dual-stack deployment on a Rancher RKE2 cluster with Cilium complementary features.
-tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6,"2025"]
+tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6]
 ---
 
 ## Introduction
 
-Welcome to **part 3** of the `dual-stack` series! In [part 1](proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md) and [part 2](proxmox-pfsense-rke2-dual-stack-cilium.md), we discovered how to enable `dual-stack` on a Proxmox server using our Internet Provider and deploy RKE2 clusters. In today's post, we continue our journey and enable a `Cilium Cluster Mesh` between two RKE2 clusters. The goal is to share `IPv4` and `IPv6` services between the different clusters effortlessly. Let’s dive in!
+Welcome to **part 3** of the `dual-stack` series! In [part 1](proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md) and [part 2](proxmox-pfsense-rke2-dual-stack-cilium.md), we discovered how to enable `dual-stack` on a Proxmox server using our Internet provider and deploy RKE2 clusters. In today's post, we continue our journey and enable a `Cilium Cluster Mesh` between two RKE2 clusters. The goal is to share `IPv4` and `IPv6` services between the different clusters effortlessly. Let’s dive in!
 
 ![title image reading "What gives people joy?"](what_gives_people_joy.jpg)
 <!--truncate-->
@@ -43,7 +43,7 @@ Welcome to **part 3** of the `dual-stack` series! In [part 1](proxmox-pfsense-fr
 
 ## Prerequisites
 
-Go through **part 1** and **part 2** of the series and ensure any prerequisites are met. If the preparation is taken care of, two `dual-stack` RKE2 clusters powered with `Cilium` will be ready.
+Go through **part 1** and **part 2** of the series and ensure any prerequisites are met. If the preparation is taken care of, two `dual-stack` RKE2 clusters powered by `Cilium` will be ready.
 
 ## What is a Cluster Mesh?
 
@@ -51,7 +51,7 @@ A `Cluster Mesh` can connect internal Kubernetes resources between two or more c
 
 ## Why Cluster Mesh?
 
-In hybrid multi-cloud setups, we need to seamlessly connect multiple Kubernetes clusters, and share resources between them. The network connectivity challenges should be abstracted from the end-user or the operator and allow the second to achieve fault isolation, scalability and geographical distribution in a simple manner. In my opinion, [Cilium Cluster Mesh](https://docs.cilium.io/en/stable/network/clustermesh/clustermesh/#clustermesh) made the setup and deployment easy. A Cluster Mesh was easily created between multiple clusters, regardless of the Kubernetes distribution being used.
+In hybrid multi-cloud setups, we need to seamlessly connect multiple Kubernetes clusters, and share resources between them. Network connectivity issues should be hidden from the end-user or operators. This way, they can easily achieve fault isolation, scalability, and geographical distribution. [Cilium Cluster Mesh](https://docs.cilium.io/en/stable/network/clustermesh/clustermesh/#clustermesh) made the setup and deployment easy. A Cluster Mesh was easily created between multiple clusters, regardless of the Kubernetes distribution being used.
 
 :::note
 At this point, it is important to highlight that the **Cluster Mesh Requirements** must met before proceeding to the next steps.
@@ -59,7 +59,7 @@ At this point, it is important to highlight that the **Cluster Mesh Requirements
 
 ### cluster01 Cluster Mesh Configuration
 
-The Cilium installation in an RKE2 setup is expressed as a Helm Chart. To check the Helm Charts installed, perform the steps below.
+The Cilium installation in an RKE2 setup is expressed as a Helm chart. To check the Helm chart installed, perform the steps below.
 
 1. Get a copy of the `kubeconfig`
 1. ```$ export KUBECONFIG=<directory of the kubeconfig>```
@@ -75,7 +75,7 @@ rke2-ingress-nginx              	kube-system	1       	2025-01-25 20:30:17.033314
 ...
 ```
 
-To form a Cluster Mesh, first, extract the current Cilium Helm Chart values. Then, update the values file and include the Cluster Mesh configuration.
+To form a Cluster Mesh, first, extract the current Cilium Helm chart values. Then, update the values file and include the Cluster Mesh configuration.
 
 ```bash
 $ helm get values rke2-cilium -n kube-system -o yaml > values_cluster01.yaml
@@ -114,14 +114,14 @@ clustermesh:
   useAPIServer: true # This is required for the Cluster Mesh setup
 ```
 
-The final step is to re-apply the Helm Chart with the changes. That will enable the `clustermesh-apiserver` to form TLS connections between the clusters.
+The final step is to re-apply the Helm chart with the changes. That will enable the `clustermesh-apiserver` to form TLS connections between the clusters.
 
 ```bash
 $ helm upgrade rke2-cilium rke2-charts/rke2-cilium --version 1.16.400 --namespace kube-system -f values_cluster01.yaml
 ```
 
 :::tip
-As this is a Lab setup, I am more than happy to connect the cluster via a `NodePort` service. However, for **production** environments, it is recommended to use a `LoadBalancer` service because if the configured node is gone, the mesh will be unformed.
+As this is a Lab setup, I am more than happy to connect the cluster via a `NodePort` service. But, for **production** environments, it is recommended to use a `LoadBalancer` service because if the configured node is gone, the mesh will be unformed.
 :::
 
 ### cluster02 Cluster Mesh Configuration

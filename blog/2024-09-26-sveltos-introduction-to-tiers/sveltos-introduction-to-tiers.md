@@ -5,14 +5,14 @@ authors: [egrosdou01]
 date: 2024-09-26
 image: ./sveltos_tiers.jpg
 description: An introduction to the Sveltos Tiers and how it can be used on Day-2 Operations.
-tags: [sveltos,open-source,kubernetes,gitops,devops,"2024"]
+tags: [sveltos,open-source,kubernetes,gitops,devops]
 ---
 
 ## Introduction
 
 In previous posts, we outlined how [Sveltos](https://github.com/projectsveltos) allows Platform and tenant administrators to streamline Kubernetes applications and add-on deployments to a fleet of clusters. In today's blog post, we will take a step further and demonstrate how easy it is to **target** and **update** a **subset** of resources targeted by **multiple configurations**. By multiple configurations, we refer to the [Sveltos ClusterProfile or Profile](https://projectsveltos.github.io/sveltos/addons/addons/) Custom Resource Definitions (CRDs). The demonstration focuses on **day-2 operations** as we provide a way to **update and/or remove** resources without affecting **production** operations.
 
-This functionality is called [tiers](https://projectsveltos.github.io/sveltos/deployment_order/tiers/). Sveltos tiers provide a solution for managing the **deployment priority** when resources are targeted by multiple configurations. Tiers are easily integrated into existing ClusterProfile/Profile definitions alongside defining the deployment order control and straightforwardly override behaviour.
+This functionality is called [tiers](https://projectsveltos.github.io/sveltos/deployment_order/tiers/). Sveltos tiers provide a solution for managing the **deployment priority** when resources are targeted by multiple configurations. They fit into current ClusterProfile/Profile definitions. They also set the deployment order and easily override behaviour.
 
 Today, we will cover the case of updating the [Cilium CNI](https://docs.cilium.io/en/latest/) in a subnet of clusters with the label set to `tier:zone2` without affecting the monitoring capabilities defined in the **same** ClusterProfile/Profile.
 
@@ -311,7 +311,7 @@ In a few minutes ⏳, with minimal configuration effort and following the GitOps
 
 We are here to help! Whether you have questions, or issues or need assistance, our Slack channel is the perfect place for you. Click here to [join us](https://join.slack.com/t/projectsveltos/shared_invite/zt-1hraownbr-W8NTs6LTimxLPB8Erj8Q6Q) us.
 
-## 👏 Support this project
+## 👏 Support this project
 
 Every contribution counts! If you enjoyed this article, check out the Projectsveltos [GitHub repo](https://github.com/projectsveltos). You can [star 🌟 the project](https://github.com/projectsveltos) if you find it helpful.
 
