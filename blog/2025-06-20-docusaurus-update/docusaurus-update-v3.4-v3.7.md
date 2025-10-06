@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-06-20
 image: ./docusaurus.jpg
 description: A detailed Docusaurus note outlining the process and considerations for updating from version 3.4.0 to the latest v3.7.0.
-tags: [docusaurus,github,beginner-guide,"2025"]
+tags: [docusaurus,github,beginner-guide]
 ---
 
 **Summary**:
@@ -21,7 +21,7 @@ As Docusaurus announced a minor release in January 2025, I have decided to perfo
 
 ## Release Notes
 
-Before we even begin, I would recommend exploring the release notes of the versions after **v3.4.0** and trying to identify any dependencies and/or potential breaking changes. The release announcements are located [here](https://docusaurus.io/blog/releases/3.5) while the changelog is [here](https://docusaurus.io/changelog/3.7.0).
+Before we even begin, I would recommend exploring the release notes of the versions after **v3.4.0** and trying to identify any dependencies and/or potential breaking changes. The release announcements are located [here](https://docusaurus.io/blog/releases/3.5), while the changelog is [here](https://docusaurus.io/changelog/3.7.0).
 
 ## Docusaurus 3.5 Release
 
@@ -29,7 +29,7 @@ Starting with Docusaurus **v3.5** and going through the release notes, a notable
 
 ## Changes
 
-To upgrade to the latest Docusaurus version and `build` and `serve` the blog post, we should perform the below file changes.
+To upgrade to the latest Docusaurus version and `build` and `serve` the blog post, we should perform the changes to the files below.
 
 :::tip
 The default command to upgrade docusaurus is: ```npm i @docusaurus/core@latest @docusaurus/preset-classic@latest @docusaurus/module-type-aliases@latest @docusaurus/types@latest```

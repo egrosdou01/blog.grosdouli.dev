@@ -1,11 +1,3 @@
-"2024":
-  label: "2024"
-  permalink: /2024
-  description: "This tag marks blog posts that were published online during the year 2024, capturing the tech trends and insights from that period."
-"2025":
-  label: "2025"
-  permalink: /2025
-  description: "This tag marks blog posts that were published online during the year 2025, capturing the tech trends and insights from that period."
 clusterapi:
   label: Cluster API
   permalink: /clusterapi

@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-09-11
 image: ./cloudflare_docusaurus.jpg
 description: A comprehensive step-by-step guide to integrating a Docusaurus static site with Cloudflare Web Analytics for enhanced traffic insights.
-tags: [open-source,docusaurus,cloudflare,beginner-guide,"2025"]
+tags: [open-source,docusaurus,cloudflare,beginner-guide]
 ---
 
 **Summary**:
@@ -16,7 +16,7 @@ This is a step-by-step guide outlining the process of integrating Docusaurus wit
 
 ## Scenario
 
-When I decided to move my blog to a self-managed instance, I did not fully consider how I would keep track of website traffic stats, SEO scores, and all those nitty-gritty details that blog hosting platforms usually provide right out of the box. This post is the first in a two or maybe three-part series focused on analytics, SEO, and the improvements I have made over the past few weeks to make the site more efficient.
+When I chose to move my blog to a self-managed instance, I did not think about how to track website traffic, SEO scores, and those little details that blog hosting platforms offer by default. This post is the first in a two or three-part series focused on analytics, SEO, and the improvements I have made over the past few weeks to make the site more efficient.
 
 Previously, I used Medium to publish articles and loved being able to see stats on post views and reads. After some thought, I realised I needed a way to gain similar insights on my setup. Since I use [Cloudflare](https://www.cloudflare.com/en-gb/) to host my domain, I found out that they offer a `free tier` service called [Cloudflare Web Analytics](https://www.cloudflare.com/en-gb/web-analytics/). Anyone can add their JavaScript snippet and start receiving real-time analytics. If you deploy your website  directly with Cloudflare, analytics integration is automatic, but this is not the case for me. My blog is hosted on [GitHub](https://github.com/), using [GitHub Pages](https://docs.github.com/en/pages). In today’s post, we will dive into how to integrate analytics into the site!
 
@@ -36,7 +36,7 @@ Previously, I used Medium to publish articles and loved being able to see stats 
 
 ## Cloudflare Configuration
 
-The section describes how to work with the Cloudflare UI, create a `site` and retrieve the beacon Token for the setup.
+The section describes how to work with the Cloudflare UI, create a `site`, and retrieve the beacon Token for the setup.
 
 1. Log in to the [Cloudflare Dashboard](https://dash.cloudflare.com/)
 1. Navigate to `Analytics & Logs > Web Analytics`

@@ -1,16 +1,16 @@
 ---
 slug: proxmox-pfsense-FRITZ!Box-ipv6-prefix-allocation-setup
-title: "IPv6 Prefix Allocation: Proxmox & pfSense Setup"
+title: "IPv6 prefix Allocation: Proxmox & pfSense Setup"
 authors: [egrosdou01]
 date: 2025-03-10
 image: ./ipv6_everywhere.jpg
 description: An introduction to IPv6, explaining its importance and providing a detailed step-by-step guide for its setup and configuration on Proxmox.
-tags: [proxmox,pfsense,FRITZ!Box,open-source,ipv6,"2025"]
+tags: [proxmox,pfsense,FRITZ!Box,open-source,ipv6]
 ---
 
 ## Introduction
 
-Welcome to the first post in the `dual-stack` deployments series! In **part 1** of the series will set the stage for everything to come. `Dual-stack` is when a machine can talk both [IPv4](https://datatracker.ietf.org/doc/html/rfc791) and [IPv6](https://datatracker.ietf.org/doc/html/rfc8200). **Part 1** aims to guide users through enabling and configuring [IPv6 Prefix](https://networklessons.com/ipv6/how-to-find-ipv6-prefix) allocation for virtual machines in a [Proxmox](https://www.proxmox.com/en/) environment, using [pfsense](https://www.pfsense.org/). The setup will be used later on for **Kubernetes Deployments**, [Service Mesh](https://cilium.io/use-cases/service-mesh/) and [Global Service Sharing](https://docs.cilium.io/en/latest/network/clustermesh/services/) powered by [Cilium](https://cilium.io/).
+Welcome to the first post in the `dual-stack` deployments series! In **part 1** of the series will set the stage for everything to come. `Dual-stack` is when a machine can talk both [IPv4](https://datatracker.ietf.org/doc/html/rfc791) and [IPv6](https://datatracker.ietf.org/doc/html/rfc8200). **Part 1** aims to guide users through enabling and configuring [IPv6 prefix](https://networklessons.com/ipv6/how-to-find-ipv6-prefix) allocation for virtual machines in a [Proxmox](https://www.proxmox.com/en/) environment, using [pfSense](https://www.pfsense.org/). The setup will be used later on for **Kubernetes Deployments**, [Service Mesh](https://cilium.io/use-cases/service-mesh/) and [Global Service Sharing](https://docs.cilium.io/en/latest/network/clustermesh/services/) powered by [Cilium](https://cilium.io/).
 
 ![title image reading "IPv6 Everywhere"](ipv6_everywhere.jpg)
 <!--truncate-->
@@ -29,7 +29,7 @@ Welcome to the first post in the `dual-stack` deployments series! In **part 1** 
 
 ## Prerequisites
 
-- `Internet Provider` with available IPv6 Prefix
+- `Internet provider` with available IPv6 prefix
 - `pfSense` as a virtual router within the Proxmox environment
 - `FRITZ!Box` as a home router
 
@@ -37,18 +37,18 @@ Welcome to the first post in the `dual-stack` deployments series! In **part 1** 
 
 I remember in 2009, when I had to pass the Cisco CCNA exam, there was a small section about the basics, an introduction to IPv6. The configuration seemed complex with different Protocols for setting things up, subnetting and familiarisation almost from scratch in comparison to IPv4, many doubts about the deployment etc.. You guessed it already... I left IPv6 deployments for a later point. Fast forward 15 years, why do I even want to write something about `dual-stack` deployments? In the last couple of years, the [European Commission](https://ec.europa.eu/internet-standards/ipv6.html) has been encouraging the European member states to move forward with the adoption of IPv6 deployments and countries like the one I am based, set specific goals for gradual migration to IPv6 networks by a certain date.
 
-Taking all the above as a starting point and while working in the Datacenter space, refreshing my IPv6 knowledge alongside testing advanced Kubernetes deployments on a `dual-stack` setup with `Cilium`, did the trick! The blog post is mainly about the need to enable `dual-stack` capabilities with the **least** effort. I know my Internet provider has an IPv6 Prefix ready for use, but to even start working with Kubernetes deployments, the virtual machines need to somehow talk and understand IPv6.
+Taking all the above as a starting point and while working in the Datacenter space, refreshing my IPv6 knowledge alongside testing advanced Kubernetes deployments on a `dual-stack` setup with `Cilium`, did the trick! The blog post is mainly about the need to enable `dual-stack` capabilities with the **least** effort. I know my Internet provider has an IPv6 prefix ready for use, but to even start working with Kubernetes deployments, the virtual machines need to somehow talk and understand IPv6.
 
 If you are still with me, let's dive in and start setting up the environment!
 
-## FRITZ!Box - IPv6 Prefix Check
+## FRITZ!Box - IPv6 prefix Check
 
-Login to the `FRITZ!Box Admin Portal` and check whether there is an available `IPv6 Prefix` for use. If this is the case, note the `Prefix` for future reference. In a **FRITZ!Box** router, the information is located under **Admin > Internet > Overview**.
+Login to the `FRITZ!Box Admin Portal` and check whether there is an available `IPv6 prefix` for use. If this is the case, note the `prefix` for future reference. In a **FRITZ!Box** router, the information is located under **Admin > Internet > Overview**.
 
-In my case, I have two IPv6 information available. A `/64` Prefix is used for **external connections** only and a `/56` Prefix can be used for the home lab. The `/56` gives us 8 bits or 256 `/64` subnets.
+In my case, I have two IPv6 information available. A `/64` prefix is used for **external connections** only and a `/56` prefix can be used for the home lab. The `/56` gives us 8 bits or 256 `/64` subnets.
 
 :::note
-Internet Providers offer to end customers **temporary** IPv6 Prefixes. The Prefix delegation is owned by the Internet Provider. That means the Prefixes could change at any time with no warning. 
+Internet Providers offer to end customers **temporary** IPv6 prefixes. The prefix delegation is owned by the Internet Provider. That means the prefixes could change at any time with no warning. 
 :::
 
 ## pfSense
@@ -57,7 +57,7 @@ The official documentation is located [here](https://docs.netgate.com/pfsense/en
 
 ### Interface Setup
 
-After logging into **pfSense**, at the landing page at the bottom-left of the screen, we can already see the `WAN` interface (Interface connected to the FRITZ!Box router) has an `IPv4` and an `IPv6` address assigned. In this section, we will look at the `WAN Interface` configuration and later on set up a dedicated Interface to get **routable** IPv6 Prefix from the `FRITZ!Box`.
+After logging into **pfSense**, at the landing page at the bottom-left of the screen, we can already see the `WAN` interface (Interface connected to the FRITZ!Box router) has an `IPv4` and an `IPv6` address assigned. In this section, we will look at the `WAN Interface` configuration and later on set up a dedicated Interface to get **routable** IPv6 prefix from the `FRITZ!Box`.
 
 #### WAN Interface
 
@@ -65,7 +65,7 @@ After logging into **pfSense**, at the landing page at the bottom-left of the sc
 1. Navigate to **Interfaces > WAN**
 1. Check if the below options are set
     - **IPv6 Configuration Type**: `DHCP6`
-    - **DHCPv6 Prefix Delegation Size**: `64`
+    - **DHCPv6 prefix Delegation Size**: `64`
 1. Save the changes before proceeding (if any)
 
 :::note
@@ -79,11 +79,11 @@ The mentioned settings are the defaults coming from the Internet Provider direct
 1. Set the below
     - **IPv6 Configuration Type**: `Track Interface`
     - **Track IPv6 Interface - IPv6 Interface**: `WAN`
-    - **Track IPv6 Interface - IPv6 Prefix ID**: `0`
+    - **Track IPv6 Interface - IPv6 prefix ID**: `0`
 1. Save the changes before proceeding
 
 :::note
-As with the `WAN Interface`, we chose to use the full `/64` Prefix, as a result, the `IPv6 Prefix ID` for the **LAN Interface** will be set to `0`. If the `DHCPv6 Prefix Delegation Size` on the `WAN Interface` was a smaller number, for example, a `/63`, the displayed `IPv6 Prefix ID` was going to have a different value.
+As with the `WAN Interface`, we chose to use the full `/64` prefix, as a result, the `IPv6 prefix ID` for the **LAN Interface** will be set to `0`. If the `DHCPv6 prefix Delegation Size` on the `WAN Interface` was a smaller number, for example, a `/63`, the displayed `IPv6 prefix ID` was going to have a different value.
 :::
 
 ### DHCPv6 Setup
@@ -102,7 +102,7 @@ As the `LAN Interface` was set to monitor the `WAN Interface`, we can proceed wi
 
 ## FRITZ!Box Setup
 
-To allow the router to allocate IPv6 Prefixes to a defined LAN Interface, we have to enable this option in the `FRITZ!Box Admin Portal`.
+To allow the router to allocate IPv6 prefixes to a defined LAN Interface, we have to enable this option in the `FRITZ!Box Admin Portal`.
 
 1. Login to the `FRITZ!Box Admin Portal`
 1. Naviagte to **Heimnetz > Netzwerk > Netzwerk Einstellungen > IPv6 > DHCPv6-Server im Heimnetz**
@@ -175,7 +175,7 @@ Hehe, everything is fine! It is just that `github.com` does not have IPv6 supp
 
 ## Conclusion
 
-IPv6 Prefix allocation on Proxmox with Pfsense, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
+IPv6 prefix allocation on Proxmox with Pfsense, check! ✅ Thanks for reading, and stay tuned for the upcoming posts!
 
 ## Resources
 

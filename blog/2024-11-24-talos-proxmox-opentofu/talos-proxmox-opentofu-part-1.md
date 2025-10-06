@@ -5,14 +5,14 @@ authors: [egrosdou01]
 date: 2024-11-24
 image: ./Proxmox_OpenTofu_Talos.jpg
 description: A step-by-step guide installing a Talos Cluster on Proxmox with OpenTofu - Part 1.
-tags: [talos,opentofu,proxmox,open-source,beginner-guide,"2024"]
+tags: [talos,opentofu,proxmox,open-source,beginner-guide]
 ---
 
 ## Introduction
 
-It's been a while now since I am bootstrapping [RKE2](https://docs.rke2.io/) and [K3s](https://docs.k3s.io/) clusters on different platforms, on-prem and in the cloud, including VMware, Proxmox, Nutanix and pretty much every well-known cloud provider. This week, I have decided to take a different approach and discover something new! Bootstrap a Talos Kubernetes cluster on [Proxmox](https://www.proxmox.com/en/proxmox-virtual-environment/overview) using [OpenTofu](https://opentofu.org/docs/) as the Infrastructure as Code (IaC) solution. My first interaction with [Talos Linux](https://www.talos.dev/) was a couple of months back when Justin Garrison posted something about the ease of Kubernetes cluster deployment. I did not have much time back then, but here we come!
+I have been bootstrapping [RKE2](https://docs.rke2.io/) and [K3s](https://docs.k3s.io/) clusters for a while now. I work on different platforms, both on-prem and in the cloud. This includes VMware, Proxmox, Nutanix, and almost every major cloud provider. This week, I have decided to take a different approach and discover something new! Bootstrap a Talos Kubernetes cluster on [Proxmox](https://www.proxmox.com/en/proxmox-virtual-environment/overview) using [OpenTofu](https://opentofu.org/docs/) as the Infrastructure as Code (IaC) solution. My first interaction with [Talos Linux](https://www.talos.dev/) was a couple of months back when Justin Garrison posted something about the ease of Kubernetes cluster deployment. I did not have much time back then, but here we come!
 
-The blog post will be split into two parts. **Part 1** will include a basic deployment of a Talos cluster using the out-of-box configuration, while **Part 2** will contain the required configuration changes to use [Cilium](https://docs.cilium.io/en/stable/) as our CNI.
+The blog post will be split into two parts. **Part 1** will include a basic deployment of a Talos cluster using the out-of-the-box configuration, while **Part 2** will contain the required configuration changes to use [Cilium](https://docs.cilium.io/en/stable/) as our CNI.
 Get ready to roll up your sleeves and dive into the essentials of Talos Linux with OpenTofu on Proxmox.
 
 
@@ -58,12 +58,12 @@ If you are new to the concept of bootstrapping Kubernetes clusters, it might be 
 To authenticate with Proxmox while executing the `tofu plan`, we need an API token with the right permissions.
 
 1. From the Proxmox UI, navigate to **Datacenter > Permissions**
-1. Click on `Roles` and create a **role** with the appropiate permissions to allow the creation of VMs alognside other activities. More information can be found [here](https://pve.proxmox.com/wiki/User_Management).
+1. Click on `Roles` and create a **role** with the appropriate permissions to allow the creation of VMs alongside other activities. More information can be found [here](https://pve.proxmox.com/wiki/User_Management).
 1. Click on `Users` and create a **user** that will be used for the execution of the `tofu plan`
 1. Click on `Permissions` and associate the `user` with the `role`
-1. Click on `API Tokens` and create a new **API Token**. Specify the authenticaiton method, the user, the token ID alongside unselecting the `Privilege Separation` button
+1. Click on `API Tokens` and create a new **API Token**. Specify the authentication method, the user, the token ID alongside unselecting the `Privilege Separation` button
 
-More about API tokens and Access Control Lists (ACLs), check out the [link](https://pve.proxmox.com/pve-docs/chapter-pveum.html#pveum_tokens).
+For more about API tokens and Access Control Lists (ACLs), check out the [link](https://pve.proxmox.com/pve-docs/chapter-pveum.html#pveum_tokens).
 
 ### Retrieve and Upload Custom ISO
 
@@ -83,9 +83,9 @@ Upload the `.iso` to the Proxmox server. Make a copy of the `Initial Installatio
 
 ## Scenario Overview
 
-In today's post, we will perform the below using the IaC approach. As this is a beginner guide, we will keep the code as simple as possible including relevant comments and notes. For the setup, we will use DHCP to hand over IPs to the endpoints.
+In today's post, we will perform the below using the IaC approach. As this is a beginner's guide, we will keep the code as simple as possible, including relevant comments and notes. For the setup, we will use DHCP to hand over IPs to the endpoints.
 
-The deployment in a Nutshell 👇
+The deployment in a nutshell 👇
 
 - Create virtual machines using the Talos Linux image
 - Specify the endpoint for the Kubernetes API
@@ -95,17 +95,17 @@ The deployment in a Nutshell 👇
 
 ## Talos Linux - Why bother?
 
-Going through the official documentation [here](https://www.talos.dev/), I stumbled upon the fact that Talos Linux is a secure, immutable, and minimal OS designed for Kubernetes, with system management via API, production-ready support for cloud, bare metal, and virtualization platforms. Cool, right?
+I came across in the [official documentation](https://www.talos.dev/) that Talos Linux is a secure, immutable, and minimal OS. It is built for Kubernetes and managed via an API. Plus, it supports cloud, bare metal, and virtualisation platforms in a production-ready way. Cool, right?
 
 ## File structure
 
-- `creds/`: This is a **hidden directory** which holds the `api_token_id.txt`, `api_token_secret.txt` and `api_url.txt`
+- `creds/`: This is a **hidden directory** that holds the `api_token_id.txt`, `api_token_secret.txt` and `api_url.txt`
 - `files/`: Contains files and templates for the initial image configuration of the Talos cluster
 - `providers.tf`: Contains the required providers used in the resource blocks
 - `virtual_machines.tf`: Contains the resources to spin up the virtual machines
 - `main.tf`: Contains the resource blocks for the Talos Linux bootstrap
-- `data.tf`: Contains several data required for the Talos cluster bootstrap proccess
-- `variables.tf`: Contains the variable declaration used in the resource blocks
+- `data.tf`: Contains several pieces of data required for the Talos cluster bootstrap process
+- `variables.tf`: Contains the variable declarations used in the resource blocks
 - `output.tf`: Contains the output upon successful completion of the OpenTofu plan/apply
 - `*.tfvars`: Contains the default values of the defined variables
 
@@ -113,8 +113,8 @@ Going through the official documentation [here](https://www.talos.dev/), I stumb
 
 As with any Terraform/OpenTofu setup, we have to define the providers and versions we would like to use. If you are not aware of the term `Provider`, have a look [here](https://opentofu.org/docs/language/providers/).
 
-- The `telmate/proxmox` provider details and the how to guide, are located [here](https://search.opentofu.org/provider/telmate/proxmox/latest)
-- The `siderolabs/talos` provider details and the how to guide, are located [here](https://search.opentofu.org/provider/siderolabs/talos/v0.6.1)
+- The `telmate/proxmox` provider details and the how-to guide, are located [here](https://search.opentofu.org/provider/telmate/proxmox/latest)
+- The `siderolabs/talos` provider details and the how-to guide, are located [here](https://search.opentofu.org/provider/siderolabs/talos/v0.6.1)
 
 ```hcl
 terraform {
@@ -146,7 +146,7 @@ At this point, we defined the preferred provider versions and the way to authent
 
 ## Virtual Machines Setup
 
-As we have two types of machines, `controller` and `worker` node, I have decided to keep the configuration as simple as possible and avoid using one node for both types. That means, we will have two resources to create the `controller` and the `worker` nodes.
+As we have two types of machines, `controller` and `worker` node, I have decided to keep the configuration as simple as possible and avoid using one node for both types. That means we will have two resources to create the `controller` and the `worker` nodes.
 
 ```hcl
 # Create the controller and worker Nodes 
@@ -201,7 +201,7 @@ From the above, it is important to set the `agent` to `1` to enable the `QEMU qu
 
 ## Bootstrap Talos Kubernetes Cluster
 
-Following the example located [here](https://github.com/siderolabs/terraform-provider-talos/tree/v0.6.1/examples), the below `data` and `resources` defined. The first step is to boot a virtual machine using the `factory image` and then use the `initial image` after the first reboot. The `initial image` details are provided during the `talos_machine_configuration` for the `controller` and the `worker` node.
+Following the example located [here](https://github.com/siderolabs/terraform-provider-talos/tree/v0.6.1/examples), the `data` and `resources` are defined. The first step is to boot a virtual machine using the `factory image` and then use the `initial image` after the first reboot. The `initial image` details are provided during the `talos_machine_configuration` for the `controller` and the `worker` node.
 
 ### data.tf
 
@@ -291,7 +291,7 @@ $ tofu apply
 
 ## Plan Output
 
-Within less than 5 minutes, we have a fully functional Kubernetes cluster (assuming the cluster is in healthy state). To interact with it, we need the `kubeconfig`. This is retrieved from the `talos_cluster_kubeconfig` data source defined in the `data.tf` file. The complete `data.tf` file is located here.
+Within less than 5 minutes, we have a fully functional Kubernetes cluster (assuming the cluster is in a healthy state). To interact with it, we need the `kubeconfig`. This is retrieved from the `talos_cluster_kubeconfig` data source defined in the `data.tf` file. The complete `data.tf` file is located here.
 
 ```hcl
 output "kubeconfig" {
@@ -334,7 +334,7 @@ Hope the post gave you an overview on how to bootstrap a basic Talos Linux clust
 
 ## Part-2 Outline
 
-In [Part 2](talos-proxmox-opentofu-part-2.md), we will cover how to update the default CNI with [Cilium](https://docs.cilium.io/en/stable/index.html). Stay Tuned!
+In [Part 2](talos-proxmox-opentofu-part-2.md), we will cover how to update the default CNI with [Cilium](https://docs.cilium.io/en/stable/index.html). Stay tuned!
 
 ## Resources
 

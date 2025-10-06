@@ -5,14 +5,14 @@ authors: [egrosdou01]
 date: 2024-12-29
 updated: 2025-03-18
 description: An in-depth introduction to vCluster, exploring its core concepts, benefits, and why it's a crucial technology for modern Kubernetes environments.
-tags: [kubernetes,open-source,vcluster,cloudflare,"2024"]
+tags: [kubernetes,open-source,vcluster,cloudflare]
 ---
 
 ## Introduction
 
 In a [previous post](https://medium.com/@eleni.grosdouli/explore-multitenancy-with-vcluster-using-the-gitops-approach-96381d950372), we described how to install multiple virtual clusters in a [Civo](https://www.civo.com/) cloud environment with [vCluster](https://www.vcluster.com/).
 
-Today's post is an update of the older deployment interacting with virtual clusters via a registered domain hosted in [Cloudflare](https://www.cloudflare.com/de-de/) and using a `LoadBalancer` service to achieve that. Let's dive into it.
+Today's post updates the old deployment. It shows how to interact with virtual clusters using a registered domain hosted on [Cloudflare](https://www.cloudflare.com/de-de/). We use a `LoadBalancer` service to make this work. Let's dive into it.
 
 <!--truncate-->
 

@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-08-28
 image: ./sveltos_pull_mode.jpg
 description: An in-depth introduction to Sveltos's Pull Mode feature, explaining its core functionalities and benefits for Kubernetes cluster management.
-tags: [open-source,sveltos,rke2,civo cloud,aws,aks,beginner-guide,"2025"]
+tags: [open-source,sveltos,rke2,civo cloud,aws,aks,beginner-guide]
 ---
 
 **Summary**:
@@ -19,9 +19,11 @@ tags: [open-source,sveltos,rke2,civo cloud,aws,aks,beginner-guide,"2025"]
 
 ## Scenario
 
-When working with multi-cloud setups, there are scenarios where Kubernetes clusters reside in isolated network segments, behind firewalls, at edge locations with limited connectivity, or within air-gapped environments that require careful configuration and security controls. How can we manage these clusters and deploy add-ons and applications seamlessly while ensuring continuous drift-detection and reconciliation?
+In multi-cloud setups, Kubernetes clusters can be in isolated network segments. They might sit behind firewalls, at edge locations with limited connectivity, or in air-gapped environments. Each of these scenarios needs careful configuration and strong security controls. How can we manage these clusters and deploy add-ons and applications seamlessly while ensuring continuous drift-detection and reconciliation?
 
-In today's post, we will install Sveltos in a [Civo](https://www.civo.com/) cluster, register an [RKE2](https://docs.rke2.io/) cluster hosted in [AWS](https://aws.amazon.com/) behind a firewall using the **Pull Mode** and an [AKS](https://azure.microsoft.com/products/kubernetes-service) cluster in default mode, **Push Mode**. After the cluster registration, we will proceed with the [Kyverno](https://kyverno.io/) installation on both clusters for policy management, security and compliance, while installing [Cilium Tetragon](https://tetragon.io/docs/installation/) on the RKE2 cluster for security observability and runtime enforcement. Let's dive into the details!
+In today's post, we will install Sveltos in a [Civo](https://www.civo.com/) cluster, register an [RKE2](https://docs.rke2.io/) cluster hosted in [AWS](https://aws.amazon.com/) behind a firewall using the **Pull Mode** and an [AKS](https://azure.microsoft.com/products/kubernetes-service) cluster in default mode, **Push Mode**.
+
+After the cluster registration, we will install [Kyverno](https://kyverno.io/) on both clusters for policy management, security, and compliance. Also, we will install [Cilium Tetragon](https://tetragon.io/docs/installation/) on the RKE2 cluster for security observability and runtime enforcement. Let's dive into the details!
 
 ## Lab Setup
 

@@ -5,12 +5,12 @@ authors: [egrosdou01]
 date: 2024-10-27
 image: ./its_not_dns.jpg
 description: A comprehensive step-by-step guide to diagnosing and resolving common DNS issues on Kubernetes clusters.
-tags: [kubernetes,open-source,tshoot-insights,rke2,"2024"]
+tags: [kubernetes,open-source,tshoot-insights,rke2]
 ---
 
 ## Introduction
 
-Welcome to the the first post of the brand new Kubernetes Troubleshooting Insights section! The series of blog posts will share helpful information and troubleshooting tips for issues that might appear in a Kubernetes environment. The posts are focused on real-life scenarios from either `test`, `staging` or `production` environments.
+Welcome to the first post of the brand new Kubernetes Troubleshooting Insights section! The series of blog posts will share helpful information and troubleshooting tips for issues that might appear in a Kubernetes environment. The posts focus on real-life scenarios from either `test`, `staging`, or `production` environments.
 
 In today’s blog post, we’ll explore an issue with [CoreDNS](https://kubernetes.io/docs/tasks/administer-cluster/coredns/) setup on [RKE2](https://docs.rke2.io/) clusters. [Cilium](https://docs.cilium.io/en/stable/overview/intro/#what-is-cilium) CNI with [Hubble](https://docs.cilium.io/en/stable/overview/intro/#what-is-hubble) were enabled for this setup. Let’s jump right in!
 
@@ -38,7 +38,7 @@ In today’s blog post, we’ll explore an issue with [CoreDNS](https://kubernet
 
 ## Scenario
 
-DNS issues are wide and can be are caused by many reasons. Unfortunately, there is no one-size-fits-all approach when it comes to troubleshooting. In our scenario, we started with the virtual machines, ensured routing and DNS work and then moved to the Kubernetes layer. The blog post is an attempt to provide readers with troubleshooting ideas about DNS issues.
+DNS issues are wide and are due to many reasons. Unfortunately, there is no one-size-fits-all approach when it comes to troubleshooting. In our scenario, we started with the virtual machines, ensured routing and DNS worked, and then moved to the Kubernetes layer. The blog post is an attempt to provide readers with troubleshooting ideas about DNS issues.
 
 **Background**: We performed a major migration to a new instance with **new DNS** servers and **domains**. We had to test if everything worked with the new setup. Everything appeared fine apart from synchronising **ArgoCD** with internal Git repositories. An error from an **internal Kubernetes IP address** on port **53** appeared. Weird, right? We were confident the underlying virtual machines were using the correct DNS, and the configuration of the DHCP server was updated.
 
@@ -50,7 +50,7 @@ The troubleshooting session was performed on an Ubuntu 22.04 environment. If ano
 
 ### Step 1: Underlying Infrastructure
 
-The below steps were performed to double-check the underlying infrastructure.
+The steps below were performed to double-check the underlying infrastructure.
 
 1. **DHCP Server (if used)**: Ensure the configuration points to the new DNS servers
 
@@ -79,7 +79,7 @@ The below steps were performed to double-check the underlying infrastructure.
         $ ping 8.8.8.8 # Check whether we can reach the Internet
         ```
 
-        If one of the commands above fail, this might be an indication that routing is broken, or something else is blocking traffic.
+        If one of the commands above fails, this might be an indication that routing is broken, or something else is blocking traffic.
 
         If the commands above are successful, we continue with the next step and dive into the Kubernetes world.
 
@@ -87,7 +87,7 @@ The below steps were performed to double-check the underlying infrastructure.
 
 Depending on the Kubernetes environment in place, identify how DNS queries are resolved from a Kubernetes cluster point of view. In our case, the RKE2 clusters use `CoreDNS`.
 
-Even from a Kubernetes point of view, we will perform the well used `ping` and `curl` commands to see what is going on. For that reason, we will deploy the `dns-utils` pod to perform network calls. 
+Even from a Kubernetes point of view, we will perform the well-used `ping` and `curl` commands to see what is going on. For that reason, we will deploy the `dns-utils` pod to perform network calls. 
 
 1. Deploy the `dns-utils` [pod](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/) to check DNS queries
 
@@ -106,7 +106,7 @@ Even from a Kubernetes point of view, we will perform the well used `ping` and `
           restartPolicy: Always
       EOF
     ```
-1. Exec into the `dnsutils` pod - Perform `ping` and `dig` to well known website
+1. Exec into the `dnsutils` pod - Perform `ping` and `dig` to a well-known website
 
     ```bash
       $ kubectl exec -it dnsutils -- /bin/sh
@@ -120,13 +120,13 @@ Even from a Kubernetes point of view, we will perform the well used `ping` and `
       google.com.		30	IN	SOA	<YOUR DNS Server>.google.com. dns-admin.google.com. 689372973 900 900 1800 60
     ```
 
-    If the above commands are successful, we know that routing and resolution works for well known websites.
+    If the above commands are successful, we know that routing and resolution work for well-known websites.
 
     :::tip
     Learn more about [SOA](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-soa-record/).
     :::
 
-1. Exec into the `dnsutils` pod - Perform `curl` and `dig` to the custom domain
+1. Exec into the `dnsutils` pod - Perform `curl` and `dig` on the custom domain
 
     ```bash
       $ kubectl exec -it dnsutils -- /bin/sh
@@ -215,7 +215,7 @@ configmap/rke2-coredns-rke2-coredns patched
 $ kubectl get cm rke2-coredns-rke2-coredns -n kube-system -o jsonpath='{.data.Corefile}' # Ensure the custom domain is removed
 
 $ kubectl exec -it dnsutils -- /bin/sh
-/ # curl <domain>:<port> # You should be able to resolved the domain now
+/ # curl <domain>:<port> # You should be able to resolve the domain now
 ```
 
 ### Optional: Kubernetes Troubleshoot with Cilium Hubble
@@ -226,11 +226,11 @@ Another option to troubleshoot network issues is with Hubble. If it is available
 $ kubectl exec -it ds/cilium -n kube-system -- /bin/sh
 # hubble observe --pod rke2-coredns-rke2-coredns-84b9cb946c-b7l9k --namespace kube-system --protocol UDP -f
 ```
-The command above will display UDP packages between the `dnsutils` pod and `CoreDNS`. The Hubble cheat sheet can be found [here](https://cilium.isovalent.com/hubfs/marketing%20briefs/Isovalent%20-%20Cilium%20Hubble%20Cheat%20Sheet.pdf).
+The command above will display UDP packets between the `dnsutils` pod and `CoreDNS`. The Hubble cheat sheet can be found [here](https://cilium.isovalent.com/hubfs/marketing%20briefs/Isovalent%20-%20Cilium%20Hubble%20Cheat%20Sheet.pdf).
 
 ### Optional: Kubernetes Troubleshoot with Netshoot Pod and TCPDump
 
-If we want to see what happens with the UDP packages when we perform a `CURL` request on a custom domain, it might be easier to instantiate a `tcpdump` using the [netshoot pod](https://hub.docker.com/r/nicolaka/netshoot/tags). Follow the commands below.
+If we want to see what happens with the UDP packets when we perform a `CURL` request on a custom domain, it might be easier to instantiate a `tcpdump` using the [netshoot pod](https://hub.docker.com/r/nicolaka/netshoot/tags). Follow the commands below.
 
 ```bash
 $ kubectl run -it --rm debug --image=nicolaka/netshoot -- /bin/bash
@@ -259,7 +259,7 @@ The output above indicates that a client queries a DNS server, and the server re
 
 ## Conclusion
 
-Is it DNS at the end? This is something you will have to find out! Hopefully, the post gave you some ideas to troubleshoot with confidence DNS issues in a Kubernetes environment.
+Is it DNS at the end? This is something you will have to find out! Hopefully, the post gave you some ideas to troubleshoot DNS issues in a Kubernetes environment with confidence.
 
 It's a wrap for this post! 🎉 Thanks for reading! Stay tuned for more exciting updates!
 

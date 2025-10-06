@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-08-21
 image: ./openTofu_rancher_intro_image.jpg
 description: A step-by-step guide to deploying a Rancher RKE2 cluster with Cilium on Azure Cloud using OpenTofu.
-tags: [opentofu,cilium,rke2,azure,open-source,kubernetes,gitops,devops,"2024"]
+tags: [opentofu,cilium,rke2,azure,open-source,kubernetes,gitops,devops]
 ---
 
 ## Introduction
@@ -14,7 +14,7 @@ In a [previous post](../2024-07-26-rancher-rke2-azure/rancher-rke2-cilium-azure.
 
 `OpenTofu` is a fork of [Terraform](https://www.terraform.io/). It is an open-source project, community-driven, and managed by the Linux Foundation. If you want to get familiar with what `OpenTofu` is and how to get started, check out the link [here](https://opentofu.org/docs/intro/core-workflow/).
 
-Additionally, we will demonstrate how easy it is to customise the [Cilium](https://docs.cilium.io/en/stable/) configuration and enable [kube-vip](https://kube-vip.io/) for LoadBalancer services from the HCL (HashiCorp Configuration Language) definition.
+We will also show how easy it is to customise the [Cilium](https://docs.cilium.io/en/stable/) configuration. Plus, we will enable [kube-vip](https://kube-vip.io/) for LoadBalancer services using HCL (HashiCorp Configuration Language).
 
 ![title image reading "OpenTofu Rancher RKE2 Cluster on Azure"](openTofu_rancher_intro_image.jpg)
 <!--truncate-->
@@ -46,11 +46,11 @@ We do not concentrate on installing `Rancher`. If you are unsure how to install 
 
 ### Azure Free Credits
 
-For this demonstration, we will use the Azure [free credits](https://azure.microsoft.com/en-us/free) offering. The approach taken allows readers to understand how to set up the Azure cloud environment to perform RKE2 deployments with Rancher without spending money outside the free-credits offering.
+For this demonstration, we will use the Azure [free credits](https://azure.microsoft.com/en-us/free) offering. This guide shows readers how to set up the Azure cloud for RKE2 deployments with Rancher, all without spending money beyond the **free credits**.
 
 Ensure the below are satisfied.
 
-1. Helm CLI installed (Optional Step)
+1. Helm CLI installed (optional step)
 1. kubectl installed
 
 ### Install OpenTofu
@@ -115,7 +115,7 @@ In your favourite IDE, create a new project and create the below file structure.
 
 ## providers.tf
 
-The `providers.tf` file holds the required providers that will be used for the creation of the relevant resources. OpenTofu configurations must declare which providers they require so that OpenTofu can install and use them.
+The `providers.tf` file holds the required providers that will be used for the creation of the relevant resources. OpenTofu configurations must declare which providers they need so that OpenTofu can install and use them.
 
 ```hcl
 terraform {
@@ -305,7 +305,7 @@ resource "rancher2_cluster_v2" "rke2" {
 
 ## variables.tf
 
-Outline how the variables used in the `main.tf` file should look like. If required, perform additional validations to the code.
+Outline how the variables used in the `main.tf` file should look. If required, perform additional validations to the code.
 
 ```hcl
 variable "azure_env" {
@@ -441,12 +441,12 @@ If the `tofu apply` command completes successfully, we should have a cluster wit
 ![title image reading "Rancher2 Terraform Provider"](rke2_opentofu_azure.jpg)
 
 ```bash
-$ kubectk get nodes
+$ kubectl get nodes
 NAME                                       STATUS   ROLES                       AGE     VERSION
 eleni-azure-01-controller-49abc099-ftvnv   Ready    control-plane,etcd,master   11m     v1.28.11+rke2r1
 eleni-azure-01-worker-87b90346-swd64       Ready    worker                      7m59s   v1.28.11+rke2r1
 
-$ kubectk get pods -n kube-system
+$ kubectl get pods -n kube-system
 NAME                                                                READY   STATUS      RESTARTS   AGE
 cilium-5rfh4                                                        1/1     Running     0          11m
 cilium-operator-6bd79b68b5-ch979                                    1/1     Running     0          11m

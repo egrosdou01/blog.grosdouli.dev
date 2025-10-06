@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-08-14
 image: ./fluxcd_and_sveltos.jpg
 description: A step-by-step guide working with the Sveltos and the Flux Operator helm chart to achieve the best GitOps experience.
-tags: [open-source,sveltos,flux-operator,gitlab,gitops,devops,beginner-guide,"2025"]
+tags: [open-source,sveltos,flux-operator,gitlab,gitops,devops,beginner-guide]
 ---
 
 **Summary**:
@@ -17,9 +17,9 @@ This post picks up where the Flux Operator [blog](demystifying-flux-operator-and
 
 ## Scenario
 
-[Sveltos](https://github.com/projectsveltos) is a Kubernetes add-on controller that simplifies the deployment and management of Kubernetes add-ons and applications across multiple clusters, whether on-prem, in the cloud or in multitenant environments. To achieve a GitOps approach for our deployments, Sveltos integrates nicely with [Flux](https://fluxcd.io/flux/).
+[Sveltos](https://github.com/projectsveltos) is a Kubernetes add-on controller. It makes deploying and managing Kubernetes add-ons and applications easier. We can use it across multiple clusters, whether on-premises, in the cloud, or in multitenant settings.To achieve a GitOps approach for our deployments, Sveltos integrates nicely with [Flux](https://fluxcd.io/flux/).
 
-What does this mean for us? We can not only use Sveltos to manage the Flux installation on the Kubernetes **management** cluster, but also utilise the advanced Sveltos capabilities like templating, dynamic pre-instantiation, and Event Driven Framework to make our deployments as dynamic and scalable as possible. If you are ready to proceed, let's dive into it! 😊
+What does this mean for us? We can use Sveltos to manage the Flux installation on our Kubernetes cluster. We can also tap into advanced features like templating, dynamic pre-instantiation, and the Event Driven Framework. This helps make our deployments more **dynamic** and **scalable**. If you are ready to proceed, let's dive into it! 😊
 
 :::note
 The Kubernetes management cluster in our case is the brain of the add-on and application deployments to a fleet of clusters.
@@ -52,7 +52,7 @@ The Kubernetes management cluster in our case is the brain of the add-on and app
 
 ## Sveltos Installation
 
-Before we start exploring the setup, we need to install Sveltos on a Kubernetes **management** cluster. I like to work with Helm charts, thus we will install Sveltos using this approach. Additionally, [Mode 1](https://projectsveltos.github.io/sveltos/main/getting_started/install/install/#installation-modes) is the preferred installation method. To explore more about the different installation methods, have a look [here](https://projectsveltos.github.io/sveltos/main/getting_started/install/install/).
+Before we start exploring the setup, we need to install Sveltos on a Kubernetes **management** cluster. I like to work with Helm charts; thus we will install Sveltos using this approach. Additionally, [Mode 1](https://projectsveltos.github.io/sveltos/main/getting_started/install/install/#installation-modes) is the preferred installation method. To explore more about the different installation methods, have a look [here](https://projectsveltos.github.io/sveltos/main/getting_started/install/install/).
 
 ### Helm Chart Installation
 
@@ -89,7 +89,7 @@ By using the Sveltos label matching approach, we can utilise the Sveltos Custom 
 
 ### Flux ClusterProfile
 
-We will use a Sveltos [ClusterProfile](https://projectsveltos.github.io/sveltos/main/addons/addons/#how-it-works) to install the Flux-Operator as a Helm chart and include all the required resources for the desired setup. The official oci registry is used to pull the Flux Operator Helm chart. With Sveltos, we can deploy `ConfigMap` and `Secret` resources that contain information about the cluster. That means we can add the Flux `Instance`, the GitLab `secret` and the `GitRepository` resources into a `ConfigMap` and instruct Sveltos to deploy it to the **management** cluster.
+We will use a Sveltos [ClusterProfile](https://projectsveltos.github.io/sveltos/main/addons/addons/#how-it-works) to install the Flux-Operator as a Helm chart and include all the required resources for the desired setup. The official OCI registry is used to pull the Flux Operator Helm chart. With Sveltos, we can deploy `ConfigMap` and `Secret` resources that contain information about the cluster. That means we can add the Flux `Instance`, the GitLab `secret`, and the `GitRepository` resources into a `ConfigMap` and instruct Sveltos to deploy it to the **management** cluster.
 
 #### Flux Operator ClusterProfile
 
@@ -227,7 +227,7 @@ spec:
 // highlight-end
 ```
 
-Once a new cluster with the label set to `register: ok` is registered with Sveltos, we use the following `EventTrigger` resource to dynamiccally deploy Flux syncronised resources for the new registered **managed** clusters.
+Once a new cluster with the label set to `register: ok` is registered with Sveltos, we use the following `EventTrigger` resource to dynamically deploy Flux synchronised resources for the newly registered **managed** clusters.
 
 ### EventTrigger
 
@@ -262,7 +262,7 @@ spec:
 ```
 
 :::tip
-Looking at line **21**, we instruct Sveltos to deploy any Kubernetes manifests included under the repository directory `staging/<cluster-name>/`. If the directory does not exist, Sveltos will not deploy something to the cluster.
+Looking at line **21**, we instruct Sveltos to deploy any Kubernetes manifests included under the repository directory `staging/<cluster-name>/`. If the directory does not exist, Sveltos will not deploy anything to the cluster.
 :::
 
 ### RKE2 Managed Cluster Registration

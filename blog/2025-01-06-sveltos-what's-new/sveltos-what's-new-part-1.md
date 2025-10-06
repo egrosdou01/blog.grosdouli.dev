@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-01-06
 image: ./sveltos_logo.jpg
 description: Sveltos post-update release feedback - Part 1 - Initial thoughts and observations on the latest release.
-tags: [sveltos,open-source,beginner-guide,"2025"]
+tags: [sveltos,open-source,beginner-guide]
 ---
 
 ## Introduction
@@ -23,7 +23,7 @@ Sveltos is a set of **Kubernetes controllers** deployed in a **management cluste
 
 ## Getting Started with Sveltos
 
-Before we go through the latest updates, I would like to provide some pointers on getting started with Sveltos. That includes installing Sveltos on a Kubernetes management cluster while downloading the latest `sveltosctl` utility to interact with the underlying deployments.
+Before we go through the latest updates, I would like to provide some pointers on getting started with Sveltos. This involves installing Sveltos on a Kubernetes **management** cluster. We also need to download the latest `sveltosctl` utility to manage the deployments.
 
 ### Sveltos Installation
 
@@ -68,7 +68,7 @@ staging     cluster01   true    v1.30.5+k3s1   env=staging,projectsveltos.io/k8s
 
 ## Introduction to ClusterProfile/Profile
 
-Sveltos makes it **extremely easy** to deploy add-ons and applications to clusters. As long as the correct `label` is set to a cluster, we can mark the clusters of interest and deploy the needed applications. Regarding the deployment order and the dependencies, with Sveltos we follow the top-down approach, meaning, we follow the same order in applications that appear in the manifest file (ClusterProfile/Profile).
+Sveltos makes it **extremely easy** to deploy add-ons and applications to clusters. As long as the correct `label` is set to a cluster, we can mark the clusters of interest and deploy the needed applications. With Sveltos, we use a top-down approach for deployment order and dependencies. This means we follow the same order as the applications listed in the manifest file (ClusterProfile/Profile).
 
 ### ClusterProfile/Profile
 
@@ -130,7 +130,7 @@ kyverno-reports-controller-86c4db8cb7-zgbtj      1/1     Running   0          2m
 
 ## Sveltos Dashboard
 
-The `sveltosctl` utility is a fast way of checking the status of the different deployments, however, the [Sveltos Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/dashboard/) is a convenient way to provide **operators** and **users** access to the deployed applications information based on Role Based Access Control (RBAC).
+The `sveltosctl` utility is a fast way of checking the status of the different deployments; but, the [Sveltos Dashboard](https://projectsveltos.github.io/sveltos/getting_started/install/dashboard/) is a convenient way to provide **operators** and **users** access to the deployed applications' information based on Role Based Access Control (RBAC).
 
 ### Install Sveltos Dashboard
 
@@ -153,7 +153,7 @@ $ kubectl patch svc dashboard -n projectsveltos -p '{"spec": {"type": "LoadBalan
 
 ### Tenant Admin Definition
 
-Using the below commands, we will create a new `serviceaccount` named `tenant-admin-staging` that will have access only to the registred clusters within the `staging` namespace. That user will have access only to the particular namespace and nowhere else in the cluster.
+Using the below commands, we will create a new `serviceaccount` named `tenant-admin-staging` that will have access only to the registered clusters within the `staging` namespace. That user will have access only to the particular namespace and nowhere else in the cluster.
 
 ```bash
 $ kubectl create sa tenant-admin-staging -n staging
@@ -163,14 +163,14 @@ $ kubectl create token tenant-admin-staging -n staging --duration=24h
 
 ### Sveltos Dashboard Access
 
-Copy the `token` generated in the previous step, choose a browser of your preference and open the Sveltos Dashboard. Check the registred clusters and deploy applications with ease.
+Copy the `token` generated in the previous step, choose a browser of your preference and open the Sveltos Dashboard. Check the registered clusters and deploy applications with ease.
 
 ![title image reading "Sveltos Dashboard 01"](sveltos_dashboard_01.jpg)
 ![title image reading "Sveltos Dashboard 02"](sveltos_dashboard_02.jpg)
 
 ## Sveltos Grafana Dashboard
 
-With the latest Sveltos release, users can get the most out of Sveltos by utilising the Sveltos Grafana Dashboard. To use the Grafana dashboard, we first need to enable the Prometheus operator on the Sveltos deployment, have already Grafana and Prometheus installed, and finally, import the dashboard to Grafana. A simple example is outlined below.
+With the latest Sveltos release, users can get the most out of Sveltos by utilising the Sveltos Grafana Dashboard. To use the Grafana dashboard, we first need to enable the Prometheus operator on the Sveltos deployment, have already got Grafana and Prometheus installed, and finally, import the dashboard to Grafana. A simple example is outlined below.
 
 ### Install Grafana and Prometheus
 
@@ -188,7 +188,7 @@ The upgrade command will not succeed if `Grafana` and `Prometheus` are not insta
 
 ### Patch the projectsveltos ServiceMonitors
 
-As the `kube-prometheus-stack` was installed for the demonstration, the release label for prometheus is `release:prometheus-community`.
+As the `kube-prometheus-stack` was installed for the demonstration, the release label for Prometheus is `release:prometheus-community`.
 
 ```bash
 $ kubectl get servicemonitor -n projectsveltos

@@ -5,17 +5,17 @@ authors: [egrosdou01]
 date: 2025-04-29
 image: ./sveltos_capi_cyclops_blog_post.jpg
 description: A step-by-step guide outlining the creation of automated development environments using Sveltos, ClusterAPI and Cyclops.
-tags: [open-source,kubernetes,sveltos,cilium,civo cloud,akamai cloud,devops,devx,"2025"]
+tags: [open-source,kubernetes,sveltos,clusterapi,cilium,civo cloud,akamai cloud,devops,devx]
 ---
 
 ## Introduction
 
-Are you ready to simplify how your Platform team spins up and down development environments while improving [DevX](https://swimm.io/learn/developer-experience/what-is-developer-experience-devx-pillars-and-best-practices)? In this post, we demonstrate how [CAPI](https://cluster-api.sigs.k8s.io/), [Sveltos](https://github.com/projectsveltos), and [Cyclops](https://cyclops-ui.com/) work together to automatically create Kubernetes environments while allowing developers to interact and manage their applications in a user-friendly environment. It is not magic, it is the power of **Sveltos** combined with the right tooling!
+Are you ready to simplify how your Platform team spins up and down development environments while improving [DevX](https://swimm.io/learn/developer-experience/what-is-developer-experience-devx-pillars-and-best-practices)? In this post, we show how [Cluster API](https://cluster-api.sigs.k8s.io/)(CAPI), [Sveltos](https://github.com/projectsveltos), and [Cyclops](https://cyclops-ui.com/) work together. They automatically create Kubernetes environments. This setup lets developers easily interact with and manage their applications. It is not magic, it is the power of **Sveltos** combined with the right tooling!
 
 ![title image reading "Sveltos, CAPI, Cyclops Examaple"](sveltos_capi_cyclops_blog_post.jpg)
 <!--truncate-->
 
-For the demo, I kept the costs to the minimum using [Civo Cloud](https://www.civo.com/) for the management cluster and [Akamai/Linode](https://www.linode.com/) for the CAPI deployments. [Cilium](https://docs.cilium.io/en/stable/index.html) is the preferred CNI for this setup.
+For the demo, I kept the costs to a minimum using [Civo Cloud](https://www.civo.com/) for the management cluster and [Akamai/Linode](https://www.linode.com/) for the CAPI deployments. [Cilium](https://docs.cilium.io/en/stable/index.html) is the preferred CNI for this setup.
 
 
 ## Lab Setup
@@ -50,7 +50,7 @@ The showcase repository is available [here](https://github.com/egrosdou01/blog-p
 
 ## Scenario
 
-The idea is to demonstrate how **Sveltos** automates the deployment of different environments using blueprint configurations with the required global add-ons and applications while allowing users and developers to work in an intuitive UI to easily adjust the number of replicas, configure rolling updates, and monitor deployment progress. We combine the power of **CAPI** and **Sveltos** to look out for updates within a `ConfigMap` and once a change is detected, Sveltos spins up or down CAPI clusters on the Akamai/Linode cloud. When the CAPI cluster is ready, Sveltos deploys the required global configuration using a `ClusterProfile` like `Kyverno`, `Grafana Prometheus`, and `Cyclops`. We want to provide DevOps engineers and/or seasonal engineers the tools and the understanding to create and manage the lifecycle of a fleet of clusters in a meaningful and manageable way following the GitOps approach while allowing developers to focus on their main task of developement.
+**Sveltos** automates deploying different environments with blueprint configurations. It includes all needed global add-ons and applications. Users and developers can work in an intuitive UI to easily adjust the number of replicas, set up rolling updates, and track deployment progress. We combine the power of **CAPI** and **Sveltos** to look out for updates within a `ConfigMap` and once a change is detected, Sveltos spins up or down CAPI clusters on the Akamai/Linode cloud. When the CAPI cluster is ready, Sveltos deploys the required global configuration using a `ClusterProfile` like `Kyverno`, `Grafana Prometheus`, and `Cyclops`. We want to provide DevOps engineers and/or seasonal engineers the tools and the understanding to create and manage the lifecycle of a fleet of clusters in a meaningful and manageable way following the GitOps approach while allowing developers to focus on their main task of developement.
 
 ## Install Sveltos Management Cluster
 
@@ -75,7 +75,7 @@ $ helm list -n projectsveltos
 
 ### Sveltos Label Management Cluster
 
-Sveltos can also manage add-ons and applications in the **management** cluster. The `SveltosCluster` instance `mgmt` in the `mgmt` namespace represents the management cluster which is automatically created by Sveltos upon installation. However, to manage this cluster, we will add the cluster label `type=mgmt` and Sveltos will be able to match it with a `specific ClusterProfile`. More details about the Sveltos resources at a later section.
+Sveltos can also manage add-ons and applications in the **management** cluster. The `SveltosCluster` instance `mgmt` in the `mgmt` namespace represents the management cluster which is automatically created by Sveltos upon installation. But, to manage this cluster, we will add the cluster label `type=mgmt` and Sveltos will be able to match it with a `specific ClusterProfile`. More details about the Sveltos resources will be provided in a later section.
 
 ```bash
 $ kubectl label sveltoscluster -n mgmt mgmt type=mgmt
@@ -143,7 +143,7 @@ The `capi-sveltos01.yaml` file contains all Kubernetes resources required to cre
 
 ## Sveltos Resources - Management Cluster
 
-To allow Sveltos to automatically spin up and down development environments, we will create and apply a `ConfigMap` which keeps track of the users needing a development environment. Then, we will convert the `capi-sveltos01.yaml` file into a [Sveltos Template](https://projectsveltos.github.io/sveltos/template/intro_template/) and later on create two Sveltos `ClusterProfiles` to control the **creation/deletion** of CAPI clusters alongside the global add-on and deployments on these clusters.
+To allow Sveltos to automatically spin up and down development environments, we will create and apply a `ConfigMap` that keeps track of the users needing a development environment. Then, we will convert the `capi-sveltos01.yaml` file into a [Sveltos Template](https://projectsveltos.github.io/sveltos/template/intro_template/) and later on create two Sveltos `ClusterProfiles` to control the **creation/deletion** of CAPI clusters alongside the global add-on and deployments on these clusters.
 
 ### ConfigMap existing-users
 
@@ -376,7 +376,7 @@ Looking at the next steps, we can integrate [ArgoCD](https://argo-cd.readthedocs
 
 ## Conclusion: CAPI, Sveltos and Cyclops Better Together
 
-The approach simplifies both development and platform administration. The Sveltos use case focuses on automating the creation of development environments across on-prem and cloud platforms. When combined with Cyclops, it offers a streamlined and intuitive interface, enabling developers to simplify complex operations while efficiently orchestrating applications. This not only makes platform administration easier but also provides developers and users with a user-friendly Kubernetes experience and global control over operations and user permissions.
+The approach simplifies both development and platform administration. The Sveltos use case focuses on automating the creation of development environments across on-prem and cloud platforms. When paired with Cyclops, it provides a user-friendly interface. This helps developers simplify complex tasks and manage applications more efficiently. This makes platform administration easier. It also gives developers and users a friendly Kubernetes experience. They have global control over operations and user permissions.
 
 ## Resources
 

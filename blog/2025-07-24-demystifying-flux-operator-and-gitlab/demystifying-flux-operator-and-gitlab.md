@@ -4,7 +4,7 @@ title: "Flux Operator: Self-Managed Source Control Setup"
 authors: [egrosdou01]
 date: 2025-07-24
 description: A comprehensive step-by-step guide to effectively working with the Flux Operator Helm chart for deploying and managing Flux instances on Kubernetes.
-tags: [open-source,flux-operator,gitlab,gitops,devops,beginner-guide,"2025"]
+tags: [open-source,flux-operator,gitlab,gitops,devops,beginner-guide]
 ---
 
 **Summary**:
@@ -18,7 +18,7 @@ On a daily basis, as DevOps engineers, we usually interact and work with differe
 
 In the past, I worked with deployments that combined the power of Sveltos and FluxCD, but most of them were performed using the Flux CLI. This time, I did not want to have yet another CLI installed. I wanted to keep my custom images as neat as possible.
 
-In today's post, I will share my experience and describe how to bootstrap Flux using the **Flux Operator** in a Kubernetes management cluster and connect it with a repository stored in a self-managed GitLab instance in the hope of saving headaches and further confusion.
+In today’s post, I will share my experience bootstrapping Flux with the **Flux Operator** in a Kubernetes management cluster. I  will also explain how to connect it to a repository in a self-managed GitLab instance. This should help save you some headaches and confusion.
 
 ## Lab Setup
 

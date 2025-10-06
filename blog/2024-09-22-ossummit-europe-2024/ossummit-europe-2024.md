@@ -5,14 +5,14 @@ authors: [egrosdou01]
 date: 2024-09-22
 image: ./ossummit_europe_2024.jpg
 description: A detailed outline and overview of the Open Source Summit conference held in Austria in 2024, highlighting key sessions and speakers.
-tags: [conference,open-source,kubernetes,gitops,devops,"2024"]
+tags: [conference,open-source,kubernetes,gitops,devops]
 ---
 
 ## Introduction
 
-[Sveltos](https://github.com/projectsveltos) is on tour! Another non-technical post describing my experience at the [OSSummit Europe 2024](https://events.linuxfoundation.org/open-source-summit-europe/). Apart from outlining my experience, the post will include useful resources on open-source projects I learned during the event.
+[Sveltos](https://github.com/projectsveltos) is on tour! Another non-technical post describing my experience at the [OSSummit Europe 2024](https://events.linuxfoundation.org/open-source-summit-europe/). Apart from outlining my experience, the post will include useful resources on open-source projects I learned about during the event.
 
-About Sveltos, [Gianluca Mardente](https://www.linkedin.com/in/gianlucamardente/) and I had the chance to talk at the conference and present Sveltos and how it is used to deploy and manage different Kubernetes applications and add-ons in a Multi-Cloud setup.
+About Sveltos, [Gianluca Mardente](https://www.linkedin.com/in/gianlucamardente/) and I had the chance to talk at the conference and present Sveltos and how it is used to deploy and manage different Kubernetes applications and add-ons in a multi-cloud setup.
 
 In the sections below, I will outline my highlights of the conference and what I have learned, while later on, I will describe what we presented about Sveltos and where to locate the required resources.
 

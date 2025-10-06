@@ -5,19 +5,19 @@ authors: [egrosdou01]
 date: 2025-09-25
 image: ./documentation.jpg
 description: A comprehensive step-by-step guide working with MkDocs and the Mike plugin. Today we demonstrate how to control the visible documentation versions in the UI.
-tags: [mkdocs,github,beginner-guide,"2025"]
+tags: [mkdocs,github,beginner-guide]
 ---
 
 **Summary**:
 
-An update of the [previously deployed](mkdocs-mike-integration.md) MkDocs with the Mike plugin setup to keep only the three latest versions in the UI. Let's dive into the details!
+We have updated MkDocs with the Mike plugin [post](mkdocs-mike-integration.md). Now, it shows only the three most recent versions in the UI. Let's dive into the details!
 
 <!--truncate-->
 ![title image reading "Documentation Meme"](documentation.jpg)
 
 ## Introduction
 
-This is **part 2** of the MkDocs with Mike integration series. In [part 1](mkdocs-mike-integration.md), we covered how to enable and deploy the Mike plugin in MkDocs. In today's post, we cover how to update the GitHub workflows to keep only the three latest versions while displaying an **Archive** page that will serve users as a way to explore older documentation versions.
+This is **part two** of the MkDocs with Mike integration series. In [part one](mkdocs-mike-integration.md), we covered how to enable and deploy the Mike plugin in MkDocs. In today's post, we cover the updated version of the GitHub workflows to maintain only the last three documentation versions, while displaying an **Archive** page that will serve users as a way to explore older documentation versions.
 
 ## GitHub Resources
 
@@ -25,7 +25,7 @@ The showcase repository is available [here](https://github.com/egrosdou01/mkdocs
 
 ## Prerequisites
 
-1. Go through [part 1](mkdocs-mike-integration.md) of the series
+1. Go through [part one](mkdocs-mike-integration.md) of the series
 1. Basic knowledge and understanding of MkDocs
 1. Basic understanding of GitHub workflows
 
@@ -97,7 +97,7 @@ jobs:
       // highlight-end
 ```
 
-Looking at the YAML definition, what is important is the newly added `Hide Old Releases` section. How does it work? We use the `mike list` command to collect the available versions as `JSON`, we sort them out using the `-V` argument (natural sort of (version) numbers within text), we go through the list using a `for` loop, and finally we get the top item from the list and hide it. Then we push the changes. The versions are sorted from oldest to latest.
+Looking at the YAML definition, the important part is the newly added `Hide Old Releases` section. How does it work? We utilise the `mike list` command to collect all the versions as JSON output. We sort them out using the `-V` argument (natural sort of (version) numbers within text), then we go through the list using a `for` loop, and we get the top item from the list and hide it. Finally, we push the changes. The versions are sorted from oldest to latest.
 
 :::note
 The Mike official documentation is a great source of information. There might be a better way of doing something similar. Feel free to share your ideas! 😊

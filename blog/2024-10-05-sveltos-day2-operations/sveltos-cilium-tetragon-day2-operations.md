@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-10-05
 image: ./Sveltos_Cilium_Tetragon_HealthCheck.jpg
 description: A step-by-step guide outlining how to use Sveltos to deploy and configure Cilium Tetragon for Day-2 Operations.
-tags: [sveltos,cilium,tetragon,open-source,kubernetes,gitops,devops,"2024"]
+tags: [sveltos,cilium,tetragon,open-source,kubernetes,gitops,devops]
 ---
 
 ## Introduction
@@ -42,7 +42,7 @@ The goal of the demonstration is to showcase how Sveltos can be used for differe
 
 ## GitHub Resources
 
-The YAML definition files are located [here](https://github.com/egrosdou01/blog-post-resources/tree/main/day-2-operations/sveltos-cilium-tetragon).
+Find the YAML definition files [here](https://github.com/egrosdou01/blog-post-resources/tree/main/day-2-operations/sveltos-cilium-tetragon).
 
 ## Prerequisites
 
@@ -91,7 +91,7 @@ Ensure the labels set are correct. We will use them at a later step.
 
 ## Step 2: Custom ConfigMap, Cilium, Tetragon Deployment
 
-As a first step, we will deploy **Cilium** and **Cilium Tetragon** to the clusters with the label set to `env:test`. Then, we will deploy a `ConfigMap` on the `management` cluster and allow Sveltos to deploy a `TracingPolicy` alongside a `CronJob` that polls tracing events every 2 minutes from the targeted `managed` cluster.
+As a first step, we will deploy **Cilium** and **Cilium Tetragon** to the clusters with the label set to `env:test`. Next, we will set up a `ConfigMap` on the **management** cluster. Then, Sveltos will deploy a `TracingPolicy` with a `CronJob`. This job will check for tracing events every 2 minutes from the chosen **managed** cluster.
 
 ### ClusterProfile - Cilium, Tetragon, and ConfigMap
 
@@ -288,7 +288,7 @@ From the output above, we see the logs collected from the Tetragon TracingPolicy
 
 ## Sveltos for Day-2 Operations Benefits
 
-Sveltos allows users to deploy the required add-on and deployments to a fleet of clusters while allowing platform administrators and operators to **enhance** the **security posture** and **observability** of the clusters in a simple and meaningful way. Use the Sveltos `Event Framework`, `Tiers`, `ClusterHealthCheck`, and `HealthCheck` features to enhance the posture of different platforms!
+Sveltos lets users deploy add-ons and manage clusters easily. It helps platform admins and operators **improve** **security** and **visibility** in a straightforward way. Use the Sveltos `Event Framework`, `Tiers`, `ClusterHealthCheck`, and `HealthCheck` features to enhance the posture of the deployments!
 
 ## Conclusion
 

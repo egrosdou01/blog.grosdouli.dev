@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-02-22
 image: ./civo_navigate_san_francisco_2025.jpg
 description: A detailed outline and overview of the Civo Navigate conference held in San Francisco in 2025, highlighting key sessions and speakers.
-tags: [conference,open-source,kubernetes,gitops,devops,"2025"]
+tags: [conference,open-source,kubernetes,gitops,devops]
 ---
 
 ## Introduction
