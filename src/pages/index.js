@@ -13,7 +13,7 @@ function HomepageHeader() {
         <div className="main-text-container">
           <p className="hero__title">Welcome to</p>
           <h1 className="hero__title name reveal-text">Eleni</h1>
-          <h1 className="hero__title name reveal-text">Grosdouli's</h1>
+          <h2 className="hero__title name reveal-text">Grosdouli's</h2>
           <p className="hero__title">Blog</p>
           <p className="tagline">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
