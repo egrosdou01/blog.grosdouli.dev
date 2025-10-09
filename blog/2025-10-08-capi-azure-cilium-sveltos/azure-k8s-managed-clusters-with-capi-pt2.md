@@ -2,7 +2,7 @@
 slug: azure-cilium-k8s-managed-cluster-capi-pt2
 title: "Cluster API on Azure with Cilium Pt.2"
 authors: [egrosdou01]
-date: 2025-10-09
+date: 2025-10-10
 image: ./capi_azure.jpg
 description: This is part 2 of the comprehensive step-by-step guide series to creating Kubernetes managed clusters on Azure cloud using Cluster API and the Cluster API Provider Azure. For CNI, Cilium will be the prefered option.
 tags: [kubernetes,open-source,azure,clusterapi,cilium,beginner-guide]
@@ -18,9 +18,9 @@ This is part 2 of our series. Here, we show how to use Cluster API (CAPI) to cre
 
 ## Scenario
 
-As organisations move towards hybrid-cloud strategies for Kubernetes, the demand for [Azure cloud](https://azure.microsoft.com/en-gb/) services rises in 2025. With the release of Kubernetes v1.34.1 in early September, I wanted to dive into its new features and revisit what Azure offers for cloud-native workloads.
+As organisations move towards hybrid-cloud strategies for Kubernetes, the demand for [Azure cloud](https://azure.microsoft.com/en-gb/) services rises in 2025. With the release of **Kubernetes v1.34.1** in early September, I wanted to dive into its new features and revisit what Azure offers for cloud-native workloads.
 
-It has been six months since I deployed Rancher RKE2 clusters on Azure, integrating service and cluster meshes with [Cilium](https://cilium.io/). Since then, the Kubernetes ecosystem has rapidly evolved, bringing new capabilities into sight. In today’s post, we will show you how to use [CAPI](https://cluster-api.sigs.k8s.io/) and [Cluster API Provider Azure (CAPZ)](https://capz.sigs.k8s.io/introduction to automatically create Kubernetes clusters on Azure. We will take a fully declarative approach. Plus, we will use Cilium as a CNI and for added security and observability.
+It has been six months since I deployed Rancher RKE2 clusters on Azure, integrating service and cluster meshes with [Cilium](https://cilium.io/). Since then, the Kubernetes ecosystem has rapidly evolved, bringing new capabilities into sight. In today’s post, we will show you how to use [CAPI](https://cluster-api.sigs.k8s.io/) and [Cluster API Provider Azure (CAPZ)](https://capz.sigs.k8s.io/introduction) to automatically create Kubernetes clusters on Azure. We will take a fully declarative approach. Plus, we will use Cilium as a CNI and for added security and observability.
 
 In part 3 of this series, we will dive into how [Sveltos](https://projectsveltos.github.io/sveltos/main/) can further automate and optimise the entire setup. Stay tuned!
 
@@ -58,16 +58,16 @@ Go through [part 1](azure-k8s-managed-clusters-with-capi-pt1.md) and ensure the 
 
 ## GitHub Resources
 
-The showcase repository is available [here](https://github.com/egrosdou01/mkdocs-versioning-example).
+The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/capi-azure-sveltos).
 
 ## Deployment
 
-Once we are happy with the changes, we can proceed and apply the manifest `az04.yaml` to the Kubernetes management cluster.
+Once we are happy with the changes, we can proceed and apply the manifest `az04_capi_cluster.yaml` to the Kubernetes management cluster.
 
 ```bash
 $ export KUBECONFIG=~/.kube/config
 
-$ kubectl apply -f az04.yaml
+$ kubectl apply -f az04_capi_cluster.yaml
 cluster.cluster.x-k8s.io/az04 created
 azurecluster.infrastructure.cluster.x-k8s.io/az04 created
 kubeadmcontrolplane.controlplane.cluster.x-k8s.io/az04-control-plane created
@@ -139,7 +139,7 @@ $ export KUBECONFIG=az04.kubeconfig
 $ helm install --repo https://raw.githubusercontent.com/kubernetes-sigs/cloud-provider-azure/master/helm/repo cloud-provider-azure --generate-name --set infra.clusterName=az04 --set cloudControllerManager.clusterCIDR="192.168.0.0/16"
 ```
 
-Once the Helm chart is deployed, the pods `cloud-node-manager-<id>` will start populating in the `kube-system` namespace, and their number is the same as the defined Kubernetes cluster nodes.
+After deploying the Helm chart, the pods named `cloud-node-manager-<id>` will appear in the `kube-system` namespace. Their count will match the number of Kubernetes cluster nodes.
 
 ```bash
 $ kubectl get pods -n kube-system | grep -i cloud
@@ -164,7 +164,7 @@ For the Azure CAPI deployment, we cannot specify a CNI while creating the manife
 ```bash
 $ export KUBECONFIG=az04.kubeconfig
 
-$ helm install cilium cilium/cilium --namespace kube-system --create-namespace --version 1.17.7 --set tunnelProtocol="" --set ipam.mode="cluster-pool" --set ipam.operator.clusterPoolIPv4PodCIDRList="{192.168.0.0/16}" --set ipam.operator.clusterPoolIPv4MaskSize=24 --set kubeProxyReplacement=true --set bpf.masquerade=true --set hubble.ui.enabled=true  --set hubble.relay.enabled=true
+$ helm install cilium cilium/cilium --namespace kube-system --create-namespace --version 1.17.7 --set ipam.mode="cluster-pool" --set ipam.operator.clusterPoolIPv4PodCIDRList="{192.168.0.0/16}" --set ipam.operator.clusterPoolIPv4MaskSize=24 --set kubeProxyReplacement=true --set bpf.masquerade=true --set hubble.ui.enabled=true  --set hubble.relay.enabled=true
 ```
 
 #### Validation
@@ -330,7 +330,7 @@ Commercial support is available at
 </html>
 ```
 
-![title image reading "Cilium Hubble UI"](azure_hubble_ui.png)
+![title image reading "Cilium Hubble UI"](azure_hubble_ui.jpg)
 
 ## Upgrade Approach
 
@@ -341,13 +341,13 @@ As everything is defined in a declarative manner, to upgrade a CAPI cluster to a
 1. The node count and the virtual machine capacity will remain unchanged
 1. The workloads remain uneffected from the upgrade
 
-In part 3, we will demonstrate how the upgrade of CAPI clusters becomes seamless with the use of Sveltos.
+In **part 3**, we will demonstrate how the upgrade of CAPI clusters becomes seamless with the use of Sveltos.
 
 ## Deployment Cost
 
-The creation of the cluster took around 25 minutes, and the cost of the deployment up till now is only **0,28 Euro**. Keeping in mind the prices applied to the virtual machines created in the setup.
+The creation of the cluster took around 25 minutes, and the cost was only **0,28 Euro**. Keeping in mind the prices applied to the virtual machines created in the setup.
 
-![title image reading "Azure CAPI Cost"](azure_capi_cost.png)
+![title image reading "Azure CAPI Cost"](azure_capi_cost.jpg)
 
 ## Conclusion
 

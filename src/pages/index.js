@@ -2,8 +2,9 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-
 import styles from './index.module.css';
+
+const PROFILE_IMAGE = '/elenis_moji.jpg';
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -18,12 +19,18 @@ function HomepageHeader() {
           <p className="tagline">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
             <Link className="button button--secondary button--lg" to="/blog">
-              Read My Blog 🖋️💡
+              Show More 🖋️💡
             </Link>
           </div>
         </div>
       </div>
-      <div className="main-image-container">👩‍💻</div>
+      <div className="main-image-container">
+          <img
+            src={PROFILE_IMAGE}
+            alt="Eleni Grosdouli Profile. Credits to Vaso Michailidou."
+            className={styles.profilePicture}
+          />
+        </div>
     </header>
   );
 }

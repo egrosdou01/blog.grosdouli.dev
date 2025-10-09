@@ -19,7 +19,7 @@ In this post, we show how to use Cluster API (CAPI) to create Azure Kubernetes m
 
 As organisations move towards hybrid-cloud strategies for Kubernetes, the demand for [Azure cloud](https://azure.microsoft.com/en-gb/) services rises in 2025. With the release of Kubernetes v1.34.1 in early September, I wanted to dive into its new features and revisit what Azure offers for cloud-native workloads.
 
-It has been six months since I deployed Rancher RKE2 clusters on Azure, integrating service and cluster meshes with [Cilium](https://cilium.io/). Since then, the Kubernetes ecosystem has rapidly evolved, bringing new capabilities into sight. In today’s post, we will show you how to use [CAPI](https://cluster-api.sigs.k8s.io/) and [Cluster API Provider Azure (CAPZ)](https://capz.sigs.k8s.io/introduction to automatically create Kubernetes clusters on Azure. We will take a fully declarative approach. Plus, we will use Cilium as a CNI and for added security and observability.
+It has been six months since I deployed Rancher RKE2 clusters on Azure, integrating service and cluster meshes with [Cilium](https://cilium.io/). Since then, the Kubernetes ecosystem has rapidly evolved, bringing new capabilities into sight. In today’s post, we will show you how to use [CAPI](https://cluster-api.sigs.k8s.io/) and [Cluster API Provider Azure (CAPZ)](https://capz.sigs.k8s.io/introduction) to automatically create Kubernetes clusters on Azure. We will take a fully declarative approach. Plus, we will use Cilium as a CNI and for added security and observability.
 
 As this post is long, in [part 2](./azure-k8s-managed-clusters-with-capi-pt2.md) we will continue with the deployment of the CAPI cluster and the configuration of Cilium. In **part 3** of this series, we will dive into how [Sveltos](https://projectsveltos.github.io/sveltos/main/) can further automate and optimise the entire setup. Stay tuned!
 
@@ -61,7 +61,7 @@ As this post is long, in [part 2](./azure-k8s-managed-clusters-with-capi-pt2.md)
 
 ## GitHub Resources
 
-The showcase repository is available [here](https://github.com/egrosdou01/mkdocs-versioning-example).
+The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/capi-azure-sveltos).
 
 ## Definitions
 
@@ -73,7 +73,7 @@ The showcase repository is available [here](https://github.com/egrosdou01/mkdocs
 Normally, I work with [RKE2](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration) clusters; however, for this demonstration, we will use [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) as our management cluster. The reason for this change is that my lab is in maintenance mode. Below is the configuration used.
 
 ```bash
-cat <<EOF > kind-cluster-with-extramounts.yaml
+cat <<EOF > kind_cluster_extramounts.yaml
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 name: mgmt
@@ -90,7 +90,7 @@ EOF
 To create and validate the cluster, use the commands listed below.
 
 ```bash
-$ kind create cluster --config kind-cluster-with-extramounts.yaml
+$ kind create cluster --config kind_cluster_extramounts.yaml
 
 $ kubectl get nodes
 NAME                 STATUS   ROLES           AGE   VERSION
@@ -99,11 +99,11 @@ mgmt-control-plane   Ready    control-plane   20m   v1.34.0
 
 ## Azure Cloud Setup
 
-Before we start working and preparing the Kubernetes manifest files, we need to do some work on the Azure cloud environment. That includes a definition of an application with the right permissions, a resource group, a managed identity in a dedicated area, etc..
+Before we begin creating the Kubernetes manifest files, we should set up the Azure cloud environment. That includes a definition of an application with the right permissions, a resource group, a managed identity in a dedicated area, etc..
 
 ### Azure CAPI Image Availability
 
-After going through the documentation, I noticed that not every Azure location has the latest CAPI version available. The easiest way to double-check if the image is supported in your location is to use the **Azure command line utility**. For more details, have a look [here](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+I checked the documentation and saw that not all Azure locations have the latest CAPI version. The simplest way to check if the image works in your area is to use the **Azure command line utility**. For more details, have a look [here](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ```bash
 $ az sig image-version list-community --public-gallery-name ClusterAPI-f72ceb4f-5159-4c26-a0fe-2ea738f0d019 --gallery-image-definition capi-ubun2-2404 --location <your location>
@@ -117,7 +117,7 @@ As I am based in Europe, the `francecentral` location was used for this setup.
 
 ### App Registration and Permissions
 
-This is an important step as we will register an application that will allow us to authenticate and access Azure resources securely using OAuth 2.0. As this configuration was previously covered, go over the section [Set up Azure Cloud Environment](../2024-07-26-rancher-rke2-azure/rancher-rke2-cilium-azure.md#set-up-azure-cloud-environment) and perform the required steps.
+This is an important step as we will register an application that will allow us to authenticate and access Azure resources securely using OAuth 2.0. As this configuration was previously covered, go over the section [Set up Azure Cloud Environment](../2024-07-26-rancher-rke2-azure/rancher-rke2-cilium-azure.md#set-up-the-azure-cloud-environment) and perform the required steps.
 
 :::tip
 If you prefer to use the Azure cli, have a look at the [app registration](https://learn.microsoft.com/en-us/cli/azure/ad/app?view=azure-cli-latest) and the [permissions assigment](https://learn.microsoft.com/en-us/cli/azure/ad/app/permission?view=azure-cli-latest).
@@ -159,7 +159,7 @@ If this step is skipped, the virtual machines will fail to be created.
 
 ## clusterctl
 
-To work with the `clusterctl` utility, we need to export some variables associated with the Azure environment to allow CAPI to generate the required resources for us. For more information about this process, have a look at the official documentation located [here](https://cluster-api.sigs.k8s.io/user/quick-start#initialize-the-management-cluster).
+To use the `clusterctl` utility, we must export variables related to the Azure environment. This step helps CAPI create the resources we need. For more information about this process, have a look at the official documentation located [here](https://cluster-api.sigs.k8s.io/user/quick-start#initialize-the-management-cluster).
 
 ### Export Required Variables
 
@@ -255,7 +255,7 @@ What is the purpose of the mentioned namespaces?
 - **capi-kubeadm-control-plane-system**: It holds the CAPI control plane provider that manages the Kubernetes control plane components
 - **capi-system**: It is the core namespace for the CAPI deployment on the management cluster
 - **capz-system**: It contains the CAPI provider for Azure details. CAPZ is an infrastructure provider for CAPI that allows the management and provisioning of Kubernetes clusters on Azure
-- **cert-manager**: CAPI installs the namespace and related resources during initialisation. It automates the issuance, management, and renewal of TLS certificates
+- **cert-manager**: CAPI deploys the namespace and related resources during initialisation. It automates the issuance, management, and renewal of TLS certificates
 
 :::note
 Ensure all the resources in the mentioned namespaces are in a "Ready" state. If not, the CAPI deployment will be unsuccessful.
@@ -272,7 +272,7 @@ $ export AZURE_NODE_MACHINE_TYPE="Standard_D2s_v3"
 $ export AZURE_RESOURCE_GROUP="capi-test"
 ```
 
-For this demonstration, we want to keep the deployment **costs as low as possible**. For that reason, the smallest general-purpose virtual machine, `Standard_D2s_v3`, available in the mentioned location, was defined.
+For this demonstration, we want to keep the deployment **costs as low as possible**. So, the smallest general-purpose virtual machine, `Standard_D2s_v3`, was defined for that location.
 
 Let's create the Kubernetes manifests using the `clusterctl` command.
 
@@ -282,10 +282,10 @@ clusterctl generate cluster az04 \
   --kubernetes-version v1.34.1 \
   --control-plane-machine-count=3 \
   --worker-machine-count=2 \
-  > az04.yaml
+  > az04_capi_cluster.yaml
 ```
 
-The command above will create the `az04.yaml` file in the working directory and will include all the required resources to create a Kubernetes-managed cluster in Azure based on the specifications defined in the export variables. The resources below are included in the file, and below you can find a short description of each resource.
+The command above will create the `az04_capi_cluster.yaml` file in the working directory and will include all the required resources to create a Kubernetes-managed cluster in Azure based on the specifications defined in the export variables. The resources below are included in the file, and below you can find a short description of each resource.
 
 - **Cluster**: Represents the Kubernetes cluster abstraction
 - **AzureCluster**: It holds Azure-specifix cluster resources
@@ -295,18 +295,18 @@ The command above will create the `az04.yaml` file in the working directory and 
 - **KubeadmConfigTemplate**: It holds a template of the kubeadm configuration used by machines
 - **AzureClusterIdentity**: Manages the Azure Identity and credentials for the newly created cluster operations
 
-The next step is to update the `az04.yaml` file with the correct Cluster Identity secret name and namespace details.
+The next step is to update the `az04_capi_cluster.yaml` file with the correct Cluster Identity secret name and namespace details.
 
 ```bash
-$ yq -i "with(. | select(.kind == \"AzureClusterIdentity\"); .spec.type |= \"ServicePrincipal\" | .spec.clientSecret.name |= \"${AZURE_CLUSTER_IDENTITY_SECRET_NAME}\" | .spec.clientSecret.namespace |= \"${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}\")" az04.yaml
+$ yq -i "with(. | select(.kind == \"AzureClusterIdentity\"); .spec.type |= \"ServicePrincipal\" | .spec.clientSecret.name |= \"${AZURE_CLUSTER_IDENTITY_SECRET_NAME}\" | .spec.clientSecret.namespace |= \"${AZURE_CLUSTER_IDENTITY_SECRET_NAMESPACE}\")" az04_capi_cluster.yaml
 ```
 
 :::warning
 To make the setup work, **two** manual changes had to happen!
 
-The first one has an incorrect definition of the `secret` name under the `KubeadmControlPlane` resource. Update the line `name: az06-control-plane-azure-json` to `az06-md-0-azure-json`.
+1. An incorrect definition of the `secret` name under the `KubeadmControlPlane` resource exist. Update the line `name: az04-control-plane-azure-json` to `az04-md-0-azure-json`.
 
-The second change relates to the `ManagedIdentity` name under a specified resource group in Azure. Update the line `/subscriptions/123456788/resourceGroups/capz-ci/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloud-provider-user-identity` to `/subscriptions/123456788/resourceGroups/capi-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloud-provider-user-identity`. It appears the variable `AZURE_RESOURCE_GROUP` does not have an effect.
+2. A change relates to the `ManagedIdentity` name under a specified resource group in Azure. Update the line `/subscriptions/123456788/resourceGroups/capz-ci/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloud-provider-user-identity` to `/subscriptions/123456788/resourceGroups/capi-test/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cloud-provider-user-identity`. It appears the variable `AZURE_RESOURCE_GROUP` does not have an effect.
 :::
 
 The blog post is getting too long! Continue with [part 2](./azure-k8s-managed-clusters-with-capi-pt2.md).
