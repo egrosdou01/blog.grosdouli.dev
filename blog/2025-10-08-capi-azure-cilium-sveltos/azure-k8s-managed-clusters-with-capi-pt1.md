@@ -1,6 +1,6 @@
 ---
-slug: azure-cilium-k8s-managed-cluster-capi-pt1
-title: "Cluster API on Azure with Cilium Pt.1"
+slug: cluster-capi-azure-managed-k8s-cilium-pt1
+title: "Cluster API: Azure Managed K8s with Cilium Pt.1"
 authors: [egrosdou01]
 date: 2025-10-09
 image: ./capi_azure.jpg
