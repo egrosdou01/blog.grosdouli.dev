@@ -7,7 +7,7 @@ import Link from '@docusaurus/Link';
 import blogPostsData from '@generated/docusaurus-plugin-content-blog/default/blog-post-list-prop-default.json';
 import styles from './styles.module.css';
 
-const PROFILE_IMAGE_URL = 'https://avatars.githubusercontent.com/u/147995681?v=4';
+const PROFILE_IMAGE = '/elenis_moji.jpg';
 
 function HomepageHeader() {
   return null;
@@ -20,8 +20,8 @@ function IntroSection() {
       <div className="text--center margin-bottom--lg">
         <img
           className={clsx(styles.profilePicture, 'margin-bottom--md')}
-          src={PROFILE_IMAGE_URL}
-          alt="Profile Picture"
+          src={PROFILE_IMAGE}
+          alt="Eleni Grosdouli Profile. Credits to Vaso Michailidou."
         />
         <Heading as="h1">👋 Hello! I'm Eleni Grosdouli</Heading>
         <p className="hero__subtitle">

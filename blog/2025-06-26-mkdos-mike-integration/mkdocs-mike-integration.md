@@ -226,7 +226,7 @@ To include the latest release within our documentation, we can create a new bran
 
 ## Conclusion
 
-If you want to take your team’s or project’s documentation to the next level, using MkDocs together with Mike offers a clean, structured, and professional way to manage and version your docs! Happy coding!
+If you want to take your team’s or project’s documentation to the next level, using MkDocs together with Mike offers a clean, structured, and professional way to manage and version your docs! Continue to [part 2](mkdocs-mike-integration-pt2.md) for details on the displayed UI versions. Happy coding!
 
 ## Resources
 
