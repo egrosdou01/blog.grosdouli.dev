@@ -11,7 +11,7 @@ import 'dotenv/config';
 const config = {
   title: "Grosdouli Blog",
   tagline: 'Passionate about breaking and fixing things in the world of tech! Follow me on this journey into DevOps and GitOps practices, exploring robust cloud-native solutions across on-prem and cloud datacenters!',
-  favicon: 'https://avatars.githubusercontent.com/u/147995681?v=4',
+  favicon: '/eleni_blog_logo.jpg',
 
   // Set the production url of your site here
   url: 'https://blog.grosdouli.dev',
@@ -104,7 +104,7 @@ scripts: [
         title: 'Eleni Grosdouli',
         logo: {
           alt: 'Eleni Grosdouli Blog Logo',
-          src: 'https://avatars.githubusercontent.com/u/147995681?v=4',
+          src: '/eleni_blog_logo.jpg',
           width: 32,
           height: 32,
         },
