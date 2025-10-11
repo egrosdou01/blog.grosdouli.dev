@@ -27,14 +27,19 @@ const config = {
   deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-
+  onDuplicateRoutes: 'warn',
+ 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+  },
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
   },
 
 scripts: [
@@ -99,6 +104,12 @@ scripts: [
         { name: 'twitter:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps, Kubernetes & Cisco Insights" },
         { name: 'twitter:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift." },
       ],
+      
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       
       navbar: {
         title: 'Eleni Grosdouli',
