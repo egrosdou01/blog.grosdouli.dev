@@ -1,0 +1,41 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+   
+  .postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .blogPostCard {
+    border: 1px solid var(--ifm-color-emphasis-200);
+    border-radius: var(--ifm-border-radius);
+    padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .blogPostCard:hover {
+    box-shadow: var(--ifm-shadow-md);
+    transform: translateY(-2px);
+  }
+  
+  .postLink {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .postTitle {
+    margin-top: 0;
+    color: var(--ifm-color-primary);
+  }
+  
+  .postDescription {
+    font-size: var(--ifm-font-size-sm);
+    color: var(--ifm-font-color-secondary);
+  }
+  
+  .latestPostsSection {
+    margin-bottom: 40px;
+  }
