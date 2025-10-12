@@ -10,7 +10,7 @@ import 'dotenv/config';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Grosdouli Blog",
-  tagline: 'Passionate about breaking and fixing things in the world of tech! Follow me on this journey into DevOps and GitOps practices, exploring robust cloud-native solutions across on-prem and cloud datacenters!',
+  tagline: 'Passionate about breaking and fixing things in the world of tech! Join me on this journey through DevOps and GitOps. We\'ll explore strong cloud-native solutions in both on-prem and cloud datacentres!',
   favicon: '/eleni_blog_logo.jpg',
 
   // Set the production url of your site here

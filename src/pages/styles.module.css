@@ -22,33 +22,9 @@
   justify-content: center;
 }
 
-.features {
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  width: 100%;
-}
-
-.featureImage {
-  height: 200px;
-  width: 200px;
-}
-
-.profileImage {
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
-}
-
-.card__image {
-  padding: 16px;
-  text-align: center;
-  justify-content: center;
-}
-
-.card__image img {
-  width: 400px;
-  height: auto;
+.introSection {
+  padding-top: var(--ifm-spacing-vertical);
+  padding-bottom: var(--ifm-spacing-vertical);
 }
 
 .profilePicture {
@@ -60,46 +36,4 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.introSection {
-  padding-top: var(--ifm-spacing-vertical);
-  padding-bottom: var(--ifm-spacing-vertical);
-}
-
-.postsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.blogPostCard {
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--ifm-border-radius);
-  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
-  transition: all 0.2s ease-in-out;
-}
-
-.blogPostCard:hover {
-  box-shadow: var(--ifm-shadow-md);
-  transform: translateY(-2px);
-}
-
-.postLink {
-  text-decoration: none;
-  color: inherit;
-}
-
-.postTitle {
-  margin-top: 0;
-  color: var(--ifm-color-primary);
-}
-
-.postDescription {
-  font-size: var(--ifm-font-size-sm);
-  color: var(--ifm-font-color-secondary);
-}
-
-.latestPostsSection {
-  margin-bottom: 40px;
 }

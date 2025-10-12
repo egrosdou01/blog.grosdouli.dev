@@ -3,9 +3,9 @@ import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import Link from '@docusaurus/Link';
-import blogPostsData from '@generated/docusaurus-plugin-content-blog/default/blog-post-list-prop-default.json';
 import styles from './styles.module.css';
+
+import LatestBlogPosts from '../components/LatestBlogPosts';
 
 const PROFILE_IMAGE = '/elenis_moji.jpg';
 
@@ -25,7 +25,8 @@ function IntroSection() {
         />
         <Heading as="h1">👋 Hello! I'm Eleni Grosdouli</Heading>
         <p className="hero__subtitle">
-          As a DevOps Consulting Engineer at <a href="https://www.cisco.com/">Cisco Solutions GmbH</a>, I specialise in cutting-edge <strong>DevOps and GitOps</strong> methodologies, alongside networking, security, and endpoint management.
+          As a DevOps Consulting Engineer at <a href="https://www.cisco.com/">Cisco Solutions GmbH</a>, I'm deeply involved in the cloud-native ecosystem.
+          My main technical skills are Kubernetes, Docker, containers, Infrastructure as Code tools, and networking in data centres. I'm driven by solving complex challenges across different environments.
           <br /><br />
           Feel free to reach out to any available platform!
         </p>
@@ -39,7 +40,8 @@ const AboutMeSections = [
     title: '💻 My Expertise',
     description: (
       <>
-        I regularly publish content and guides on <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8S Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift deployments</a>, covering robust solutions for <strong>on-prem and cloud environments</strong>. My contributions are also featured in official platforms like the <a href="https://cilium.io/blog/categories/how-to/">Cilium Blog</a> and the <a href="https://projectsveltos.github.io/sveltos/main/blogs/">ProjectSveltos Blog</a>.
+        I often share content and guides on <a href="https://github.com/cilium/cilium">Cilium</a>, <a href="https://github.com/projectsveltos">ProjectSveltos</a>, <a href="https://github.com/gianlucam76/k8s-cleaner">K8S Cleaner</a>, <a href="https://github.com/rancher/rancher">Rancher</a>, <a href="https://docs.rke2.io/">RKE2</a>, and <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">OpenShift deployments</a>. These focus on strong solutions for both on-prem and cloud setups.
+        My contributions are also featured in official platforms like the <a href="https://cilium.io/blog/categories/how-to/">Cilium Blog</a> and the <a href="https://projectsveltos.github.io/sveltos/main/blogs/">ProjectSveltos Blog</a>.
       </>
     ),
     columnClass: 'col--6'
@@ -69,26 +71,6 @@ function AboutMe({ title, description, columnClass = 'col--4' }) {
 
 export default function AboutPage() {
   const { siteConfig } = useDocusaurusContext();
-  const [recentPosts, setRecentPosts] = useState([]);
-
-  useEffect(() => {
-    if (blogPostsData && blogPostsData.items && blogPostsData.items.length > 0) {
-      const sortedPosts = [...blogPostsData.items].sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateB - dateA;
-      });
-
-      const extractedPosts = sortedPosts.slice(0, 3).map(post => ({
-        title: post.title,
-        link: post.permalink,
-        description: `Published on ${new Date(post.date).toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' })}`,
-      }));
-      setRecentPosts(extractedPosts);
-    } else {
-      setRecentPosts([]);
-    }
-  }, []);
 
   return (
     <Layout
@@ -110,31 +92,9 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+            {/* Use the new LatestBlogPosts component here */}
             <div className="row margin-top--xl">
-              <div className="col col--12">
-                <div className={styles.latestPostsSection}>
-                  <Heading as="h2" style={{ textAlign: 'center', marginBottom: '30px' }}>Latest Blog Posts</Heading>
-                  {recentPosts.length === 0 ? (
-                    <p style={{ textAlign: 'center' }}>No recent posts found.</p>
-                  ) : (
-                    <div className={styles.postsGrid}>
-                      {recentPosts.map((post, index) => (
-                        <article key={index} className={styles.blogPostCard}>
-                          <Link to={post.link} className={styles.postLink}>
-                            <h3 className={styles.postTitle}>{post.title}</h3>
-                          </Link>
-                          <p className={styles.postDescription}>{post.description}</p>
-                        </article>
-                      ))}
-                    </div>
-                  )}
-                  <div className={styles.buttons} style={{ marginTop: '50px', textAlign: 'center' }}>
-                    <Link className="button button--secondary button--lg" to="/blog">
-                      Show More 🖋️💡
-                    </Link>
-                  </div>
-                </div>
-              </div>
+              <LatestBlogPosts />
             </div>
           </div>
         </section>
