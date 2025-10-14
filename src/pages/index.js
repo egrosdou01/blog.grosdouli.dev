@@ -16,7 +16,7 @@ const AboutMeList = [
       <>
         I'm Eleni Grosdouli, a DevOps Consulting Engineer at <a href="https://www.cisco.com/">Cisco Solutions GmbH</a>.
         My professional journey is based in the exciting areas of DevOps, GitOps, modern data centres, networking, and security practices.
-        I enjoy solving <strong>complex problems</strong>, <strong>learning</strong> new things, and <strong>speaking</strong> at Cloud Native conferences.
+        I enjoy solving <strong>complex</strong> problems, <strong>learning</strong> new things, and <strong>speaking</strong> at Cloud Native conferences, where I often share cloud-native insights.
         My home lab is my playground!
       </>
     ),
@@ -25,9 +25,9 @@ const AboutMeList = [
     title: '🚀 Passionate Explorer',
     description: (
       <>
-      I'm a <strong>passionate tech explorer</strong>, always eager to discover new things and experiment in my home lab.
+      As a <strong>passionate</strong> tech explorer, I'm always eager to discover new technologies and experiment in my home lab environment.
       My motto, "Break and fix," focuses on hands-on learning and constant growth in the changing <strong>cloud-native</strong> world.
-      This approach helps me better understand how systems work and create solutions that are both reliable and scalable. For me, hands-on experience is the best way to learn!
+      This approach helps me better understand how complex systems work and create solutions that are both reliable and scalable. For me, hands-on experience is the most effective way to learn and grow as an engineer in a fast-paced environment!
       </>
     ),
   },
@@ -36,7 +36,7 @@ const AboutMeList = [
     description: (
       <>
       Outside my job, I focus on making resources and helping the community. I do this through <strong>open-source</strong> projects, <strong>blog posts</strong>, and <strong>mentorship</strong>.
-      I believe in the power of shared knowledge and enjoy helping others grow in their technical journeys. All it takes is a collaborative and encouraging environment to make a real difference!
+      I believe in the power of shared knowledge and enjoy helping others grow in their technical journeys by offering insights into cloud-native technologies. All it takes is a collaborative and encouraging environment to make a real difference and inspire others to achieve their full potential.
       </>
     ),
   },
