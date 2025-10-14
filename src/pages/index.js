@@ -14,7 +14,8 @@ const AboutMeList = [
     title: '👋 Hello!',
     description: (
       <>
-        I'm a DevOps Consulting Engineer at <a href="https://www.cisco.com/">Cisco Solutions GmbH</a>. I specialise in DevOps, GitOps, datacentres, networking, and security.
+        I'm Eleni Grosdouli, a DevOps Consulting Engineer at <a href="https://www.cisco.com/">Cisco Solutions GmbH</a>.
+        My professional journey is based in the exciting areas of DevOps, GitOps, modern data centres, networking, and security practices.
         I enjoy solving <strong>complex problems</strong>, <strong>learning</strong> new things, and <strong>speaking</strong> at Cloud Native conferences.
         My home lab is my playground!
       </>
@@ -24,8 +25,9 @@ const AboutMeList = [
     title: '🚀 Passionate Explorer',
     description: (
       <>
-      I am a <strong>passionate tech explorer</strong>, always eager to discover new things and experiment in my home lab.
-      My motto, "Break and fix", is all about hands-on learning and continuous growth in the ever-evolving <strong>cloud-native landscape</strong>.
+      I'm a <strong>passionate tech explorer</strong>, always eager to discover new things and experiment in my home lab.
+      My motto, "Break and fix," focuses on hands-on learning and constant growth in the changing <strong>cloud-native</strong> world.
+      This approach helps me better understand how systems work and create solutions that are both reliable and scalable. For me, hands-on experience is the best way to learn!
       </>
     ),
   },
@@ -33,7 +35,8 @@ const AboutMeList = [
     title: '🤝 Community Contributor',
     description: (
       <>
-      I enjoy <strong>creating material</strong> and contributing to the community through <strong>open-source</strong> projects, <strong>blog posts</strong>, and <strong>mentorship</strong>.
+      Outside my job, I focus on making resources and helping the community. I do this through <strong>open-source</strong> projects, <strong>blog posts</strong>, and <strong>mentorship</strong>.
+      I believe in the power of shared knowledge and enjoy helping others grow in their technical journeys. All it takes is a collaborative and encouraging environment to make a real difference!
       </>
     ),
   },
@@ -71,7 +74,7 @@ function HomepageHeader() {
     <header className='header'>
       <div className="mixmax">
         <div className="main-text-container">
-          <p className="hero__title">Welcome to</p>
+          {/* <p className="hero__title">Welcome to</p> */}
           <h1 className="hero__title name reveal-text">Eleni</h1>
           <h2 className="hero__title name reveal-text">Grosdouli's</h2>
           <p className="hero__title">Blog</p>
@@ -98,8 +101,8 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title="Welcome to Eleni Grosdouli's Blog"
-      description="Explore DevOps, GitOps, Datacenter, networking, security, and cloud-native insights from Eleni Grosdouli, a DevOps Consulting Engineer at Cisco Solutions GmbH.">
+      title="DevOps, GitOps, Cloud-Native Insights"
+      description="Explore DevOps, GitOps, data center, networking, security, and cloud-native insights from Eleni Grosdouli.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
