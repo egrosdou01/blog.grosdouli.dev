@@ -37,3 +37,14 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.card__image {
+  padding: 16px;
+  text-align: center;
+  justify-content: center;
+}
+
+.card__image img {
+  width: 400px;
+  height: auto;
+}
