@@ -74,7 +74,7 @@ export default function AboutPage() {
 
   return (
     <Layout
-      title="This is the About me section"
+      title="This is the About me page"
       description="Learn more about Eleni Grosdouli, her expertise, passions, and contributions.">
       <main>
         <section className={styles.aboutPageContent}>
