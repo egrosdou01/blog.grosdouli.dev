@@ -11,7 +11,6 @@ import 'dotenv/config';
 const config = {
   title: "Grosdouli Blog",
   tagline: 'Passionate about breaking and fixing things in the world of tech! Join me on this journey through DevOps and GitOps practices. We\'ll explore cloud-native solutions and more in both on-prem and cloud data centres!',
-  favicon: '/eleni_blog_logo.jpg',
 
   // Set the production url of your site here
   url: 'https://blog.grosdouli.dev',
@@ -41,6 +40,14 @@ const config = {
       onBrokenMarkdownLinks: 'warn',
     },
   },
+
+future: {
+  v4: {
+    removeLegacyPostBuildHeadAttribute: true,
+    useCssCascadeLayers: true,
+  },
+  experimental_faster: true
+},
 
 scripts: [
   {
@@ -168,9 +175,6 @@ scripts: [
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
-      },
-      colorMode: {
-        defaultMode: 'light',
       },
     }),
     plugins: [
