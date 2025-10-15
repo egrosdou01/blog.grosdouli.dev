@@ -176,9 +176,6 @@ scripts: [
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
-      colorMode: {
-        defaultMode: 'light',
-      },
     }),
     plugins: [
       [ require.resolve('docusaurus-lunr-search'), {
