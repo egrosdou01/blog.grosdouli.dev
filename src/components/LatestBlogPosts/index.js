@@ -10,13 +10,7 @@ export default function LatestBlogPosts() {
 
   useEffect(() => {
     if (blogPostsData && blogPostsData.items && blogPostsData.items.length > 0) {
-      const sortedPosts = [...blogPostsData.items].sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
-        return dateB - dateA;
-      });
-
-      const extractedPosts = sortedPosts.slice(0, 3).map(post => ({
+      const extractedPosts = blogPostsData.items.slice(0, 3).map(post => ({
         title: post.title,
         link: post.permalink,
         description: `Published on ${new Date(post.date).toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' })}`,
