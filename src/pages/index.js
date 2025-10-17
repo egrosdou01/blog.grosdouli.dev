@@ -1,12 +1,11 @@
-import Link from '@docusaurus/Link';
+import React, { lazy, Suspense } from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-import LatestBlogPosts from '../components/LatestBlogPosts';
-
+const LatestBlogPosts = lazy(() => import('../components/LatestBlogPosts'));
 const PROFILE_IMAGE = '/elenis_moji.jpg';
 
 const AboutMeList = [
@@ -103,7 +102,9 @@ export default function Home() {
         <HomepageFeatures />
         <div className="container">
           <div className="row margin-top--xl">
-            <LatestBlogPosts />
+            <Suspense fallback={<div>Loading...</div>}>
+              <LatestBlogPosts />
+            </Suspense>
           </div>
         </div>
       </main>
