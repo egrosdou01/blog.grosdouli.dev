@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-11-06
 image: ./its_dns.jpg
 description: A step-by-step guide setting up Docusaurus on GitHub using GitHub Pages and a custom domain.
-tags: [docusaurus,github,cloudflare,beginner-guide,tshoot-insights]
+tags: [docusaurus,github,cloudflare,tshoot-insights]
 ---
 
 ## Introduction

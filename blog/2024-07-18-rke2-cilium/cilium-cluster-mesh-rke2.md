@@ -4,7 +4,7 @@ title: Cilium Cluster Mesh on RKE2
 authors: [egrosdou01]
 date: 2024-07-18
 description: A comprehensive step-by-step guide to installing Cilium CNI on a Rancher RKE2 cluster.
-tags: [cilium,rke2,open-source,kubernetes,gitops,devops]
+tags: [cilium,rke2,kubernetes,gitops,devops]
 ---
 
 ## Introduction

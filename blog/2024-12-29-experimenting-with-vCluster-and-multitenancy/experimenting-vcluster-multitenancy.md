@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-12-29
 updated: 2025-03-18
 description: An in-depth introduction to vCluster, exploring its core concepts, benefits, and why it's a crucial technology for modern Kubernetes environments.
-tags: [kubernetes,open-source,vcluster,cloudflare]
+tags: [kubernetes,vcluster,cloudflare]
 ---
 
 ## Introduction

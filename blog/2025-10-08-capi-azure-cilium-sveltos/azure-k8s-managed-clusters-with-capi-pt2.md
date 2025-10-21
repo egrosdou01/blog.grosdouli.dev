@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-10-10
 image: ./capi_azure.jpg
 description: This is part 2 of the comprehensive step-by-step guide series to creating Kubernetes-managed clusters on the Azure cloud using Cluster API, Cluster API Provider Azure and Cilium.
-tags: [kubernetes,open-source,azure,clusterapi,cilium,beginner-guide]
+tags: [kubernetes,azure,clusterapi,cilium]
 ---
 
 **Summary**:

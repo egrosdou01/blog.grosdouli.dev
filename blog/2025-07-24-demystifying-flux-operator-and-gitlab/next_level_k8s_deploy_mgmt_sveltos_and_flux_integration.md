@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-08-14
 image: ./fluxcd_and_sveltos.jpg
 description: A step-by-step guide working with the Sveltos and the Flux Operator helm chart to achieve the best GitOps experience.
-tags: [open-source,sveltos,flux-operator,gitlab,gitops,devops,beginner-guide]
+tags: [sveltos,flux-operator,gitlab,gitops,devops]
 ---
 
 **Summary**:

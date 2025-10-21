@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-07-15
 image: ./cilium_sveltos_eks.jpg
 description: Provide detailed steps on how to install Cilium CNI on EKS with Sveltos as the tool for automated add-ons and deployments.
-tags: [sveltos,cilium,open-source,kubernetes,gitops,devops]
+tags: [sveltos,cilium,kubernetes,gitops,devops]
 ---
 
 ## Introduction

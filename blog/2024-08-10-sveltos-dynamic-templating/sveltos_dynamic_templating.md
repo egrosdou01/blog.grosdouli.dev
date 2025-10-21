@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-08-10
 image: ./Sveltos_Templating_Cilium.jpg
 description: An in-depth introduction to Sveltos's advanced Templating capabilities for Kubernetes add-ons.
-tags: [sveltos,cilium,open-source,kubernetes,gitops,devops]
+tags: [sveltos,cilium,kubernetes,gitops,devops]
 ---
 
 ## Introduction

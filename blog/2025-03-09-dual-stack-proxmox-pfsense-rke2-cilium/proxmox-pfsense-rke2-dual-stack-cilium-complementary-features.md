@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-05-20
 image: ./proxmox_rancher_cilium.jpg
 description: A step-by-step guide to dual-stack cluster mesh deployment on a Rancher RKE2 cluster with Cilium.
-tags: [proxmox,open-source,kubernetes,rke2,cilium,argoCD,ipv6]
+tags: [proxmox,kubernetes,rke2,cilium,argoCD,ipv6]
 ---
 
 ## Introduction

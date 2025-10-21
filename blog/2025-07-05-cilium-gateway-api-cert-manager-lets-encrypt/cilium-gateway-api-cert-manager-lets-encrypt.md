@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-07-10
 image: ./cilium_gateway_api_lets_encrypt.jpg
 description: A step-by-step guide working with Cilium Gateway API, cert-manager, and let's encrypt.
-tags: [cilium,gateway-api,cert-manager,let's encrypt,cloudflare,argoCD,devops,beginner-guide]
+tags: [cilium,gateway-api,cert-manager,let's encrypt,cloudflare,argoCD,devops]
 ---
 
 **Summary**:

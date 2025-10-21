@@ -6,7 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
 const LatestBlogPosts = lazy(() => import('../components/LatestBlogPosts'));
-const PROFILE_IMAGE = '/elenis_moji.jpg';
+const PROFILE_IMAGE = '/img/elenis_moji.jpg';
 
 function HomepageHeader() {
   return null;

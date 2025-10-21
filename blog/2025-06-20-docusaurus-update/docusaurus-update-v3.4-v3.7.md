@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-06-20
 image: ./docusaurus.jpg
 description: A detailed Docusaurus note outlining the process and considerations for updating from version 3.4.0 to the latest v3.7.0.
-tags: [docusaurus,github,beginner-guide]
+tags: [docusaurus,github]
 ---
 
 **Summary**:
