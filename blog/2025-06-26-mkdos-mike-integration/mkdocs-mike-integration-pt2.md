@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-09-25
 image: ./documentation.jpg
 description: A comprehensive step-by-step guide working with MkDocs and the Mike plugin. Today we demonstrate how to control the visible documentation versions in the UI.
-tags: [mkdocs,github,beginner-guide]
+tags: [mkdocs,github]
 ---
 
 **Summary**:

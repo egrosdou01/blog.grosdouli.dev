@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-04-29
 image: ./sveltos_capi_cyclops_blog_post.jpg
 description: A step-by-step guide outlining the creation of automated development environments using Sveltos, ClusterAPI and Cyclops.
-tags: [open-source,kubernetes,sveltos,clusterapi,cilium,civo cloud,akamai cloud,devops,devx]
+tags: [kubernetes,sveltos,clusterapi,cilium,civo cloud,akamai cloud,devops,devx]
 ---
 
 ## Introduction

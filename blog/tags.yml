@@ -38,10 +38,6 @@ ci/cd:
   label: CI/CD
   permalink: /ci-cd
   description: "Continuous Integration and Continuous Deployment/Delivery refers to a set of practices that enable rapid and reliable software releases, automating the build, test, and deployment phases."
-open-source:
-  label: Open Source
-  permalink: /open-source
-  description: "This tag highlights articles discussing open-source software, projects, and contributions, emphasizing community-driven development and collaboration in the tech world."
 kubernetes:
   label: Kubernetes
   permalink: /kubernetes
@@ -102,10 +98,6 @@ talos:
   label: Talos
   permalink: /talos
   description: "Talos is a modern, minimal, and secure Kubernetes operating system designed for production environments, focusing on immutability and API-driven management for enhanced security and reliability."
-beginner-guide:
-  label: Beginner Guide
-  permalink: /beginner-guide
-  description: "This tag groups blog posts specifically designed as beginner guides, offering foundational knowledge and step-by-step instructions for newcomers to various technical topics."
 proxmox:
   label: Proxmox
   permalink: /proxmox

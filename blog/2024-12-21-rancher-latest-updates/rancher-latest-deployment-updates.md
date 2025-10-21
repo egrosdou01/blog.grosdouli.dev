@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-12-21
 image: ./rancher_nginx_let's_encrypt_cloudflare.jpg
 description: A step-by-step guide to Rancher on a Kubernetes cluster using Nginx Ingress Controller and Let's Encrypt.
-tags: [kubernetes,open-source,rancher,cloudflare,let's encrypt]
+tags: [kubernetes,rancher,cloudflare,let's encrypt]
 ---
 
 ## Introduction

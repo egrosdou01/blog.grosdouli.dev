@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-03-10
 image: ./ipv6_everywhere.jpg
 description: An introduction to IPv6, explaining its importance and providing a detailed step-by-step guide for its setup and configuration on Proxmox.
-tags: [proxmox,pfsense,FRITZ!Box,open-source,ipv6]
+tags: [proxmox,pfsense,FRITZ!Box,ipv6]
 ---
 
 ## Introduction

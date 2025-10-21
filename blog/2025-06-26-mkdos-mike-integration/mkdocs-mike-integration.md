@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-06-26
 image: ./documentation.jpg
 description: A comprehensive step-by-step guide detailing how to effectively work with MkDocs and the Mike plugin for seamless documentation versioning and deployment.
-tags: [mkdocs,github,beginner-guide]
+tags: [mkdocs,github]
 ---
 
 **Summary**:

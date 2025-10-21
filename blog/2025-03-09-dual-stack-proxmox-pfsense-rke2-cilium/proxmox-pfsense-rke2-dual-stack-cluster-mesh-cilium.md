@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-04-08
 image: ./what_gives_people_joy.jpg
 description: A step-by-step guide to dual-stack deployment on a Rancher RKE2 cluster with Cilium complementary features.
-tags: [proxmox,open-source,kubernetes,rke2,cilium,ipv6]
+tags: [proxmox,kubernetes,rke2,cilium,ipv6]
 ---
 
 ## Introduction

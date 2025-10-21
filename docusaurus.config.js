@@ -7,13 +7,15 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import 'dotenv/config';
 
+const title = 'Grosdouli Blog';
+const tagline = "Passionate about breaking and fixing things in the world of tech! Join me on this journey through DevOps and GitOps practices. We'll explore cloud-native solutions and more in both on-prem and cloud data centres!";
+const url = 'https://blog.grosdouli.dev'
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Grosdouli Blog",
-  tagline: 'Passionate about breaking and fixing things in the world of tech! Join me on this journey through DevOps and GitOps practices. We\'ll explore cloud-native solutions and more in both on-prem and cloud data centres!',
-
-  // Set the production url of your site here
-  url: 'https://blog.grosdouli.dev',
+  title,
+  tagline,
+  url,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -41,6 +43,45 @@ const config = {
     },
   },
 
+  headTags: [
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        name: "Eleni Grosdouli Blog",
+        url: url,
+        description: tagline,
+        potentialAction: {
+          "@type": "SearchAction",
+          target: `${url}/search?q={search_term_string}`,
+          "query-input": "required name=search_term_string",
+        },
+      }),
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: "Eleni Grosdouli",
+        url: url,
+        logo: `${url}/img/eleni_blog_logo.jpg`,
+        sameAs: [
+          "https://linkedin.com/in/eleni-grosdouli-85a1a5116",
+          "https://github.com/egrosdou01",
+          "https://medium.com/@eleni.grosdouli",
+          "https://dev.to/egrosdou"
+        ],
+      }),
+    },
+  ],
 future: {
   v4: {
     removeLegacyPostBuildHeadAttribute: true,
@@ -122,7 +163,7 @@ scripts: [
         title: 'Eleni Grosdouli',
         logo: {
           alt: 'Eleni Grosdouli Blog Logo',
-          src: '/eleni_blog_logo.jpg',
+          src: '/img/eleni_blog_logo.jpg',
           width: 32,
           height: 32,
         },
@@ -136,7 +177,7 @@ scripts: [
           {to: 'blog', label: 'Blog', position: 'left'},
           {to: '/blog/tags', label: 'Tags', position: 'left'},
           {to: 'talks', label: 'Talks', position: 'left'},
-          {to: 'favourites', label: 'Favourites', position: 'left'},
+          // {to: 'favourites', label: 'Favourites', position: 'left'},
           {to: 'about', label: 'About', position: 'right'},
           {label: 'GitHub', href: 'https://github.com/egrosdou01', position: 'right'},
           {type: 'search', position: 'right'},

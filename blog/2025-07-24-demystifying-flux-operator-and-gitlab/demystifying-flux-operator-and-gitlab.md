@@ -4,7 +4,7 @@ title: "Flux Operator: Self-Managed Source Control Setup"
 authors: [egrosdou01]
 date: 2025-07-24
 description: A comprehensive step-by-step guide to effectively working with the Flux Operator Helm chart for deploying and managing Flux instances on Kubernetes.
-tags: [open-source,flux-operator,gitlab,gitops,devops,beginner-guide]
+tags: [flux-operator,gitlab,gitops,devops]
 ---
 
 **Summary**:

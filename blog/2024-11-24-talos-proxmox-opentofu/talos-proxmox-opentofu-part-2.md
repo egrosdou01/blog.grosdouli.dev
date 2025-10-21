@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2024-12-14
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
 description: A step-by-step guide installing a Talos Cluster on Proxmox with OpenTofu - Part 2.
-tags: [talos,cilium,opentofu,proxmox,open-source,beginner-guide]
+tags: [talos,cilium,opentofu,proxmox]
 ---
 
 ## Introduction
