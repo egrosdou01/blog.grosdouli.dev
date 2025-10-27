@@ -72,7 +72,7 @@ const config = {
         "@type": "Person",
         name: "Eleni Grosdouli",
         url: url,
-        logo: `${url}/img/eleni_blog_logo.jpg`,
+        image: `${url}/img/eleni_blog_logo.jpg`,
         sameAs: [
           "https://linkedin.com/in/eleni-grosdouli-85a1a5116",
           "https://github.com/egrosdou01",
