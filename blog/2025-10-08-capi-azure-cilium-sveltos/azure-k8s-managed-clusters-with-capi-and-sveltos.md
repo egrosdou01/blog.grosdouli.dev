@@ -452,7 +452,7 @@ We can use Sveltos to install ArgoCD or Flux on the **management** cluster. Have
 #### General Sveltos Resources - Management Cluster
 
 ```bash
-$ export KUBECONFIG=~/.kube/config
+$ export KUBECONFIG=</path/to/management/cluster/kubeconfig>
 
 $ kubectl get clusterprofile,clustersummary -A
 NAME                                                                AGE
@@ -581,7 +581,7 @@ EOF
 ```
 
 ```bash
-$ export KUBECONFIG=~/.kube/config
+$ export KUBECONFIG=</path/to/management/cluster/kubeconfig>
 
 $ kubectl get machines,azuremachine -A
 NAMESPACE   NAME                                                  CLUSTER   NODE NAME                    READY   AVAILABLE   UP-TO-DATE   PHASE          AGE   VERSION
