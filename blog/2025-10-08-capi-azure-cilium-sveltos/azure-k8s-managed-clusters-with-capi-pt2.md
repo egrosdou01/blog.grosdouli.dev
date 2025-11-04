@@ -58,7 +58,7 @@ Go through [part 1](azure-k8s-managed-clusters-with-capi-pt1.md) and ensure the 
 
 ## GitHub Resources
 
-The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/capi-azure-sveltos).
+The YAML outputs above are not complete. Have a look at the [GitHub repository](https://github.com/egrosdou01/blog-post-resources/tree/main/capi-azure-sveltos/pt1-2).
 
 ## Deployment
 
