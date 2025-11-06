@@ -127,6 +127,14 @@ Let's go ahead and convert the [CAPI manifest](azure-k8s-managed-clusters-with-c
 cat << EOF > cm_deploy_azure_capi.yaml
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: deploy-azure-capi
+  namespace: default
+  annotations:
+    // highlight-start
+    projectsveltos.io/template: ok
+    // highlight-end
 data:
   capi-azure.yaml: |
     // highlight-start
@@ -182,17 +190,11 @@ data:
     ---
     {{- end }}
     {{- end }}
-kind: ConfigMap
-metadata:
-  name: deploy-azure-capi
-  namespace: default
-  annotations:
-    projectsveltos.io/template: ok
 EOF
 ```
 
 :::note
-Remember to update the Azure Subscription ID string!
+The `projectsveltos.io/template: ok` annotation is required and instructs Sveltos to  instantiate the content of the ConfigMap. Remember to **update** the **Azure Subscription ID** string!
 :::
 
 **CAPI AzureClusterIdentity and Service Principal - ConfigMap**
