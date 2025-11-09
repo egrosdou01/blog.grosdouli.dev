@@ -20,6 +20,7 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
   trailingSlash: false,
+  favicon: 'img/elenis_moji_face1.png',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -61,7 +62,7 @@ const config = {
           "query-input": "required name=search_term_string",
         },
       }),
-    },
+    },   
     {
       tagName: "script",
       attributes: {
@@ -145,12 +146,12 @@ scripts: [
       // Replace with your project's social card
       image: 'img/social-card.jpg',
       metadata: [
-        { property: 'og:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps, Kubernetes & Cisco Insights" },
-        { property: 'og:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift." },
-        { name: 'description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift." },
+        { property: 'og:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps & Kubernetes Insights" },
+        { property: 'og:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on Kubernetes, DevOps, GitOps, Sveltos, Cilium, Rancher, RKE2, and OpenShift." },
+        { name: 'description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on Kubernetes, DevOps, GitOps, Sveltos, Cilium, Rancher, RKE2, and OpenShift" },
         { name: 'robots', content: 'max-image-preview:large' },
-        { name: 'twitter:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps, Kubernetes & Cisco Insights" },
-        { name: 'twitter:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift." },
+        { name: 'twitter:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps & Kubernetes Insights" },
+        { name: 'twitter:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on Kubernetes, DevOps, GitOps, Sveltos, Cilium, Rancher, RKE2, and OpenShift" },
       ],
       
       colorMode: {
