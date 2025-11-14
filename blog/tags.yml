@@ -46,6 +46,10 @@ cilium:
   label: Cilium
   permalink: /cilium
   description: "Cilium provides eBPF-based networking, security, and observability for cloud-native environments like Kubernetes, offering advanced traffic management and policy enforcement."
+cilium-ingress:
+  label: Cilium Ingress
+  permalink: /cilium-ingress
+  description: "Kubernetes Ingress Support with Cilium Ingress"
 tetragon:
   label: Tetragon
   permalink: /tetragon
