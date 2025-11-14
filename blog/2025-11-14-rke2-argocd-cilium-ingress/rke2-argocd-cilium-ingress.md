@@ -230,7 +230,6 @@ A great [article by Dean Lewis](https://isovalent.com/blog/post/navigating-the-i
 
 - [Cilium ingress support](https://docs.cilium.io/en/stable/network/servicemesh/ingress/)
 
-
 ## Conclusion
 
 With a few tweaks, migrate the ArgoCD deployment to the Cilium ingress controller! 
