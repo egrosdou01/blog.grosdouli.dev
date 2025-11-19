@@ -156,26 +156,6 @@ spec:
 
 ## ArgoCD with Cilium Ingress Configuration
 
-:::tip
-If you include the [Cilium configuration](https://github.com/cilium/cilium/blob/main/install/kubernetes/cilium/values.yaml#L1008) **```ingressController.hostNetwork.enabled=true```**, also add the annotation **```ingress.cilium.io/host-listener-port: "<YOUR PORT>"```** in the ingress resource.
-
-We expose the Envoy listeners on the host network, and by setting the **```ingressController.hostNetwork.nodes.matchLabels```**, we define the labels of the Kubernetes nodes where the Ingress listeners should be exposed (IP:Port). Thanks to Christian Hernandez for bringing this up.
-
-```yaml showLineNumbers
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: argocd-cilium-ingress
-  namespace: argocd
-  // highlight-start
-  annotations:
-    ingress.cilium.io/tls-passthrough: enabled
-    ingress.cilium.io/loadbalancer-class: io.cilium/l2-announcer
-    ingress.cilium.io/host-listener-port: "YOUR PORT"
-    // highlight-end
-```
-:::
-
 ```yaml showLineNumbers
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -207,6 +187,26 @@ spec:
         - argocd.test.lab
       secretName: argocd-server-cilium-tls
 ```
+
+:::tip
+If you include the [Cilium configuration](https://github.com/cilium/cilium/blob/main/install/kubernetes/cilium/values.yaml#L1008) **```ingressController.hostNetwork.enabled=true```**, also add the annotation **```ingress.cilium.io/host-listener-port: "<YOUR PORT>"```** in the ingress resource.
+
+We expose the Envoy listeners on the host network, and by setting the **```ingressController.hostNetwork.nodes.matchLabels```**, we define the labels of the Kubernetes nodes where the Ingress listeners should be exposed (IP:Port). Thanks to Christian Hernandez for bringing this up.
+
+```yaml showLineNumbers
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-cilium-ingress
+  namespace: argocd
+  // highlight-start
+  annotations:
+    ingress.cilium.io/tls-passthrough: enabled
+    ingress.cilium.io/loadbalancer-class: io.cilium/l2-announcer
+    ingress.cilium.io/host-listener-port: "YOUR PORT"
+    // highlight-end
+```
+:::
 
 :::note
 The `ingress.cilium.io/loadbalancer-class: io.cilium/l2-announcer` annotation can be used because the `loadbalancerMode: dedicated` was defined, and allows us to choose a specific loadbalancer class for the ingress.
