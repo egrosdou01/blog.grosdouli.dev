@@ -103,8 +103,8 @@ For an existing RKE2 cluster powered with Cilium, we only need to perform a Helm
 ```yaml showLineNumbers
 kubeProxyReplacement: true
 ingressController:
-    enabled: true
-    loadbalancerMode: dedicated
+  enabled: true
+  loadbalancerMode: dedicated
 ```
 
 ```bash
@@ -188,6 +188,26 @@ spec:
       secretName: argocd-server-cilium-tls
 ```
 
+:::tip
+If you include the [Cilium configuration](https://github.com/cilium/cilium/blob/main/install/kubernetes/cilium/values.yaml#L1008) **```ingressController.hostNetwork.enabled=true```**, also add the annotation **```ingress.cilium.io/host-listener-port: "<YOUR PORT>"```** in the ingress resource.
+
+We expose the Envoy listeners on the host network, and by setting the **```ingressController.hostNetwork.nodes.matchLabels```**, we define the labels of the Kubernetes nodes where the Ingress listeners should be exposed (IP:Port). Thanks to Christian Hernandez for bringing this up.
+
+```yaml showLineNumbers
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-cilium-ingress
+  namespace: argocd
+  // highlight-start
+  annotations:
+    ingress.cilium.io/tls-passthrough: enabled
+    ingress.cilium.io/loadbalancer-class: io.cilium/l2-announcer
+    ingress.cilium.io/host-listener-port: "YOUR PORT"
+    // highlight-end
+```
+:::
+
 :::note
 The `ingress.cilium.io/loadbalancer-class: io.cilium/l2-announcer` annotation can be used because the `loadbalancerMode: dedicated` was defined, and allows us to choose a specific loadbalancer class for the ingress.
 :::
@@ -209,7 +229,7 @@ argocd-cilium-ingress   cilium   argocd.test.lab         10.10.20.11    80, 443 
 The easiest way to simultaneously test the new setup is by creating a temporary subdomain for the Cilium Ingress. Once testing is complete, migrate to the Cilium ingress controller.
 
 :::tip
-As we defined the `loadbalancerMode: dedicated`, the Ingress controller creates a dedicated `LoadBalancer` sevice. Looking at the ingress with name **argocd-cilium-ingress**, the ADDRESS field comes from the `CiliumLoadBalancerIPPool` resource. The IPv4 pool was created in the cluster.
+As we defined the `loadbalancerMode: dedicated`, the Ingress controller creates a dedicated `LoadBalancer` sevice. Looking at the ingress resource with name **argocd-cilium-ingress**, the ADDRESS field comes from the `CiliumLoadBalancerIPPool` resource. The IPv4 pool was created in the cluster.
 :::
 
 ## Access ArgoCD UI
@@ -232,7 +252,7 @@ A great [article by Dean Lewis](https://isovalent.com/blog/post/navigating-the-i
 
 ## Conclusion
 
-With a few tweaks, migrate the ArgoCD deployment to the Cilium ingress controller! 
+With a few tweaks, migrate the ArgoCD deployment to the Cilium Ingress controller! 
 
 ## ✉️ Contact
 
