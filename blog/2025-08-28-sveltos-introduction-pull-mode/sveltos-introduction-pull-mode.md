@@ -285,6 +285,7 @@ With Sveltos, you can easily manage different Kubernetes clusters, no matter whe
 - [Sveltos What's New - Part 1](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-1.md)
 - [Sveltos What's New - Part 2](../2025-01-06-sveltos-what's-new/sveltos-what's-new-part-2.md)
 - [Sveltos Day 2 Operations](../2024-10-05-sveltos-day2-operations/sveltos-cilium-tetragon-day2-operations.md)
+- [Colin Lacy - Introducing Sveltos Pull-Mode](https://www.youtube.com/watch?v=-Dby1IB1-to)
 
 ## ✉️ Contact
 

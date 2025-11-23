@@ -93,7 +93,7 @@ For the conference, we decided to demonstrate how Sveltos can be used to deploy 
 
 ### Git Repository
 
-The Git repository with the manifest files and the execution instructions is located [here](https://github.com/egrosdou01/OSSummit_2024).
+The Git repository with the manifest files and the execution instructions is located [here](https://github.com/egrosdou01/OSSummit_2024). To watch to session, have a look at [Youtube - How to Make Your Kubernetes Add-Ons Management Painless in Multi Cloud](https://www.youtube.com/watch?v=IffrzanQRRc).
 
 ## Conclusion
 
