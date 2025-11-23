@@ -298,9 +298,10 @@ That’s a wrap for this one! 🎉 Thanks for reading, and stay tuned for more e
 
 ## Resources
 
-- **vCluster Documentation**: https://www.vcluster.com/docs/vcluster/deploy/basics
-- **vCluster External Access**: https://www.vcluster.com/docs/vcluster/next/manage/accessing-vcluster
-- **vCluster Schema Validation**: https://github.com/loft-sh/vcluster/blob/main/chart/values.schema.json 
+- [vCluster Documentation](https://www.vcluster.com/docs/vcluster/deploy/basics)
+- [vCluster External Access](https://www.vcluster.com/docs/vcluster/next/manage/accessing-vcluster)
+- [vCluster Schema Validation](https://github.com/loft-sh/vcluster/blob/main/chart/values.schema.json)
+- [Colin Lacy - Automate vCluster Management in EKS with Sveltos and Helm](https://www.youtube.com/watch?v=GQM7Qn9rWVU)
 
 ## ✉️ Contact
 

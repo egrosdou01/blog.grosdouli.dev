@@ -104,6 +104,7 @@ scripts: [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
+        docs: false,
         blog: {
           showReadingTime: true,
           blogTitle: 'Welcome to my blog!',
@@ -111,8 +112,15 @@ scripts: [
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 6,
+          tags: 'tags.yml',
+          onInlineAuthors: 'ignore',
+          onInlineTags: 'throw',
+          onUntruncatedBlogPosts: 'throw',
           feedOptions: {
             type: 'all',
+            title: 'Welcome to my blog!',
+            description: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
+            language: 'en',
             copyright: `Copyright © ${new Date().getFullYear()} Eleni Grosdouli Blog`,
             createFeedItems: async (params) => {
               const {blogPosts, defaultCreateFeedItems, ...rest} = params;
@@ -127,7 +135,8 @@ scripts: [
           customCss: './src/css/custom.css',
         },
         sitemap: {
-          changefreq: 'weekly',
+          lastmod: 'date',
+          changefreq: null,
           priority: 0.5,
           ignorePatterns: [
             '/blog/page/**',
@@ -180,7 +189,7 @@ scripts: [
           {to: 'talks', label: 'Talks', position: 'left'},
           // {to: 'favourites', label: 'Favourites', position: 'left'},
           {to: 'about', label: 'About', position: 'right'},
-          {label: 'GitHub', href: 'https://github.com/egrosdou01', position: 'right'},
+          {label: 'GitHub', href: 'https://github.com/egrosdou01', rel: 'me', position: 'right'},
           {type: 'search', position: 'right'},
         ],
       },
@@ -199,9 +208,9 @@ scripts: [
           {
             title: 'Socials',
             items: [
-              {label: 'LinkedIn', href: 'https://linkedin.com/in/eleni-grosdouli-85a1a5116'},
-              {label: 'GitHub', href: 'https://github.com/egrosdou01'},
-              {label: 'Medium', href: 'https://medium.com/@eleni.grosdouli'},
+              {label: 'LinkedIn', rel: 'me', href: 'https://linkedin.com/in/eleni-grosdouli-85a1a5116'},
+              {label: 'GitHub', rel: 'me', href: 'https://github.com/egrosdou01'},
+              {label: 'Medium', rel: 'me', href: 'https://medium.com/@eleni.grosdouli'},
             ],
           },
           {
