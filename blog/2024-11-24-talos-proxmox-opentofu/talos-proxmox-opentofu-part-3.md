@@ -12,11 +12,15 @@ tags: [talos,cilium,opentofu,proxmox]
 
 Welcome to **part 3** of the **Talos Linux Kubernetes cluster** bootstrap of the **Proxmox** series. In today's post, we will perform changes to make the code **reusable** and **extensible**. Users can follow a GitOps approach towards Talos deployments.
 
-We assume you already have the basic [project structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox). To follow along, check out the [part 1](talos-proxmox-opentofu-part-1.md) and [part 2](talos-proxmox-opentofu-part-2.md) posts.
+We assume you already have the basic [project structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox). To follow along, check out [part 1](talos-proxmox-opentofu-part-1.md) and [part 2](talos-proxmox-opentofu-part-2.md) posts.
 
 ![title image reading "Talos Cluster on Proxmox with OpenTofu and Cilium"](Proxmox_OpenTofu_Talos_Cilium.jpg)
 
 <!--truncate-->
+
+:::note
+Check out the [updated Talos module](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-cilium-proxmox-module/v0.1.1)! The detailed outline of the updates is described in [part 4](./talos-proxmox-opentofu-part-4.md).
+:::
 
 ## Lab Setup
 
@@ -49,7 +53,7 @@ The module underwent testing mainly on a local MacBook; it also underwent testin
 
 ## GitHub Resources
 
-The showcase repository is available [here](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-cilium-proxmox-module).
+Check out the [GitHub repository](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-cilium-proxmox-module/v0.1.0) for the full code.
 
 ## Prerequisites
 
