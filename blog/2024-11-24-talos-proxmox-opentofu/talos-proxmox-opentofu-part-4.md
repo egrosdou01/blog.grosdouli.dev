@@ -37,7 +37,7 @@ We assume familiarity with the [project's structure](https://github.com/egrosdou
 +-----------------------------+-----------+
 |       OpenTofu Providers    |  Version  |
 +-----------------------------+-----------+
-|      opentofu/random        |    3.6.2  |
+|      hashicorp/random        |    3.6.2  |
 |      telmate/proxmox        | 3.0.2-rc4 |
 |      siderolabs/talos       |    0.8.1  |
 +-----------------------------+-----------+
@@ -76,7 +76,7 @@ In a nutshell, below are some of the code updates for the module. Have a look fu
 
 ### OpenTofu Provider Updates
 
-```hcl showlines
+```hcl showLineNumbers
 terraform {
   required_providers {
     random = {
@@ -99,7 +99,7 @@ terraform {
 
 To create more than one cluster at once, the initial **node** variable was updated to achieve the goal.
 
-```hcl showlines
+```hcl showLineNumbers
 variable "clusters" {
   description = "Specification of the different Talos clusters and nodes"
   type = map(object({
@@ -118,7 +118,7 @@ variable "clusters" {
 
 #### Example Definition
 
-```hcl showlines
+```hcl showLineNumbers
 clusters = {
   "cluster1" = {
     nodes = {
@@ -126,7 +126,7 @@ clusters = {
         id           = 0
         vmodel       = "virtio"
         hdd_capacity = "10G"
-        vmid         = 505
+        vmid         = 105
         vnetwork     = "vmbr3"
         vcores       = 2
         vram         = 2048
@@ -135,7 +135,7 @@ clusters = {
         id           = 0
         vmodel       = "virtio"
         hdd_capacity = "10G"
-        vmid         = 506
+        vmid         = 106
         vnetwork     = "vmbr3"
         vcores       = 2
         vram         = 2048
@@ -148,7 +148,7 @@ clusters = {
         id           = 0
         vmodel       = "virtio"
         hdd_capacity = "10G"
-        vmid         = 507
+        vmid         = 107
         vnetwork     = "vmbr3"
         vcores       = 2
         vram         = 2048
@@ -157,7 +157,7 @@ clusters = {
         id           = 0
         vmodel       = "virtio"
         hdd_capacity = "10G"
-        vmid         = 508
+        vmid         = 108
         vnetwork     = "vmbr3"
         vcores       = 2
         vram         = 2048
@@ -173,7 +173,7 @@ As before, we rely heavily on the naming convention of the nodes to distinguish 
 
 An issue with the above definition is that we need to flatten the input using merge so we can easily work with one map containing the user input. In this case, the clusters that need to be created. A local variable was included in the `virtual_machine.tf` file.
 
-```hcl
+```hcl showLineNumbers
 locals {
   all_clusters = merge([
     for cluster_name, cluster_config in var.clusters : {
@@ -200,23 +200,27 @@ Nice examples provided by [Spacelift](https://spacelift.io/) about [flatten](htt
 
 The idea of how we generate Talos secrets, the configuration and the bootstrap process remain the same. The difference with the updated code is that we have to iterate through the `var.clusters` to collect the required information, especially for the controller. Also, depending on the number of clusters defined, a unique Talos secret per cluster is generated.
 
-```hcl
-# Generate machine secrets for different Talos clusters
+```hcl showLineNumbers
+# Generate machine secrets for Talos clusters
 resource "talos_machine_secrets" "this" {
-  for_each      = var.clusters
+  for_each = var.clusters
+
   talos_version = var.talos_cluster_details.version
 }
 ...
 
-# Start the bootstrapping of the cluster
+# Start the bootstrapping of the clusters
 resource "talos_machine_bootstrap" "bootstrap" {
-  for_each             = var.clusters
-  depends_on           = [talos_machine_configuration_apply.node_config_apply]
+  for_each = var.clusters
+
+  depends_on = [talos_machine_configuration_apply.node_config_apply]
+
   client_configuration = talos_machine_secrets.this[each.key].client_configuration
+
   node = tolist([
-    for n_key, n_value in local.all_clusters :
-    proxmox_vm_qemu.talos_nodes[n_key].default_ipv4_address
-    if n_value.cluster_name == each.key && can(regex("controller", lower(n_value.node_name)))
+    for i, v in local.all_clusters :
+    proxmox_vm_qemu.talos_nodes[i].default_ipv4_address
+    if v.cluster_name == each.key && can(regex("controller", lower(v.node_name)))
   ])[0]
 }
 ...
@@ -233,13 +237,12 @@ The same iteration for the `data.tf` file happens. We have to iterate through th
 
 To gather the necessary output for each cluster, we need to use a _for_ loop to process the information. This is how I have done it.
 
-```hcl
+```hcl showLineNumbers
 # Collect each kubeconfig per Talos cluster definition
 output "kubeconfig" {
-  description = "Kubeconfig for each Talos cluster"
+  description = "Kubeconfig"
   value = {
-    for cluster, cfg in talos_cluster_kubeconfig.kubeconfig :
-    cluster => cfg.kubeconfig_raw
+    for cluster, cfg in talos_cluster_kubeconfig.kubeconfig : cluster => cfg.kubeconfig_raw
   }
 }
 ```
