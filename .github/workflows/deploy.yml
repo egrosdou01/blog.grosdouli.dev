@@ -8,6 +8,7 @@ on:
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
+  if: false
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
@@ -20,10 +21,10 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Create .env file
-        run: |
-          echo "CLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" >> .env
-        working-directory: ${{ github.workspace }}
+      # - name: Create .env file
+      #   run: |
+      #     echo "CLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" >> .env
+      #   working-directory: ${{ github.workspace }}
 
       - name: Install dependencies
         run: npm ci

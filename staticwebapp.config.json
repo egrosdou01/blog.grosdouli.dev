@@ -1,0 +1,55 @@
+{
+  "trailingSlash": "never",
+  "routes": [
+    {
+      "route": "/404",
+      "statusCode": 404
+    },
+    {
+      "route": "/img/*",
+      "headers": {
+        "cache-control": "max-age=604800"
+      }
+    },
+    {
+      "route": "/assets/*",
+      "headers": {
+        "cache-control": "max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/fonts/*",
+      "headers": {
+        "cache-control": "max-age=31536000, immutable"
+      }
+    },
+    {
+      "route": "/page/*",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "route": "/tags/*",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "route": "/search",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "route": "/search/*",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    }
+  ],
+  "mimeTypes": {
+    ".xml": "application/xml; charset=utf-8",
+    ".txt": "text/plain"
+  }
+}
