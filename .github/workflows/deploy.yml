@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+    if: false
     name: Build Docusaurus
     runs-on: ubuntu-latest
     steps:
@@ -20,10 +21,10 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Create .env file
-        run: |
-          echo "CLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" >> .env
-        working-directory: ${{ github.workspace }}
+      # - name: Create .env file
+      #   run: |
+      #     echo "CLOUDFLARE_TOKEN=${{ secrets.CLOUDFLARE_TOKEN }}" >> .env
+      #   working-directory: ${{ github.workspace }}
 
       - name: Install dependencies
         run: npm ci
@@ -36,6 +37,7 @@ jobs:
           path: build
 
   deploy:
+    if: false
     name: Deploy to GitHub Pages
     needs: build
 

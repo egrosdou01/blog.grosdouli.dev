@@ -5,7 +5,7 @@
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
-import 'dotenv/config';
+// import 'dotenv/config';
 
 const title = 'Grosdouli Blog';
 const tagline = "Passionate about breaking and fixing things in the world of tech! Join me on this journey through DevOps and GitOps practices. We'll explore cloud-native solutions and more in both on-prem and cloud data centres!";
@@ -95,7 +95,7 @@ scripts: [
   {
     src: 'https://static.cloudflareinsights.com/beacon.min.js',
     defer: true,
-    'data-cf-beacon': `{"token": "${process.env.CLOUDFLARE_TOKEN}"}`,
+    'data-cf-beacon': '{"token": "dde5cdd42345413a961a805d108934fb"}',
   },
 ],
 
