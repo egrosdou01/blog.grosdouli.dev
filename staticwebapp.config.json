@@ -1,55 +1,60 @@
 {
-  "trailingSlash": "never",
-  "routes": [
-    {
-      "route": "/404",
-      "statusCode": 404
-    },
-    {
-      "route": "/img/*",
-      "headers": {
-        "cache-control": "max-age=604800"
+   "trailingSlash":"never",
+   "responseOverrides":{
+      "404":{
+         "rewrite":"/404.html"
       }
-    },
-    {
-      "route": "/assets/*",
-      "headers": {
-        "cache-control": "max-age=31536000, immutable"
+   },
+   "routes":[
+      {
+         "route":"/404",
+         "statusCode":404
+      },
+      {
+         "route":"/img/*",
+         "headers":{
+            "cache-control":"max-age=604800"
+         }
+      },
+      {
+         "route":"/assets/*",
+         "headers":{
+            "cache-control":"max-age=31536000, immutable"
+         }
+      },
+      {
+         "route":"/blog/page/*",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/tags/*",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/bocs/*",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/search",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/search/*",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
       }
-    },
-    {
-      "route": "/blog/page/*",
-      "headers": {
-        "X-Robots-Tag": "noindex"
-      }
-    },
-    {
-      "route": "/blog/tags/*",
-      "headers": {
-        "X-Robots-Tag": "noindex"
-      }
-    },
-    {
-      "route": "/bocs/*",
-      "headers": {
-        "X-Robots-Tag": "noindex"
-      }
-    },
-    {
-      "route": "/search",
-      "headers": {
-        "X-Robots-Tag": "noindex"
-      }
-    },
-    {
-      "route": "/search/*",
-      "headers": {
-        "X-Robots-Tag": "noindex"
-      }
-    }
-  ],
-  "mimeTypes": {
-    ".xml": "application/xml; charset=utf-8",
-    ".txt": "text/plain"
-  }
+   ],
+   "mimeTypes":{
+      ".xml":"application/xml; charset=utf-8",
+      ".txt":"text/plain"
+   }
 }
