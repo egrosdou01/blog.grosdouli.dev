@@ -18,19 +18,19 @@
       }
     },
     {
-      "route": "/fonts/*",
-      "headers": {
-        "cache-control": "max-age=31536000, immutable"
-      }
-    },
-    {
-      "route": "/page/*",
+      "route": "/blog/page/*",
       "headers": {
         "X-Robots-Tag": "noindex"
       }
     },
     {
-      "route": "/tags/*",
+      "route": "/blog/tags/*",
+      "headers": {
+        "X-Robots-Tag": "noindex"
+      }
+    },
+    {
+      "route": "/bocs/*",
       "headers": {
         "X-Robots-Tag": "noindex"
       }
