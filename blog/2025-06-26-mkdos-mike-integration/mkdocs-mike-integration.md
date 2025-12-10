@@ -125,7 +125,10 @@ repo_url: https://github.com/egrosdou01/mkdocs-versioning-example
 
 ## Setup GitHub Workflows
 
-As we want to automate the build and deployment of the documentation, we will create two GitHub workflows for a `dev` version and a `prod` version.
+As we want to automate the build and deployment of the documentation, we will create two GitHub workflows for a `dev` version and a `prod` version. To be safe than sorry, define the desired Material for MkDocs and Mike versions.
+
+- [Material for MkDocs Release Page](https://github.com/squidfunk/mkdocs-material/releases)
+- [Mike Plugin Release Page](https://github.com/jimporter/mike)
 
 **Dev Workflow**
 
@@ -149,8 +152,8 @@ jobs:
           python-version: 3.x
       - name: Install Dependencies
         run: |
-          pip install mkdocs-material
-          pip install mike
+          pip install mkdocs-material==9.6.23
+          pip install mike==2.1.3
       - name: Setup Docs Deploy
         run: |
           git config --global user.name "Example Docu Deploy"
@@ -182,8 +185,8 @@ jobs:
           python-version: 3.x
       - name: Install Dependencies
         run: |
-          pip install mkdocs-material
-          pip install mike
+          pip install mkdocs-material==9.6.23
+          pip install mike==2.1.3
       - name: Setup Docs Deploy
         run: |
           git config --global user.name "Example Docu Deploy"
