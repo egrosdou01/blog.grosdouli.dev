@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-12-11
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
 description: Use Longhorn as a persistent block storage for Talos Linux Kubernetes clusters.
-tags: [talos,cilium,opentofu,proxmox]
+tags: [talos,cilium,opentofu,proxmox,longhorn]
 ---
 
 **Summary**:
