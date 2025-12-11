@@ -62,6 +62,10 @@ cert-manager:
   label: Cert-manager
   permalink: /cert-manager
   description: "cert-manager creates TLS certificates for workloads in your Kubernetes or OpenShift cluster and renews the certificates before they expire."
+longhorn:
+  label: Longhorn
+  permalink: /longhorn
+  description: Longhorn delivers simplified, easy to deploy and upgrade persistent block storage.
 devops:
   label: DevOps
   permalink: /devops
