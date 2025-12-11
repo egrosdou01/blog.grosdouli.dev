@@ -22,8 +22,6 @@ Since [Talos Linux officially recognised as CNCF AI conformant](https://www.side
 
 We assume familiarity with the [project's structure](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-proxmox).
 
-![title image reading "Talos Cluster on Proxmox with OpenTofu and Cilium"](Proxmox_OpenTofu_Talos_Cilium.jpg)
-
 ## Lab Setup
 
 ```bash
@@ -261,7 +259,7 @@ Till this time, we cannot use Terraform or OpenTofu to gracefully upgrade the Ta
 
 ## Conclusion
 
-🚀 With a few tweaks, we updated the Talos Linux module and provided readers with the ability to create more than one cluster at once. Continue with **part 5** and enable Longhorn for storage capabilities.
+🚀 With a few tweaks, we updated the Talos Linux module and provided readers with the ability to create more than one cluster at once. Continue with **[part 5](./talos-proxmox-opentofu-part-5.md)** and enable Longhorn for storage capabilities.
 
 ## Resources
 
