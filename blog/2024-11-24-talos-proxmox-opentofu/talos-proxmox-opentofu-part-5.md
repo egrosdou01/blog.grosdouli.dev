@@ -34,7 +34,7 @@ For this part, we will enable Longhorn on the module and then deploy it using He
 |         Longhorn             |   1.10.1   |
 +------------------------------+------------+
 +-----------------------------+-----------+
-|       OpenTofu Providers    |  Version  |
+|      OpenTofu Providers     |  Version  |
 +-----------------------------+-----------+
 |      opentofu/random        |    3.6.2  |
 |      telmate/proxmox        | 3.0.2-rc4 |
@@ -309,17 +309,17 @@ persistentvolumeclaim/nginx-longhorn-pvc   Bound    pvc-d3c39f1b-8219-4b98-8603-
 
 ## Future Steps
 
-Demonstrate how [Ceph storage using Rook](https://docs.siderolabs.com/kubernetes-guides/csi/ceph-with-rook) looks in the existing setup. This might come in the future, as this is not required for my homelab setup!
-
-## Conclusion
-
-🚀 For storage requirements, the easiest way is to integrate Longhorn storage into the setup!
+We will demonstrate how [Ceph storage using Rook](https://docs.siderolabs.com/kubernetes-guides/csi/ceph-with-rook) looks in the existing setup. This might come in the future, as this is not required for my homelab setup!
 
 ## Resources
 
 - [Talos API Reference](https://docs.siderolabs.com/talos/v1.10/reference/api#table-of-contents)
 - [Talos and Longhorn](https://docs.siderolabs.com/kubernetes-guides/csi/storage#longhorn)
 - [Longhorn Details](https://longhorn.io/docs/1.10.1/advanced-resources/os-distro-specific/talos-linux-support/#requirements)
+
+## Conclusion
+
+🚀 For storage requirements, the easiest way is to integrate Longhorn storage into the setup!
 
 ## ✉️ Contact
 
