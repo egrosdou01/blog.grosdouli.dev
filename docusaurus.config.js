@@ -9,7 +9,49 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 const title = 'Grosdouli Blog';
 const tagline = "Passionate about breaking and fixing things in the world of tech! Join me on this journey through DevOps and GitOps practices. We'll explore cloud-native solutions and more in both on-prem and cloud data centres!";
-const url = 'https://blog.grosdouli.dev'
+const url = 'https://blog.grosdouli.dev';
+
+const siteStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${url}`,
+      url: url,
+      name: "Eleni Grosdouli Blog",
+      description: tagline,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${url}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+      publisher: {
+        "@id": `${url}/about`
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": `${url}/about`,
+      name: "Eleni Grosdouli",
+      alternateName: "Eleni Grosdouli",
+      url: url,
+      image: {
+        "@type": "ImageObject",
+        url: `${url}/img/eleni_blog_logo.jpg`,
+        width: 512,
+        height: 512
+      },
+      sameAs: [
+        "https://linkedin.com/in/eleni-grosdouli-85a1a5116",
+        "https://github.com/egrosdou01",
+        "https://medium.com/@eleni.grosdouli",
+        "https://dev.to/egrosdou"
+      ],
+      jobTitle: "DevOps Consulting Engineer",
+      description: "DevOps and GitOps expert specialising in Kubernetes, cloud-native solutions, and infrastructure automation"
+    }
+  ]
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -44,45 +86,16 @@ const config = {
     },
   },
 
-  headTags: [
+ headTags: [
     {
-      tagName: "script",
+      tagName: 'script',
       attributes: {
-        type: "application/ld+json",
+        type: 'application/ld+json',
       },
-      innerHTML: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        name: "Eleni Grosdouli Blog",
-        url: url,
-        description: tagline,
-        potentialAction: {
-          "@type": "SearchAction",
-          target: `${url}/search?q={search_term_string}`,
-          "query-input": "required name=search_term_string",
-        },
-      }),
-    },   
-    {
-      tagName: "script",
-      attributes: {
-        type: "application/ld+json",
-      },
-      innerHTML: JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Person",
-        name: "Eleni Grosdouli",
-        url: url,
-        image: `${url}/img/eleni_blog_logo.jpg`,
-        sameAs: [
-          "https://linkedin.com/in/eleni-grosdouli-85a1a5116",
-          "https://github.com/egrosdou01",
-          "https://medium.com/@eleni.grosdouli",
-          "https://dev.to/egrosdou"
-        ],
-      }),
+      innerHTML: JSON.stringify(siteStructuredData),
     },
   ],
+
 future: {
   v4: {
     removeLegacyPostBuildHeadAttribute: true,
