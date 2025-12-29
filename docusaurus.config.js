@@ -47,6 +47,13 @@ const siteStructuredData = {
         "https://medium.com/@eleni.grosdouli",
         "https://dev.to/egrosdou"
       ],
+      knowsAbout: [
+        "Kubernetes", "DevOps", "GitOps", "Cilium",
+        "ProjectSveltos", "Cloud Native Technologies",
+        "Rancher", "RKE2", "OpenShift", "Talos", "Proxmox",
+        "OpenTofu", "Infrastructure as Code", "Docker",
+        "Networking", "Data Center"
+      ],
       jobTitle: "DevOps Consulting Engineer",
       description: "DevOps and GitOps expert specialising in Kubernetes, cloud-native solutions, and infrastructure automation"
     }
