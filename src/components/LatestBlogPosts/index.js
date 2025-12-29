@@ -70,7 +70,7 @@ export default function LatestBlogPosts() {
           "@type": "WebPage",
           "@id": `${url}/talks`,
           "name": "Eleni Grosdouli Cloud Native Talks",
-          "url": `${url}/blog`
+          "url": `${url}/talks`
         }
       }
     ]
