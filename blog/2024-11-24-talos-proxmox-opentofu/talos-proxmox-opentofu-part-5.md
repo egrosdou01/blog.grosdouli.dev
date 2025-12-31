@@ -3,6 +3,7 @@ slug: talos-on-proxmox-opentofu-part-5
 title: "Talos, Proxmox, OpenTofu: Beginner's Guide Pt.5"
 authors: [egrosdou01]
 date: 2025-12-11
+uupdated: 2025-12-31
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
 description: Use Longhorn as a persistent block storage for Talos Linux Kubernetes clusters.
 tags: [talos,cilium,opentofu,proxmox,longhorn]
@@ -76,7 +77,7 @@ As we did in the past, mark down the **First Boot** `.iso` link and the **Initia
 
 We need to provide additional data path mounts to be accessible to the Kubelet. Longhorn’s default data path is **/var/lib/longhorn**. To use the configuration in Talos, we need to change the default data path to **/var/mnt/longhorn**. For this setup, I included the extra mounts for the Kubelet in the `init_install_worker.tfmpl` file.
 
-```hcl
+```hcl showLineNumbers
 machine:
   install:
     image: ${initial_image}
@@ -93,7 +94,7 @@ machine:
 
 Additionally, we need to create a `UserVolumeConfig` to mount the disk for Longhorn, which will be mounted to the `/var/mnt/longhorn` directory on the configured nodes. The configuration below was also included in the `init_install_worker.tfmpl` file.
 
-```hcl showlines
+```yaml showLineNumbers
 ---
 apiVersion: v1alpha1
 kind: UserVolumeConfig
@@ -105,7 +106,16 @@ provisioning:
   maxSize: 10GB
 ```
 
-At line **7**, `/dev/sdb` is the location of the second disk to be used by Longhorn.
+At line **7**, `/dev/sdb` is the location of the second disk to be used by Longhorn. This is another disk added while creating the virtual machines within the Talos module.
+
+```hcl showLineNumbers
+    scsi1 {
+      disk {
+        size    = "20G"
+        storage = var.vm_details.storage
+      }
+    }
+```
 
 :::note
 Prior to v1.10, Talos versions, the `.machine.disks` option was supported. However, the recommended approach for later versions is the use of `UserVolumeConfig`. To get a better understanding of what the supported fields of the resource above are, take a look at the [Talos API Configuration](https://docs.siderolabs.com/talos/v1.10/reference/api#string).
@@ -155,7 +165,7 @@ The easiest way to install Longhorn is by using the available Helm chart. Ensure
 
 Create a `values.yaml` file and define the data path location on the nodes along with other information.
 
-```yaml showlines
+```yaml showLineNumbers
 defaultSettings:
   defaultReplicaCount: "2"
   defaultDataPath: "/var/mnt/longhorn"
@@ -166,8 +176,7 @@ defaultSettings:
 
 To allow Longhorn to use the underlying disk of the Kubernetes nodes, we need to ensure the `longhorn-system` namespace has the right permissions. For that reason, the labels will be included.
 
-```yaml
----
+```yaml showLineNumbers
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -181,6 +190,8 @@ metadata:
 ### Helm Chart
 
 ```bash
+$ kubectl apply -f ns_longhorn.yaml
+
 $ helm repo add longhorn https://charts.longhorn.io
 
 $ helm install longhorn longhorn/longhorn --namespace longhorn-system --values values.yaml
@@ -238,7 +249,7 @@ Access the link below: https://localhost:8080
 
 To test the setup, we will create a simple Nginx application. Apply the below manifest to the Talos Linux Kubernetes cluster.
 
-```yaml showlines
+```yaml showLineNumbers
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
