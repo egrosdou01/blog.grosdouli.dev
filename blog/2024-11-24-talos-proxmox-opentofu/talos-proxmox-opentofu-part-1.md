@@ -20,6 +20,10 @@ Get ready to roll up your sleeves and dive into the essentials of Talos Linux wi
 
 <!--truncate-->
 
+:::note
+Check out the [updated code](https://github.com/egrosdou01/blog-post-resources/tree/main/opentofu-talos-cilium-proxmox-module/v0.1.1).
+:::
+
 ## Lab Setup
 
 ```bash
