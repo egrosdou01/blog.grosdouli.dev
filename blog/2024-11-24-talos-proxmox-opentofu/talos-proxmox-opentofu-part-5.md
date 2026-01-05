@@ -3,10 +3,10 @@ slug: talos-on-proxmox-opentofu-part-5
 title: "Talos, Proxmox, OpenTofu: Beginner's Guide Pt.5"
 authors: [egrosdou01]
 date: 2025-12-11
-updated: 2025-12-31
+uupdated: 2025-12-31
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
 description: Use Longhorn as a persistent block storage for Talos Linux Kubernetes clusters.
-tags: [talos,cilium,opentofu,proxmox,longhorn]
+tags: [talos,opentofu,proxmox,longhorn]
 ---
 
 **Summary**:
@@ -20,8 +20,6 @@ We continue where we left off in [**part 4**](./talos-proxmox-opentofu-part-4.md
 To allow users to work and use persistent storage, I decided to integrate [Longhorn](https://longhorn.io/) into the setup as it is easy to use, lightweight and reliable. Longhorn significantly enhances Talos Linux Kubernetes clusters by providing robust, highly available persistent block storage, which is crucial for running stateful applications. Longhorn is an open-source project and includes built-in features for [incremental snapshots and backups](https://longhorn.io/docs/1.10.1/snapshots-and-backups/scheduling-backups-and-snapshots/) to [secondary storage](https://longhorn.io/docs/1.10.1/terminology/#secondary-backups) like S3 or NFS, along with [disaster recovery](https://longhorn.io/docs/1.10.1/snapshots-and-backups/setup-disaster-recovery-volumes/) capabilities, all managed through an intuitive GUI.
 
 For this part, we will enable Longhorn on the module and then deploy it using Helm commands. In a future post, the module will be updated to include the storage as a deployment option.
-
-<!--truncate-->
 
 ## Lab Setup
 
@@ -59,7 +57,7 @@ Check out the [GitHub repository](https://github.com/egrosdou01/blog-post-resour
 
 ## Prerequisites
 
-As today's blog focuses on the changes performed due to the OpenTofu provider updates, it is advised to have a look at [part 4](./talos-proxmox-opentofu-part-3.md) of the series. Any prerequisites should already have been satisfied.
+As today's blog focuses on the changes performed due to the OpenTofu provider updates, it is advised to have a look at [part 4](./talos-proxmox-opentofu-part-4.md) of the series. Any prerequisites should already have been satisfied.
 
 ## Talos Linux ISO Requirements
 
@@ -320,7 +318,7 @@ persistentvolumeclaim/nginx-longhorn-pvc   Bound    pvc-d3c39f1b-8219-4b98-8603-
 
 ## Future Steps
 
-We will demonstrate how [Ceph storage using Rook](https://docs.siderolabs.com/kubernetes-guides/csi/ceph-with-rook) looks in the existing setup. This might come in the future, as this is not required for my homelab setup!
+We will demonstrate how [Ceph storage using Rook](https://docs.siderolabs.com/kubernetes-guides/csi/ceph-with-rook) looks in the existing setup. Check out [part 6](./talos-proxmox-opentofu-part-6.md) of the series.
 
 ## Resources
 
