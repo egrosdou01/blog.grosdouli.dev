@@ -6,6 +6,14 @@ argoCD:
   label: ArgoCD
   permalink: /argocd
   description: "ArgoCD is a powerful, declarative, GitOps continuous deployment (CD) tool specifically designed for Kubernetes environments, ensuring reliable application delivery."
+ceph:
+  label: Ceph
+  permalink: /ceph
+  description: "Ceph is an open-source, distributed storage system."
+rook:
+  label: Rook
+  permalink: /rook
+  description: "Rook is a storage operators for Kubernetes."
 flux-operator:
   label: Flux Operator
   permalink: /flux-operator
