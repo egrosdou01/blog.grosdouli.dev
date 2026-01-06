@@ -249,9 +249,15 @@ scripts: [
       },
     }),
     plugins: [
-      [ require.resolve('docusaurus-lunr-search'), {
-        languages: ['en', 'de'],
-      }],
+      [
+        require.resolve('@easyops-cn/docusaurus-search-local'),
+        {
+          hashed: true,
+          blogRouteBasePath: '/blog',
+          indexDocs: false,
+          language: ["en", "de"],
+        },
+      ],
       [
         '@docusaurus/plugin-client-redirects',
         {
