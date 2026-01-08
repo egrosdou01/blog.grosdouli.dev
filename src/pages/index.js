@@ -14,8 +14,8 @@ const AboutMeList = [
     description: (
       <>
         I'm Eleni Grosdouli, a DevOps Consulting Engineer at <a href="https://www.cisco.com/">Cisco Solutions GmbH</a>.
-        My professional journey is based in the exciting areas of DevOps, GitOps, modern data centres, networking, and security practices.
-        I enjoy solving <strong>complex</strong> problems, <strong>learning</strong> new things, and <strong>speaking</strong> at Cloud Native conferences, where I often share cloud-native insights.
+        I specialise in DevOps, GitOps, Platform engineering, modern data centres, networking, and security practices.
+        I enjoy solving <strong>complex</strong> problems, <strong>learning</strong> new things, and <strong>public speaking</strong>.
         My home lab is my playground!
       </>
     ),
@@ -24,9 +24,9 @@ const AboutMeList = [
     title: '🚀 Passionate Explorer',
     description: (
       <>
-      As a <strong>passionate</strong> tech explorer, I'm always eager to discover new technologies and experiment in my home lab environment.
-      My motto, "Break and fix," focuses on hands-on learning and constant growth in the changing <strong>cloud-native</strong> world.
-      This approach helps me better understand how complex systems work and create solutions that are both reliable and scalable. For me, hands-on experience is the most effective way to learn and grow as an engineer in a fast-paced environment!
+      As a <strong>passionate</strong> tech explorer, I'm always eager to discover new technologies and experiment in my home lab.
+      My motto, "Break and fix," emphasises hands-on learning and continuous growth in the evolving <strong>cloud-native</strong> world.
+      For me, hands-on experience is the most effective way to learn and grow as an engineer in a fast-paced environment.
       </>
     ),
   },
@@ -35,7 +35,7 @@ const AboutMeList = [
     description: (
       <>
       Outside my job, I focus on making resources and helping the community. I do this through <strong>open-source</strong> projects, <strong>blog posts</strong>, and <strong>mentorship</strong>.
-      I believe in the power of shared knowledge and enjoy helping others grow in their technical journeys by offering insights into cloud-native technologies. All it takes is a collaborative and encouraging environment to make a real difference and inspire others to achieve their full potential.
+      I believe in sharing knowledge. I enjoy helping others grow in their tech journeys by offering insights into cloud-native technologies.
       </>
     ),
   },

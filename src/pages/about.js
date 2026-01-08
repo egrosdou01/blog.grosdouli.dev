@@ -73,7 +73,7 @@ export default function AboutPage() {
 
   return (
     <Layout
-      title="This is the About me page"
+      title="About me"
       description="Learn more about Eleni Grosdouli, her expertise, passions, and contributions.">
       <main>
         <section className={styles.aboutPageContent}>
