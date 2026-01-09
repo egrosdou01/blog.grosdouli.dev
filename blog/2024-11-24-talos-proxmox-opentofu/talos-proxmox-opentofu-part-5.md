@@ -1,12 +1,12 @@
 ---
 slug: talos-on-proxmox-opentofu-part-5
-title: "Talos, Proxmox, OpenTofu: Beginner's Guide Pt.5"
+title: "Talos Linux, Proxmox, OpenTofu: Beginner's Guide Pt.5"
 authors: [egrosdou01]
 date: 2025-12-11
 uupdated: 2025-12-31
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
 description: Use Longhorn as a persistent block storage for Talos Linux Kubernetes clusters.
-tags: [talos,opentofu,proxmox,longhorn]
+tags: [talos linux,opentofu,proxmox,longhorn]
 ---
 
 **Summary**:

@@ -1,11 +1,11 @@
 ---
 slug: talos-on-proxmox-opentofu-part-1
-title: "Talos, Proxmox, OpenTofu: Beginner's Guide Pt.1"
+title: "Talos Linux, Proxmox, OpenTofu: Beginner's Guide Pt.1"
 authors: [egrosdou01]
 date: 2024-11-24
 image: ./Proxmox_OpenTofu_Talos.jpg
-description: A step-by-step guide installing a Talos Cluster on Proxmox with OpenTofu - Part 1.
-tags: [talos,opentofu,proxmox]
+description: A step-by-step guide installing a Talos Linux Cluster on Proxmox with OpenTofu - Part 1.
+tags: [talos linux,opentofu,proxmox]
 ---
 
 ## Introduction
