@@ -1,11 +1,11 @@
 ---
 slug: talos-on-proxmox-opentofu-part-4
-title: "Talos, Proxmox, OpenTofu: Beginner's Guide Pt.4"
+title: "Talos Linux, Proxmox, OpenTofu: Beginner's Guide Pt.4"
 authors: [egrosdou01]
 date: 2025-11-27
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
-description: The blog post is a continuation of part 3 and the goal is to perform the required updates of the Talos module. Additionally, we update the code to allow users to create more than one cluster at a run.
-tags: [talos,cilium,opentofu,proxmox]
+description: The blog post is a continuation of part 3 and the goal is to perform the required updates of the Talos Linux deployment module. Additionally, we update the code to allow users to create more than one cluster at a run.
+tags: [talos linux,cilium,opentofu,proxmox]
 ---
 
 **Summary**:

@@ -110,10 +110,10 @@ opentofu:
   label: OpenTofu
   permalink: /opentofu
   description: "OpenTofu is an open-source, community-driven fork of Terraform, providing an alternative for declarative infrastructure as code management with a focus on open governance."
-talos:
-  label: Talos
-  permalink: /talos
-  description: "Talos is a modern, minimal, and secure Kubernetes operating system designed for production environments, focusing on immutability and API-driven management for enhanced security and reliability."
+talos linux:
+  label: Talos Linux
+  permalink: /talos-linux
+  description: "Talos Linux is a modern, minimal, and secure Kubernetes operating system designed for production environments, focusing on immutability and API-driven management for enhanced security and reliability."
 proxmox:
   label: Proxmox
   permalink: /proxmox

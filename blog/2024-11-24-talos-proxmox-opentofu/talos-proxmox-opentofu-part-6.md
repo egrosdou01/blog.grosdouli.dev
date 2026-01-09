@@ -1,11 +1,11 @@
 ---
 slug: talos-on-proxmox-opentofu-part-6
-title: "Talos, Proxmox, OpenTofu: Beginner's Guide Pt.6"
+title: "Talos Linux, Proxmox, OpenTofu: Beginner's Guide Pt.6"
 authors: [egrosdou01]
 date: 2026-01-08
 image: ./Proxmox_OpenTofu_Talos_Cilium.jpg
 description: Use Ceph using Rook as a storage solution for Talos Linux Kubernetes clusters.
-tags: [talos,opentofu,proxmox,ceph,rook]
+tags: [talos linux,opentofu,proxmox,ceph,rook]
 ---
 
 **Summary**:
