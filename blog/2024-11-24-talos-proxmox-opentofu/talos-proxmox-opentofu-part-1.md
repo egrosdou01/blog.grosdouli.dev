@@ -349,3 +349,14 @@ In [Part 2](talos-proxmox-opentofu-part-2.md), we will cover how to update the d
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
+
+## Series Narigation
+
+| Part | Title |
+| :--- | :---- |
+| [Part 1](./talos-proxmox-opentofu-part-1.md) | Introduction to Talos Linux default configuration |
+| [Part 2](./talos-proxmox-opentofu-part-2.md) | Talos Linux custom configuration with Cilium |
+| [Part 3](./talos-proxmox-opentofu-part-3.md) | Talos Linux Module |
+| [Part 4](./talos-proxmox-opentofu-part-4.md) | Talos Linux Module updates |
+| [Part 5](./talos-proxmox-opentofu-part-5.md) | Talos Linux Module with Longhorn |
+| [Part 6](./talos-proxmox-opentofu-part-6.md) | Talos Linux Module with Cepth using Rook |
