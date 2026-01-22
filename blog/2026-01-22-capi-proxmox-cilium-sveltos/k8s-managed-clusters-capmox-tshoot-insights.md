@@ -1,6 +1,6 @@
 ---
 slug: capmox-troubleshooting-insights
-title: "Cluster API: CAPMOX Troubleshooting Insights"
+title: "CAPMOX Troubleshooting Insights"
 authors: [egrosdou01]
 date: 2026-01-22
 image: ./focus.png
