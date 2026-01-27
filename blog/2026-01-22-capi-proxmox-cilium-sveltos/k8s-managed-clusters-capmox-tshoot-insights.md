@@ -202,6 +202,10 @@ Indeed, there was a time drift between the created nodes and the underlying Kube
 
 There are instances when the underlying management cluster lacks sufficient resources to create additional nodes or handle the additional load of creating CAPI resources. No errors will be visible in the created resources; however, the cluster creation will stop in the control plane. This situation could be confusing, but ensure the underlying cluster has sufficient memory.
 
+### ControlPlane Nodes Even Number
+
+During the deployment, if an even number of controlplane nodes is defined, the deployment will stop with an error. Based on best practices, an odd number has to be defined (e.g., 1, 3, 5, etc.).
+
 ## Conclusion
 
 CAPI to the moon! 🚀 I hope the guide gave you some ideas and hints on what might be wrong with your own deployments!
