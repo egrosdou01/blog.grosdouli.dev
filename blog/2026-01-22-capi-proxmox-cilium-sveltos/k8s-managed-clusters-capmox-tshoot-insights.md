@@ -151,7 +151,7 @@ If any of the above fail and the network configuration is correct, check the fir
 
 In my case, in the defined VLAN, there was a firewall rule blocking all traffic from that VLAN to the outside (forgotten from a previous deployment). As a result, cloud-init was not able to reach the Internet to finish the initial configuration.
 
-### NTP Drift
+### Network Time Protocol (NTP) Drift
 
 Once basic network issues are resolved, the controlplane and worker machines were created. Cloud-init was successful; however, the worker machines were not able to join the cluster.
 
