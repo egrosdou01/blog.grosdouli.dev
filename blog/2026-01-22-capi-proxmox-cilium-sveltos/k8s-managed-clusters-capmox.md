@@ -365,4 +365,4 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 | :--- | :---- |
 | [Part 1](./k8s-managed-clusters-capmox.md) | Introduction to CAPMOX |
 | [Part 2](./k8s-managed-clusters-capmox-tshoot-insights.md) | Troubleshooting CAPMOX deployments |
-| Part 3 | CAPMOX with Sveltos |
+| [Part 3](./k8s-managed-clusters-capmox-sveltos.md) | CAPMOX with Sveltos |
