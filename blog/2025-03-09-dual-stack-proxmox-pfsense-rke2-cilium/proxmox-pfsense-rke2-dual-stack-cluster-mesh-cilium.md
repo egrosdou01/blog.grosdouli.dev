@@ -344,3 +344,12 @@ Cluster Mesh setup and Global Service Sharing (IPv4 and IPV6) between clusters, 
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
+
+## Series Narigation
+
+| Part | Title |
+| :--- | :---- |
+| [Part 1](proxmox-pfsense-fritzbox-ipv6-prefix-allocation-setup.md) | IPv6 prefix Allocation: Proxmox and pfSense |
+| [Part 2](proxmox-pfsense-rke2-dual-stack-cilium.md) | Dual-Stack: RKE2 with Cilium on Proxmox |
+| [Part 3](proxmox-pfsense-rke2-dual-stack-cluster-mesh-cilium.md) | Dual-Stack: Global service sharing on RKE2 using Cilium |
+| [Part 4](proxmox-pfsense-rke2-dual-stack-cilium-complementary-features.md) | Dual-Stack: Cilium complementary features |
