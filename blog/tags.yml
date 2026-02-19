@@ -134,6 +134,10 @@ let's encrypt:
   label: Let's Encrypt
   permalink: /lets-encrypt
   description: "Let's Encrypt is a free, automated, and open Certificate Authority that provides TLS certificates to enable HTTPS for websites, making the web more secure for everyone."
+progressive rollouts:
+  label: Progressive Rollouts
+  permalink: /progressive-rollouts
+  description: "Refers to the Sveltos progressive rollouts capabilities"
 pfsense:
   label: pfSense
   permalink: /pfsense
