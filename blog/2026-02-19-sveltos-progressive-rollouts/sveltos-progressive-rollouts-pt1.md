@@ -3,7 +3,7 @@ slug: sveltos-progressive-rollouts-pt1
 title: "Sveltos: Progressive Rollouts Pt.1"
 authors: [egrosdou01]
 date: 2026-02-19
-image: ./sveltos_progressive_rollouts_mermaid.png
+image: ./sveltos_progressive_rollouts_mermaid.jpg
 description: Get to know how Sveltos Progressive Rollouts work in action.
 tags: [kubernetes,sveltos,devops,gitops,progressive rollouts]
 ---
@@ -13,7 +13,7 @@ tags: [kubernetes,sveltos,devops,gitops,progressive rollouts]
 Rollouts and progressive rollouts are essential for operation teams and developers. They help deploy new features and updates safely and with less risk. Today, we will explore how Sveltos' Rollout and Progressive Rollout features enable platform teams and engineers to update confidently, without fear! 💪
 
 <!--truncate-->
-![title image reading "Sveltos Progressive Rollouts"](sveltos_progressive_rollouts_mermaid.png)
+![title image reading "Sveltos Progressive Rollouts"](sveltos_progressive_rollouts_mermaid.jpg)
 
 ## Motivation
 
