@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-12-08
 image: ./kcd_geneva_2025.jpg
 description: A quick outline of the Kubernetes Community Days (KCD) held in Geneva at CERN, highlighting key sessions.
-tags: [conference,kubernetes,sveltos]
+tags: [conference,kubernetes,sveltos,talks]
 ---
 
 **Summary**:

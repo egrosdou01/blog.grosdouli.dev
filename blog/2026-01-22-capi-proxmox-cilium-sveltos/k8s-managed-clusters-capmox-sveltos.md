@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2026-02-05
 image: ./capmox_sveltos.png
 description: This is part 3 of the comprehensive step-by-step guide series where we create Kubernetes clusters on Proxmox using Sveltos for automating the lifecycle of the clusters.
-tags: [kubernetes,proxmox,clusterapi,sveltos,cilium]
+tags: [kubernetes,proxmox,clusterapi,sveltos,cilium,platform engineering]
 ---
 
 **Summary**:

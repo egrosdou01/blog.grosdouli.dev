@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2025-11-06
 image: ./capi_sveltos.jpg
 description: This is part 3 of the comprehensive step-by-step guide series to creating Kubernetes managed clusters on Azure cloud using Cluster API and Sveltos! We provide platform teams a convinient yet secure, scalable and extensible approach of creating Kubernetes clusters.
-tags: [kubernetes,azure,sveltos,clusterapi,cilium]
+tags: [kubernetes,azure,sveltos,platform engineering,clusterapi,cilium]
 ---
 
 **Summary**:
