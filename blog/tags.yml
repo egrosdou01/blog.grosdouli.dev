@@ -122,6 +122,10 @@ conference:
   label: Conference
   permalink: /conference
   description: "This tag features posts related to general tech conferences, including recaps, key takeaways, and insights from various industry events, sharing knowledge and experiences."
+talks:
+  label: Talks
+  permalink: /talks
+  description: "This tag is dedicated to conferences and talks delivered"
 tshoot-insights:
   label: Tshoot Insights
   permalink: /tshoot-insights
@@ -134,6 +138,10 @@ let's encrypt:
   label: Let's Encrypt
   permalink: /lets-encrypt
   description: "Let's Encrypt is a free, automated, and open Certificate Authority that provides TLS certificates to enable HTTPS for websites, making the web more secure for everyone."
+platform engineering:
+  label: Platform Engineering
+  permalink: /platform-engineering
+  description: "Platform engineering is the art of building tools and processes that empower software developers."
 progressive rollouts:
   label: Progressive Rollouts
   permalink: /progressive-rollouts
