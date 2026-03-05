@@ -475,5 +475,5 @@ Thanks for reading!
 | Part | Title |
 | :--- | :---- |
 | [Part 1](./sveltos-progressive-rollouts-pt1.md) | Introduction to Sveltos Progressive Rollouts part 1 |
-| Part 2 | Introduction to Sveltos Progressive Rollouts part 2 |
+| [Part 2](./sveltos-progressive-rollouts-pt2.md) | Introduction to Sveltos Progressive Rollouts part 2 |
 | Part 3 | Sveltos Progressive Rollouts and ChatOps|
