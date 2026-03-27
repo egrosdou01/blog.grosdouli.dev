@@ -44,7 +44,7 @@ If you have three days in Kastoria, I would recommend spending one of them in th
 - After the Dragon's Cave, take the one-way road and visit the [Monastery of Panagia Mavriotissa](https://www.discoverkastoria.gr/en/place/holy-monastery-of-the-virgin-mary-mavriotissa/). The way goes around the lake, and you can see different bird species. I would recommend leaving the car in the parking and walking there.
 - From there, continue to the [Ottoman legacy region](https://ilovekastoria.com/history-and-culture/#:~:text=In%20the%2014th%20century%2C%20Kastoria,Blend%20of%20Tradition%20and%20Progress) and just walk to see the different buildings and unique architecture
 - And if you feel adventurous, go up the [Prophet Elias](https://westmacedoniamonasteries.gr/en/discover/3/churches-and-pilgrimage-sites/196/church-of-profitis-ilias-in-kastoria) and enjoy the stunning view
-![title image reading "Profitis Ilias View"](profitis_ilias.jpg)
+![title image reading "Profitis Ilias View"](profitis_ilias_01.jpg)
 - For families, a visit to the local [aquarium](https://enydriokastorias.gr/en/index) is ideal
 
 #### Prespa National Park
