@@ -128,7 +128,7 @@ scripts: [
         blog: {
           showReadingTime: true,
           blogTitle: 'Welcome to my blog!',
-          blogDescription: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
+          blogDescription: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
           blogSidebarCount: 6,
@@ -139,7 +139,7 @@ scripts: [
           feedOptions: {
             type: 'all',
             title: 'Welcome to my blog!',
-            description: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into Cisco networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
+            description: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
             language: 'en',
             copyright: `Copyright © ${new Date().getFullYear()} Eleni Grosdouli Blog`,
             createFeedItems: async (params) => {
