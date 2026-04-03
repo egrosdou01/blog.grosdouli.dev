@@ -1,6 +1,6 @@
 ---
 slug: kcd-geneva-2025
-title: "KCD Genava 2025"
+title: "KCD Geneva 2025"
 authors: [egrosdou01]
 date: 2025-12-08
 image: ./kcd_geneva_2025.jpg
