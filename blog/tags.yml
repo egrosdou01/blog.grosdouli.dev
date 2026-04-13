@@ -30,6 +30,10 @@ mkdocs:
   label: MkDocs
   permalink: /mkdocs
   description: "MkDocs is a fast, simple, and straightforward static site generator that builds project documentation from Markdown files, making it easy to create beautiful docs."
+mkdocs-material:
+  label: MkDocs Material
+  permalink: /mdkocs-material
+  description: " MkDocs Marerial is an open-source theme for MkDocs."
 github:
   label: GitHub
   permalink: /github
