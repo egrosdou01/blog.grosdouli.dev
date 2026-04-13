@@ -238,3 +238,11 @@ If you want to take your team’s or project’s documentation to the next level
 ## ✉️ Contact
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
+
+## Series Narigation
+
+| Part | Title |
+| :--- | :---- |
+| [Part 1](./mkdocs-mike-integration.md) | MkDocs Material integration with Mike Plugin |
+| [Part 2](./mkdocs-mike-integration-pt2.md) | MkDocs Material integration with Mike Plugin Part 2 |
+| [Part 3](./mkdocs-material-migration-zensical.md) | MkDocs Material Migration to Zensical |
