@@ -11,6 +11,13 @@ const talks = [
     formattedDate: '4th October 2024',
     title: 'How to Make Your Kubernetes Add-Ons Management Painless in Multi Cloud',
   },
+  {
+    id: '7O8pqiK22wA',
+    permalink: 'https://www.youtube.com/watch?v=7O8pqiK22wA',
+    date: '2026-03-21',
+    formattedDate: '21st March 2026',
+    title: 'Beyond Tool Sprawl: An Event-Driven Approach to Dynamic Multi-Cloud Operations',
+  },
 ];
 
 const thumbnailResolutions = [
@@ -77,9 +84,11 @@ function Talks() {
                       <iframe
                         src={`https://www.youtube-nocookie.com/embed/${talk.id}`}
                         title={talk.title}
-                        frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        // width="560"
+                        // height="315"
                       ></iframe>
                     </div>
                   </div>
