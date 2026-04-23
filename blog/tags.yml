@@ -86,6 +86,10 @@ gitops:
   label: GitOps
   permalink: /gitops
   description: "Operational framework that uses Git as a single source of truth for declarative infrastructure and applications."
+chatops:
+  label: ChatOps
+  permalink: /chatops
+  description: "Collaboration model where teams using different chat platforms and automated bots to manage infrastructure, operations, and workflows."
 devx:
   label: DevX
   permalink: /devx
