@@ -54,7 +54,7 @@ Slack is a cloud-based messaging platform designed for workplace collaboration, 
 
 ## GitHub Resources
 
-The YAML outputs are not complete. Have a look at the [GitHub repository](https://github.com/egrosdou01/blog-post-resources/tree/main/sveltos-progressive-rollouts/).
+The YAML outputs are not complete. Have a look at the [GitHub repository](https://github.com/egrosdou01/blog-post-resources/tree/main/sveltos-progressive-rollouts/pt3).
 
 ## Prerequisites
 
@@ -86,38 +86,36 @@ To allow Botkube to use the **Slack socket**, we need to create an Application f
 1. For Public and Private channels configuration
   ```yaml showLineNumbers
     display_information:
-    name: Botkube
-    description: Botkube
-    background_color: "#a653a6"
-  features:
-    bot_user:
-      display_name: Botkube
-      always_online: false
-  oauth_config:
-    scopes:
-      bot:
-        - channels:read
-        - groups:read
-        - app_mentions:read
-        - reactions:write
-        - chat:write
-        - files:read
-        - files:write
-        - users:read
-        - channels:read
-        - usergroups:read
-        - im:read
-        - mpim:read
-        - commands
-  settings:
-    event_subscriptions:
-      bot_events:
-        - app_mention
-    interactivity:
-      is_enabled: true
-    org_deploy_enabled: false
-    socket_mode_enabled: true
-    token_rotation_enabled: false
+      name: Botkube
+      description: Botkube
+      background_color: "#a653a6"
+    features:
+      bot_user:
+        display_name: Botkube
+        always_online: false
+    oauth_config:
+      scopes:
+        bot:
+          - channels:read
+          - channels:join
+          - groups:read
+          - app_mentions:read
+          - reactions:write
+          - chat:write
+          - chat:write.public
+          - users:read
+          - im:read
+          - mpim:read
+          - commands
+    settings:
+      event_subscriptions:
+        bot_events:
+          - app_mention
+      interactivity:
+        is_enabled: true
+      org_deploy_enabled: false
+      socket_mode_enabled: true
+      token_rotation_enabled: false # Enable for production workloads
   ```
 1. Install the Botkube in the Slack workspace
 1. Bot OAuth Token 
@@ -266,7 +264,7 @@ spec:
       namespace: default
 ```
 
-The `ConfigMap` information is available at the [blog post resources GitHub repository](https://github.com/egrosdou01/blog-post-resources/tree/main/sveltos-progressive-rollouts/).
+The `ConfigMap` information is available at the [blog post resources GitHub repository](https://github.com/egrosdou01/blog-post-resources/tree/main/sveltos-progressive-rollouts/pt3).
 
 Alternatively, the following Helm chart commands will deploy Botkube to the exposed cluster.
 
@@ -288,6 +286,35 @@ Every time we create or update a `ClusterPromotion` resource, Botkube sends a no
 ![title image reading "Sveltos View"](botkube_ask.png)
 
 ![title image reading "Slack Kubernetes Patch Resource"](botkube_patch.png)
+
+## Workflow in Action
+
+```text
+┌─────────────────────────────────────────────────────────┐       ┌──────────────────────────────────────────────────────┐
+│           KUBERNETES CLUSTER (dev-cluster)              │       │                  SLACK PLATFORM                      │
+│                                                         │       │                                                      │
+│  ┌───────────────────────────────────────────────────┐  │       │  Channel: #all-sveltos-promotions-demo               │
+│  │                    BOTKUBE POD                    │  │       │                                                      │
+│  │                                                   │  │       │  ┌──────────────────────────────────────────────┐    │
+│  │  ┌─────────────────┐     ┌─────────────────────┐ │  │        │  │ 🤖 Botkube: ClusterPromotion Updated!         │   │
+│  │  │  SOURCE PLUGIN  │     │  EXECUTOR PLUGIN    │ │  │        │  │    Diff: manual.approved: false ──► true      │   │
+│  │  │  Watches:       │     │  kubectl describe   │ │  │        │  │  [ 🔍 Describe ][ ✅ Approve ][ ❌ Revoke ]    │   │
+│  │  │  ClusterPromo   │     │  kubectl [k]        │ │  │        │  └──────────────────────────────────────────────┘   │
+│  │  └────────┬────────┘     └──────────┬──────────┘ │  │        │                        │                            │
+│  │           └──────────────┬──────────┘            │  │        │  ┌──────────────────────▼───────────────────────┐   │
+│  │                    ┌─────▼──────────┐            │  │        │  │ 👤 User: @Botkube kubectl describe           │    │
+│  │                    │  BOTKUBE CORE  │            │  │        │  │         my-promotion -n production           │   │
+│  │                    │  RBAC + Action ├────────────────────────►  └──────────────────────┬───────────────────────┘   │
+│  │                    │  Handler       │◄───────────────────────┐                         │                           │
+│  │                    └────────┬───────┘  Outbound WSS          │  ┌──────────────────────▼───────────────────────┐   │
+│  └─────────────────────────────┼─────────────────────┘  │       │  │ 🤖 Botkube: Name:   my-promotion             │    │
+│                                │ Watch / Patch          │       │  │             Stages: manual.approved: true    │    │
+│  ┌─────────────────────────────▼───────────────────┐    │       │  └──────────────────────────────────────────────┘    │
+│  │              KUBERNETES API SERVER               │   │       │                                                      │
+│  │              ClusterPromotion CRD                │   │       └──────────────────────────────────────────────────────┘
+│  └──────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+```
 
 ## Conclusion
 
