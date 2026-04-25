@@ -470,10 +470,10 @@ The GitHub repo is a great resource for getting started with the project. It con
 
 Thanks for reading!
 
-## Series Narigation
+## Series Navigation
 
 | Part | Title |
 | :--- | :---- |
 | [Part 1](./sveltos-progressive-rollouts-pt1.md) | Introduction to Sveltos Progressive Rollouts part 1 |
 | [Part 2](./sveltos-progressive-rollouts-pt2.md) | Introduction to Sveltos Progressive Rollouts part 2 |
-| Part 3 | Sveltos Progressive Rollouts and ChatOps|
+| [Part 3](./sveltos-progressive-rollouts-pt3.md) | Sveltos Progressive Rollouts and ChatOps |

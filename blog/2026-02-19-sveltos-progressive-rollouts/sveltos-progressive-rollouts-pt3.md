@@ -339,7 +339,7 @@ The GitHub repo is a great resource for getting started with the project. It con
 
 Thanks for reading!
 
-## Series Narigation
+## Series Navigation
 
 | Part | Title |
 | :--- | :---- |

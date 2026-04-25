@@ -350,7 +350,7 @@ In [Part 2](talos-proxmox-opentofu-part-2.md), we will cover how to update the d
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
 
-## Series Narigation
+## Series Navigation
 
 | Part | Title |
 | :--- | :---- |
