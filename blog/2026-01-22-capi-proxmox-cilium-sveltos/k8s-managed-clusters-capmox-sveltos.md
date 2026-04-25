@@ -428,7 +428,7 @@ You made it to the end of the series! In this part, we showed how to use Sveltos
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
 
-## Series Narigation
+## Series Navigation
 
 | Part | Title |
 | :--- | :---- |

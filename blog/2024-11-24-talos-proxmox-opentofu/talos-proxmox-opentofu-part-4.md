@@ -271,7 +271,7 @@ Till this time, we cannot use Terraform or OpenTofu to gracefully upgrade the Ta
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
 
-## Series Narigation
+## Series Navigation
 
 | Part | Title |
 | :--- | :---- |
