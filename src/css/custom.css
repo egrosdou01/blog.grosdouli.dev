@@ -60,35 +60,75 @@ code {
   color: #ffffff; 
 }
 
-.footer__links {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
+/* Override Docusaurus footer container */
+.footer {
   text-align: center;
+}
+
+.footer__links {
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  width: 100%;
+  gap: 25rem;
+  padding: 0;
+  text-align: left;
 }
 
 .footer__col {
-  flex: 1 1 200px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 1rem;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.footer__title {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.footer__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .footer__item {
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  display: block;
+  width: 100%;
 }
 
-.footer__links .footer__link-item {
-  margin-right: 15px;
+.footer__item a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
 }
 
-.footer__links .footer__link-item a.footer__link {
-  padding-left: 10px;
-  padding-right: 10px;
-  text-decoration: none;
+.footer__link-item {
+  display: block;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.footer__link-item a {
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+.footer__link-item svg,
+.footer__link-item img,
+.footer__item svg,
+.footer__item img,
+.footer a svg,
+.footer a img {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .footer__bottom {
@@ -101,26 +141,18 @@ code {
   .footer__links {
     flex-direction: column;
     align-items: center;
-    text-align: center;
   }
 
   .footer__col {
     margin: 1rem 0;
-    flex: none;
-    width: 100%;
+    align-items: center;
   }
 
-  .footer__links .footer__link-item {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-
-  .footer__title {
-    padding-left: 10px;
-    padding-right: 10px;
+  .footer__title,
+  .footer__item {
     text-align: center;
   }
-}
+}  
 
 .mixmax {
   display: grid;
