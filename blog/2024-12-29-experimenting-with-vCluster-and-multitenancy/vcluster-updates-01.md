@@ -50,6 +50,8 @@ The control plane cluster is the cluster that hosts the virtualised control plan
 
 ## Scenario
 
+>“Multitenancy (or multi-tenancy) refers to a single software installation that serves multiple tenants. A tenant is a user, application, or a group of users/applications that utilize the software to operate on their own data set.”
+
 We will start with a basic `vcluster-dev` vCluster in the `dev` namespace. Then we will update the Helm chart values and create two additional vClusters, `vcluster-team-a` and `vcluster-team-b`, in their own namespaces, where they will be scheduled on different nodes based on [Kubernetes taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). As this is a local setup, the vCluster API Server is exposed as a node port. However, in a later post, we will demonstrate how to use [Cilium L2 Announcements](https://docs.cilium.io/en/stable/network/l2-announcements/) to reach the clusters with a LoadBalancer IP address.
 
 ## vcluster-dev Setup
