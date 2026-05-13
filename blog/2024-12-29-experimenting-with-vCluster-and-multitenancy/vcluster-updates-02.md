@@ -2,7 +2,7 @@
 slug: vcluster-updates-pt2
 title: "What's New: vCluster Multi-tenancy Pt.2"
 authors: [egrosdou01]
-date: 2026-05-28
+date: 2026-05-13
 image: ./vcluster_architecture.png
 description: An Introduction to Cilium Features, vCluster, and the vCluster Platform.
 tags: [kubernetes,vcluster,cilium]
