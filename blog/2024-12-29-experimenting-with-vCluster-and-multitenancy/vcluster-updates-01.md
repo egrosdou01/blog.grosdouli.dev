@@ -426,6 +426,6 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 | Part | Title |
 | :--- | :---- |
 | [Part 1](./vcluster-updates-01.md) | vCluster Recent Updates |
-| Part 2 | Introduction to Cilium L2 Annoucements and vCluster Free Platform |
-| Part 3 | Explore vCluster Enterprise Features |
-
+| [Part 2](./vcluster-updates-02.md) | Introduction to Cilium L2 Announcements and vCluster Platform |
+| Part 3 | Networking Under the Hood |
+| Part 4 | Explore vCluster Enterprise Features |
