@@ -1,62 +1,93 @@
 ---
-slug: Better Together Sveltos and Flux Integration
-title: "Sveltos & Flux: Next-Level K8s Deployments"
+slug: sveltos-gitops-controllers-pt1
+title: "Better Together: Sveltos and GitOps Controllers"
 authors: [egrosdou01]
-date: 2025-08-14
+date: 2026-05-15
 image: ./fluxcd_and_sveltos.jpg
-description: A step-by-step guide working with the Sveltos and the Flux Operator helm chart to achieve the best GitOps experience.
-tags: [sveltos,flux-operator,gitlab,gitops,devops]
+description: A new series dedicated to the better together story of how Sveltos fits into Platform engineering and the Continuous Deployment (CD) part. In this post, we will cover the most commonly seen scenarions of Sveltos and how it fits with existing GitOps Controllers.
+tags: [sveltos,argoCD,flux,gitops,platform engineering]
 ---
 
 **Summary**:
 
-This post picks up where the Flux Operator [blog](demystifying-flux-operator-and-gitlab.md) left off, diving deeper to demonstrate the power of Sveltos and Flux for Kubernetes add-on deployment and management. Join the club as we explore what next-level Kubernetes deployments and management look like in action!
+After many discussions at the KubeCon Europe in Amsterdam, I decided to start a new series covering the most commonly seen scenarios and approaches on how Sveltos and different GitOps Controllers can work together. Sveltos is not a replacement of your GitOps Controllers. It is a tool to enhance and extend existing capabilities. When we talk about GitOps Controllers, we primarily refer to either ArgoCD or Flux. In the first part of the series, we will demonstrate how Sveltos fits into the Platform engineering space and, more specifically, in the Continuous Deployment (CD) part. We will provide a commonly seen scenario and explore how Sveltos can control all the deployments.
+
 <!--truncate-->
 
 ![title image reading "Sveltos and Flux"](fluxcd_and_sveltos.jpg)
 
+## Motivation
+
+I had the chance to meet [Gianluca Mardenete](https://github.com/gianlucam76) (creator of Sveltos and [K8Scleaner](https://github.com/gianlucam76/k8s-cleaner)) during an internal call while working on a project. He introduced me to Sveltos almost two and a half years ago. I was impressed by the functionality and features that came out-of-the-box, one tool to rule them all :'), and decided to give it a spin. Since then, I can say it not only gave me back time to work on other issues, but also made deployments way easier and scalable for us! Follow along to explore Sveltos together!
+
 ## Scenario
 
-[Sveltos](https://github.com/projectsveltos) is a Kubernetes add-on controller. It makes deploying and managing Kubernetes add-ons and applications easier. We can use it across multiple clusters, whether on-premises, in the cloud, or in multitenant settings.To achieve a GitOps approach for our deployments, Sveltos integrates nicely with [Flux](https://fluxcd.io/flux/).
+Let’s start with a quick introduction about [Sveltos](https://github.com/projectsveltos). It is a Kubernetes add-on controller. It makes deploying and managing Kubernetes add-ons and applications easier using a label approach. We can use it across multiple clusters, whether on-premises, in the cloud, or in multitenant setups. Sveltos integrates very well with existing GitOps Controllers and extends its capabilities using out-of-the-box features like advanced templating, Event Framework, and native integration with Cluster API (CAPI). To learn more about the Sveltos features, take a look at the [official documentation](https://projectsveltos.io/main/). As mentioned in the beginning, the goal of the new series is to demonstrate the different scenarios when it comes to CD. How can someone use Sveltos capabilities when starting with deployments, and how can Sveltos fit and collaborate with other Controllers to help teams scale?
 
-What does this mean for us? We can use Sveltos to manage the Flux installation on our Kubernetes cluster. We can also tap into advanced features like templating, dynamic pre-instantiation, and the Event Driven Framework. This helps make our deployments more **dynamic** and **scalable**. If you are ready to proceed, let's dive into it! 😊
-
-:::note
-The Kubernetes management cluster in our case is the brain of the add-on and application deployments to a fleet of clusters.
-:::
-
+In this post, we will focus on the scenario where Sveltos is the “King” of our deployments. We will showcase how Sveltos can install ArgoCD and Flux to a central Kubernetes **management** cluster and how the same approach can be used to deploy a GitOps controller to a managed cluster that requires a GitOps Controller with a custom definition. What that means is that we will bring any Sveltos manifests stored in a git repo using an available GitOps Controller. From there, Sveltos takes over and works with the deployments based on the labeling concept.
 
 ## Lab Setup
 
 ```bash
-+-------------------------------+---------------------+
-|          Deployment           |       Version       |
-+-------------------------------+---------------------+
-|            RKE2               |   v1.31.9+rke2r1    |
-|           Sveltos             |       v1.0.0        |
-|       Flux Operator           |       v0.25.0       |
-|            Flux               |       v2.6.4        |
-| Self Managed GitLab Instance  |        v18.1        |
-+-------------------------------+---------------------+
++---------------------------+------------------+
+|        Deployment         |     Version      |
++---------------------------+------------------+
+|           RKE2            | v1.35.3+rke2r3   |
+|         Sveltos           |     v1.8.0       |
+|    ArgoCD Helm Chart      |     v9.4.17      |
+|    Flux2 Helm Chart       |     v2.18.3      |
+|    Flux Operator Helm     |     v0.40.0      |
++---------------------------+------------------+
 ```
+
+## GitHub Resources
+
+The YAML outputs are not complete. Have a look at the [GitHub repository](https://github.com/egrosdou01/blog-post-resources/tree/main/sveltos-gitops-controllers/pt1).
 
 ## Prerequisites
 
-1. A Kubernetes cluster
+1. A Kubernetes cluster acting as the **management** cluster
+1. At least two **managed** clusters
 1. Familiarity with Kubernetes manifest files
-1. Familiarity with Flux and GitOps practices
+1. Familiarity with ArgoCD, Flux and GitOps practices
 
 ## Diagram
 
-![title image reading "Sveltos and Flux Better Together"](sveltos_and_fluxcd_better_together.jpg)
+![title image reading "Sveltos and Flux Better Together"](sveltos_and_gitops_controllers.png)
+
+Taking a look at the diagram, we follow a classic GitOps approach. The DevOps or Platform engineering team will store the source of truth in a git or multiple git repositories. In this scenario, we instruct ArgoCD or Flux to synchronise with any repositories that hold the Sveltos resources like ClusterProfiles, Profiles, EventSource, and EventTrigger to a central **management** cluster. Then, Sveltos takes over the deployment of applications and add-ons using a label approach. Once a change is performed following a standard Merge or PR request, the GitOps controller will bring the updated code to the **management** cluster, and Sveltos will ensure the changes are performed to the affected managed clusters.
+
+We start by installing the different GitOps Controllers to a Kubernetes management cluster (the same cluster where Sveltos is installed) using a ClusterProfile. Then, synchronise the required repositories, and Sveltos performs different deployments across different managed clusters following the Kubernetes labelling approach. For example, if a managed cluster has the label `gitops-controller: argo`, Sveltos will deploy ArgoCD to that cluster. If there is another managed cluster with the label set to `gitops-controller: flux`, Sveltos will deploy Flux to that cluster. The labelling approach provides teams with extra flexibility while keeping deployments as simple as possible. The DRY and KISS frameworks are embraced by Sveltos architecture.
+
+## My Project Structure
+
+I like to keep things organised. When I use Sveltos as the brains of operations, usually I have the below file structure in a repository.
+
+```
+sveltos-resources/
+├── mgmt/               # Resources for the Management cluster
+├── base/               # Global configurations (applied to all clusters)
+│   ├── cni/
+│   └── security-baseline/
+├── providers/          # Provider-specific configurations (Labels: provider=aks/eks/on-prem)
+│   ├── aks/
+│   ├── eks/
+│   └── on-prem/
+├── environments/       # Env-specific configurations (Labels: env=dev/staging/prod)
+│   ├── dev/
+│   ├── staging/
+│   └── prod/
+```
+
+The `mgmt/` holds teh Sveltos resources to be applied in the Kubernetes **management** cluster. The `base/` directory holds the Sveltos manifests that apply to every cluster, such as the Container Network Interface (CNI) and network policies. For specialised needs, we use `providers/` and `environments/` folders. Instead of nesting these, we use labels to target the right Sveltos resources, allowing each cluster to automatically pick up the configurations it needs based on its specific role.
+
+As our demonstration is way simpler, we will use the labels `env: dev`, `env: staging`, `gitops: argocd`, and `gitops: flux` to deploy specific resources down these clusters. Feel free to experiment with your own file structure based on your use-cases.
 
 ## Sveltos Installation
 
-Before we start exploring the setup, we need to install Sveltos on a Kubernetes **management** cluster. I like to work with Helm charts; thus we will install Sveltos using this approach. Additionally, [Mode 1](https://projectsveltos.github.io/sveltos/main/getting_started/install/install/#installation-modes) is the preferred installation method. To explore more about the different installation methods, have a look [here](https://projectsveltos.github.io/sveltos/main/getting_started/install/install/).
+To start with the demo, we need to install Sveltos to the **management** cluster. I will use the Helm installation usning Mode 1. Choose your preferened installation mode by reading the [installation documentation](https://projectsveltos.io/main/getting_started/install/install/).
 
 ### Helm Chart Installation
-
-Follow the commands below and install Sveltos on a Kubernetes management cluster.
 
 ```bash
 $ export KUBECONFIG=<directory of the management kubeconfig>
@@ -64,50 +95,41 @@ $ export KUBECONFIG=<directory of the management kubeconfig>
 $ helm repo add projectsveltos https://projectsveltos.github.io/helm-charts
 $ helm repo update
 
-$ helm install projectsveltos projectsveltos/projectsveltos -n projectsveltos --create-namespace --version=1.0.0
-```
-
-**Validation**
-
-```bash
-$ kubectl get pods -n projectsveltos
-
-$ kubectl get sveltosclusters -A
+$ helm install projectsveltos projectsveltos/projectsveltos -n projectsveltos --create-namespace --version=1.8.0
 ```
 
 ### Label Management Cluster
 
-It is very common to use Sveltos and deploy add-ons and applications to the **management** cluster where Sveltos is installed. For this demonstration, we will add the Kubernetes label `cluster=mgmt`.
+To control resources in the **management** cluster using Sveltos, we will simply add the label `type: mgmt` to the `sveltoscluster` named `mgmt` in the `mgmt` namespace. The registration is done by Sveltos during installation.
 
 ```bash
-$ kubectl label sveltoscluster mgmt -n mgmt cluster=mgmt
+$ kubectl label sveltoscluster mgmt -n mgmt type=mgmt
 ```
 
-By using the Sveltos label matching approach, we can utilise the Sveltos Custom Resource Definitions (CRDs) and deploy Flux to the **management** cluster.
+### GitOps Controller - Managamenet Cluster
 
-## Flux Installation
-
-### Flux ClusterProfile
+#### Flux Deployment
 
 We will use a Sveltos [ClusterProfile](https://projectsveltos.github.io/sveltos/main/addons/addons/#how-it-works) to install the Flux-Operator as a Helm chart and include all the required resources for the desired setup. The official OCI registry is used to pull the Flux Operator Helm chart. With Sveltos, we can deploy `ConfigMap` and `Secret` resources that contain information about the cluster. That means we can add the Flux `Instance`, the GitLab `secret`, and the `GitRepository` resources into a `ConfigMap` and instruct Sveltos to deploy it to the **management** cluster.
 
-#### Flux Operator ClusterProfile
+##### Flux Operator ClusterProfile
 
 ```yaml showLineNumbers
----
 apiVersion: config.projectsveltos.io/v1beta1
 kind: ClusterProfile
 metadata:
   name: flux
 spec:
+// highlight-start
   clusterSelector:
     matchLabels:
-      cluster: mgmt
+      type: mgmt
+// highlight-end
   helmCharts:
   - repositoryURL: oci://ghcr.io/controlplaneio-fluxcd/charts
     repositoryName: flux-operator
     chartName: flux-operator
-    chartVersion: 0.25.0
+    chartVersion: 0.40.0
     releaseName: flux-operator
     releaseNamespace: flux-system
     helmChartAction: Install
@@ -116,13 +138,22 @@ spec:
   - name: flux-resources
     namespace: default
     kind: ConfigMap
+
+  - kind: GitRepository
+    name: sveltos-repo-sync # Define the Flux GitRepository resource name defined in the flux-resources ConfigMap
+    namespace: flux-system
+    path: ./resources/sveltos-manifests/
 // highlight-end
 ```
 
-#### flux-resources ConfigMap
+##### flux-resources ConfigMap
 
 ```yaml showLineNumbers
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: flux-resources
+  namespace: default
 data:
   flux_resources.yaml: |
     ---
@@ -132,13 +163,13 @@ data:
       name: flux
       namespace: flux-system
       annotations:
+        fluxcd.controlplane.io/reconcile: "enabled"
         fluxcd.controlplane.io/reconcileEvery: "1h"
         fluxcd.controlplane.io/reconcileTimeout: "5m"
     spec:
       distribution:
         version: "2.x"
         registry: "ghcr.io/fluxcd"
-        artifact: "oci://ghcr.io/controlplaneio-fluxcd/flux-operator-manifests"
       components:
         - source-controller
         - kustomize-controller
@@ -148,153 +179,269 @@ data:
         - image-automation-controller
       cluster:
         type: kubernetes
+        size: medium
         multitenant: false
         networkPolicy: false
         domain: "cluster.local"
+      commonMetadata:
+        labels:
+          app.kubernetes.io/name: flux
       kustomize:
         patches:
           - target:
               kind: Deployment
-              name: "(kustomize-controller|helm-controller)"
             patch: |
+              - op: replace
+                path: /spec/template/spec/nodeSelector
+                value:
+                  kubernetes.io/os: linux
               - op: add
-                path: /spec/template/spec/containers/0/args/-
-                value: --concurrent=10
-              - op: add
-                path: /spec/template/spec/containers/0/args/-
-                value: --requeue-dependency=5s
-    ---
-    apiVersion: v1
-    data:
-      password: <BASE64 encoded string>
-      username: <BASE64 encoded string>
-    kind: Secret
-    metadata:
-      name: gitlab-creds
-      namespace: flux-system
-    type: Opaque
+                path: /spec/template/spec/tolerations
+                value:
+                  - key: "CriticalAddonsOnly"
+                    operator: "Exists"
     ---
     apiVersion: source.toolkit.fluxcd.io/v1
     kind: GitRepository
     metadata:
-      name: staging-env
+      name: sveltos-repo-sync
       namespace: flux-system
     spec:
-      interval: 1m0s
+      interval: 30s
       ref:
         branch: main
-      secretRef:
-        name: gitlab-creds
       timeout: 60s
-      url: https://<your GitLab domain>/<group name>/<repository name>.git
-kind: ConfigMap
-metadata:
-  name: flux-resources
-  namespace: default
+      url: https://<your domain>/<group name>/<repository name>.git
 ```
 
 :::tip
-Ensure the ConfigMap with the name `flux-resources` is deployed to the **management** cluster before deploying the Sveltos `ClusterProfile`. The resources need to exist in the cluster for Sveltos to deploy them.
+Ensure the ConfigMap with the name `flux-resources` is deployed to the **management** cluster before deploying the Sveltos `ClusterProfile`. The `ConfigMap` can contain any relevant information required for the Flux installation. Feel free to update the example and include the required details. In case authentication is required to sync a repo. Include the code listed below.
+
+```yaml
+apiVersion: v1
+data:
+  password: <BASE64 encoded string>
+  username: <BASE64 encoded string>
+kind: Secret
+metadata:
+  name: git-creds
+  namespace: flux-system
+type: Opaque
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: a-repo-sync
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: main
+  secretRef:
+    name: git-creds
+  timeout: 60s
+  url: https://<your domain>/<group name>/<repository name>.git
+```
 :::
 
-## Dynamic Flux Sources Deployment
+### ArgoCD Installation - Managamenet Cluster
 
-As mentioned in the beginning, we can use the advanced Sveltos Event Framework and perform "magic" 🪄✨ when it comes to application deployment from defined Flux sources. The approach allows us to dynamically target Sveltos **managed** clusters using the information located in the Kubernetes management cluster.
-
-### EventSource
-
-To trigger actions based on concrete events, Sveltos allows us to utilise the [EventSource](https://projectsveltos.github.io/sveltos/main/events/addon_event_deployment/#introduction-to-sveltos-event-framework) resource and define what the triggered action will perform on the **managed** clusters. Check out the [documentation](https://projectsveltos.github.io/sveltos/main/events/addon_event_deployment/#eventsource) and define your own EventSources.
-
-For this demonstration, the trigger is every new registered cluster with the label set to `register: ok`. The following is an example of how the `EventSource` manifest looks.
+#### ArgoCD ClusterProfile
 
 ```yaml showLineNumbers
----
-apiVersion: lib.projectsveltos.io/v1beta1
-kind: EventSource
+apiVersion: config.projectsveltos.io/v1beta1
+kind: ClusterProfile
 metadata:
-  name: cluster-registration
-spec:
-  collectResources: true
-  resourceSelectors:
-  - group: "lib.projectsveltos.io"
-    version: "v1beta1"
-    kind: "SveltosCluster"
-// highlight-start
-    labelFilters:
-    - key: register
-      operation: Equal
-      value: ok
-// highlight-end
-```
-
-Once a new cluster with the label set to `register: ok` is registered with Sveltos, we use the following `EventTrigger` resource to dynamically deploy Flux synchronised resources for the newly registered **managed** clusters.
-
-### EventTrigger
-
-```yaml showLineNumbers
----
-apiVersion: lib.projectsveltos.io/v1beta1
-kind: EventTrigger
-metadata:
-  name: deploy-manifests
+  name: argocd
 spec:
 // highlight-start
-  sourceClusterSelector:
+  clusterSelector:
     matchLabels:
-      cluster: mgmt
+      type: mgmt
 // highlight-end
-  destinationCluster:
-    name: "{{ .Resource.metadata.name }}"
-    namespace: "{{ .Resource.metadata.namespace }}"
-    kind: SveltosCluster
-    apiVersion: lib.projectsveltos.io/v1beta1
-// highlight-start
-  eventSourceName: cluster-registration
-// highlight-end
-  oneForEvent: true
+  helmCharts:
+  - repositoryURL: https://argoproj.github.io/argo-helm
+    repositoryName: argo
+    chartName: argo-cd
+    chartVersion: 9.4.17
+    releaseName: argocd
+    releaseNamespace: argocd
+    helmChartAction: Install
 // highlight-start
   policyRefs:
-  - kind: GitRepository
-    name: staging-env
-    namespace: flux-system
-    path: "staging/{{ .Resource.metadata.name }}"
+  - name: argo-resources
+    namespace: default
+    kind: ConfigMap
 // highlight-end
 ```
 
+##### argo-resources ConfigMap
+
+```yaml showLineNumbers
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argo-resources
+  namespace: default
+data:
+  argo_resources.yaml: |
+    ---
+    apiVersion: argoproj.io/v1alpha1
+    kind: Application
+    metadata:
+      name: sveltos-manifests
+      namespace: argocd
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: default
+      source:
+        repoURL: https://<your domain>/<group name>/<repository name>.git"
+        targetRevision: HEAD
+        path: resources/sveltos-manifests/
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            maxDuration: 3m0s
+            factor: 2
+      ---
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: sveltos-repo-sync
+        namespace: argocd
+        labels:
+          argocd.argoproj.io/secret-type: repository
+      stringData:
+        url: "https://<your domain>/<group name>/<repository name>.git"
+```
+
+## Register Managed Clusters
+
+The Sveltos "magic" 🪄✨ happens when we want to deploy add-ons and applications to a fleet of clusters. First, we need to register the clusters with Sveltos using either the `sveltosctl` or the [programmatic approach](https://projectsveltos.io/main/register/register-cluster/#programmatic-registration). Make your choice. During the registration process, we assign specific labels to the managed clusters. For example, define the environment, whether they need a special configuration etc.
+
+### Flux vs ArgoCD ClusterProfile
+
+### Base ClusterProfile
+
+```yaml showLineNumbers
+apiVersion: config.projectsveltos.io/v1beta1
+kind: ClusterProfile
+metadata:
+  name: common-staging
+spec:
+  clusterSelector:
+    matchExpressions:
+    - {key: env, operator: In, values: [dev, staging]}
+  helmCharts:
+  - chartName: cilium/cilium
+    chartVersion: 1.18.5
+    helmChartAction: Install
+    releaseName: cilium
+    releaseNamespace: kube-system
+    repositoryName: cilium
+    repositoryURL: https://helm.cilium.io/
+    values: |
+      hubble:
+        enabled: true
+        peerService:
+          clusterDomain: cluster.local
+        relay:
+          enabled: true
+        tls:
+          auto:
+            certValidityDuration: 1095
+            enabled: true
+            method: helm
+        ui:
+          enabled: true
+      nodePort:
+        enabled: true
+      debug:
+        enabled: true
+  - repositoryURL: https://charts.jetstack.io
+    repositoryName: jetstack
+    chartName: jetstack/cert-manager
+    chartVersion: v1.16.3
+    releaseName: cert-manager
+    releaseNamespace: cert-manager
+    helmChartAction: Install
+    values: |
+      crds:
+        enabled: true
+```
+
+The base configuration will be applied to every managed cluster that has the label `env: dev` or `env: staging` defined. In this case, we would like to install a specific version of [Cilium]() and [cert-mamager]() for certificate management.
+
+Now, depending on whether the developers like to work with ArgoCD or Flux, we can create two different `ClusterProfile` resources and deploy the prefered GitOps Controller based on the `git-controller` label defined. Check out the below configuration for more details.
+
+### ArgoCD GitOpts Controller
+
+```yaml showLineNumbers
+apiVersion: config.projectsveltos.io/v1beta1
+kind: ClusterProfile
+metadata:
+  name: argocd
+spec:
+  clusterSelector:
+  clusterSelector:
+    matchLabels:
+      git-controller: argo
+  helmCharts:
+  - repositoryURL: https://argoproj.github.io/argo-helm
+    repositoryName: argo
+    chartName: argo-cd
+    chartVersion: 9.4.17
+    releaseName: argocd
+    releaseNamespace: argocd
+    helmChartAction: Install
+  policyRefs:
+  - name: argo-resources
+    namespace: default
+    kind: ConfigMap
+```
+### Flux GitOpts Controller
+
+```yaml showLineNumbers
+apiVersion: config.projectsveltos.io/v1beta1
+kind: ClusterProfile
+metadata:
+  name: flux
+spec:
+  clusterSelector:
+    matchLabels: 
+      git-controller: flux
+  helmCharts:
+  - repositoryURL: oci://ghcr.io/controlplaneio-fluxcd/charts
+    repositoryName: flux-operator
+    chartName: flux-operator
+    chartVersion: 0.40.0
+    releaseName: flux-operator
+    releaseNamespace: flux-system
+    helmChartAction: Install
+  policyRefs:
+  - name: flux-resources
+    namespace: default
+    kind: ConfigMap
+```
+
 :::tip
-Looking at line **21**, we instruct Sveltos to deploy any Kubernetes manifests included under the repository directory `staging/<cluster-name>/`. If the directory does not exist, Sveltos will not deploy anything to the cluster.
+Because we use already a GitOps Controller to our **management** cluster and sync any manifests with our cluster, we should not deploy these manifests to our cluster. It is the GitOps Controller's job to do so.
 :::
-
-### RKE2 Managed Cluster Registration
-
-We will register an RKE2 managed cluster with Sveltos and set the required Kubernetes label `register: ok` to trigger an Event. Once the cluster is defined as "Ready" by Sveltos, the `EventSource` will notice the new cluster with the label `register: ok` and install any manifests located in the directory `path: "staging/cluster01"`
-
-```bash
-$ sveltosctl register cluster \
-    --namespace=cluster01 \
-    --cluster=cluster01 \
-    --kubeconfig=~/.kube/cluster01.config \
-    --labels=register=ok
-```
-
-For more details about the registration process or how to register a cluster programmatically, check out the [official documentation](https://projectsveltos.github.io/sveltos/main/register/register-cluster/).
-
-### Validation
-
-Once the `EventSource` and the `EventTrigger` resources are deployed to the Kubernetes **management** cluster, we can check and evaluate them. The `eventsource` and the `eventsummary` resources are what we look for.
-
-```bash
-$ kubectl get eventsource,eventsummary
-
-$ kubectl get eventsource <name> -n <namespace> -o yaml
-$ kubectl get eventsummary <name> -n <namespace> -o yaml
-```
-
-The `status` of the output above is what we want to validate. If the resources are `provisioned`, Sveltos deployed the Flux syncronised resources to the cluster and those should already been visible to the **managed** cluster.
 
 ## Conclusion
 
-Throughout this series, we demonstrated how to automate the installation of the Flux Operator, along with all the necessary resources for a fully functional setup. We showcased the power of Sveltos, leveraging the Event Driven Framework to seamlessly automate deployments to newly registered clusters. Using the right tools, we can achieve a high level of automation in a straightforward and meaningful way!
+In today's blog, we demonstared a simple yet powerfull and extensible way of using Sveltos as our main-brain for the application and add-on deployments across a fleet of clusters. Using a labeling approach and expanding to complex deployments becomes easy using the out-of-the-box Sveltos templating and Event Framework. No tool sprawl or scalability issues. Only flexible deployments!
+
+In the next two blog posts, we will work on how Sveltos integrates with an existing Flux deployment and how we can extend Flux capabilities using Sveltos out-of-the-box advanced features. Stay tuned.
 
 ## Resources
 
@@ -313,3 +460,11 @@ Every contribution counts! If you enjoyed this article, check out the Projectsve
 The GitHub repo is a great resource for getting started with the project. It contains the code, documentation, and many more examples.
 
 Thanks for reading!
+
+## Series Navigation
+
+| Part | Title |
+| :--- | :---- |
+| [Part 1](./sveltos-and-gitops-controllers-pt1.md) | Sveltos as the brain of deployments |
+| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos to automate Flux Helm Releases |
+| [Part 3](./sveltos-and-gitops-controllers-pt3.md) | Running the demo: hub-spoke with Event Framework |
