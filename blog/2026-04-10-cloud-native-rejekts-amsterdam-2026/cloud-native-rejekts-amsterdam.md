@@ -49,6 +49,12 @@ The code examples can be found at a [GitHub repository](https://github.com/egros
 
 ![title image reading "Sveltos Demo Diagram"](rejekts_demo_diagram.gif)
 
+### 👏 Support this project
+
+Every contribution counts! If you enjoyed this article, check out the Projectsveltos [GitHub repo](https://github.com/projectsveltos). You can [star 🌟 the project](https://github.com/projectsveltos/addon-controller) if you find it helpful.
+
+The GitHub repo is a great resource for getting started with the project. It contains the code, documentation, and many more examples.
+
 ## Resources
 
 - [Rejekts Amsterdam 2026](https://cloud-native.rejekts.io/)

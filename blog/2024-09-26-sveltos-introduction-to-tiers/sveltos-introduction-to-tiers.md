@@ -311,9 +311,9 @@ In a few minutes ⏳, with minimal configuration effort and following the GitOps
 
 We are here to help! Whether you have questions, or issues or need assistance, our Slack channel is the perfect place for you. Click here to [join us](https://join.slack.com/t/projectsveltos/shared_invite/zt-1hraownbr-W8NTs6LTimxLPB8Erj8Q6Q) us.
 
-## 👏 Support this project
+## 👏 Support this project
 
-Every contribution counts! If you enjoyed this article, check out the Projectsveltos [GitHub repo](https://github.com/projectsveltos). You can [star 🌟 the project](https://github.com/projectsveltos) if you find it helpful.
+Every contribution counts! If you enjoyed this article, check out the Projectsveltos [GitHub repo](https://github.com/projectsveltos). You can [star 🌟 the project](https://github.com/projectsveltos/addon-controller) if you find it helpful.
 
 The GitHub repo is a great resource for getting started with the project. It contains the code, documentation, and many more examples.
 
