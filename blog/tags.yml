@@ -6,6 +6,10 @@ argoCD:
   label: ArgoCD
   permalink: /argocd
   description: "ArgoCD is a powerful, declarative, GitOps continuous deployment (CD) tool specifically designed for Kubernetes environments, ensuring reliable application delivery."
+flux:
+  label: Flux
+  permalink: /flux
+  description: "Flux is a set of continuous and progressive delivery solutions for Kubernetes that are open and extensible."
 ceph:
   label: Ceph
   permalink: /ceph
