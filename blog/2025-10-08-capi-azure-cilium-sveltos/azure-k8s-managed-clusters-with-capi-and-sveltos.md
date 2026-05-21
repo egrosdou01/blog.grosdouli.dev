@@ -615,6 +615,8 @@ This is the end of the series. In this part, we demonstrated how to use [Sveltos
 - [Sveltos and Crossplane for GitOps Bridge Pattern](https://projectsveltos.github.io/sveltos/main/events/examples/sveltos_crossplane_gitops_bridge_pattern/)
 - [CAPI, Sveltos and Cyclops](../2025-04-22-capi-sveltos-cyclops/capi-sveltos-cyclops.md)
 
-## ✉️ Contact
+## 👏 Support this project
 
-If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
+Every contribution counts! If you enjoyed this article, check out the Projectsveltos [GitHub repo](https://github.com/projectsveltos). You can [star 🌟 the project](https://github.com/projectsveltos/addon-controller) if you find it helpful.
+
+The GitHub repo is a great resource for getting started with the project. It contains the code, documentation, and many more examples.
