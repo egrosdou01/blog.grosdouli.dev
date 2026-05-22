@@ -22,7 +22,7 @@ I had the chance to meet [Gianluca Mardenete](https://github.com/gianlucam76) (c
 
 ## Scenario
 
-Let’s start with a quick introduction to [Sveltos](https://github.com/projectsveltos). It is a Kubernetes add-on controller. It makes deploying and managing Kubernetes add-ons and applications easier using a label approach. We can use it across multiple clusters, whether on-premises, in the cloud, or in multitenant setups. Sveltos integrates very well with existing GitOps Controllers and extends its capabilities using out-of-the-box features like advanced templating, Event Framework, and native integration with Cluster API (CAPI). To learn more about the Sveltos features, take a look at the [official documentation](https://projectsveltos.io/main/). As mentioned in the beginning, the goal of the new series is to demonstrate the different scenarios when it comes to CD. How can someone use Sveltos capabilities when starting with deployments, and how can Sveltos fit and collaborate with other Controllers to help teams scale their operations?
+Let’s start with a quick introduction to [Sveltos](https://github.com/projectsveltos). It is a Kubernetes add-on controller. It makes deploying and managing Kubernetes add-ons and applications easier using a label approach. We can use it across multiple clusters, whether on-premises, in the cloud, or in multitenant setups. Sveltos integrates very well with existing GitOps Controllers and extends its capabilities using out of the box features like advanced templating, Event Framework, and native integration with Cluster API (CAPI). To learn more about the Sveltos features, take a look at the [official documentation](https://projectsveltos.io/main/). As mentioned in the beginning, the goal of the new series is to demonstrate the different scenarios when it comes to CD. How can someone use Sveltos capabilities when starting with deployments, and how can Sveltos fit and collaborate with other Controllers to help teams scale their operations?
 
 In this post, we will focus on the scenario where Sveltos is the “brain” of our deployments. We will showcase how Sveltos can install ArgoCD and Flux to a central Kubernetes **management** cluster and how the same approach can be used to deploy a GitOps controller to a managed cluster that requires a GitOps Controller with a custom definition. What that means is that we will bring any Sveltos manifests stored in a git repo using an available GitOps Controller. From there, Sveltos takes over and works with the deployments based on the labelling concept.
 
@@ -468,7 +468,7 @@ Sveltos supports Progressive Rollouts. Feel free to take a look at a [previous b
 
 In today's blog, we demonstrated a simple yet powerful and extensible way of using Sveltos as our main brain for the application and add-on deployments across a fleet of clusters. Using a labelling approach and expanding to complex deployments becomes easy using features like Sveltos templating and Event Framework, which we will cover in Parts 2 and 3.
 
-In the next two blog posts, we will work on how Sveltos integrates with an existing Flux deployment and how we can extend Flux capabilities using Sveltos out-of-the-box advanced features. Stay tuned.
+In the next two blog posts, we will work on how Sveltos integrates with an existing Flux deployment and how we can extend Flux capabilities using Sveltos out of the box advanced features. Stay tuned.
 
 ## Resources
 
