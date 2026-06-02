@@ -67,7 +67,7 @@ When we deploy a pod inside `vcluster-team-a`, the vCluster syncs the pod down t
 
 vCluster provides control plane isolation. Each virtual cluster has its own API server, scheduler, and controller manager. Tenants cannot see each other's Kubernetes resources through the API. However, vCluster does not provide network-level isolation between tenant namespaces by default.
 
-To better understand this concept, we deployed an nginx application in the `default` namespace. This was done for the `vcluster-team-a` virtual cluster during its creation. Below are the two separate views. One from the Control Plane cluster and one from the `vcluster-team-a` virtual cluster.
+To better understand this concept, we deployed an NGINX application in the `default` namespace. This was done for the `vcluster-team-a` virtual cluster during its creation. Below are the two separate views. One from the Control Plane cluster and one from the `vcluster-team-a` virtual cluster.
 
 ```bash
 $ export KUBECONFIG=control-plane-cluster.yaml
@@ -87,7 +87,7 @@ NAME                    READY   STATUS    RESTARTS   AGE   IP            NODE   
 nginx-6797d5487-27gcf   1/1     Running   0          11d   10.42.0.125   el07   <none>           <none>
 ```
 
-We already have a test pod in the `vcluster-team-b` virtual cluster, and we will ping the nginx pod using the assigned IP address 10.42.0.125. As there is no network isolation, the ping would be successful. For network-related tests, feel free to use the [`nicolaka/netshoot`](https://hub.docker.com/r/nicolaka/netshoot) Docker image.
+We already have a test pod in the `vcluster-team-b` virtual cluster, and we will ping the NGINX pod using the assigned IP address 10.42.0.125. As there is no network isolation, the ping would be successful. For network-related tests, feel free to use the [`nicolaka/netshoot`](https://hub.docker.com/r/nicolaka/netshoot) Docker image.
 
 ```bash
 $ export KUBECONFIG=vcluster-team-b.yaml
@@ -102,7 +102,7 @@ PING 10.42.0.125 (10.42.0.125) 56(84) bytes of data.
 64 bytes from 10.42.0.125: icmp_seq=2 ttl=63 time=0.212 ms
 ```
 
-From the `test-pod`, we can also cURL the nginx service IP address. We will get a response as expected.
+From the `test-pod`, we can also cURL the NGINX service IP address. We will get a response as expected.
 
 ### Observations
 
@@ -312,7 +312,7 @@ PING 10.42.0.125 (10.42.0.125): 56 data bytes
 command terminated with exit code 1
 ```
 
-![title image reading "Hubble UI - Ping Blocked vcluster-team-b -> nginx vcluster-team-a "](vcluster_ping_fail.png)
+![title image reading "Hubble UI - Ping Blocked vcluster-team-b -> NGINX vcluster-team-a "](vcluster_ping_fail.png)
 
 ## DNS in Action
 
