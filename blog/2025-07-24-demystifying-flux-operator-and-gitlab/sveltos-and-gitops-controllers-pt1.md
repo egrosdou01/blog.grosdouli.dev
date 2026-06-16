@@ -493,5 +493,5 @@ Thanks for reading!
 | Part | Title |
 | :--- | :---- |
 | [Part 1](./sveltos-and-gitops-controllers-pt1.md) | Sveltos As the Brain of Deployments |
-| Part 2 | Flux and Sveltos To Automate Flux Helm Releases |
+| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos to automate Flux Helm Releases |
 | Part 3  | Running the Demo: Hub-Spoke With Event Framework |
