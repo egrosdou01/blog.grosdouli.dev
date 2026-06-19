@@ -1,10 +1,10 @@
 ---
 slug: sveltos-flux-helm-release-automation
-title: "Better Together: Sveltos to Automate Flux Helm Releases"
+title: "Better Together: Sveltos to Automate Flux HelmRelease"
 authors: [egrosdou01]
 date: 2026-06-18
 image: ./fluxcd_and_sveltos.jpg
-description: In this part of the series, we explore how Sveltos can automate the dynamic creation of Flux Helm Releases.
+description: In this part of the series, we explore how Sveltos can automate the dynamic creation of Flux HelmRelease.
 tags: [sveltos,flux,gitops,platform engineering]
 ---
 
@@ -24,7 +24,7 @@ Having only a GitOps Controller in place is not enough when it comes to complex 
 
 ## Scenario
 
-In today's post, we will showcase a flexible way of using an existing Flux configuration, and how by adding Sveltos into the mix, we provide out-of-the-box capabilities like templating, event-driven workloads, and many more. We will work with an existing Flux deployment, and Sveltos will automate the dynamic creation of [Flux Helm Releases](https://fluxcd.io/flux/components/helm/helmreleases/) based on a **cluster type** or **identity**.
+In today's post, we will showcase a flexible way of using an existing Flux configuration, and how by adding Sveltos into the mix, we provide out-of-the-box capabilities like templating, event-driven workloads, and many more. We will work with an existing Flux deployment, and Sveltos will automate the dynamic creation of [Flux HelmRelease](https://fluxcd.io/flux/components/helm/helmreleases/) based on a **cluster type** or **identity**.
 
 ## Lab Setup
 
@@ -54,7 +54,7 @@ The YAML outputs are not complete. Have a look at the [GitHub repository](https:
 
 ![title image reading "Sveltos and Flux Diagram"](sveltos_gitops_installed.png)
 
-The diagram looks very similar to the one we saw in [part 1](./sveltos-and-gitops-controllers-pt1.md) of the series. The difference here is that we already have a Flux deployment and project outline. We will install Sveltos using the native deployment options and let Sveltos listen for Events or specific resources and automate the deployment of Flux Helm Releases. Let's dive into the details.
+The diagram looks very similar to the one we saw in [part 1](./sveltos-and-gitops-controllers-pt1.md) of the series. The difference here is that we already have a Flux deployment and project outline. We will install Sveltos using the native deployment options and let Sveltos listen for Events or specific resources and automate the deployment of Flux HelmRelease. Let's dive into the details.
 
 ## Sveltos Installation
 
@@ -125,11 +125,11 @@ To control resources in the **management** cluster with Sveltos, we will simply 
 $ kubectl label sveltoscluster mgmt -n mgmt type=mgmt
 ```
 
-## Automate Flux Helm Releases
+## Automate Flux HelmRelease
 
 ### How does it work?
 
-Sveltos works very well with the concept of labeling. We can label clusters with a dedicated `key: value` pair and use this information to dynamically create **Flux Helm Releases** based on our needs. In this example, everytime a cluster with the label `cert-manager: required` appears, we trigger an action and dynamically pre-instantiate and deploy a Flux Helm Release using the information located in the **management** cluster. To achieve our goal, we use the [Sveltos Event Framework](https://projectsveltos.io/main/events/addon_event_deployment/).
+Sveltos works very well with the concept of labeling. We can label clusters with a dedicated `key: value` pair and use this information to dynamically create **Flux HelmRelease** based on our needs. In this example, everytime a cluster with the label `cert-manager: required` appears, we trigger an action and dynamically pre-instantiate and deploy a Flux Helm Release using the information located in the **management** cluster. To achieve our goal, we use the [Sveltos Event Framework](https://projectsveltos.io/main/events/addon_event_deployment/).
 
 ### Define an EventSource
 
@@ -156,7 +156,7 @@ spec:
 
 ### Define an EventTrigger
 
-Once an `EventSource` is detected, an action or multiple actions can be triggered. In this example, once an event is detected, we will deploy a ConfigMap to the **management** cluster which includes the Flux Helm Releases details expressed as a Sveltos template.
+Once an `EventSource` is detected, an action or multiple actions can be triggered. In this example, once an event is detected, we will deploy a ConfigMap to the **management** cluster which includes the Flux HelmRelease details expressed as a Sveltos template.
 
 ```yaml showLineNumbers
 apiVersion: lib.projectsveltos.io/v1beta1
@@ -180,7 +180,7 @@ spec:
 // highlight-end
 ```
 
-### Automate Flux Helm Releases
+### Automate Flux HelmRelease
 
 Now that we have our `EventSource` and `EventTrigger` in place, we need to define what actually gets deployed when an event is detected. We do this using a `ConfigMap` that holds the Flux Helm Release definition expressed as a Sveltos template.
 
@@ -251,7 +251,7 @@ The key takeaway: **you do not need to abandon your existing Flux setup to benef
 
 ## What's Next?
 
-In the next post, we will work with a simple hub-spoke Flux deployment as our basis, and include Sveltos installation alongside the Event Framework approach to automate Flux Helm Releases. Stay tuned!
+In the next post, we will work with a simple hub-spoke Flux deployment as our basis, and include Sveltos installation alongside the Event Framework approach to automate Flux HelmRelease. Stay tuned!
 
 ## Resources
 
@@ -276,5 +276,5 @@ Thanks for reading!
 | Part | Title |
 | :--- | :---- |
 | [Part 1](./sveltos-and-gitops-controllers-pt1.md) | Sveltos as the brain of deployments |
-| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos to automate Flux Helm Releases |
+| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos to automate Flux HelmRelease |
 | Part 3 | Running the demo: hub-spoke with Event Framework |
