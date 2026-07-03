@@ -1,10 +1,10 @@
 ---
 slug: vcluster-updates-pt3
-title: "What's New: vCluster Multi-tenancy Pt.3"
+title: "vCluster Network Isolation With Cilium | Isolate Tenant Traffic and Observe Flows With Cilium Hubble | Grosdouli Blog"
 authors: [egrosdou01]
 date: 2026-06-04
 image: ./vcluster_architecture.png
-description: Deep dive into Cilium and how it enhances networking in vCluster multi-tenant setups.
+description: Deep dive into Cilium Network Policies, Hubble, DNS, and how we can enhance networking in vCluster multi-tenant setups.
 tags: [kubernetes,vcluster,cilium]
 ---
 

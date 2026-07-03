@@ -1,10 +1,10 @@
 ---
 slug: vcluster-updates-pt2
-title: "What's New: vCluster Multi-tenancy Pt.2"
+title: "vCluster With Cilium L2 Announcements | Expose Tenant Clusters With Stable LoadBalancer IPs | Grosdouli Blog"
 authors: [egrosdou01]
 date: 2026-05-13
 image: ./vcluster_architecture.png
-description: An Introduction to Cilium Features, vCluster, and the vCluster Platform.
+description: An Introduction to Cilium Features, vCluster, and the vCluster Platform. Learn how to use Cilium L2 Announcements to expose tenant clusters via a stable LoadBalancer IP address.
 tags: [kubernetes,vcluster,cilium]
 ---
 

@@ -1,10 +1,10 @@
 ---
 slug: vcluster-updates-pt1
-title: "What's New: vCluster Multi-tenancy Pt.1"
+title: "vCluster Multi-Tenancy | Deploy Isolated Kubernetes Dev Environments With Helm | Grosdouli Blog"
 authors: [egrosdou01]
 date: 2026-05-07
 image: ./vcluster_architecture.png
-description: An update on vCluster configuration and Helm deployment.
+description: Provide a complete view of the changes to the vCluster multitenant environments. This is an update on vCluster configuration and Helm deployment.
 tags: [kubernetes,vcluster]
 ---
 
