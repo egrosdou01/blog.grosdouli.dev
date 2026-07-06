@@ -1,6 +1,6 @@
 ---
 slug: sveltos-gitops-controllers-pt1
-title: "Better Together: Sveltos and GitOps Controllers"
+title: "Sveltos and GitOps Controllers | Orchestrate Multi-Cluster Deployments | Sveltos"
 authors: [egrosdou01]
 date: 2026-05-21
 image: ./argocd_fluxcd_sveltos.jpg
@@ -24,7 +24,7 @@ I had the chance to meet [Gianluca Mardenete](https://github.com/gianlucam76) (c
 
 Let’s start with a quick introduction to [Sveltos](https://github.com/projectsveltos). It is a Kubernetes add-on controller. It makes deploying and managing Kubernetes add-ons and applications easier using a label approach. We can use it across multiple clusters, whether on-premises, in the cloud, or in multitenant setups. Instead of configuring each cluster individually, Sveltos inverts the model: we define intent through `ClusterProfiles`,`Profiles` and labels, and clusters become consumers of that intent. Sveltos integrates very well with existing GitOps Controllers and extends its capabilities using out of the box features like advanced templating, Event Framework, and native integration with Cluster API (CAPI). To learn more about the Sveltos features, take a look at the [official documentation](https://projectsveltos.io/main/). As mentioned in the beginning, the goal of the new series is to demonstrate the different scenarios when it comes to CD. How can someone use Sveltos capabilities when starting with deployments, and how can Sveltos fit and collaborate with other Controllers to help teams scale their operations?
 
-In this post, we will focus on the scenario where Sveltos is the “brain” of our deployments. We will showcase how Sveltos can install ArgoCD and Flux to a central Kubernetes **management** cluster and how the same approach can be used to deploy a GitOps controller to a managed cluster that requires a GitOps Controller with a custom definition. What that means is that we will bring any Sveltos manifests stored in a git repo using an available GitOps Controller. From there, Sveltos takes over and works with the deployments based on the labelling concept.
+In previous posts, we discussed about [Flux on GitLab](demystifying-flux-operator-and-gitlab.md) and how [Sveltos works with Flux](./demystifying-flux-operator-and-gitlab.md) to provide next-level add-ons and applications across a fleet of clusters. In this post, we will focus on the scenario where Sveltos is the “brain” of our deployments. We will showcase how Sveltos can install ArgoCD and Flux to a central Kubernetes **management** cluster and how the same approach can be used to deploy a GitOps controller to a managed cluster that requires a GitOps Controller with a custom definition. What that means is that we will bring any Sveltos manifests stored in a git repo using an available GitOps Controller. From there, Sveltos takes over and works with the deployments based on the labelling concept.
 
 By the end of this post, you will have a working setup where Sveltos installs and orchestrates both ArgoCD and Flux on a management cluster, and deploys the appropriate GitOps controller to managed clusters based on labels.
 
@@ -492,6 +492,6 @@ Thanks for reading!
 
 | Part | Title |
 | :--- | :---- |
-| [Part 1](./sveltos-and-gitops-controllers-pt1.md) | Sveltos As the Brain of Deployments |
-| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos to automate Flux Helm Releases |
-| Part 3  | Running the Demo: Hub-Spoke With Event Framework |
+| [Part 1](./sveltos-and-gitops-controllers-pt1.md) | Sveltos the core of deployments |
+| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos for automated Flux HelmReleases |
+| [Part 3](./sveltos-and-gitops-controllers-pt3.md) | Flux and Sveltos: Hub and spoke demo using an Event Driven Framework |

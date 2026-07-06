@@ -1,6 +1,6 @@
 ---
 slug: sveltos-flux-helm-release-automation
-title: "Better Together: Sveltos to Automate Flux HelmRelease"
+title: "Flux HelmRelease Automation with Sveltos | Scale GitOps Without the YAML Sprawl | Sveltos"
 authors: [egrosdou01]
 date: 2026-06-18
 image: ./fluxcd_and_sveltos.jpg
@@ -275,6 +275,7 @@ Thanks for reading!
 
 | Part | Title |
 | :--- | :---- |
-| [Part 1](./sveltos-and-gitops-controllers-pt1.md) | Sveltos as the brain of deployments |
-| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos to automate Flux HelmRelease |
-| Part 3 | Running the demo: hub-spoke with Event Framework |
+| [Part 1](./sveltos-and-gitops-controllers-pt1.md) | Sveltos the core of deployments |
+| [Part 2](./sveltos-and-gitops-controllers-pt2.md) | Flux and Sveltos for automated Flux HelmReleases |
+| [Part 3](./sveltos-and-gitops-controllers-pt3.md) | Flux and Sveltos: Hub and spoke demo using an Event Driven Framework |
+
