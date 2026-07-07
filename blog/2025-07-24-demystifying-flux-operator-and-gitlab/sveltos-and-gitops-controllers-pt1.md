@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2026-05-21
 image: ./argocd_fluxcd_sveltos.jpg
 description: A new series dedicated to the better together story of how Sveltos fits into Platform engineering and the Continuous Deployment (CD) part. In this post, we will cover the most commonly seen scenarios of Sveltos and how it fits with existing GitOps Controllers.
-tags: [sveltos,argoCD,flux,gitops,platform engineering]
+tags: [kubernetes,sveltos,argoCD,flux,gitops,platform engineering]
 ---
 
 **Summary**:
