@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2026-06-18
 image: ./fluxcd_and_sveltos.jpg
 description: In this part of the series, we explore how Sveltos can automate the dynamic creation of Flux HelmRelease.
-tags: [sveltos,flux,gitops,platform engineering]
+tags: [kubernetes,sveltos,flux,gitops,platform engineering]
 ---
 
 **Summary**:

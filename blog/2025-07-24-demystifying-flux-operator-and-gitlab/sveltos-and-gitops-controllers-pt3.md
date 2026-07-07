@@ -191,10 +191,10 @@ The repository has already been modified with the proposed changes to give reade
 
 ### Step 1: Fork and Clone
 
-Fork the [flux2-hub-spoke-example](https://github.com/egrosdou01/flux2-hub-spoke-example) repository and clone it in a local directory.
+Fork the [flux2-sveltos-hub-spoke-blog-demo](https://github.com/egrosdou01/flux2-sveltos-hub-spoke-blog-demo.git) repository and clone it in a local directory.
 
 ```bash
-$ git clone https://github.com/<your-username>/flux2-hub-spoke-example && cd flux2-hub-spoke-example
+$ git clone https://github.com/<your-username>/flux2-sveltos-hub-spoke-blog-demo && cd flux2-sveltos-hub-spoke-blog-demo
 ```
 
 ### Step 2: Fleet-up
@@ -227,7 +227,7 @@ The **flux-up.sh** script was not updated to reflect more recent Flux versions. 
 
 ### Manual Flux Bootstrap
 
-To perform a manual Flux bootstrap, ensure the following points are satisfied. Start by exporting the required **repository** and **authentication** variables.
+To perform a manual Flux bootstrap, ensure the following points are satisfied. Start by exporting the required **repository** and **authentication** variables. Ensure the [hub/flux-system/gotk-sync.yaml](https://github.com/egrosdou01/flux2-sveltos-hub-spoke-blog-demo/blob/main/hub/flux-system/gotk-sync.yaml#L14) file in the new fork is updated accordingly.
 
 ```bash
 $ export GITHUB_TOKEN=<your-token>
