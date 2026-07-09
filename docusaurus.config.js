@@ -176,12 +176,7 @@ scripts: [
       // Replace with your project's social card
       image: 'img/social-card.jpg',
       metadata: [
-        { property: 'og:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps & Kubernetes Insights" },
-        { property: 'og:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on Kubernetes, DevOps, GitOps, Sveltos, Cilium, Rancher, RKE2, and OpenShift." },
-        { name: 'description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on Kubernetes, DevOps, GitOps, Sveltos, Cilium, Rancher, RKE2, and OpenShift" },
-        { name: 'robots', content: 'max-image-preview:large' },
-        { name: 'twitter:title', content: "Eleni Grosdouli's Blog: DevOps, GitOps & Kubernetes Insights" },
-        { name: 'twitter:description', content: "Welcome to Eleni Grosdouli's official blog. Explore expert articles on Kubernetes, DevOps, GitOps, Sveltos, Cilium, Rancher, RKE2, and OpenShift" },
+        { name: 'robots', content: 'index, follow, max-image-preview:large' },
       ],
       
       colorMode: {

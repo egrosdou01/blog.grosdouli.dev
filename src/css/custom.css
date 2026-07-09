@@ -300,10 +300,15 @@ code {
   }
 }
 
-.main-text-container h1.name.reveal-text {
+.main-text-container h1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-text-container h1 span.name.reveal-text:first-child {
   --delay: 0.2s;
 }
 
-.main-text-container h2.name.reveal-text {
+.main-text-container h1 span.name.reveal-text:nth-child(2) {
   --delay: 0.5s;
 }
