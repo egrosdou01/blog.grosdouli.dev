@@ -1,16 +1,17 @@
-import React, { lazy, Suspense } from 'react';
+import React from 'react';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import Head from '@docusaurus/Head';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+import LatestBlogPosts from '../components/LatestBlogPosts';
 
-const LatestBlogPosts = lazy(() => import('../components/LatestBlogPosts'));
 const PROFILE_IMAGE = '/img/elenis_moji.jpg';
 
 const AboutMeList = [
   {
-    title: '👋 Hello!',
+    title: 'Hello! 👋',
     description: (
       <>
         I'm Eleni Grosdouli, a DevOps Consulting Engineer at <a href="https://www.cisco.com/">Cisco Solutions GmbH</a>.
@@ -21,7 +22,7 @@ const AboutMeList = [
     ),
   },
   {
-    title: '🚀 Passionate Explorer',
+    title: 'Passionate Explorer 🚀',
     description: (
       <>
       As a <strong>passionate</strong> tech explorer, I'm always eager to discover new technologies and experiment in my home lab.
@@ -31,7 +32,7 @@ const AboutMeList = [
     ),
   },
   {
-    title: '🤝 Community Contributor',
+    title: 'Community Contributor 🤝',
     description: (
       <>
       Outside my job, I focus on making resources and helping the community. I do this through <strong>open-source</strong> projects, <strong>blog posts</strong>, and <strong>mentorship</strong>.
@@ -56,7 +57,7 @@ function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <Heading as="h2" className="text--center margin-bottom--lg"> A little bit about myself </Heading>
+        <Heading as="h2" className="text--center margin-bottom--lg">About Eleni Grosdouli</Heading>
         <div className="row">
           {AboutMeList.map((props, idx) => (
             <AboutMe key={idx} {...props} />
@@ -73,18 +74,21 @@ function HomepageHeader() {
     <header className='header'>
       <div className="mixmax">
         <div className="main-text-container">
-          {/* <p className="hero__title">Welcome to</p> */}
-          <h1 className="hero__title name reveal-text">Eleni</h1>
-          <h2 className="hero__title name reveal-text">Grosdouli's</h2>
-          <p className="hero__title">Blog</p>
+          <h1 className="hero__title">
+            <span className="name reveal-text">Eleni</span>
+            <span className="name reveal-text">Grosdouli's</span>
+            <span>DevOps Blog</span>
+          </h1>
           <p className="tagline">{siteConfig.tagline}</p>
         </div>
       </div>
       <div className="main-image-container">
           <img
             src={PROFILE_IMAGE}
-            alt="Eleni Grosdouli Profile. Credits to Vaso Michailidou."
+            alt="Eleni Grosdouli, DevOps Consulting Engineer specialising in Kubernetes, GitOps, and cloud-native technologies."
             className={styles.profilePicture}
+            width="250"
+            height="250"
           />
         </div>
     </header>
@@ -95,18 +99,23 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title="DevOps, GitOps, Cloud-Native Insights"
-      description="Explore DevOps, GitOps, data center, networking, security, and cloud-native insights from Eleni Grosdouli.">
+      title="Eleni Grosdouli - DevOps, GitOps & Kubernetes Blog"
+      description="Eleni Grosdouli's blog on DevOps, GitOps, Kubernetes, Cilium, Sveltos, and cloud-native engineering. Tutorials, insights, and hands-on guides for Platform engineers.">
+      <Head>
+        <link rel="canonical" href={siteConfig.url} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={siteConfig.url} />
+        <meta name="twitter:title" content="Eleni Grosdouli - DevOps, GitOps & Kubernetes Blog" />
+        <meta name="twitter:description" content="Eleni Grosdouli's blog on DevOps, GitOps, Kubernetes, Cilium, Sveltos, and cloud-native engineering. Tutorials, insights, and hands-on guides for Platform engineers." />
+      </Head>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
-        <div className="container">
-          <div className="row margin-top--xl">
-            <Suspense fallback={<div>Loading...</div>}>
-              <LatestBlogPosts />
-            </Suspense>
+        <section className="container margin-top--xl">
+          <div className="row">
+            <LatestBlogPosts />
           </div>
-        </div>
+        </section>
       </main>
     </Layout>
   );
