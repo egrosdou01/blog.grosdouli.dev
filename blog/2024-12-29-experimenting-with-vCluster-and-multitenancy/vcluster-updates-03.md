@@ -1,6 +1,6 @@
 ---
 slug: vcluster-updates-pt3
-title: "vCluster Network Isolation With Cilium | Isolate Tenant Traffic and Observe Flows With Cilium Hubble | Grosdouli Blog"
+title: "vCluster Network Isolation With Cilium | Isolate Tenant Traffic and Observe Flows With Cilium Hubble | vCluster"
 authors: [egrosdou01]
 date: 2026-06-04
 image: ./vcluster_architecture.png
