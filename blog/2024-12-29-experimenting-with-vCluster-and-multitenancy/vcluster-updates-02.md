@@ -1,6 +1,6 @@
 ---
 slug: vcluster-updates-pt2
-title: "vCluster With Cilium L2 Announcements | Expose Tenant Clusters With Stable LoadBalancer IPs | Grosdouli Blog"
+title: "vCluster With Cilium L2 Announcements | Expose Tenant Clusters With Stable LoadBalancer IPs | vCluster"
 authors: [egrosdou01]
 date: 2026-05-13
 image: ./vcluster_architecture.png

@@ -1,6 +1,6 @@
 ---
 slug: vcluster-updates-pt1
-title: "vCluster Multi-Tenancy | Deploy Isolated Kubernetes Dev Environments With Helm | Grosdouli Blog"
+title: "vCluster Multi-Tenancy | Deploy Isolated Kubernetes Dev Environments With Helm | vCluster"
 authors: [egrosdou01]
 date: 2026-05-07
 image: ./vcluster_architecture.png
