@@ -1,19 +1,20 @@
 ---
 slug: capmox-k8s-managed-clusters
-title: "Cluster API: Proxmox K8s Managed Clusters with Cilium"
+title: "CAPMOX | Provision and Manage Proxmox Kubernetes Clusters | Cluster API & Cilium"
 authors: [egrosdou01]
 date: 2026-01-22
 image: ./capmox.png
-description: A comprehensive step-by-step guide series to creating Kubernetes managed clusters on Proxmox using Cluster API and Cilium as a CNI.
-tags: [kubernetes,proxmox,clusterapi,cilium]
+description: A comprehensive step-by-step guide series to creating Kubernetes managed clusters on Proxmox using CAPMOX, Cluster API and Cilium as a CNI.
+tags: [kubernetes,proxmox,capmox,clusterapi,cilium]
+keywords: [capmox,cluster api proxmox,cluster api provider proxmox,proxmox kubernetes cluster,image-builder packer ansible,clusterctl proxmox,cilium cni proxmox]   
 ---
 
 **Summary**:
 
-Learn how to use the [image-builder](https://github.com/kubernetes-sigs/image-builder) to craft a base Ubuntu 24.04 image for Kubernetes and how [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/introduction) helps teams provision, manage, and automate the lifecycle of Kubernetes clusters on a Proxmox server.
+Learn how to use the [image-builder](https://github.com/kubernetes-sigs/image-builder) to craft a base Ubuntu 24.04 image for Kubernetes and how [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/introduction) helps teams provision, manage, and automate the lifecycle of Kubernetes clusters on a Proxmox server. The guide is suitable for Platform engineers or homelab setups.
 
 <!--truncate-->
-![title image reading "CAPI and Proxmox"](capmox.png)
+![title image reading "CAPMOX architecture diagram outlining Cluster API managing Proxmox Kubernetes clusters "](capmox.png)
 
 ## Scenario
 
@@ -21,7 +22,7 @@ If someone were to tell me that CAPI will solve most of my issues when it comes 
 
 Fast forward now, and the CAPI ecosystem has significantly evolved. Major hyperscalers and virtualisation technologies have their own provider, allowing teams to provision Kubernetes clusters in any infrastructure using Kubernetes Custom Resource Definitions (CRDs) and manifests.
 
-Working more and more with CAPI, I decided to start building Kubernetes clusters on [Proxmox](https://www.proxmox.com/en/). My initial attempt failed miserably in June 2025. As many different components are involved, attention to the used versions, underlying management cluster, local networking etc. could affect the success the process. In December 2025, performed a number of software updates and after [Kyriakos Akriotis motivation post](https://www.linkedin.com/posts/akyriako_build-your-own-managed-kubernetes-service-activity-7385295814992224256-xx-i/), I decided to revisit the topic.
+Working more and more with CAPI, I decided to start building a [Proxmox](https://www.proxmox.com/en/) Kubernetes clusters using CAPI . My initial attempt failed miserably in June 2025. As many different components are involved, attention to the used versions, underlying management cluster, local networking etc. could affect the success the process. In December 2025, performed a number of software updates and after [Kyriakos Akriotis motivation post](https://www.linkedin.com/posts/akyriako_build-your-own-managed-kubernetes-service-activity-7385295814992224256-xx-i/), I decided to revisit the topic.
 
 ## Prerequisites
 
@@ -66,6 +67,14 @@ The YAML outputs are not complete. Have a look at the [GitHub repository](https:
 - **CAPI**: Bring a declarative, Kubernetes-style API to cluster creation, configuration, and management
 - **CAPMOX**: Enables efficient management of self-managed Kubernetes clusters on Proxmox
 
+## What is CAPMOX?
+
+[CAPMOX or Cluster API provider Proxmox](https://github.com/ionos-cloud/cluster-api-provider-proxmox) is an infrastructure provider maintained by the IONOS Cloud team. It extends the Cluster API framework to provision and manage Kubernetes clusters on Proxmox.
+
+### Why use CAPMOX?
+
+Speaking about CAPMOX and Cluster API in particular, teams have the ability to control the cluster lifecycle using a Kubernetes native workflows. What that means is that instead of us dealing with Ansible/Terraform/OpenTofu playbooks and plans, maintain a different code base, state files etc., we take advantage of an already used way of managing workloads using `kubectl`. We use Kubernetes as a central place of control and operations.
+
 ## Workflow
 
 Below is a simplification of the steps taken to build an Ubuntu 24.04 image with everything it needs to spin up and down Kubernetes clusters ([kubeadm installation](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)). We deploy CAPI on an [RKE2](https://docs.rke2.io/) management cluster alongside the cluster creation using CAPMOX.
@@ -77,7 +86,7 @@ Below is a simplification of the steps taken to build an Ubuntu 24.04 image with
 
 ## Image Builder
 
-Going through the [official CAPI Provider Proxmox documentation](https://github.com/ionos-cloud/cluster-api-provider-proxmox/blob/main/docs/Usage.md), the **Proxmox VE builder** is the way to go when it comes to standardizing the base image creation for Kubernetes clusters. We followed the steps outlined in the [documentation](https://image-builder.sigs.k8s.io/capi/providers/proxmox).
+Going through the [official CAPI Provider Proxmox documentation](https://github.com/ionos-cloud/cluster-api-provider-proxmox/blob/main/docs/Usage.md), the **Proxmox VE builder** is the way to go when it comes to standardizing the base image creation for Kubernetes clusters. We followed the steps outlined in the [documentation](https://image-builder.sigs.k8s.io/capi/providers/proxmox). The `image-builder` project relies on [ HashiCorp Packer](https://www.packer.io/) and [Ansible](https://docs.ansible.com/?extIdCarryOver=true&intcmp=7015Y000003t7aWQAQ&sc_cid=RHCTG0180000382526) to build an image based on our preferences.
 
 ### Proxmox - Create CAPMOX User
 
@@ -200,12 +209,12 @@ What is the purpose of the mentioned namespaces?
 - **capi-kubeadm-bootstrap-system**: It contains CAPI bootstrap provider components that generate cloud-init scripts
 - **capi-kubeadm-control-plane-system**: It holds the CAPI control plane provider that manages the Kubernetes control plane components
 - **capi-system**: It is the core namespace for the CAPI deployment on the management cluster
-- **capmox-system**: It contains the CAPI provider for Proxmix details. It allows us to provision Kubernets cluster on Proxmox
+- **capmox-system**: It contains the CAPI provider for Proxmox details. It allows us to provision Kubernets cluster on Proxmox
 - **capi-ipam-in-cluster-system**: It is responsible for managing the IP address pools using Kubernetes resources responsible for assigning IP addresses to the nodes
 - **cert-manager**: CAPI deploys the namespace and related resources during initialisation. It automates the issuance, management, and renewal of TLS certificates
 
 :::warning
-Ensure all the resources in the mentioned namespaces are in a "Ready" state. If not, the CAPI deployment will fail with errors. If the management Kubernetes cluster cannot reach the Proxmox server, the pods in the `capmox-system` will be in a CrashLoopBackOff state. Ensure network connectivity.
+Ensure all the resources in the mentioned namespaces are in a "Ready" state. If not, the CAPI deployment will fail with errors. If the management Kubernetes cluster cannot reach the Proxmox server, the pods in the `capmox-system` will be in a CrashLoopBackOff state. Ensure network connectivity. For debugging ideas, see [Part 2: Troubleshooting CAPMOX deployments](k8s-managed-clusters-capmox-tshoot-insights.md).
 :::
 
 ### Proxmox Cluster Details
@@ -295,6 +304,8 @@ The complete code examples are available [here](https://github.com/egrosdou01/bl
 $ kubectl apply -f proxmox01.yaml
 ```
 
+If for any reason the cluster fails to get provisioned, check out the [troubleshooting insights guide](./k8s-managed-clusters-capmox-tshoot-insights.md) for common issues and solutions.
+
 ### Validation
 
 The following are only a few commands to validate the status of the cluster.
@@ -319,8 +330,6 @@ $ helm install cilium cilium/cilium --version 1.18.5 --namespace kube-system -f 
 Once the Cilium resources are up and running, the nodes should be in a Ready state.
 
 ```bash
-$ clusterctl get kubeconfig proxmox01 > proxmox01_kubeconfig
-
 $ kubectl get nodes
 NAME                            STATUS   ROLES           AGE     VERSION
 proxmox01-control-plane-m7h47   Ready    control-plane   5m9s    v1.33.3

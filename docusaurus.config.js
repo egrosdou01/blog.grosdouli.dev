@@ -128,6 +128,7 @@ scripts: [
         blog: {
           showReadingTime: true,
           showLastUpdateTime: true,
+          showLastUpdateAuthor: true,
           blogTitle: 'Welcome to my blog!',
           blogDescription: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
           postsPerPage: 20,
