@@ -18,22 +18,23 @@ const SocialShare = ({ title, url }) => {
   return (
     <div className="social-share">
       <p className={styles.shareText}>SHARE</p>
-      <LinkedinShareButton 
+      <LinkedinShareButton
         url={fullURL}
         title={title}
         summary={title}
         source={fullURL}
         className={styles.shareButton}
+        aria-label="Share on LinkedIn"
       >
         <LinkedinIcon size={25} round />
       </LinkedinShareButton>
-      <TwitterShareButton url={fullURL} title={title} className={styles.shareButton}>
+      <TwitterShareButton url={fullURL} title={title} className={styles.shareButton} aria-label="Share on X">
         <XIcon size={25} round />
       </TwitterShareButton>
-      <RedditShareButton url={fullURL} title={title} className={styles.shareButton}>
+      <RedditShareButton url={fullURL} title={title} className={styles.shareButton} aria-label="Share on Reddit">
         <RedditIcon size={25} round />
       </RedditShareButton>
-      <EmailShareButton url={fullURL} subject={title} body={`Check out this post: ${fullURL}`} className={styles.shareButton}>
+      <EmailShareButton url={fullURL} subject={title} body={`Check out this post: ${fullURL}`} className={styles.shareButton} aria-label="Share via email">
         <EmailIcon size={25} round />
       </EmailShareButton>
     </div>
