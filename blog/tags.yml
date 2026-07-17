@@ -10,6 +10,10 @@ flux:
   label: Flux
   permalink: /flux
   description: "Flux is a set of continuous and progressive delivery solutions for Kubernetes that are open and extensible."
+capmox:
+  label: CAPMOX
+  permalink: /campox
+  description: "CAPMOX is an extension of Cluster API for Proxmox maintained by the IONOS Cloud team."
 ceph:
   label: Ceph
   permalink: /ceph
