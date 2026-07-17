@@ -5,7 +5,8 @@ authors: [egrosdou01]
 date: 2026-02-05
 image: ./capmox_sveltos.png
 description: This is part 3 of the comprehensive step-by-step guide series where we create Kubernetes clusters on Proxmox using Sveltos for automating the lifecycle of the clusters.
-tags: [kubernetes,proxmox,clusterapi,sveltos,cilium,platform engineering]
+tags: [kubernetes,capmox,proxmox,clusterapi,sveltos,cilium,platform engineering]
+keywords: [capmox, sveltos kubernetes, proxmox k8s]
 ---
 
 **Summary**:
@@ -91,7 +92,7 @@ Ensure CAPI is already installed in the Kubernetes management cluster! In case o
 
 Our goal is to remove all manual processes from deploying self-managed Kubernetes clusters on **Proxmox** via **CAPI**. We also want to avoid managing multiple automation and templating tools simultaneously. Sveltos offers robust [templating features](https://projectsveltos.github.io/sveltos/main/template/intro_template/) that allow you to customise manifest files for various requirements. From there, it can provision any required add-ons or applications—all within a single, unified workflow. This results in reduced complexity, fewer dependencies, and a more efficient process for platform teams and developers.
 
-The resources listed below are intended to be deployed exclusively through Sveltos. In production setups, manifests are usually stored in a Git repository. [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) or [FluxCD](https://fluxcd.io/) handles synchronization in the management cluster where Sveltos runs.
+The resources listed below are intended to be deployed exclusively through Sveltos. In production setups, manifests are usually stored in a Git repository. [ArgoCD or FluxCD handles synchronisation](../2025-07-24-demystifying-flux-operator-and-gitlab/sveltos-and-gitops-controllers-pt1.md) in the management cluster where Sveltos runs.
 
 ### CAPI Resources
 
@@ -416,7 +417,7 @@ user01-workers-94hjx-4c7hx   user01                                             
 
 ## Conclusion
 
-You made it to the end of the series! In this part, we showed how to use Sveltos. The approach taken helps Platform teams to create scalable and maintainable Kubernetes clusters. We used CAPI on Proxmox and followed a GitOps approach to achieve our goal. With the proposed setup, teams own and manage the infrastructure, ensure add-ons and application deployments stay up to date on managed clusters, and maintain versioned, auditable applications and manifests. 🚀
+You made it to the end of the series! In this part, we showed how to use Sveltos. The approach taken helps Platform teams to create scalable and maintainable Kubernetes clusters. We used CAPI on Proxmox and followed a GitOps approach to achieve our goal. With the proposed setup, teams own and manage the infrastructure, ensure add-ons and application deployments stay up to date on managed clusters, and maintain versioned, auditable applications and manifests. When it comes to updating add-ons across these clusters safely, have a look at [Sveltos Progressive Rollouts Series](../2026-02-19-sveltos-progressive-rollouts/sveltos-progressive-rollouts-pt1.md) for a staged promotion strategy across environments. 🚀
 
 ## Resources
 

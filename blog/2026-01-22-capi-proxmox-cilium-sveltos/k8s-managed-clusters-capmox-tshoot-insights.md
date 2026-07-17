@@ -5,7 +5,8 @@ authors: [egrosdou01]
 date: 2026-01-22
 image: ./focus.png
 description: This is the continuation of the previous post and walks users through common deployment issues during CAPMOX deployments.
-tags: [kubernetes,tshoot-insights,proxmox,clusterapi,cilium]
+tags: [kubernetes,tshoot-insights,capmox,proxmox,clusterapi,cilium]
+keywords: [capmox, proxmox k8s]
 ---
 
 **Summary**:

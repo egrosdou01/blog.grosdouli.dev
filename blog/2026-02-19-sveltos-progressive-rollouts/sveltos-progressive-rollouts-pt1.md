@@ -6,6 +6,7 @@ date: 2026-02-19
 image: ./sveltos_progressive_rollouts_mermaid.jpg
 description: Get to know how Sveltos Progressive Rollouts work in action.
 tags: [kubernetes,sveltos,devops,gitops,progressive rollouts]
+keywords: [progressive rollout, sveltos kubernetes, kyverno]
 ---
 
 **Summary**:
@@ -144,7 +145,7 @@ We install Kyverno **v3.5.2** and then update to version **v3.6.2**. The CRD sol
 
 #### Initial Kyverno Installation
 
-When an **automatic** rollout is defined, we do not have any manual interventions when it comes to the gradual update of an application across environments.
+When an **automatic** rollout is defined, we do not have any manual interventions when it comes to the gradual update of an application across environments. Sveltos can also [automate the dynamic creation of Flux HelmRelease resources](../2025-07-24-demystifying-flux-operator-and-gitlab/sveltos-and-gitops-controllers-pt2.md) based on cluster labels, reducing YAML sprawl when managing Helm based deployments at scale. 
 
 For example, if the update of the clusters marked with the Kubernetes label `env: dev` is successful, we continue to the new clusters with the Kubernetes label set to `env: staging` and so on. Let's have a look at the proposed manifest.
 
@@ -450,7 +451,7 @@ It is clear that the Helm deployment was **not** successful in any of the cluste
 
 ## Conclusion
 
-[Sveltos progressive rollouts](https://projectsveltos.github.io/sveltos/main/deployment_order/progressive_rollout/) make complex, multi-cluster Day-1 and Day-2 updates **safe** and **simple**. With just a manifest and a few labels, platform teams can confidently push changes across environments, catching issues early and staying in control every step of the way. In part 2, we will dive even deeper with advanced strategies and real-world integrations. Stay tuned! 🚀
+[Sveltos progressive rollouts](https://projectsveltos.github.io/sveltos/main/deployment_order/progressive_rollout/) make complex, multi-cluster Day-1 and Day-2 updates **safe** and **simple**. For teams already using a GitOps Controller and looking to integrate progressive rollouts into their existing workflow, take a look at how [Sveltos orchestrates multi-cluster deployments alongside ArgoCD and Flux](../2025-07-24-demystifying-flux-operator-and-gitlab/sveltos-and-gitops-controllers-pt1.md). With just a manifest and a few labels, platform teams can confidently push changes across environments, catching issues early and staying in control every step of the way. In part 2, we will dive even deeper with advanced strategies and real-world integrations. Stay tuned! 🚀
 
 ## Resources
 
