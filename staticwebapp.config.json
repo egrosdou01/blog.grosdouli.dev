@@ -51,6 +51,66 @@
          "headers":{
             "X-Robots-Tag":"noindex"
          }
+      },
+      {
+         "route":"/blog/off-topic-15-days-in-California",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/off-topic-lake-plastira",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/off-topic-kastoria-prespes",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/civo-navigate-berlin-2024",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/civo-navigate-san-francisco-2025",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/kcd-geneva-2025",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/cloud-native-rejekts-amsterdam-2026",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/kubecon-amsterdam-2026",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/ossummit-europe-2024",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
+      },
+      {
+         "route":"/blog/welcome-to-elenis-blog-post",
+         "headers":{
+            "X-Robots-Tag":"noindex"
+         }
       }
    ],
    "mimeTypes":{
