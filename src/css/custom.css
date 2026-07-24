@@ -64,6 +64,7 @@ code {
 .footer {
   text-align: center;
   padding: 2rem 0;
+  overflow: hidden;
 }
 
 .footer__links {
@@ -105,7 +106,8 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  white-space: nowrap;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .footer__link-item {
@@ -119,6 +121,8 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: normal;
+  word-break: break-word;
 }
 
 .footer__link-item svg,
