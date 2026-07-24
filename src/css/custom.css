@@ -63,16 +63,17 @@ code {
 /* Override Docusaurus footer container */
 .footer {
   text-align: center;
+  padding: 2rem 0;
 }
 
 .footer__links {
-  display: inline-flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 25rem;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 1.5fr 1.5fr 1fr 0.8fr;
+  gap: 3rem;
+  padding: 0 2rem;
   text-align: left;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .footer__col {
@@ -85,7 +86,7 @@ code {
 .footer__title {
   margin-bottom: 1rem;
   font-weight: bold;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 
 .footer__items {
@@ -95,7 +96,7 @@ code {
 }
 
 .footer__item {
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: block;
   width: 100%;
 }
@@ -114,11 +115,10 @@ code {
 }
 
 .footer__link-item a {
-  font-size: 1rem;
+  font-size: 0.9rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  white-space: nowrap;
 }
 
 .footer__link-item svg,
@@ -137,20 +137,26 @@ code {
   padding: 1rem 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 996px) {
   .footer__links {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__links {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .footer__col {
-    margin: 1rem 0;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .footer__title,
   .footer__item {
-    text-align: center;
+    text-align: left;
   }
 }  
 
