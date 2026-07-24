@@ -129,18 +129,18 @@ scripts: [
           showReadingTime: true,
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
-          blogTitle: 'Welcome to my blog!',
+          blogTitle: 'Welcome to Eleni Grosdouli\'s official blog!',
           blogDescription: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
           postsPerPage: 20,
           blogSidebarTitle: 'Recent posts',
-          blogSidebarCount: 6,
+          blogSidebarCount: 8,
           tags: 'tags.yml',
           onInlineAuthors: 'ignore',
           onInlineTags: 'throw',
           onUntruncatedBlogPosts: 'throw',
           feedOptions: {
             type: 'all',
-            title: 'Welcome to my blog!',
+            title: 'Welcome to Eleni Grosdouli\'s official blog!',
             description: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
             language: 'en',
             copyright: `Copyright © ${new Date().getFullYear()} Eleni Grosdouli Blog`,
@@ -208,31 +208,44 @@ scripts: [
         style: 'dark',
         links: [
           {
-            title: 'About',
+            title: 'Kubernetes & Platform Engineering',
             items: [
-              {
-                label: 'About me',
-                to: '/about',
-              },
+              {label: 'CAPMOX: Kubernetes Clusters on Proxmox with Cluster API', to: '/blog/capmox-k8s-managed-clusters'},
+              {label: 'CAPZ and Sveltos: Managed Kubernetes on Azure', to: '/blog/capi-sveltos-azure-managed-k8s-cilium'},
+              {label: 'Automate Flux HelmReleases at Scale with Sveltos', to: '/blog/flux-helmrelease-automation-sveltos-demo'},
+              {label: 'Sveltos Progressive Rollouts', to: '/blog/sveltos-progressive-rollouts-pt1'},
             ],
           },
           {
-            title: 'Socials',
+            title: 'Cilium & Networking',
+            items: [
+              {label: 'Talos Linux on Proxmox with OpenTofu', to: '/blog/talos-on-proxmox-opentofu-part-1'},
+              {label: 'Cilium Gateway API with Cert-Manager and Let\'s Encrypt', to: '/blog/cilium-gateway-api-cert-manager-lets-encrypt'},
+              {label: 'Cilium Cluster Mesh: Multi-Cluster on RKE2', to: '/blog/cilium-cluster-mesh-rke2'},
+              {label: 'RKE2: Migrate ArgoCD to Cilium Ingress', to: '/blog/rke2-argocd-cilium-ingress'},
+              {label: 'RKE2 Dual-Stack with Cilium on Proxmox', to: '/blog/rke2-dual-stack-cilium-proxmox'},
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {label: 'About Eleni Grosdouli', to: '/about'},
+              {label: 'Conference Talks', to: '/talks'},
+              {label: 'All Blog Posts', to: '/blog/archive'},
+              {label: 'Blog Tags', to: '/blog/tags'},
+              {label: 'RSS Feed', href: 'https://blog.grosdouli.dev/blog/rss.xml'},
+            ],
+          },
+          {
+            title: 'Connect',
             items: [
               {label: 'LinkedIn', rel: 'me', href: 'https://linkedin.com/in/eleni-grosdouli-85a1a5116'},
               {label: 'GitHub', rel: 'me', href: 'https://github.com/egrosdou01'},
               {label: 'Medium', rel: 'me', href: 'https://medium.com/@eleni.grosdouli'},
             ],
           },
-          {
-            title: 'More',
-            items: [
-              {label: 'RSS', href: 'https://blog.grosdouli.dev/blog/rss.xml'},
-              {label: 'All posts', href: '/blog/archive'},
-            ],
-          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Eleni Grosdouli Blog`,
+        copyright: `Copyright © ${new Date().getFullYear()} Eleni Grosdouli Blog. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

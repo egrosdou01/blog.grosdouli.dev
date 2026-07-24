@@ -10,7 +10,7 @@ export default function LatestBlogPosts() {
   const { siteConfig } = useDocusaurusContext();
   const { url } = siteConfig;
 
-  const recentPosts = (blogPostsData?.blogPosts || blogPostsData?.items || []).slice(0, 3).map(post => ({
+  const recentPosts = (blogPostsData?.blogPosts || blogPostsData?.items || []).slice(0, 8).map(post => ({
     title: post.title,
     link: post.permalink,
     date: post.date,
