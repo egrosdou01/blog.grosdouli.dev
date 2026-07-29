@@ -7,6 +7,10 @@ description: Out of the ordinary content. Two weeks in California.
 tags: [off-topic]
 ---
 
+<head>
+  <meta name="robots" content="max-snippet:50, noarchive" />
+</head>
+
 I love it when work and holidays come together! In this post, I am sharing my recent travel to California during February 2025 - a bit of an off-topic post for my usual content.
 <!--truncate-->
 

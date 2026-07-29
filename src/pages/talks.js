@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import Head from '@docusaurus/Head';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
 const talks = [
@@ -10,6 +12,7 @@ const talks = [
     date: '2024-10-04',
     formattedDate: '4th October 2024',
     title: 'How to Make Your Kubernetes Add-Ons Management Painless in Multi Cloud',
+    description: 'Eleni Grosdouli and Gianluca Mardente demonstrate how Sveltos simplifies Kubernetes add-on lifecycle management across multi-cloud environments, replacing manual actions with a GitOps driven approach.',
   },
   {
     id: '7O8pqiK22wA',
@@ -17,6 +20,7 @@ const talks = [
     date: '2026-03-21',
     formattedDate: '21st March 2026',
     title: 'Beyond Tool Sprawl: An Event-Driven Approach to Dynamic Multi-Cloud Operations',
+    description: 'A Cloud Native Rejekts Amsterdam 2026 talk exploring how an event-driven setup with Sveltos reduces tool sprawl and enables dynamic, scalable multi-cloud Kubernetes operations.',
   },
 ];
 
@@ -36,7 +40,7 @@ const structuredData = {
     position: index + 1,
     name: talk.title,
     url: talk.permalink,
-    description: talk.title,
+    description: talk.description,
 
     thumbnailUrl: thumbnailResolutions.map(
       (resolution) => `https://img.youtube.com/vi/${talk.id}/${resolution}`,
@@ -49,10 +53,18 @@ const structuredData = {
 };
 
 function Talks() {
+  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout title="Conference Talks: Public Speaking Highlights"
-    description="A space for sharing thoughts and conversations about ☁️ Cloud Native technologies, Kubernetes, and GitOps practices!"    
+    description="Conference talks by Eleni Grosdouli on Kubernetes, GitOps, Sveltos, and cloud-native multi-cluster operations at events like Civo Navigate and Cloud Native Rejekts."
     >
+      <Head>
+        <link rel="canonical" href={`${siteConfig.url}/talks`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${siteConfig.url}/talks`} />
+        <meta name="twitter:title" content="Conference Talks: Public Speaking Highlights" />
+        <meta name="twitter:description" content="Conference talks by Eleni Grosdouli on Kubernetes, GitOps, Sveltos, and cloud-native multi-cluster operations." />
+      </Head>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

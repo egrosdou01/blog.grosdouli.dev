@@ -8,6 +8,10 @@ description: A quick visit to Lake Plastira. A place to enjoy nature and calmnes
 tags: [off-topic]
 ---
 
+<head>
+  <meta name="robots" content="max-snippet:50, noarchive" />
+</head>
+
 **Summary**:
 
 No work travel this time. Only a few days to recharge my batteries in a quiet, yet magnificent place in Greece, [Lake Plastira](https://en.wikipedia.org/wiki/Lake_Plastiras). If you happen to be there at the end of February or the beginning of March, check out the blog for quick and easy hikes and walks.

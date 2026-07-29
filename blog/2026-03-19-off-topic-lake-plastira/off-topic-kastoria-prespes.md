@@ -8,6 +8,10 @@ description: A quick visit to Kastoria and Prespes. A place to enjoy nature and 
 tags: [off-topic]
 ---
 
+<head>
+  <meta name="robots" content="max-snippet:50, noarchive" />
+</head>
+
 **Summary**:
 
 From one lake to another. From Lake Plastira to [Kastoria](https://www.visitgreece.gr/mainland/macedonia/kastoria/) and [Prespes](https://en.wikipedia.org/wiki/Prespes). If you are a nature lover and have a few more days in Greece, I would recommend visiting them.
