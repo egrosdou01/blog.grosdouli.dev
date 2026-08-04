@@ -1,5 +1,5 @@
 ---
-slug: capmox-managed-k8s-cilium-sveltos
+slug: platform-engineering-proxmox-capmox-sveltos-kubernetes
 title: "Platform Engineering on Proxmox with CAPMOX and Sveltos"
 authors: [egrosdou01]
 date: 2026-02-05
@@ -418,6 +418,13 @@ user01-workers-94hjx-4c7hx   user01                                             
 ## Conclusion
 
 You made it to the end of the series! In this part, we showed how to use Sveltos. The approach taken helps Platform teams to create scalable and maintainable Kubernetes clusters. We used CAPI on Proxmox and followed a GitOps approach to achieve our goal. With the proposed setup, teams own and manage the infrastructure, ensure add-ons and application deployments stay up to date on managed clusters, and maintain versioned, auditable applications and manifests. When it comes to updating add-ons across these clusters safely, have a look at [Sveltos Progressive Rollouts Series](../2026-02-19-sveltos-progressive-rollouts/sveltos-progressive-rollouts-pt1.md) for a staged promotion strategy across environments. 🚀
+
+## Related Posts
+
+Looking to expand your Kubernetes Platform Engineering toolkit? Check out similar posts.
+
+- [CAPI with Sveltos on Azure](../2025-10-08-capi-azure-cilium-sveltos/azure-k8s-managed-clusters-with-capi-and-sveltos.md): Automate the deployment of Cluster API (CAPI) clusters on Azure using Sveltos
+- [CAPI, Sveltos, and Cyclops](../2025-04-22-capi-sveltos-cyclops/capi-sveltos-cyclops.md): Extend the Cluster API (CAPI) and Sveltos workflow with Cyclops for developer self-service capabilities
 
 ## Resources
 
