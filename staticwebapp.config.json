@@ -7,6 +7,16 @@
    },
    "routes":[
       {
+         "route":"/blog/capmox-managed-k8s-cilium-sveltos",
+         "redirect":"/blog/platform-engineering-proxmox-capmox-sveltos-kubernetes",
+         "statusCode":301
+      },
+      {
+         "route":"/blog/capmox-troubleshooting-insights",
+         "redirect":"/blog/capmox-troubleshooting-insights-proxmox-kubernetes",
+         "statusCode":301
+      },
+      {
          "route":"/404",
          "statusCode":404
       },

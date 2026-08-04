@@ -163,7 +163,10 @@ scripts: [
           ignorePatterns: [
             '/blog/page/**',
             '/blog/tags/**',
+            '/blog/archive',
+            '/blog/authors',
             '/docs/**',
+            '/favourites',
           ],
           filename: 'sitemap.xml',
         },

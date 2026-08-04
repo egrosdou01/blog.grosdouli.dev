@@ -1,5 +1,5 @@
 ---
-slug: capmox-troubleshooting-insights
+slug: capmox-troubleshooting-insights-proxmox-kubernetes
 title: "CAPMOX Troubleshooting Insights"
 authors: [egrosdou01]
 date: 2026-01-22
@@ -214,6 +214,14 @@ CAPI to the moon! 🚀 I hope the guide gave you some ideas and hints on what mi
 ## Resources
 
 - [Cluster API Troubleshooting Guide](https://cluster-api.sigs.k8s.io/user/troubleshooting)
+
+## Related Posts
+
+If you are working with Proxmox and Kubernetes, explore more technical posts listed below.
+
+- [Talos on Proxmox with OpenTofu](../2024-11-24-talos-proxmox-opentofu/talos-proxmox-opentofu-part-1.md): An IaC approach to running Kubernetes on Proxmox using Talos Linux
+- [RKE2 Dual-Stack with Cilium on Proxmox](../2025-03-09-dual-stack-proxmox-pfsense-rke2-cilium/proxmox-pfsense-rke2-dual-stack-cilium.md): Supercharge your home lab setup with dual-stack on Proxmox
+- [CAPI with Sveltos on Azure](../2025-10-08-capi-azure-cilium-sveltos/azure-k8s-managed-clusters-with-capi-pt1.md): Cluster API (CAPI) patterns applied to Azure infrastructure
 
 ## ✉️ Contact
 
