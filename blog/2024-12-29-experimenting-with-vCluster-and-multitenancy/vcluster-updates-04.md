@@ -1,6 +1,6 @@
 ---
 slug: vcluster-cilium-multi-pool-rke2
-title: "Cilium Multi-Pool IPAM on RKE2 with vCluster | Dedicated PodCIDRs and LoadBalancer IPs per Tenant | vCluster"
+title: "Cilium Multi-Pool Mode for vCluster Tenant Clusters on RKE2 | Dedicated PodCIDRs and LoadBalancer IPs per Tenant | vCluster"
 authors: [egrosdou01]
 date: 2026-08-25
 image: ./vcluster_cilium_multipool.png
