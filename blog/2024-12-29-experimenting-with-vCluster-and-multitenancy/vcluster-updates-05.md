@@ -5,7 +5,7 @@ authors: [egrosdou01]
 date: 2026-09-01
 image: ./vcluster_architecture.png
 description: Share Kubernetes resources between the Control plane cluster and the vCluster tenants. In this example, we dive into sharing Gateway API resources between setups.
-tags: [kubernetes,vcluster,cilium]
+tags: [kubernetes,vcluster,cilium,gateway-api]
 keywords: [Gateway API,CiliumPodIPPool,CiliumLoadBalancerIPPool,L2 announcements,RKE2]
 ---
 
