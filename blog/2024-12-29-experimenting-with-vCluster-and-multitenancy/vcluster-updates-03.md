@@ -425,4 +425,4 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 | [Part 2](./vcluster-updates-02.md) | Introduction to Cilium L2 Announcements and vCluster Platform |
 | [Part 3](./vcluster-updates-03.md) | vCluster Networking and Cilium Under the Hood |
 | [Part 4 ](./vcluster-updates-04.md)| vCluster and Cilium Multi-Pool Mode |
-| Part 5 | Explore vCluster Enterprise Features |
+| [Part 5](./vcluster-updates-05.md) | vCluster and Cilium Gateway API Shared Resources |
