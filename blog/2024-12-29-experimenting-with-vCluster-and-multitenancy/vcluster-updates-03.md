@@ -1,6 +1,6 @@
 ---
 slug: vcluster-updates-pt3
-title: "vCluster Network Isolation With Cilium | Isolate Tenant Traffic and Observe Flows With Cilium Hubble | vCluster"
+title: "vCluster Network Isolation With Cilium | Isolate Tenant Traffic and Observe Flows With Cilium Hubble"
 authors: [egrosdou01]
 date: 2026-06-04
 image: ./vcluster_architecture.png
@@ -426,3 +426,4 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 | [Part 3](./vcluster-updates-03.md) | vCluster Networking and Cilium Under the Hood |
 | [Part 4 ](./vcluster-updates-04.md)| vCluster and Cilium Multi-Pool Mode |
 | [Part 5](./vcluster-updates-05.md) | vCluster and Cilium Gateway API Shared Resources |
+| [Part 6](./vcluster-updates-06.md) | vCluster and Cilium Gateway API Shared Resources - Keycloak and Grafana Example |

@@ -1,6 +1,6 @@
 ---
 slug: vcluster-cilium-multi-pool-rke2
-title: "Cilium Multi-Pool Mode for vCluster Tenant Clusters on RKE2 | Dedicated PodCIDRs and LoadBalancer IPs per Tenant | vCluster"
+title: "Cilium Multi-Pool Mode for vCluster Tenant Clusters on RKE2 | Dedicated PodCIDRs and LoadBalancer IPs per Tenant"
 authors: [egrosdou01]
 date: 2026-08-25
 image: ./vcluster_cilium_multipool.png
@@ -331,3 +331,4 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 | [Part 3](./vcluster-updates-03.md) | vCluster Networking and Cilium Under the Hood |
 | [Part 4 ](./vcluster-updates-04.md)| vCluster and Cilium Multi-Pool Mode |
 | [Part 5](./vcluster-updates-05.md) | vCluster and Cilium Gateway API Shared Resources |
+| [Part 6](./vcluster-updates-06.md) | vCluster and Cilium Gateway API Shared Resources - Keycloak and Grafana Example |

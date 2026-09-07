@@ -1,6 +1,6 @@
 ---
 slug: vcluster-updates-pt2
-title: "vCluster With Cilium L2 Announcements | Expose Tenant Clusters With Stable LoadBalancer IPs | vCluster"
+title: "vCluster With Cilium L2 Announcements | Expose Tenant Clusters With Stable LoadBalancer IPs"
 authors: [egrosdou01]
 date: 2026-05-13
 image: ./vcluster_architecture.png
@@ -284,3 +284,4 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 | [Part 3](./vcluster-updates-03.md) | vCluster Networking and Cilium Under the Hood |
 | [Part 4 ](./vcluster-updates-04.md)| vCluster and Cilium Multi-Pool Mode |
 | [Part 5](./vcluster-updates-05.md) | vCluster and Cilium Gateway API Shared Resources |
+| [Part 6](./vcluster-updates-06.md) | vCluster and Cilium Gateway API Shared Resources - Keycloak and Grafana Example |
