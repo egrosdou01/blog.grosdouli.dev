@@ -22,6 +22,14 @@ const talks = [
     title: 'Beyond Tool Sprawl: An Event-Driven Approach to Dynamic Multi-Cloud Operations',
     description: 'A Cloud Native Rejekts Amsterdam 2026 talk exploring how an event-driven setup with Sveltos reduces tool sprawl and enables dynamic, scalable multi-cloud Kubernetes operations.',
   },
+  {
+    id: 'mizz5rX6GQk',
+    permalink: 'https://www.youtube.com/watch?v=mizz5rX6GQk',
+    date: '2026-09-17',
+    formattedDate: '17th September 2026',
+    title: 'Cloud Native CDMX - Beyond Tool Sprawl: Dynamic Multi-Cloud Operations',
+    description: 'An online event for the Cloud Native Mexico City community about Sveltos and operations at scale.',
+  },
 ];
 
 const thumbnailResolutions = [
