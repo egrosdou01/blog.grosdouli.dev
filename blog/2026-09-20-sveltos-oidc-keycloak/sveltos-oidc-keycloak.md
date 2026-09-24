@@ -1,6 +1,6 @@
 ---
 slug: sveltos-dashboard-oidc-keycloak-cilium-gateway-api
-title: "Sveltos Dashboard OIDC Authentication with Keycloak Using Cilium and Gateway API"
+title: "Sveltos Dashboard OIDC Authentication With Keycloak, Exposed Using Cilium Gateway API"
 authors: [egrosdou01]
 date: 2026-09-24
 image: ./sveltos_dashboard_01.png
