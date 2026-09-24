@@ -62,6 +62,10 @@ kubernetes:
   label: Kubernetes
   permalink: /kubernetes
   description: "Container orchestration platform for automating application deployment, scaling, and management."
+keycloak:
+  label: Keycloak
+  permalink: /keycloak
+  description: "Keycloak provides support for OpenID Connect, OAuth 2.0, and SAML authentication."
 cilium:
   label: Cilium
   permalink: /cilium
