@@ -254,6 +254,10 @@ httproute.gateway.networking.k8s.io/sveltos-dashboard  ["sveltos.dashboard.domai
 
 ## Test Sveltos Dashboard UI
 
+:::note
+We need at least one user under the defined Realm and Client ID.
+:::
+
 Open a browser window and type the FQDN of the Sveltos dashboard. If the DNS in the underlying infrastructure works as expected, we will be able to resolve the hostname to the defined IP address which is the IP address of the `Gateway` resource. Expected behaviour: the Sveltos dashboard is accessible, the OIDC option is enabled, and authentication is done through Keycloak.
 
 ![title image reading "Sveltos Dashboard OIDC Option"](sveltos_dashboard_01.png)
