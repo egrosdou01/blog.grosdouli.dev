@@ -1,6 +1,6 @@
 ---
 slug: sveltos-managed-cluster-registration-oidc-keycloak
-title: "Sveltos: Register Managed Cluster using OIDC with Keycloak"
+title: "Sveltos: Register Managed Clusters using OIDC with Keycloak"
 authors: [egrosdou01]
 date: 2026-10-01
 image: ../2025-01-06-sveltos-what's-new/sveltos_logo.jpg
