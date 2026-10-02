@@ -23,6 +23,14 @@ const talks = [
     description: 'A Cloud Native Rejekts Amsterdam 2026 talk exploring how an event-driven setup with Sveltos reduces tool sprawl and enables dynamic, scalable multi-cloud Kubernetes operations.',
   },
   {
+    id: 's6dpwG8nkpg',
+    permalink: 'https://www.youtube.com/watch?v=s6dpwG8nkpg',
+    date: '2026-09-04',
+    formattedDate: '4th September 2026',
+    title: 'ContainerDays Hamburg - Beyond Tool Sprawl: Dynamic Multi-Cloud Operations',
+    description: 'A talk at ContainerDays in Hamburg about Sveltos and operations at scale.',
+  },
+  {
     id: 'mizz5rX6GQk',
     permalink: 'https://www.youtube.com/watch?v=mizz5rX6GQk',
     date: '2026-09-17',
