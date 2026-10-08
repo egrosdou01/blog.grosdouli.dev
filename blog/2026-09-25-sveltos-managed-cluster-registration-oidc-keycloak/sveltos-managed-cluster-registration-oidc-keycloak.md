@@ -3,7 +3,7 @@ slug: sveltos-managed-cluster-registration-oidc-keycloak
 title: "Sveltos: Register Managed Clusters using OIDC with Keycloak"
 authors: [egrosdou01]
 date: 2026-10-01
-image: ../2025-01-06-sveltos-what's-new/sveltos_logo.jpg
+image: ./sveltos_managed_cluster_registration.jpeg
 description: Learn how to use OIDC authentication with Keycloak and register Kubernetes clusters with Sveltos.
 tags: [kubernetes,sveltos,keycloak,rke2]
 keywords: [Sveltos,Keycloak,RKE2]
@@ -14,6 +14,8 @@ keywords: [Sveltos,Keycloak,RKE2]
 Sveltos release **v1.15.0** introduced [OpenID Connect (OIDC) Authentication](https://openid.net/developers/how-connect-works/) for on-prem Kubernetes cluster registration. Instead of providing a valid `kubeconfig` for cluster registration, we will use an existing [Keycloak](https://www.keycloak.org/) instance to register them with Sveltos. An RKE2 cluster will be used for the registration process, running on Proxmox.
 
 <!--truncate-->
+![title image reading "Sveltos Cluster Registration Outline"](sveltos_managed_cluster_registration.jpeg)
+[Source](https://website.projectsveltos.io/)
 
 ## Introduction
 
