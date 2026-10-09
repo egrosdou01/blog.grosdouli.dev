@@ -140,6 +140,7 @@ scripts: [
           onUntruncatedBlogPosts: 'throw',
           feedOptions: {
             type: 'all',
+            xslt: true,
             title: 'Welcome to Eleni Grosdouli\'s official blog!',
             description: 'Welcome to Eleni Grosdouli\'s official blog. Explore articles on DevOps, GitOps, Kubernetes, Cilium, Rancher, RKE2, and OpenShift. Discover insights into networking, security, and cloud-native solutions for both on-prem and cloud datacenters.',
             language: 'en',
@@ -159,7 +160,7 @@ scripts: [
         sitemap: {
           lastmod: 'date',
           changefreq: null,
-          priority: 0.5,
+          priority: null,
           ignorePatterns: [
             '/blog/page/**',
             '/blog/tags/**',
