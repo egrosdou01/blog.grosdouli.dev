@@ -115,7 +115,7 @@ $ helm install projectsveltos projectsveltos/projectsveltos -n projectsveltos --
 
 ### Cluster Registration
 
-Once the Sveltos deployment is complete, it is time to register the RKE2 cluster with Sveltos. Keep in mind, a registration is not required when we work with Cluster API (CAPI) clusters since Sveltos detects those automatically.
+Once the Sveltos deployment is complete, it is time to register the RKE2 cluster with Sveltos. Keep in mind a registration is not required when we work with Cluster API (CAPI) clusters since Sveltos detects those automatically.
 
 ```bash
 $ sveltosctl register cluster --namespace=staging \
@@ -135,7 +135,7 @@ Let's ensure the cluster was successfully registered with Sveltos and the right 
 ```bash
 $ kubectl get sveltosclusters -A --show-labels
 NAMESPACE   NAME            READY   VERSION          AGE   SHARD   LABELS
-mgmt        mgmt            true    v1.36.5+rke2r1   22d           projectsveltos.io/k8s-version=v1.35.6,sveltos-agent=present
+mgmt        mgmt            true    v1.36.5+rke2r1   22d           projectsveltos.io/k8s-version=v1.36.5,sveltos-agent=present
 staging     edge-zone01     true    v1.36.5+rke2r1   94m           cni=cilium1197,env=staging,projectsveltos.io/k8s-version=v1.36.5,sveltos-agent=present
 ```
 
@@ -251,7 +251,7 @@ cilium-envoy-j5n8s                 1/1     Running   0          36s
 cilium-operator-7bbf976ddf-gw5tv   1/1     Running   0          36s
 cilium-tx8h5                       1/1     Running   0          36s
 
-$ kubectl describe pod cilium-z7scv -n kube-system | grep -i "image:" -m 1
+$ kubectl describe pod cilium-tx8h5 -n kube-system | grep -i "image:" -m 1
     Image:         quay.io/cilium/cilium:v1.19.7@sha256:1b58bcb81c723cf130a0dd2fb2e1132c57f8fbc2ef7bdb85519cfcc36111c77e
 ```
 
@@ -259,14 +259,14 @@ As expected, the desired Cilium version **1.19.7** was deployed on the target cl
 
 ## Update Managed Cluster Label
 
-Let's update Cilium from **v1.19.7** to **v.1.19.8**. Since we already have two `ClusterProfile` resources in the management cluster, we just need to update the label _cni=cilium1197_ from the managed cluster to _cni=cilium1198_. Once we do so, Sveltos will notice the `transitionFrom` value defined in the second `ClusterProfile` and perform a smooth update. During the update process, two `ClusterSummary` resources will be available, one for **v1.19.7** and another one for **v1.19.8**. Sveltos then will realise that another `ClusterProfile` manages the Cilium Helm chart and does nothing. It will delete the `ClusterSummary` with no action taken on the **managed** cluster.
+Let's update Cilium from **v1.19.7** to **v.1.19.8**. Since we already have two `ClusterProfile` resources in the management cluster, we just need to update the label _cni=cilium1197_ from the managed cluster to _cni=cilium1198_. Once we do so, Sveltos will notice the `transitionFrom` value defined in the second `ClusterProfile` and perform a smooth update. During the update process, two `ClusterSummary` resources will be available, one for **v1.19.7** and another one for **v1.19.8**. Sveltos then will realise that another `ClusterProfile` manages the Cilium Helm chart and does nothing. It will delete the `ClusterSummary` pointing to **1.19.7** with no action taken on the **managed** cluster.
 
 ```bash
 $ kubectl label sveltoscluster edge-zone01 -n staging cni=cilium1198 --overwrite
 
 $ kubectl get sveltosclusters -A --show-labels
 NAMESPACE   NAME            READY   VERSION          AGE   SHARD   LABELS
-mgmt        mgmt            true    v1.35.6+rke2r1   22d           projectsveltos.io/k8s-version=v1.35.6,sveltos-agent=present
+mgmt        mgmt            true    v1.36.5+rke2r1   22d           projectsveltos.io/k8s-version=v1.36.5,sveltos-agent=present
 staging     edge-zone01     true    v1.36.5+rke2r1   94m           cni=cilium1198,env=staging,projectsveltos.io/k8s-version=v1.36.5,sveltos-agent=present
 ```
 
@@ -381,7 +381,7 @@ cilium-785fh                       1/1     Running             0          13s
 ```
 
 ```bash
-$ kubectl describe pod cilium-65dwd -n kube-system | grep -i image -m 1
+$ kubectl describe pod cilium-785fh -n kube-system | grep -i image -m 1
     Image:         quay.io/cilium/cilium:v1.19.8@sha256:e9f7ee1f2f3a41e44339612e3b6b88170bdde7679c9c9461f287bb27702a8ecf
 ```
 
