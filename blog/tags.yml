@@ -58,6 +58,10 @@ ci/cd:
   label: CI/CD
   permalink: /ci-cd
   description: "Continuous Integration and Continuous Deployment/Delivery refers to a set of practices that enable rapid and reliable software releases, automating the build, test, and deployment phases."
+day2operations:
+  label: Day2Operations
+  permalink: /day2operations
+  description: "We refer to any ongoing, post-deployment maintenance, and management of applications."
 kubernetes:
   label: Kubernetes
   permalink: /kubernetes
