@@ -113,7 +113,9 @@ export default function Home() {
         <HomepageFeatures />
         <section className="container margin-top--xl">
           <div className="row">
-            <LatestBlogPosts />
+            <LatestBlogPosts breadcrumbs={[
+              { name: 'Home', url: siteConfig.url },
+            ]} />
           </div>
         </section>
       </main>

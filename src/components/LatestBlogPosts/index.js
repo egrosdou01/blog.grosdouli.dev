@@ -1,12 +1,13 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
+import Head from '@docusaurus/Head';
 import Heading from '@theme/Heading';
 import clsx from 'clsx';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import blogPostsData from '@generated/docusaurus-plugin-content-blog/default/blog-post-list-prop-default.json';
 import styles from './styles.module.css';
 
-export default function LatestBlogPosts() {
+export default function LatestBlogPosts({ breadcrumbs = [] }) {
   const { siteConfig } = useDocusaurusContext();
   const { url } = siteConfig;
 
@@ -17,56 +18,18 @@ export default function LatestBlogPosts() {
     description: `🗓️ Published on ${new Date(post.date).toLocaleDateString('en-UK', { year: 'numeric', month: 'long', day: 'numeric' })}`,
   }));
 
+  const defaultBreadcrumbs = [{ name: 'Home', url }];
+  const breadcrumbItems = breadcrumbs.length > 0 ? breadcrumbs : defaultBreadcrumbs;
+
   const breadcrumbData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "name": "Site Navigation",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": {
-          "@type": "WebPage",
-          "@id": url,
-          "name": "Eleni Grosdouli - DevOps Engineer",
-          "url": url
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "About",
-        "item": {
-          "@type": "WebPage",
-          "@id": `${url}/about`,
-          "name": "About Eleni Grosdouli",
-          "url": `${url}/about`
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Blog",
-        "item": {
-          "@type": "WebPage",
-          "@id": `${url}/blog`,
-          "name": "DevOps & Cloud Native Blog",
-          "url": `${url}/blog`
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Talks",
-        "item": {
-          "@type": "WebPage",
-          "@id": `${url}/talks`,
-          "name": "Eleni Grosdouli Cloud Native Talks",
-          "url": `${url}/talks`
-        }
-      }
-    ]
+    "itemListElement": breadcrumbItems.map((crumb, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": crumb.name,
+      "item": crumb.url,
+    })),
   };
 
   const postsStructuredData = {
@@ -76,21 +39,20 @@ export default function LatestBlogPosts() {
     "itemListElement": recentPosts.map((post, index) => ({
       "@type": "ListItem",
       "position": index + 1,
+      "name": post.title,
       "url": `${url}${post.link}`,
     })),
   };
 
   return (
     <div className={clsx('col col--12', styles.latestPostsSectionWrapper)}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbData) }}
-      />
+      <Head>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbData)}</script>
+      </Head>
       {recentPosts.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(postsStructuredData) }}
-        />
+        <Head>
+          <script type="application/ld+json">{JSON.stringify(postsStructuredData)}</script>
+        </Head>
       )}
 
       <div className={styles.latestPostsSection}>

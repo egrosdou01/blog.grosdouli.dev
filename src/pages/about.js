@@ -153,7 +153,10 @@ export default function AboutPage() {
             </div>
 
             <div className="row margin-top--xl">
-              <LatestBlogPosts />
+              <LatestBlogPosts breadcrumbs={[
+                { name: 'Home', url: siteConfig.url },
+                { name: 'About', url: `${siteConfig.url}/about` },
+              ]} />
             </div>
           </div>
         </section>
