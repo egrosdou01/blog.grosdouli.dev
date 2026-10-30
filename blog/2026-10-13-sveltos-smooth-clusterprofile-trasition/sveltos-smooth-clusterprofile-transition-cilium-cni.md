@@ -11,7 +11,7 @@ keywords: [Sveltos,Cilium,Day2Operations,RKE2]
 
 **Summary**:
 
-Taking a look at the latest Sveltos releases, a lot has changed and, most importantly, improved around Day 2 operations and fleet management. This is all thanks to the valuable feedback coming from the community, bringing the experience and lessons learned from the field. In today's post, we take a look at how we can improve our Day 2 Operations using the Sveltos ClusterProfiles. We will work with Cilium and update our fleet from one version to the other with no downtime.
+Taking a look at the latest Sveltos releases, a lot has changed and, most importantly, improved around Day 2 operations and fleet management. This is all thanks to the valuable feedback coming from the community, bringing the experience and lessons learned from the field. In today's post, we take a look at how we can improve our Day 2 Operations using the Sveltos `ClusterProfiles`. We will work with [Cilium](https://docs.cilium.io/en/stable/) and update our fleet from one version to the other with no downtime.
 
 <!--truncate-->
 
@@ -19,10 +19,9 @@ Taking a look at the latest Sveltos releases, a lot has changed and, most import
 
 For those new to [Sveltos](https://projectsveltos.io/main/addons/addons/), the two most commonly used Sveltos Custom Resource Definitions (CRDs) are the `ClusterProfile` and `Profile` resources. The first one applies to a cluster as a whole, and it is ideal for global-scoped deployments, while the second one is more suitable for namespace-scoped resources. For more details and information about the different resources, take a look at the [Overview and Architecture section](https://projectsveltos.io/main/overview/introdution/introduction_to_sveltos/).
 
+Before **v1.15.0**, to update `ClusterProfile` resources from one application version to another, we simply set the right label on the target Kubernetes cluster. Using this approach, the resources defined in the `ClusterProfile` were **undeployed** since they were managed by the initial `ClusterProfile`, and then **deployed** from the second `ClusterProfile`, which contained the latest label attached to a Kubernetes-managed cluster. Note that a **plain label swap** always _undeploys-then-redeploys_, even when the two profiles are nearly identical. Sveltos offered a way for us to achieve zero-downtime. Take a look at the official documentation [here](https://projectsveltos.io/main/deployment_order/clusterprofile_ownership_transfer/).
 
-Before **v1.15.0**, to update `ClusterProfile` resources from one application version to another, we simply set the right label on the target Kubernetes cluster. Using this approach, the resources defined in the `ClusterProfile` were **undeployed** since they were managed by the initial `ClusterProfile`, and then **deployed** from the second `ClusterProfile`, which contained the latest label attached to a Kubernetes-managed cluster. Note that a **plain label swap** always _undeploys-then-redeploys_, even when the two profiles are nearly identical.
-
-While this approach might have been fine for specific applications or use cases, it is not suitable for the underlying network or global resources required by our clusters. Starting with **v1.15.0**, we can use the `transitionFrom` field within our `ClusterProfile`/`Profile` resources and declare which `ClusterProfile`/`Profile` instance we are replacing.
+While this approach might have been fine for specific applications or use cases, it is not suitable for the underlying network or global resources required by Kubernetes clusters. Starting with **v1.15.0**, we can use the `transitionFrom` field within our `ClusterProfile`/`Profile` resources and declare which `ClusterProfile`/`Profile` instance we are replacing.
 
 ### How does transitionFrom work?
 
@@ -33,7 +32,7 @@ Once the new instance reaches Provisioned, the old instance's next reconcile fin
 
 ## Scenario
 
-Since we work a lot with provisioning and deployment of Kubernetes clusters, the scenario today covers the topic of updating the underlying Cilium CNI from **v1.19.7** to **v1.19.8.** Keep in mind, updates to the underlying network layer should be handled with care and treated as critical updates since they can lead to downtime. According to the Cilium official documentation, while performing an update, the datapath should be functional with [caveats](https://docs.cilium.io/en/stable/operations/upgrade/#version-specific-notes). In this post, we focus on Sveltos and how it treats Day 2 Operations with care using the `transitionFrom` field.
+Since we work a lot with provisioning and deployment of Kubernetes clusters, the scenario today covers the topic of updating the underlying Cilium CNI from **v1.19.7** to **v1.19.8**. Keep in mind, updates to the underlying network layer should be handled with care and treated as critical updates since they can lead to downtime. According to the Cilium official documentation, while performing an update, the datapath should be functional with [caveats](https://docs.cilium.io/en/stable/operations/upgrade/#version-specific-notes). In this post, we focus on Sveltos and how it treats Day 2 Operations with care using the `transitionFrom` field.
 
 :::note
 Initially, the RKE2 cluster does not have a default CNI defined. The deployment is covered by Sveltos upon cluster registration using a `ClusterProfile` resource. More details coming up next.
@@ -115,7 +114,7 @@ $ helm install projectsveltos projectsveltos/projectsveltos -n projectsveltos --
 
 ### Cluster Registration
 
-Once the Sveltos deployment is complete, it is time to register the RKE2 cluster with Sveltos. Keep in mind a registration is not required when we work with Cluster API (CAPI) clusters since Sveltos detects those automatically.
+Once the Sveltos deployment is complete, it is time to register the RKE2 cluster with Sveltos. Keep in mind that registration is not required when we work with Cluster API (CAPI) clusters since Sveltos detects those automatically.
 
 ```bash
 $ sveltosctl register cluster --namespace=staging \
@@ -197,6 +196,8 @@ spec:
       kubeProxyReplacement: true
 ```
 
+Since Sveltos heavily works with labels, we can apply both `ClusterProfile` resources to the management cluster.
+
 ```bash
 $ export KUBECONFIG=/path/to/management/cluster/kubeconfig
 
@@ -240,11 +241,17 @@ status:
     valuesHash: wRgxTZp4IJS12t2h9AH9ODSw7XEsS9Dqyq0T/XmW1a4=
 ```
 
-We have only one `ClusterSummary` resource available since we match on one cluster with the label set to `cni: cilium1197`. If more clusters had this label, more `ClusterSummary` instances were going to be displayed.
+We have only one `ClusterSummary` resource available since we match on one cluster with the label set to `cni: cilium1197`. If more clusters had this label, more `ClusterSummary` instances would be displayed.
 
 **Managed Cluster**
 
 ```bash
+$ export KUBECONFIG=/path/to/managed/kubeconfig
+
+$ helm list -n kube-system
+NAME                        	NAMESPACE  	REVISION	UPDATED                                	STATUS  	CHART                               	APP VERSION
+cilium                      	kube-system	1       	2026-10-30 06:52:59.726679841 +0000 UTC	deployed	cilium-1.19.7                       	1.19.7   
+
 $ kubectl get pods -n kube-system -l app.kubernetes.io/part-of=cilium -w
 NAME                               READY   STATUS    RESTARTS   AGE
 cilium-envoy-j5n8s                 1/1     Running   0          36s
@@ -255,11 +262,11 @@ $ kubectl describe pod cilium-tx8h5 -n kube-system | grep -i "image:" -m 1
     Image:         quay.io/cilium/cilium:v1.19.7@sha256:1b58bcb81c723cf130a0dd2fb2e1132c57f8fbc2ef7bdb85519cfcc36111c77e
 ```
 
-As expected, the desired Cilium version **1.19.7** was deployed on the target cluster.
+As expected, Cilium version **1.19.7** was deployed on the target cluster. Remember the Helm chart revision number. This is set to 1 since it is the first deployment of the application.
 
 ## Update Managed Cluster Label
 
-Let's update Cilium from **v1.19.7** to **v.1.19.8**. Since we already have two `ClusterProfile` resources in the management cluster, we just need to update the label _cni=cilium1197_ from the managed cluster to _cni=cilium1198_. Once we do so, Sveltos will notice the `transitionFrom` value defined in the second `ClusterProfile` and perform a smooth update. During the update process, two `ClusterSummary` resources will be available, one for **v1.19.7** and another one for **v1.19.8**. Sveltos then will realise that another `ClusterProfile` manages the Cilium Helm chart and does nothing. It will delete the `ClusterSummary` pointing to **1.19.7** with no action taken on the **managed** cluster.
+Let's update Cilium from **v1.19.7** to **v.1.19.8**. Since we already have two `ClusterProfile` resources in the management cluster, we just need to update the label _cni=cilium1197_ from the managed cluster to _cni=cilium1198_. Once we do so, Sveltos will notice the `transitionFrom` value defined in the second `ClusterProfile` and perform a smooth update. During the update process, two `ClusterSummary` resources will be available, one for **v1.19.7** and another one for **v1.19.8**. Sveltos will then realise that another `ClusterProfile` manages the Cilium Helm chart and does nothing. It will delete the `ClusterSummary` pointing to **1.19.7** with no action taken on the **managed** cluster.
 
 ```bash
 $ kubectl label sveltoscluster edge-zone01 -n staging cni=cilium1198 --overwrite
@@ -316,12 +323,16 @@ status:
     valuesHash: wRgxTZp4IJS12t2h9AH9ODSw7XEsS9Dqyq0T/XmW1a4=
 ```
 
-The status description of the `ClusterSummary` _cilium-cni-1197-staging-sveltos-edge-zone01_ resource "ClusterProfile cilium-cni-1198-staging is replacing this profile on this cluster but is not fully deployed yet" is what we described at the beginning of the post. Sveltos performs a smooth transition instead of tearing down and redeploying resources.
+The status description of the `ClusterSummary` _cilium-cni-1197-staging-sveltos-edge-zone01_ resource "ClusterProfile cilium-cni-1198-staging is replacing this profile on this cluster but is not fully deployed yet" is what we described at the beginning of the post. Sveltos performs a smooth transition instead of tearing down and redeploying resources. The Cilium Helm chart is no undeployed and redeployed, but the revision number of the Helm chart will get to 2.
 
 ### Validation Managed Cluster
 
 ```bash
 $ export KUBECONFIG=/path/to/managed/kubeconfig
+
+$ helm list -n kube-system
+NAME                        	NAMESPACE  	REVISION	UPDATED                                	STATUS  	CHART                               	APP VERSION
+cilium                      	kube-system	2       	2026-10-30 06:54:37.690816779 +0000 UTC	deployed	cilium-1.19.8                       	1.19.8     
 
 $ kubectl get pods -n kube-system -l app.kubernetes.io/part-of=cilium -w
 NAME                               READY   STATUS    RESTARTS   AGE
@@ -338,27 +349,7 @@ cilium-operator-7bbf976ddf-gw5tv   1/1     Terminating   0          59s
 cilium-operator-7bbf976ddf-gw5tv   1/1     Terminating   0          59s
 cilium-tx8h5                       0/1     Completed     0          59s
 cilium-785fh                       0/1     Pending       0          0s
-cilium-785fh                       0/1     Pending       0          0s
-cilium-operator-7bbf976ddf-gw5tv   0/1     Error         0          59s
-cilium-operator-55475586cd-h59z7   0/1     Pending       0          0s
-cilium-785fh                       0/1     Init:0/6      0          0s
-cilium-operator-55475586cd-h59z7   0/1     ContainerCreating   0          0s
-cilium-operator-55475586cd-h59z7   0/1     ContainerCreating   0          1s
-cilium-785fh                       0/1     Init:0/6            0          1s
-cilium-785fh                       0/1     Init:0/6            0          1s
-cilium-operator-7bbf976ddf-gw5tv   0/1     Error               0          60s
-cilium-operator-7bbf976ddf-gw5tv   0/1     Error               0          60s
-cilium-operator-55475586cd-h59z7   0/1     Running             0          1s
-cilium-tx8h5                       0/1     Completed           0          60s
-cilium-tx8h5                       0/1     Completed           0          60s
-cilium-tx8h5                       0/1     Completed           0          60s
-cilium-envoy-j5n8s                 0/1     Error               0          61s
-cilium-envoy-49cb2                 0/1     Pending             0          0s
-cilium-envoy-49cb2                 0/1     Pending             0          0s
-cilium-envoy-49cb2                 0/1     ContainerCreating   0          0s
-cilium-envoy-j5n8s                 0/1     Error               0          61s
-cilium-envoy-j5n8s                 0/1     Error               0          61s
-cilium-operator-55475586cd-h59z7   1/1     Running             0          2s
+...
 cilium-785fh                       0/1     Init:1/6            0          2s
 cilium-785fh                       0/1     Init:1/6            0          2s
 cilium-envoy-49cb2                 0/1     ContainerCreating   0          0s
