@@ -335,4 +335,4 @@ If you have any questions, feel free to get in touch! You can use the `Discussio
 | Part | Title |
 | :--- | :---- |
 | [Part 1](./sveltos-smooth-clusterprofile-transition-cilium-cni.md) | Introduction to Sveltos ClusterProfile and transitionFrom |
-| [Part 2](./sveltos-validateHealths-deep-dive.md) | Sveltos Validate Health and Job-based checks Deep Dive |
+| [Part 2](./sveltos-validatehealths-deep-dive.md) | Sveltos Validate Health and Job-based checks Deep Dive |
