@@ -38,6 +38,14 @@ const talks = [
     title: 'Cloud Native CDMX - Beyond Tool Sprawl: Dynamic Multi-Cloud Operations',
     description: 'An online event for the Cloud Native Mexico City community about Sveltos and operations at scale.',
   },
+  {
+    id: '_69fpW82Ye0',
+    permalink: 'https://www.youtube.com/watch?v=_69fpW82Ye0',
+    date: '2026-10-03',
+    formattedDate: '3rd November 2026',
+    title: 'Your Network Is Already a Compute Platform. Time To Treat It Like One',
+    description: 'Network switches and routers are no longer passive packet forwarders. They have been running containers for some time already. Virtual Kubelet eliminates this. Network devices become Kubernetes nodes. Workloads are provisioned with standard kubectl commands.',
+  },
 ];
 
 const thumbnailResolutions = [
