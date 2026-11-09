@@ -315,3 +315,10 @@ You made it to the end of this blog post! You can now use the Sveltos dashboard 
 
 If you have any questions, feel free to get in touch! You can use the `Discussions` option found [here](https://github.com/egrosdou01/blog.grosdouli.dev/discussions) or reach out to me on any of the social media platforms provided. 😊 We look forward to hearing from you!
 
+## 👏 Support this project
+
+Every contribution counts! If you enjoyed this article, check out the Projectsveltos [GitHub repo](https://github.com/projectsveltos). You can [star 🌟 the project](https://github.com/projectsveltos/addon-controller) if you find it helpful.
+
+The GitHub repo is a great resource for getting started with the project. It contains the code, documentation, and many more examples.
+
+Thanks for reading!
