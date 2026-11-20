@@ -182,6 +182,8 @@ scripts: [
       image: 'img/social-card.jpg',
       metadata: [
         { name: 'robots', content: 'index, follow, max-image-preview:large' },
+        { property: 'article:author', content:
+          'https://www.linkedin.com/in/eleni-grosdouli-85a1a5116' },
       ],
       
       colorMode: {
