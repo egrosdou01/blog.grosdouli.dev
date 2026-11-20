@@ -207,6 +207,12 @@ There are instances when the underlying management cluster lacks sufficient reso
 
 During the deployment, if an even number of controlplane nodes is defined, the deployment will stop with an error. Based on best practices, an odd number has to be defined (e.g., 1, 3, 5, etc.).
 
+### image-builder Operations Machine - Network Specifications
+When building an image with the image-builder, ensure the machine where the code runs can talk to the Proxmox server.
+
+### Kubernetes Managament Cluster - Network Specifications
+The Kubernetes cluster were CAPI operations take place should be either on the same subnet or can talk/reach out the Kubernetes nodes of the CAPI cluster. For example, the Kubernetes cluster acting as our management cluster lives in the subnet `10.10.10.20.0/24`. The CAPMOX cluster is generated on the `10.10.10.0/24` subnet. Ensure the management cluster can reach nodes living in the `10.10.10.0/24` subnet. If not, the deployment will fail because we cannot validate the deployment state.
+
 ## Conclusion
 
 CAPI to the moon! 🚀 I hope the guide gave you some ideas and hints on what might be wrong with your own deployments!
