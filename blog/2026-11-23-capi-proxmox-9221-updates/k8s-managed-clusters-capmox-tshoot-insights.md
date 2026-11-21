@@ -391,7 +391,7 @@ proxmoxmachine.infrastructure.cluster.x-k8s.io/proxmox01-workers-qcc4t-z949m   p
 
 ## Next Steps
 
-Continue with the [troubleshooting insights section](../2026-01-22-capi-proxmox-cilium-sveltos/k8s-managed-clusters-capmox.md) to get an idea of common pitfalls and potential resolutions.
+Continue with the [troubleshooting insights section](../2026-01-22-capi-proxmox-cilium-sveltos/k8s-managed-clusters-capmox-tshoot-insights.md) to get an idea of common pitfalls and potential resolutions.
 
 ## Conclusion
 

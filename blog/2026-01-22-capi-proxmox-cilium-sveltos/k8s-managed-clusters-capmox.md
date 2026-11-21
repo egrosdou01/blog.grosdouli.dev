@@ -359,6 +359,10 @@ cluster.cluster.x-k8s.io/proxmox01                  True        1            1  
 
 Continue with the [troubleshooting insights section](./k8s-managed-clusters-capmox-tshoot-insights.md) to get an idea of common pitfalls and potential resolutions. In [Part 3: Platform Engineering on Proxmox with CAPMOX and Sveltos](./k8s-managed-clusters-capmox-sveltos.md), we demonstrate how [Sveltos](https://projectsveltos.github.io/sveltos/main/) automates the whole workflow and provides a comprehensive way of managing hundreds of clusters using advanced templating and GitOps principles. Stay tuned!
 
+:::tip
+The updated version of the blog is located [here](../2026-11-23-capi-proxmox-9221-updates/k8s-managed-clusters-capmox-tshoot-insights.md).
+:::
+
 ## Resources
 
 - [Cluster API Proxmox Provider](https://github.com/k8s-proxmox/cluster-api-provider-proxmox)
